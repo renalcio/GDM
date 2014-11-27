@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-0": {
+            "Core\\": "application/core",
+            "Controller\\": "application/controllers",
+            "Model\\": "application/model",
+            "Helper\\": "application/libs",
+            "View": "application/view"
+        }
+    }    
+}
