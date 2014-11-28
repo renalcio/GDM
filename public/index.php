@@ -10,7 +10,7 @@ session_start();
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
-header ('Content-type: text/html; charset=UTF-8');
+//header ('Content-type: text/html; charset=UTF-8');
 #header('Content-type: text/html; charset=ISO-8859-1');
 // TODO get rid of this and work with namespaces + composer's autoloader
 

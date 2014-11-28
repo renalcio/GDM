@@ -81,5 +81,18 @@ class Helper
     static function Utf($Mensagem){
        return mb_convert_encoding($Mensagem, "UTF-8", "HTML-ENTITIES");
     }
+	
+	static function LoadView($Model = "", $view = "", $controller = ""){
+        if(empty($view)) $view = Self::getAction();
+        if(empty($controller)) $controller = Self::getController();
+        // load views
+
+		
+        if(empty($controller))
+            require APP . 'views/' . $view . '.php';
+        else
+            require APP . 'views/' . $controller . '/' . $view . '.php';
+        
+    }
 
 }

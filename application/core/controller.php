@@ -58,18 +58,22 @@ class Controller
         $this->ModelView(null, $view, $controller, $header, $footer);
     }
     
-    public function ModelView($Model = "", $view = "", $controller = "", $header = "", $footer=""){
+    public function ModelView($Model = "", $view = "", $controller = "", $header = "", $footer = ""){
         if(empty($view)) $view = Helper::getAction();
         if(empty($header))  $header = "header";
         if(empty($footer))  $footer = "footer";
         if(empty($controller)) $controller = Helper::getController();
         // load views
+		
         require APP . 'views/_templates/' . $header . '.php';
+		
+		
         if(empty($controller))
             require APP . 'views/' . $view . '.php';
         else
             require APP . 'views/' . $controller . '/' . $view . '.php';
         
+		
         require APP . 'views/_templates/' . $footer . '.php';
     }
     

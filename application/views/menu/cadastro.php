@@ -1,4 +1,4 @@
-<div class="container">
+﻿<div class="container">
 	<script src="<?= URL ?>public/js/jquery.nestable.min.js">
 	</script>
 	<script>
@@ -122,7 +122,7 @@
                 
 				<div class="form-group">
 					<label>
-						T�tulo:
+						Título:
 					</label>
 					<input type="text" class="form-control" id="Titulo" name="Titulo" />
 				</div>

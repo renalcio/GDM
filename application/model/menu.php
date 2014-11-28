@@ -45,14 +45,14 @@ class Menu
             foreach($model as $menuItem){
                 $Item = new \stdClass;
                 
-                echo "<br>MenuItem <br>";
-                print_r($menuItem);
+                //echo "<br>MenuItem <br>";
+                //print_r($menuItem);
                 
                 $menuItem = is_object($menuItem) || !is_array($menuItem) ? (Array)$menuItem : $menuItem;
                 
                 
-                echo "<br>MenuItem Convertido <br>";
-                print_r($menuItem);
+                //echo "<br>MenuItem Convertido <br>";
+                //print_r($menuItem);
                 
                 //$Item->MenuId = $menuItem["menuid"];
                 $Item->Titulo = $menuItem["titulo"];
