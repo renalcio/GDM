@@ -42,7 +42,7 @@
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Alternar navegação</span>
+                    <span class="sr-only">Alternar navegaï¿½ï¿½o</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -306,43 +306,7 @@
                     </form>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
-                        <li class="active">
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets.html">
-                                <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-bar-chart-o"></i>
-                                <span>Charts</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Flot</a></li>
-                                <li><a href="pages/charts/inline.html"><i class="fa fa-angle-double-right"></i> Inline charts</a></li>
-                            </ul>
-                        </li>
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Examples</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/examples/invoice.html"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
-                                <li><a href="pages/examples/login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                                <li><a href="pages/examples/register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="pages/examples/lockscreen.html"><i class="fa fa-angle-double-right"></i> Lockscreen</a></li>
-                                <li><a href="pages/examples/404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li><a href="pages/examples/500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>                                
-                                <li><a href="pages/examples/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <?php \Libs\Helper::LoadView("menu","menu"); ?>
                 </section>
                 <!-- /.sidebar -->
             </aside>
@@ -352,13 +316,13 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1 style="text-transform: capitalize;">
-                        <?=\Libs\Helper::getController()?>
-                        <small><?=\Libs\Helper::getAction()?></small>
+                        <?=\Libs\Helper::getController();?>
+                        <small><?=\Libs\Helper::getAction();?></small>
                     </h1>
                     <ol class="breadcrumb" style="text-transform: capitalize;">
-                        <li><a href="<?=URL?>home/"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active"><a href="<?=URL . \Libs\Helper::getController()?>"><?=\Libs\Helper::getController()?></a></li>
-                        <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction()?>"><?=\Libs\Helper::getAction()?></a></li>
+                        <li><a href="<?=URL;?>home/"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active"><a href="<?=URL . \Libs\Helper::getController();?>"><?=\Libs\Helper::getController();?></a></li>
+                        <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=\Libs\Helper::getAction(); ?></a></li>
                     </ol>
                 </section>
 

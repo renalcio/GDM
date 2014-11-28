@@ -100,69 +100,76 @@
 			$("#addMenuItem").click(AddMenu);
 		});
 	</script>
-	<div id="row">
-		<div class="box box-primary">
-			<div class="box-header">
-				<h3 class="box-title">
-					Item do Menu
-				</h3>
-			</div>
-			<div class="box-body">
-				<!-- <div class="form-group">
-				<label>Date range:</label>
-				<div class="input-group">
-				<div class="input-group-addon">
-				<i class="fa fa-calendar"></i>
-				</div>
-				<input type="text" class="form-control pull-right" id="reservation">
-				</div> /.input group 
-				</div>-->
-                
-                <input type="hidden" id="Index" value="0" />
-                
-				<div class="form-group">
-					<label>
-						Título:
-					</label>
-					<input type="text" class="form-control" id="Titulo" name="Titulo" />
-				</div>
-				<div class="form-group">
-					<label>
-						Url:
-					</label>
-					<input type="text" class="form-control" id="Url" name="Url" />
-				</div>
-				<script>
-					$(function() {
-						$("#Icone").on("keyup blur", function() {
-							var classe = $(this).val();
-							$("#menuIconediv i").attr("class", "fa " + classe);
-						});
-					});
-				</script>
-				<div class="form-group">
-					<label>
-						Icone:
-					</label>
-					<div class="input-group">
-						<div class="input-group-addon" id="menuIconediv">
-							<i class="fa ">
-							</i>
-						</div>
-						<input type="text" class="form-control pull-right" id="Icone" name="Icone" />
-					</div>
-				</div>
-			</div>
-			<div class="box-footer">
-				<div class="row">
-					<button type="button" id="addMenuItem" class="btn btn-primary" style="float: right; margin-right: 15px;">
-						Concluido
-					</button>
-				</div>
-			</div>
-		</div>
-		<!-- /.box-body -->
-	</div>
+    <div id="row">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Item do Menu</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+               </div>
+        </div>
+        <div class="box-body" style="display: block;">
+
+            <!-- <div class="form-group">
+            <label>Date range:</label>
+            <div class="input-group">
+            <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+            </div>
+            <input type="text" class="form-control pull-right" id="reservation">
+            </div> /.input group
+            </div>-->
+
+            <input type="hidden" id="Index" value="0" />
+
+            <div class="form-group">
+                <label>
+                    Título:
+                </label>
+                <input type="text" class="form-control" id="Titulo" name="Titulo" />
+            </div>
+            <div class="form-group">
+                <label>
+                    Url:
+                </label>
+                <input type="text" class="form-control" id="Url" name="Url" />
+            </div>
+            <script>
+                $(function() {
+                    $("#Icone").on("keyup blur", function() {
+                        var classe = $(this).val();
+                        $("#menuIconediv i").attr("class", "fa " + classe);
+                    });
+                });
+            </script>
+            <div class="form-group">
+                <label>
+                    Icone:
+                </label>
+                <div class="input-group">
+                    <div class="input-group-addon" id="menuIconediv">
+                        <i class="fa ">
+                        </i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="Icone" name="Icone" />
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+        <div class="box-footer" style="display: block;">
+            <div class="row">
+                <button type="button" id="addMenuItem" class="btn btn-primary" style="float: right; margin-right: 15px;">
+                    Concluido
+                </button>
+            </div>
+        </div><!-- /.box-footer-->
+    </div>
+        </div>
+
+
+
+
+
+
 	<div id="row">
 		<div class="box box-primary">
 			<div class="box-header">
@@ -176,13 +183,13 @@
 						<div class="dd" id="nestable" id="nestable">
 							<ol class="dd-list" id="MenuList">
                             <?php
-                            if(isset($Model->ListMenu) && is_array($Model->ListMenu) && count($Model->ListMenu) > 0)
-                            {
-                                $ref = -1;
-                                foreach($Model->ListMenu as $MenuItem)
-                                {
-                                                $ref++;
-                                  ?>
+                                    if(isset($Model->ListMenu) && is_array($Model->ListMenu) && count($Model->ListMenu) > 0)
+                                    {
+                                        $ref = -1;
+                                        foreach($Model->ListMenu as $MenuItem)
+                                        {
+                                            $ref++;
+                                            ?>
                                     <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$MenuItem->Titulo;?>" data-Url="<?=$MenuItem->Url;?>" data-Icone="<?=$MenuItem->Icone;?>">
                     <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
                     <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
@@ -241,7 +248,7 @@
                                   <?php 
                                 }
                             }
-                            }
+
                             ?>
 							</ol>
 						</div>
@@ -260,4 +267,6 @@
 		</div>
 		<!-- /.box-body -->
 	</div>
+
+
 </div>
