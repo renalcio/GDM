@@ -37,8 +37,9 @@ class Menu
         return $retorno;
     }
     
-    public function Save($model, $Pai = 0){
-        
+    public function Save($model, $Pai = 0, $App = 0)
+    {
+        if($App == 0) $App = APP_ID;
         if(is_array($model))
         {
             $i = 0;
@@ -60,7 +61,7 @@ class Menu
                 $Item->Icone = $menuItem["icone"];
                 $Item->Pai = $Pai;
                 $Item->Posicao = $i;
-                $Item->AplicacaoId = APP_ID;
+                $Item->AplicacaoId = $App;
                 
                 //print_r($Item);
                 //echo "<br>\n\r";

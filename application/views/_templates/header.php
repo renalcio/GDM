@@ -19,9 +19,22 @@
         <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<?=URL?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
+
+    <!-- DATA TABLES -->
+    <link href="<?=URL?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
      
      <!-- Jquery -->
         <script src="<?=URL?>js/jquery.js" type="text/javascript"></script>
+
+    <!-- Bootstrap -->
+    <script src="<?=URL;?>js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- AdminLTE App -->
+    <script src="<?=URL;?>js/AdminLTE/app.js" type="text/javascript"></script>
+
+    <!-- DATA TABES SCRIPT -->
+    <script src="<?=URL;?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="<?=URL;?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

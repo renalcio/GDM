@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿
 	<script src="<?= URL ?>public/js/jquery.nestable.min.js">
 	</script>
 	<script>
@@ -8,17 +8,24 @@
 			});
             
             $("#btnSalvar").click(function(){
+                $("#Validacao").html('');
                var dados = {
                     menu : JSON.stringify($('.dd').nestable('serialize'))
-               };
+                   },
+                   AppId = $("#AppId").val();
                $.ajax({
                 				type: "POST",
-                				url: "<?=URL?>menu/salvar",
+                				url: "<?=URL?>menu/salvar/"+AppId,
                 				data: dados,
                 				success: function( data )
                 				{
                 					console.log(data);
                 				    data = JSON.parse(JSON.stringify(data));
+                                    $("#Validacao").html('<div class="alert alert-success alert-dismissable">\
+                                                            <i class="fa fa-check"></i>\
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\
+                                                            <b>Sucesso!</b><br>O menu foi salvo com sucesso... \
+                                                        </div>');
                 				}
 			     });
                
@@ -100,7 +107,112 @@
 			$("#addMenuItem").click(AddMenu);
 		});
 	</script>
-    <div id="row">
+
+    <input type="hidden" id="AppId" value="<?=$Model->AppId;?>" />
+    <div id="Validacao" class="col-12"></div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Hierarquia
+                    </h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dd" id="nestable" id="nestable">
+                                <ol class="dd-list" id="MenuList">
+                                    <?php
+                                    if(isset($Model->ListMenu) && is_array($Model->ListMenu) && count($Model->ListMenu) > 0)
+                                    {
+                                        $ref = -1;
+                                        foreach($Model->ListMenu as $MenuItem)
+                                        {
+                                            $ref++;
+                                            ?>
+                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$MenuItem->Titulo;?>" data-Url="<?=$MenuItem->Url;?>" data-Icone="<?=$MenuItem->Icone;?>">
+                                                <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
+                                                <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
+                                                <div class="dd-handle">
+                                                    <i class="fa <?=$MenuItem->Icone?>" style="margin-right: 5px"></i> <?= htmlspecialchars($MenuItem->Titulo, ENT_QUOTES, 'UTF-8');?>
+                                                </div>
+                                                <?php
+                                                if(isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
+                                                {
+                                                    ?>
+                                                    <ol class="dd-list">
+                                                        <?php
+                                                        foreach($MenuItem->ListSubMenu as $SubItem)
+                                                        {
+                                                            $ref++;
+                                                            ?>
+                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubItem->Titulo;?>" data-Url="<?=$SubItem->Url;?>" data-Icone="<?=$SubItem->Icone;?>">
+                                                                <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
+                                                                <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
+                                                                <div class="dd-handle">
+                                                                    <i class="fa <?=$SubItem->Icone?>" style="margin-right: 5px"></i> <?=$SubItem->Titulo;?>
+                                                                </div>
+                                                                <?php
+                                                                if(isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
+                                                                {
+                                                                    ?>
+                                                                    <ol class="dd-list">
+                                                                        <?php
+                                                                        foreach($SubItem->ListSubMenu as $SubSubItem)
+                                                                        {
+                                                                            $ref++;
+                                                                            ?>
+                                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubSubItem->Titulo;?>" data-Url="<?=$SubSubItem->Url;?>" data-Icone="<?=$SubSubItem->Icone;?>">
+                                                                                <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
+                                                                                <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
+                                                                                <div class="dd-handle">
+                                                                                    <i class="fa <?=$SubSubItem->Icone?>" style="margin-right: 5px"></i> <?=$SubSubItem->Titulo;?>
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </ol>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </li>
+                                                        <?
+                                                        }
+                                                        ?>
+                                                    </ol>
+                                                <?php
+                                                }
+                                                ?>
+                                            </li>
+                                        <?php
+                                        }
+                                    }
+
+                                    ?>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="row">
+                        <button type="button" id="btnSalvar" class="btn btn-primary" style="float: right; margin-right: 15px;">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+        <div class="col-md-6">
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">Item do Menu</h3>
@@ -164,109 +276,4 @@
         </div><!-- /.box-footer-->
     </div>
         </div>
-
-
-
-
-
-
-	<div id="row">
-		<div class="box box-primary">
-			<div class="box-header">
-				<h3 class="box-title">
-					Hierarquia
-				</h3>
-			</div>
-			<div class="box-body">
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="dd" id="nestable" id="nestable">
-							<ol class="dd-list" id="MenuList">
-                            <?php
-                                    if(isset($Model->ListMenu) && is_array($Model->ListMenu) && count($Model->ListMenu) > 0)
-                                    {
-                                        $ref = -1;
-                                        foreach($Model->ListMenu as $MenuItem)
-                                        {
-                                            $ref++;
-                                            ?>
-                                    <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$MenuItem->Titulo;?>" data-Url="<?=$MenuItem->Url;?>" data-Icone="<?=$MenuItem->Icone;?>">
-                    <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
-                    <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
-									<div class="dd-handle">
-										<i class="fa <?=$MenuItem->Icone?>" style="margin-right: 5px"></i> <?= htmlspecialchars($MenuItem->Titulo, ENT_QUOTES, 'UTF-8');?>
-									</div>
-                                    <?php
-                                    if(isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                                    {
-                                    ?>
-                                    <ol class="dd-list">
-                                    <?php
-                                    foreach($MenuItem->ListSubMenu as $SubItem)
-                                    {
-                                  $ref++;
-                                    ?>
-												<li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubItem->Titulo;?>" data-Url="<?=$SubItem->Url;?>" data-Icone="<?=$SubItem->Icone;?>">
-                                                 <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
-                    <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
-													<div class="dd-handle">
-													<i class="fa <?=$SubItem->Icone?>" style="margin-right: 5px"></i> <?=$SubItem->Titulo;?>
-													</div>
-                                                    <?php
-                                                    if(isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                                                    {
-                                                        ?>
-                                                        <ol class="dd-list">
-                                                        <?php
-                                                        foreach($SubItem->ListSubMenu as $SubSubItem)
-                                                        {
-                                                            $ref++;
-                                                            ?>
-                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubSubItem->Titulo;?>" data-Url="<?=$SubSubItem->Url;?>" data-Icone="<?=$SubSubItem->Icone;?>">
-                                                             <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
-                    <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
-        													<div class="dd-handle">
-        														<i class="fa <?=$SubSubItem->Icone?>" style="margin-right: 5px"></i> <?=$SubSubItem->Titulo;?>
-        													</div>
-                                                            </li>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                        </ol>
-                                                        <?php
-                                                    }
-                                                    ?>
-												</li>
-                                                <?
-                                                }
-                                                ?>
-											</ol>
-                                    <?php
-                                    }
-                                    ?>
-		                          </li>
-                                  <?php 
-                                }
-                            }
-
-                            ?>
-							</ol>
-						</div>
-					</div>
-					<div class="col-lg-4">
-					</div>
-				</div>
-			</div>
-			<div class="box-footer">
-				<div class="row">
-					<button type="button" id="btnSalvar" class="btn btn-primary" style="float: right; margin-right: 15px;">
-						Salvar
-					</button>
-				</div>
-			</div>
-		</div>
-		<!-- /.box-body -->
-	</div>
-
-
-</div>
+    </div>

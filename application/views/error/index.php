@@ -4,10 +4,10 @@
                     <div class="error-page">
                         <h2 class="headline text-info"> 404</h2>
                         <div class="error-content">
-                            <h3><i class="fa fa-warning text-yellow"></i> Oops! P·gina n„o encontrada.</h3>
+                            <h3><i class="fa fa-warning text-yellow"></i> Oops! P√°gina n√£o encontrada.</h3>
                             <p>
-                                NÛs n„o encontramos a p·gina que voce est· procurando.
-                                VocÍ pode <a href='/index.html'>voltar ao inicio</a> ou tentar a busca.
+                                N√≥s n√£o encontramos a p√°gina que voc√™ est√° procurando.
+                                Voc√™ pode <a href='/index.html'>voltar ao inicio</a> ou tentar a busca.
                             </p>
                             <form class='search-form'>
                                 <div class='input-group'>
