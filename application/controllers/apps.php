@@ -25,5 +25,14 @@ class Apps extends Controller
         $this->ModelView($model);
     }
 
-
+    public function cadastro($id = 0)
+    {
+        $Model = new \stdClass;
+        if($id > 0)
+        {
+            $this->loadModel();
+            $Model = $this->model->getAppbyId($id);
+        }
+        $this->ModelView($Model);
+    }
 }

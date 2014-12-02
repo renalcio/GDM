@@ -1,4 +1,108 @@
 /**
+WYSIWYG
+*/
+.wysiwyg-toolbar {
+    background: #e5e5e5;
+    padding: 4px;
+    margin-top:5px;
+    margin-left:0 !important;
+}
+.wysiwyg-editor{
+    padding:5px;
+    min-height:80px;
+    border:1px #e5e5e5 solid;
+    outline: none;
+}
+.wysiwyg-toolbar .btn-colorpicker {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    background: #87b87f;
+    background: -moz-linear-gradient(top,#cf3e73 10%,#fff 20%,#2283c5 30%,#fff 40%,#87b87f 50%,#fff 60%,#ffb752 70%,#fff 80%,#d15b47 90%,#fff 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#cf3e73),color-stop(20%,#fff),color-stop(30%,#2283c5),color-stop(40%,#fff),color-stop(50%,#87b87f),color-stop(60%,#fff),color-stop(70%,#ffb752),color-stop(80%,#fff),color-stop(90%,#d15b47),color-stop(100%,#fff));
+    background: -webkit-linear-gradient(top,#cf3e73 10%,#fff 20%,#2283c5 30%,#fff 40%,#87b87f 50%,#fff 60%,#ffb752 70%,#fff 80%,#d15b47 90%,#fff 100%);
+    background: -o-linear-gradient(top,#cf3e73 10%,#fff 20%,#2283c5 30%,#fff 40%,#87b87f 50%,#fff 60%,#ffb752 70%,#fff 80%,#d15b47 90%,#fff 100%);
+    background: -ms-linear-gradient(top,#cf3e73 10%,#fff 20%,#2283c5 30%,#fff 40%,#87b87f 50%,#fff 60%,#ffb752 70%,#fff 80%,#d15b47 90%,#fff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CF3E73',endColorstr='#FFB752',GradientType=0);
+    background: linear-gradient(top,#cf3e73 10%,#fff 20%,#2283c5 30%,#fff 40%,#87b87f 50%,#fff 60%,#ffb752 70%,#fff 80%,#d15b47 90%,#fff 100%);
+}
+.dropdown-colorpicker {
+    padding:5px;
+}
+.btn-colorpicker {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #DDD;
+    vertical-align: middle;
+    border-radius: 0;
+}
+.dropdown-colorpicker>.dropdown-menu>li>.colorpick-btn {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    position: relative;
+    -webkit-transition: all ease .1s;
+    transition: all ease .1s;
+}
+
+.wysiwyg-toolbar .dropdown-colorpicker>.dropdown-menu {
+    top: inherit;
+}
+.dropdown-colorpicker>.dropdown-menu.pull-right {
+    right: -7px;
+    left: auto;
+}
+.wysiwyg-toolbar .dropdown-menu {
+    text-align: left;
+}
+.dropdown-colorpicker>.dropdown-menu {
+    top: 80%;
+    left: -7px;
+    padding: 4px;
+    min-width: 130px;
+    max-width: 130px;
+}
+.widget-toolbar>.dropdown>.dropdown-menu.pull-right:before, .dropdown-menu.pull-right.dropdown-caret:before {
+    left: auto;
+    right: 9px;
+}
+.widget-toolbar>.dropdown>.dropdown-menu:before, .dropdown-menu.dropdown-caret:before {
+    border-bottom: 7px solid rgba(0,0,0,0.2);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    content: "";
+    display: inline-block;
+    left: 9px;
+    position: absolute;
+    top: -7px;
+}
+.widget-toolbar>.dropdown>.dropdown-menu.pull-right:after, .dropdown-menu.pull-right.dropdown-caret:after {
+    left: auto;
+    right: 10px;
+}
+.widget-toolbar>.dropdown>.dropdown-menu:after, .dropdown-menu.dropdown-caret:after {
+    border-bottom: 6px solid #fff;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    content: "";
+    display: inline-block;
+    left: 10px;
+    position: absolute;
+    top: -6px;
+}
+
+.dropdown-colorpicker>.dropdown-menu>li {
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+}
+/**
  * Nestable
  */
 .dd {

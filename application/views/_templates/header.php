@@ -35,6 +35,84 @@
     <script src="<?=URL;?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="<?=URL;?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 
+
+    <!-- WYSIWYG -->
+    <script src="<?=URL?>js/markdown/bootstrap-markdown.min.js"></script>
+    <script src="<?=URL?>js/jquery.hotkeys.min.js"></script>
+    <script src="<?=URL?>js/bootstrap-wysiwyg.min.js"></script>
+    <script src="<?=URL?>js/extra-elements.min.js"></script>
+    <script>
+
+            function showErrorAlert (reason, detail) {
+                var msg='';
+                if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+                else {
+                    console.log("error uploading file", reason, detail);
+                }
+                $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+
+                '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+            }
+
+            //Add Image Resize Functionality to Chrome and Safari
+            //webkit browsers don't have image resize functionality when content is editable
+            //so let's add something using jQuery UI resizable
+            //another option would be opening a dialog for user to enter dimensions.
+            if ( typeof jQuery.ui !== 'undefined' && /applewebkit/.test(navigator.userAgent.toLowerCase()) ) {
+
+                var lastResizableImg = null;
+                function destroyResizable() {
+                    if(lastResizableImg == null) return;
+                    lastResizableImg.resizable( "destroy" );
+                    lastResizableImg.removeData('resizable');
+                    lastResizableImg = null;
+                }
+
+                var enableImageResize = function() {
+                    $('.wysiwyg-editor')
+                        .on('mousedown', function(e) {
+                            var target = $(e.target);
+                            if( e.target instanceof HTMLImageElement ) {
+                                if( !target.data('resizable') ) {
+                                    target.resizable({
+                                        aspectRatio: e.target.width / e.target.height,
+                                    });
+                                    target.data('resizable', true);
+
+                                    if( lastResizableImg != null ) {//disable previous resizable image
+                                        lastResizableImg.resizable( "destroy" );
+                                        lastResizableImg.removeData('resizable');
+                                    }
+                                    lastResizableImg = target;
+                                }
+                            }
+                        })
+                        .on('click', function(e) {
+                            if( lastResizableImg != null && !(e.target instanceof HTMLImageElement) ) {
+                                destroyResizable();
+                            }
+                        })
+                        .on('keydown', function() {
+                            destroyResizable();
+                        });
+                }
+
+                enableImageResize();
+
+                /**
+                 //or we can load the jQuery UI dynamically only if needed
+                 if (typeof jQuery.ui !== 'undefined') enableImageResize();
+                 else {//load jQuery UI if not loaded
+			$.getScript($path_assets+"/js/jquery-ui-1.10.3.custom.min.js", function(data, textStatus, jqxhr) {
+				if('ontouchend' in document) {//also load touch-punch for touch devices
+					$.getScript($path_assets+"/js/jquery.ui.touch-punch.min.js", function(data, textStatus, jqxhr) {
+						enableImageResize();
+					});
+				} else	enableImageResize();
+			});
+		}
+                 */
+            }
+    </script>
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

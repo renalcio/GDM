@@ -25,4 +25,13 @@ class Apps
         $retorno = $this->pdo->select("SELECT * FROM Aplicacao");
         return $retorno;
     }
+
+    public function getAppbyId($id)
+    {
+        $retorno = $this->pdo->select("SELECT * FROM Aplicacao WHERE AplicacaoId='$id'");
+        if(count($retorno) > 0)
+            return $retorno[0];
+
+        return null;
+    }
 }

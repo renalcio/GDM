@@ -12,7 +12,7 @@
 					Aplicações
 				</h3>
                 <div class="box-tools pull-right">
-                    <a href="apps/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
+                    <a href="<?=URL?>apps/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
                     fa-plus"></i> Nova
                         Aplicação</a>
                 </div>
