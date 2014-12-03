@@ -22,7 +22,7 @@ class Database extends \PDO
 
     /**
 
-     * Inicializa a conexão com o banco de dados
+     * Inicializa a conexï¿½o com o banco de dados
 
      * @access public
 
@@ -36,25 +36,25 @@ class Database extends \PDO
 
     {
 
-    	$options = array(
+        $options = array(
 
-    			\PDO::ATTR_PERSISTENT => true,
+            \PDO::ATTR_PERSISTENT => true,
 
-    			\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
 
-    			\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
 
-    	);
+        );
 
-        // Executa o construtor da da classe pai (PDO) que inicializa a conexão
+        // Executa o construtor da da classe pai (PDO) que inicializa a conexï¿½o
 
         try{
 
-        	parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8', $DB_USER, $DB_PASS, $options);
+            parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8', $DB_USER, $DB_PASS, $options);
 
         }catch(\PDOException $e){
 
-        	echo $e->getMessage();
+            echo $e->getMessage();
 
         }
 
@@ -74,7 +74,7 @@ class Database extends \PDO
 
      * @param Boolean $all Usar fetchAll() ou apenas fetch()
 
-     * @param Constant $fetchMode Define o tipo do retorno, por padrão, um array associativo.
+     * @param Constant $fetchMode Define o tipo do retorno, por padrï¿½o, um array associativo.
 
      * @return Array
 
@@ -82,73 +82,60 @@ class Database extends \PDO
 
 
 
-    public function select($sql, $class = "", $array = array(), $all = TRUE)
-
-    { 	
-
+    public function select($sql, $class = "", $all = FALSE, $array = array())
+    {
         // Prepara a Query
-
         $sth = $this->prepare($sql);
 
-
-
         // Define os dados do Where, se existirem.
-
-        foreach ($array as $key => $value)
-
-        {
-
-            // Se o tipo do dado for inteiro, usa PDO::PARAM_INT, caso contrário, PDO::PARAM_STR
-
-            $tipo = ( is_int($value) ) ? PDO::PARAM_INT : PDO::PARAM_STR;
-
-
+        foreach ($array as $key => $value) {
+            // Se o tipo do dado for inteiro, usa PDO::PARAM_INT, caso contr rio, PDO::PARAM_STR
+            $tipo = (is_int($value)) ? \PDO::PARAM_INT : \PDO::PARAM_STR;
 
             // Define o dado
-
             $sth->bindValue("$key", $value, $tipo);
-
         }
 
-
-
         // Executa
-
         $sth->execute();
-
-
 
         // Executar fetchAll() ou fetch()?
 
-        if( $all )
+        // Retorna a cole  o de dados (array multidimensional)
 
-        {
 
-            // Retorna a coleção de dados (array multidimensional)
+        if ($sth->rowCount() <= 0)
+            return null;
 
-            if($class == "")
+        if ($class == "") {
 
-            	return $sth->rowCount() <= 0 ? null : $sth->fetchAll(\PDO::FETCH_OBJ);
+            if ($all == false and $sth->rowCount() == 1) {
+                $array = $sth->fetchAll(\PDO::FETCH_OBJ);
+                return array_shift($array);
+            }
 
-            else 
 
-            	return $sth->rowCount() <= 0 ? null : $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+            return $sth->fetchAll(\PDO::FETCH_OBJ);
+        } else {
+            if ($all == false and $sth->rowCount() == 1) {
+                $array = $sth->fetchAll(\PDO::FETCH_CLASS, $this->getClass($class));
+                return array_shift($array);
+            }
 
-        }
-
-        else
-
-        {
-
-            // Retorna apenas um dado
-
-            return $sth->rowCount() <= 0 ? null : $sth->fetch($fetchMode);
-
+            return $sth->fetchAll(\PDO::FETCH_CLASS, $this->getClass($class));
         }
 
     }
+    function getClass($class){
+        if(is_object($class))
+            return get_class($class);
+        return $class;
+    }
 
-
+    public function GetById($Table, $Coluna, $Id, $Classe="")
+    {
+        return $this->select("SELECT * FROM $Table WHERE $Coluna=$Id LIMIT 1", $Classe);
+    }
 
     /**
 
@@ -196,7 +183,7 @@ class Database extends \PDO
 
         {
 
-            // Se o tipo do dado for inteiro, usa PDO::PARAM_INT, caso contrário, PDO::PARAM_STR
+            // Se o tipo do dado for inteiro, usa PDO::PARAM_INT, caso contrï¿½rio, PDO::PARAM_STR
 
             $tipo = ( is_int($value) ) ? \PDO::PARAM_INT : \PDO::PARAM_STR;
 
@@ -234,7 +221,7 @@ class Database extends \PDO
 
      * @param Array $data Campos e seus respectivos valores.
 
-     * @param String $where Condição de atualização.
+     * @param String $where Condiï¿½ï¿½o de atualizaï¿½ï¿½o.
 
      * @return Integer
 
@@ -252,7 +239,7 @@ class Database extends \PDO
 
 
 
-        // Define os dados que serão atualizados
+        // Define os dados que serï¿½o atualizados
 
         $novosDados = NULL;
 
@@ -284,7 +271,7 @@ class Database extends \PDO
 
         {
 
-            // Se o tipo do dado for inteiro, usa PDO::PARAM_INT, caso contrário, PDO::PARAM_STR
+            // Se o tipo do dado for inteiro, usa PDO::PARAM_INT, caso contrï¿½rio, PDO::PARAM_STR
 
             $tipo = ( is_int($value) ) ? \PDO::PARAM_INT : \PDO::PARAM_STR;
 
@@ -314,9 +301,9 @@ class Database extends \PDO
 
      * @param String $table Nome da tabela.
 
-     * @param String $where Condição de atualização.
+     * @param String $where Condiï¿½ï¿½o de atualizaï¿½ï¿½o.
 
-     * @param Integer $limit Limite de itens deletados por execução.
+     * @param Integer $limit Limite de itens deletados por execuï¿½ï¿½o.
 
      * @return Integer
 
@@ -331,7 +318,7 @@ class Database extends \PDO
         // Deleta
         if($limit > 0)
             return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
-        
+
         return $this->exec("DELETE FROM $table WHERE $where");
 
     }

@@ -12,8 +12,17 @@ use Libs\Form;
 
         </div>
         <div class="box-body">
+            <pre>
+            <? print_r($Model->Pessoa)?>
+                </pre>
             <form>
                 <?Form::Hidden("AplicacaoId", @$Model->AplicacaoId);?>
+                <div class="form-group">
+                    <label>
+                        CPF / CNPJ:
+                    </label>
+                    <?Form::Text("Documento", @$Model->Documento, Array("class" => "form-control"));?>
+                </div>
                 <div class="form-group">
                     <label>
                         Título:

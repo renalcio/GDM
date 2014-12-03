@@ -28,11 +28,11 @@ class Apps extends Controller
     public function cadastro($id = 0)
     {
         $Model = new \stdClass;
-        if($id > 0)
-        {
-            $this->loadModel();
-            $Model = $this->model->getAppbyId($id);
-        }
+        $Model->AplicacaoId = $id;
+        $this->loadModel();
+
+        $Model = $this->model->GetToEdit($Model);
+
         $this->ModelView($Model);
     }
 }

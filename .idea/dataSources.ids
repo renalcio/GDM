@@ -45,7 +45,43 @@
       <column name="Telefone" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="Celular" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="Observacao" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="Foto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="PessoaId"/>
+    </table>
+    <table name="PessoaEmpresa" schema="" catalog="cdm" type="TABLE">
+      <column name="PessoaEmpresaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="EmpresaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Apagado" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="PessoaEmpresaId"/>
+    </table>
+    <table name="PessoaEndereco" schema="" catalog="cdm" type="TABLE">
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Rua" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Numero" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Bairro" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Cidade" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EstadoId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PaisId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Apagado" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="PessoaId"/>
+    </table>
+    <table name="PessoaFisica" schema="" catalog="cdm" type="TABLE">
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CPF" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Nascimento" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="RG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EstadoCivil" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Nacionalidade" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sexo" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="PessoaId"/>
+    </table>
+    <table name="PessoaJuridica" schema="" catalog="cdm" type="TABLE">
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NomeFantasia" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IM" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CNPJ" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="PessoaId"/>
     </table>
     <table name="RegraPerfil" schema="" catalog="cdm" type="TABLE">
@@ -63,6 +99,7 @@
       <column name="Senha" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Ativo" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="Avatar" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="UsuarioId"/>
     </table>
     <table name="UsuarioPerfil" schema="" catalog="cdm" type="TABLE">

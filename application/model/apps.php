@@ -4,6 +4,7 @@ use Classe\Database;
 use Libs\Helper;
 use Libs\Cookie;
 use Libs\Session;
+use DAL\Pessoa;
 class Apps
 {
     /**
@@ -19,7 +20,25 @@ class Apps
         $this->pdo = new Database;
     }
 
-    
+    public function GetToEdit($Model)
+    {
+        if($Model->AplicacaoId > 0)
+        {
+            $Model = $this->getAppbyId($Model->AplicacaoId);
+            if($Model != null)
+            {
+                $Model->Pessoa = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
+                if($Model->Pessoa != null){
+                    if($Model->Pessoa->TipoPessoaFisica)
+                        $Model->Documento = $Model->Pessoa->PessoaFisica->CPF;
+                    else
+                        $Model->Documento = $Model->Pessoa->PessoaJuridica->CNPJ;
+                }
+            }
+        }
+        return $Model;
+    }
+
     public function getApps()
     {
         $retorno = $this->pdo->select("SELECT * FROM Aplicacao");
@@ -29,8 +48,8 @@ class Apps
     public function getAppbyId($id)
     {
         $retorno = $this->pdo->select("SELECT * FROM Aplicacao WHERE AplicacaoId='$id'");
-        if(count($retorno) > 0)
-            return $retorno[0];
+        if(is_object($retorno))
+            return $retorno;
 
         return null;
     }
