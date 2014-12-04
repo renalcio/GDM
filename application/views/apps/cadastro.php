@@ -31,7 +31,7 @@ use Libs\Form;
                 </div>
                 <div class="form-group">
                     <label>
-                        Descricao:
+                        Descricao:Metal war
                     </label>
                     <?Form::Wysiwyg("Descricao", @$Model->Descricao);?>
                 </div>

@@ -20,6 +20,22 @@
         <!-- Theme style -->
         <link href="<?=URL?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
+    <!-- daterange picker -->
+    <link href="<?=URL?>css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="<?=URL?>css/iCheck/all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap Color Picker -->
+    <link href="<?=URL?>css/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet"/>
+    <!-- Bootstrap time Picker -->
+    <link href="<?=URL?>css/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+
+    <link href="<?=URL?>css/datepicker/datepicker3.css" rel="stylesheet"/>
+
+
+    <link href="<?=URL?>css/select2.css" rel="stylesheet"/>
+    <link href="<?=URL?>css/select2-bootstrap.css" rel="stylesheet"/>
+
+
     <!-- DATA TABLES -->
     <link href="<?=URL?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
      
@@ -34,6 +50,22 @@
     <!-- DATA TABES SCRIPT -->
     <script src="<?=URL;?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="<?=URL;?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+
+    <!-- Select2 -->
+    <script src="<?=URL?>js/select2.js" type="text/javascript"></script>
+    <script src="<?=URL?>js/select2_locale_pt-BR.js" type="text/javascript"></script>
+    <!-- InputMask -->
+    <script src="<?=URL?>js/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <!-- date-range-picker -->
+    <script src="<?=URL?>js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <!-- date-picker -->
+    <script src="<?=URL?>js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- bootstrap color picker -->
+    <script src="<?=URL?>js/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+    <!-- bootstrap time picker -->
+    <script src="<?=URL?>js/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
+
 
 
     <!-- WYSIWYG -->

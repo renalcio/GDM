@@ -12,5 +12,6 @@ return array(
     'Controllers\\' => array($baseDir . '/application'),
     'Core\\' => array($baseDir . '/application'),
     'Class\\' => array($baseDir . '/application'),
+    'Handler\\' => array($baseDir . '/application'),
     'DAL\\' => array($baseDir . '/application'),
 );

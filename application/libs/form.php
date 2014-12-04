@@ -2,6 +2,7 @@
 namespace Libs;
 class Form
 {
+
     public static function Input($Tipo, $Nome="", $Valor="", $htmlAttr = Array())
     {
         $html = "";
@@ -20,30 +21,6 @@ class Form
             $html .= ">";
             if(!empty($Valor)) $html .= $Valor;
             $html .= "</textarea>";
-        }
-        else if(strtolower($Tipo) == "select" OR strtolower($Tipo) == "dropdown")
-        {
-            $html .= "<select ";
-            if(!empty($Nome)) $html .= "name='$Nome' id='$Nome' ";
-            if(is_array($htmlAttr) && count($htmlAttr) > 0)
-            {
-                foreach($htmlAttr as $k=>$attr)
-                {
-                    $html .= "$k='$attr' ";
-                }
-            }
-            $html .= ">";
-
-            if(!empty($Valor) && is_array($Valor) && count($Valor) > 0)
-            {
-                foreach($Valor as $v=>$txt)
-                {
-                    $html .= "<option value='$v'>$txt</option>";
-                }
-            }
-            else if(!empty($Valor)) $html .= $Valor;
-
-            $html .= "</select>";
         }
         else
         {
@@ -66,52 +43,116 @@ class Form
         return $html;
     }
 
-    public static function Checkbox($Nome, $Valor, $htmlAttr = Array())
+    public static function Checkbox($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("checkbox", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function Text($Nome, $Valor, $htmlAttr = Array())
+    public static function Text($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("text", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function TextArea($Nome, $Valor, $htmlAttr = Array())
+    public static function DatePicker($Nome="", $Valor="", $htmlAttr = Array())
+    {
+
+            echo '
+        <script>
+        $(function(){
+            $("#'.$Nome.'").datepicker();
+            });
+        </script>
+        ';
+
+        echo Self::Input("text", $Nome, $Valor, $htmlAttr);
+    }
+
+    public static function Mask($Mascara, $Nome="", $Valor="", $htmlAttr = Array())
+    {
+        if(isset($htmlAttr["placeholder"]) || isset($htmlAttr["Placeholder"])){
+            $placeholder = isset($htmlAttr["placeholder"]) ? $htmlAttr["placeholder"] : $htmlAttr["Placeholder"];
+            echo '
+        <script>
+        $(function(){
+            $("#'.$Nome.'").mask("'.$Mascara.'", {"placeholder": "'.$placeholder.'"});
+        });
+        </script>
+        ';
+        }else{
+            echo '
+        <script>
+        $(function(){
+            $("#'.$Nome.'").mask("'.$Mascara.'");
+            });
+        </script>
+        ';
+        }
+       
+        echo Self::Input("text", $Nome, $Valor, $htmlAttr);
+    }
+
+
+    public static function TextArea($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("textarea", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function DropDown($Nome, $Valor, $htmlAttr = Array())
+    public static function DropDown($Nome="", $Valor="", $Opcoes = "", $htmlAttr = Array())
     {
-        echo Self::Input("select", $Nome, $Valor, $htmlAttr);
+        $html = "<select ";
+        if(!empty($Nome)) $html .= "name='$Nome' id='$Nome' ";
+        if(is_array($htmlAttr) && count($htmlAttr) > 0)
+        {
+            foreach($htmlAttr as $k=>$attr)
+            {
+                $html .= "$k='$attr' ";
+            }
+        }
+        $html .= ">";
+
+        if(!empty($Opcoes) && is_array($Opcoes) && count($Opcoes) > 0)
+        {
+            foreach($Opcoes as $v=>$txt)
+            {
+                if($v == $Valor)
+                    $html .= "<option value='$v' selected>$txt</option>";
+                else
+                    $html .= "<option value='$v'>$txt</option>";
+            }
+        }
+        else if(!empty($Opcoes)) $html .= $Opcoes;
+
+        $html .= "</select>";
+
+        echo $html;
     }
 
-    public static function Password($Nome, $Valor, $htmlAttr = Array())
+    public static function Password($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("password", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function Email($Nome, $Valor, $htmlAttr = Array())
+    public static function Email($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("email", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function Range($Nome, $Valor, $htmlAttr = Array())
+    public static function Range($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("range", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function Number($Nome, $Valor, $htmlAttr = Array())
+    public static function Number($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("number", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function Hidden($Nome, $Valor, $htmlAttr = Array())
+    public static function Hidden($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("hidden", $Nome, $Valor, $htmlAttr);
     }
 
-    public static function Wysiwyg($Nome, $Valor, $htmlAttr = Array())
+    public static function Wysiwyg($Nome="", $Valor="", $htmlAttr = Array())
     {
         Self::Hidden($Nome, $Valor);
         echo "

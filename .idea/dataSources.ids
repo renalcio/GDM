@@ -31,6 +31,12 @@
       <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="NichoId"/>
     </table>
+    <table name="Pais" schema="" catalog="cdm" type="TABLE">
+      <column name="PaisId" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" autoIncrement="true"/>
+      <column name="Nome" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="PaisId"/>
+    </table>
     <table name="Perfil" schema="" catalog="cdm" type="TABLE">
       <column name="PerfilId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>

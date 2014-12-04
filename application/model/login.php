@@ -37,7 +37,7 @@ class Login
             $check = $this->GetUsuarioByLoginSenha($Login, $Senha);
             
             if(empty($check))
-                $retorno[] = Helper::Utf("Login ou senha inv·lidos");
+                $retorno[] = Helper::Utf("Login ou senha inv√°lidos");
         }
         
         return $retorno;
