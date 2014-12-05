@@ -26,6 +26,9 @@
                                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\
                                                             <b>Sucesso!</b><br>O menu foi salvo com sucesso... \
                                                         </div>');
+                                    setTimeout(function(){
+                                        location.reload();
+                                    }, 1500);
                 				}
 			     });
                

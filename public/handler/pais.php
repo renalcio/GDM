@@ -11,6 +11,21 @@ function GetAll()
     echo $retorno;
 }
 
+function Select2()
+{
+    $retorno = "";
+    $pdo = new Database();
+    $sql = $pdo->select("SELECT * FROM Pais");
+    if(count($sql) > 0){
+        foreach($sql as $pais){
+            $retorno .= "<option value='".$pais->Nome."'>".$pais->Nome."</option>";
+        }
+    }
+
+    echo $retorno;
+}
+
+
 function FixName(){
     $pdo = new Database();
     $retorno = $pdo->select("SELECT * FROM Pais");

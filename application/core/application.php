@@ -10,6 +10,9 @@ class Application
     /** @var null The method (of the above controller), often also named "action" */
     private $url_action = null;
 
+    /** @var null The post action for actual action */
+    private $url_postAction = null;
+
     /** @var array URL parameters */
     private $url_params = array();
     /**
@@ -25,11 +28,11 @@ class Application
         if (!$this->url_controller) {
 
             //require_once APP . 'controllers/home.php';
-           
+
             $session = new Session("GDMAuth");
             if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
-                    $page = new \Controllers\Home();
-                    $page->index();
+                $page = new \Controllers\Home();
+                $page->index();
             }else{
                 $page = new \Controllers\Login();
                 $page->index();
@@ -38,47 +41,83 @@ class Application
         } elseif (file_exists(APP . 'controllers/' . $this->url_controller . '.php')) {
             //echo APP_ID;
             //print_r($_SESSION);if(defined('VAR_NAME')){
-            $session = new Session("GDMAuth"); 
+            $session = new Session("GDMAuth");
             //echo $session->Ver("AplicacaoId");
             if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || $this->url_controller == "login")
-            {          
-                    // here we did check for controller: does such a controller exist ?
-        
-                    // if so, then load this file and create this controller
-                    // example: if controller would be "car", then this line would translate into: $this->car = new car();
-                    //require_once APP . 'controllers/' . $this->url_controller . '.php';
-                    $this->url_controller = "\\Controllers\\".$this->url_controller;
-                    $this->url_controller = new $this->url_controller();
-        
-                    // check for method: does such a method exist in the controller ?
-                    if (method_exists($this->url_controller, $this->url_action)) {
-        
-                        if(!empty($this->url_params)) {
-                            // Call the method and pass arguments to it
-                            call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
-                        } else {
-                            // If no parameters are given, just call the method without parameters, like $this->home->method();
-                            $this->url_controller->{$this->url_action}();
-                        }
-        
-                    } else {
-                        if(strlen($this->url_action) == 0) {
-                            // no action defined: call the default index() method of a selected controller
-                            $this->url_controller->index();
-                        }
-                        else {
-                            // defined action not existent: show the error page
-                            $page = new Error();
-                            $page->index();
+            {
+                // here we did check for controller: does such a controller exist ?
+
+                // if so, then load this file and create this controller
+                // example: if controller would be "car", then this line would translate into: $this->car = new car();
+                //require_once APP . 'controllers/' . $this->url_controller . '.php';
+                $this->url_controller = "\\Controllers\\".$this->url_controller;
+                $this->url_controller = new $this->url_controller();
+
+                // check for method: does such a method exist in the controller ?
+
+                //Verifica se exite post
+                if(isset($_POST) && count($_POST) > 0){
+
+                    $Model = Array();
+
+                    //trata o post adequadamente
+                    foreach($_POST as $key => $valor){
+                        //Verifica se a key tem _
+                        if(strpos($key, "_") !== false){
+                            //Monta o novo indice
+                            $nova_key = explode("_", $key)[0];
+                            $nova_subkey = explode("_", $key)[1];
+
+                            //Busca o novo indice no post
+                            if(isset($Model[$nova_key])){
+                                //Adiciona o valor ao nova key existente
+                                $Model[$nova_key][$nova_subkey] = $valor;
+                            }else{
+                                //Cria nova key no POST
+                                $Model[$nova_key] = Array($nova_subkey => $valor);
+                            }
+                        }else{
+                            $Model[$key] = $valor;
                         }
                     }
+
+                    //Verifica se o metodo de post existe
+                    if(method_exists($this->url_controller, $this->url_postAction)) {
+                            $this->url_params = array_merge(array("model" => $Model),$this->url_params);
+                        call_user_func_array(array($this->url_controller, $this->url_postAction), $this->url_params);
+                    }else{
+                        $this->url_params["model"] = $Model;
+                        call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
+                    }
+
+                }else if (method_exists($this->url_controller, $this->url_action)) {
+
+                    if(!empty($this->url_params)) {
+                        // Call the method and pass arguments to it
+                        call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
+                    } else {
+                        // If no parameters are given, just call the method without parameters, like $this->home->method();
+                        $this->url_controller->{$this->url_action}();
+                    }
+
+                } else {
+                    if(strlen($this->url_action) == 0) {
+                        // no action defined: call the default index() method of a selected controller
+                        $this->url_controller->index();
+                    }
+                    else {
+                        // defined action not existent: show the error page
+                        $page = new Error();
+                        $page->index();
+                    }
+                }
             }
             else
             {
                 $page = new \Controllers\Login();
                 $page->index();
             }
-            
+
         } else {
             $page = new \Controllers\Error();
             $page->index();
@@ -102,6 +141,7 @@ class Application
             // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
             $this->url_controller = isset($url[0]) ? $url[0] : null;
             $this->url_action = isset($url[1]) ? $url[1] : null;
+            $this->url_postAction = isset($url[1]) ? $url[1]."_post" : null;
 
             // Remove controller and action from the split URL
             unset($url[0], $url[1]);

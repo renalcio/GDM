@@ -10,6 +10,8 @@
  */
 namespace Controllers;
 use Core\Controller;
+use Dal\Pessoa;
+use Libs\Helper;
 class Pessoas extends Controller
 {
     /**
@@ -40,5 +42,15 @@ class Pessoas extends Controller
         $Model = $this->model->GetToEdit($Model);
         $this->ModelView($Model);
 
+    }
+
+    public function cadastro_post($model = null){
+        echo "<pre>";
+        $model = (object)$model;
+        Helper::cast($model, "DAL\\Pessoa");
+        Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
+        Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
+        print_r($model);
+        echo "</pre>";
     }
 }

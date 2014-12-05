@@ -75,7 +75,7 @@
     <table name="PessoaFisica" schema="" catalog="cdm" type="TABLE">
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="CPF" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Nascimento" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="Nascimento" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="RG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="EstadoCivil" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="Nacionalidade" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>

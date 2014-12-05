@@ -1,4 +1,5 @@
 <?php
+$controle = Libs\Helper::getController();
 function LoadMenuObj($Pai = 0)
 {
     $pdo = new Classe\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);

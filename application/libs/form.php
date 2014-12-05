@@ -1,5 +1,6 @@
 <?php
 namespace Libs;
+
 class Form
 {
 
@@ -55,8 +56,9 @@ class Form
 
     public static function DatePicker($Nome="", $Valor="", $htmlAttr = Array())
     {
+        $Valor = Datetime::Formatar($Valor);
 
-            echo '
+        echo '
         <script>
         $(function(){
             $("#'.$Nome.'").datepicker();
@@ -87,7 +89,7 @@ class Form
         </script>
         ';
         }
-       
+
         echo Self::Input("text", $Nome, $Valor, $htmlAttr);
     }
 
@@ -125,6 +127,33 @@ class Form
         $html .= "</select>";
 
         echo $html;
+    }
+
+    /**
+     * @param string $Nome
+     * @param string $Valor
+     * @param string $Opcoes
+     * @param array $htmlAttr - Para definir uma Url com dados insira DataUrl no Array
+     */
+    public static function Select2($Nome="", $Valor="", $Opcoes = "", $htmlAttr = Array())
+    {
+        if(isset($htmlAttr["DataUrl"]) && !empty($htmlAttr["DataUrl"])) {
+            echo '<script>
+               $(function(){
+                   $.get("'.$htmlAttr["DataUrl"].'", function(data){
+                        console.log(data);
+                        $("#' . $Nome . '").html(data);
+                   });
+               });
+             </script>';
+        }
+        echo '<script>
+                $(function(){
+                     $("#'.$Nome.'").select2();
+                });
+             </script>';
+
+        Self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
     }
 
     public static function Password($Nome="", $Valor="", $htmlAttr = Array())

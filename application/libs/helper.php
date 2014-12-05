@@ -2,6 +2,41 @@
 namespace Libs;
 class Helper
 {
+
+    /**
+     * Class casting
+     *
+     * @param string|object $destination
+     * @param object $sourceObject
+     * @return object
+     */
+    static function cast(&$Dados, $Classe="\\stdClass")
+    {
+        if(is_array($Dados))
+            $Dados = self::arrayToObject($Dados, $Classe);
+
+        else if(is_object($Dados))
+            $Dados = self::objectToObject($Dados, $Classe);
+    }
+
+    private static function arrayToObject(array $array, $className) {
+    return unserialize(sprintf(
+        'O:%d:"%s"%s',
+        strlen($className),
+        $className,
+        strstr(serialize($array), ':')
+    ));
+    }
+
+    private static function objectToObject($instance, $className) {
+        return unserialize(sprintf(
+            'O:%d:"%s"%s',
+            strlen($className),
+            $className,
+            strstr(strstr(serialize($instance), '"'), ':')
+        ));
+    }
+
     /**
      * debugPDO
      *
