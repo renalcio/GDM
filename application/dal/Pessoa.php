@@ -10,10 +10,18 @@ class Pessoa
     var $Celular;
     var $Observacao;
 
+    /**
+     * @NotMapped
+     */
     var $PessoaFisica;
+    /**
+     * @NotMapped
+     */
     var $PessoaJuridica;
+    /**
+     * @NotMapped
+     */
     var $TipoPessoaFisica = true;
-    private $pdo;
 
     public function __construct($PessoaId=0, $Nome="", $Email="", $Telefone="", $Celular="", $Observacao="",
                                 $TipoPessoaFisica = true)
@@ -33,10 +41,12 @@ class Pessoa
 
             $this->PessoaFisica = $this->pdo->GetById("PessoaFisica", "PessoaId", $this->PessoaId, "DAL\\PessoaFisica");
 
-            if($this->PessoaFisica == null) {
-                $this->PessoaJuridica = $this->pdo->GetById("PessoaJuridica", "PessoaId", $this->PessoaId, "DAL\\PessoaJuridica");
-                $this->TipoPessoaFisica = false;
-            }
+            $this->PessoaJuridica = $this->pdo->GetById("PessoaJuridica", "PessoaId", $this->PessoaId, "DAL\\PessoaJuridica");
+
+                if($this->PessoaJuridica == null)
+                    $this->TipoPessoaFisica = true;
+                else
+                    $this->TipoPessoaFisica = false;
         }
         else {
             $this->PessoaFisica = new PessoaFisica($PessoaId);
@@ -75,7 +85,7 @@ class PessoaFisica
 
 class PessoaJuridica
 {
-    var $Pessoaid;
+    var $PessoaId;
     var $NomeFantasia;
     var $IE;
     var $IM;

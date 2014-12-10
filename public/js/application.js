@@ -1,17 +1,19 @@
+
 $(function() {
 
+    SetMenuAtivo($(".sidebar-menu>li"), 0);
     // just a super-simple JS demo
 
     var demoHeaderBox;
 
     // simple demo to show create something via javascript on the page
     if ($('#javascript-header-demo-box').length !== 0) {
-    	demoHeaderBox = $('#javascript-header-demo-box');
-    	demoHeaderBox
-    		.hide()
-    		.text('Hello from JavaScript! This line has been added by public/js/application.js')
-    		.css('color', 'green')
-    		.fadeIn('slow');
+        demoHeaderBox = $('#javascript-header-demo-box');
+        demoHeaderBox
+            .hide()
+            .text('Hello from JavaScript! This line has been added by public/js/application.js')
+            .css('color', 'green')
+            .fadeIn('slow');
     }
 
     // if #javascript-ajax-button exists
@@ -37,3 +39,33 @@ $(function() {
     }
 
 });
+
+//Menu Class Builder
+function SetMenuAtivo($obj, Nivel){
+    var UrlAtual = location.href;
+    console.log(UrlAtual);
+
+    $obj.each(function(){
+        var MenuUrl = $("a:first", this).attr("href");
+        //Verifica se é o menu atual
+        if(UrlAtual == MenuUrl) {
+            $(this).addClass("active");
+            if(Nivel > 0)
+                $(this).parent("ul:first").show().parent("li:first").addClass("active");
+
+            if(Nivel > 1)
+                $(this).parent("ul:first").parent("li:first").parent("ul:first").show().parent("li:first").addClass("active");
+        }else{
+            //Verifica se existe submenu
+            if($("ul", this).size() > 0){
+                //Passa No SubMenu
+                $("ul:first", this).each(function() {
+                    //Chama a função nos subitens
+                    SetMenuAtivo($(">li", this), Nivel+1);
+                    //$(">li", this).each(function() {
+                    //});
+                });
+            }
+        }
+    });
+}

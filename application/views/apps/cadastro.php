@@ -13,7 +13,7 @@ use Libs\Form;
         </div>
         <div class="box-body">
             <pre>
-            <? print_r($Model->Pessoa)?>
+            <? print_r($Model)?>
                 </pre>
             <form>
                 <?Form::Hidden("AplicacaoId", @$Model->AplicacaoId);?>

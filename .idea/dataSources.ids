@@ -12,7 +12,7 @@
       <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="Descricao" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="DataCriacao" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="DataCriacao" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="NichoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="AplicacaoId"/>
     </table>
@@ -73,13 +73,13 @@
       <primary-key name="PRIMARY" columns="PessoaId"/>
     </table>
     <table name="PessoaFisica" schema="" catalog="cdm" type="TABLE">
-      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="CPF" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="Nascimento" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="RG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="EstadoCivil" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="Nacionalidade" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="Sexo" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="PessoaId"/>
     </table>
     <table name="PessoaJuridica" schema="" catalog="cdm" type="TABLE">

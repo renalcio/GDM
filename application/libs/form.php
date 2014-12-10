@@ -61,12 +61,14 @@ class Form
         echo '
         <script>
         $(function(){
-            $("#'.$Nome.'").datepicker();
+            $("#'.$Nome.'").datepicker({
+                format: "dd/mm/yyyy",
             });
+        });
         </script>
         ';
 
-        echo Self::Input("text", $Nome, $Valor, $htmlAttr);
+        echo Self::Mask("99/99/9999", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Mask($Mascara, $Nome="", $Valor="", $htmlAttr = Array())
@@ -122,7 +124,9 @@ class Form
                     $html .= "<option value='$v'>$txt</option>";
             }
         }
-        else if(!empty($Opcoes)) $html .= $Opcoes;
+        else if(!empty($Opcoes))
+            $html .= $Opcoes;
+
 
         $html .= "</select>";
 
@@ -141,8 +145,8 @@ class Form
             echo '<script>
                $(function(){
                    $.get("'.$htmlAttr["DataUrl"].'", function(data){
-                        console.log(data);
                         $("#' . $Nome . '").html(data);
+                        $("#' . $Nome . '").val("'.$Valor.'").change();
                    });
                });
              </script>';

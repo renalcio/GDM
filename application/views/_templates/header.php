@@ -22,7 +22,7 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
     <!-- CSS -->
     <link href="<?=URL?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<?=URL?>css/style.css" rel="stylesheet" type="text/css" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
@@ -47,19 +47,16 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
     <!-- DATA TABLES -->
     <link href="<?=URL?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 
+    <!-- Javascript -->
     <!-- Jquery -->
     <script src="<?=URL?>js/jquery.js" type="text/javascript"></script>
-
     <!-- Bootstrap -->
     <script src="<?=URL;?>js/bootstrap.min.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="<?=URL;?>js/AdminLTE/app.js" type="text/javascript"></script>
-
     <!-- DATA TABES SCRIPT -->
     <script src="<?=URL;?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="<?=URL;?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-
-
     <!-- Select2 -->
     <script src="<?=URL?>js/select2.js" type="text/javascript"></script>
     <script src="<?=URL?>js/select2_locale_pt-BR.js" type="text/javascript"></script>
@@ -73,7 +70,8 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
     <script src="<?=URL?>js/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
     <!-- bootstrap time picker -->
     <script src="<?=URL?>js/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
-
+    <!-- bootbox code -->
+    <script src="<?=URL?>js/bootbox.min.js"></script>
 
 
     <!-- WYSIWYG -->

@@ -12,6 +12,8 @@ namespace Controllers;
 use Core\Controller;
 use Dal\Pessoa;
 use Libs\Helper;
+use Libs\ModelState;
+
 class Pessoas extends Controller
 {
     /**
@@ -45,12 +47,11 @@ class Pessoas extends Controller
     }
 
     public function cadastro_post($model = null){
-        echo "<pre>";
-        $model = (object)$model;
-        Helper::cast($model, "DAL\\Pessoa");
-        Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
-        Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
-        print_r($model);
-        echo "</pre>";
+
+        if($model!=null) {
+            $this->loadModel();
+            $this->model->Save($model);
+        }
+        $this->Redirect("Index", "pessoas");
     }
 }

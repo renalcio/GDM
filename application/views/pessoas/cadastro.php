@@ -10,6 +10,10 @@ use Libs\Session;
 </script>
 
 <form method="post">
+    <?Form::Hidden("PessoaId", @$Model->PessoaId);?>
+    <?Form::Hidden("PessoaFisica_PessoaId", @$Model->PessoaFisica->PessoaId);?>
+    <?Form::Hidden("PessoaJuridica_PessoaId", @$Model->PessoaJuridica->PessoaId);?>
+    <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica);?>
     <h3 class="page-header">Cadastro de Pessoa</h3>
     <div id="row">
         <div class="nav-tabs-custom">
@@ -30,7 +34,8 @@ use Libs\Session;
                             <label>
                                 CPF:
                             </label>
-                            <?Form::Mask("99.999.999-99", "PessoaFisica_CPF", @$Model->PessoaFisica->CPF, Array("class" => "form-control"));?>
+                            <?Form::Mask("999.999.999-99", "PessoaFisica_CPF", @$Model->PessoaFisica->CPF,
+                                Array("class" => "form-control"));?>
                         </div>
                         <div class="form-group col-lg-4">
                             <label>
@@ -87,7 +92,7 @@ use Libs\Session;
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>
-                                CPF:
+                                CNPJ:
                             </label>
                             <?Form::Mask("99.999.999/9999-99", "PessoaJuridica_CNPJ", @$Model->PessoaJuridica->CNPJ, Array("class" => "form-control"));?>
                         </div>
@@ -128,8 +133,6 @@ use Libs\Session;
             </div>
 
             <div class="box-body">
-                <?Form::Hidden("PessoaId", @$Model->PessoaId);?>
-                <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica);?>
                 <div class="form-group">
                     <label>
                         Nome / Razão Social:

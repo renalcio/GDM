@@ -1,10 +1,23 @@
-﻿<script type="text/javascript">
+﻿<?
+if(is_array($Model->ListApps) && count($Model->ListApps) > 0)
+{
+    ?>
+<script type="text/javascript">
     $(function() {
         $("#listagem").dataTable({
             "aoColumns": [ null, {"bSortable": false} ]
         });
     });
+
+    function Excluir(Id){
+        bootbox.confirm('Deseja realmente excluir este item?', function(result){
+            if(result)
+                location.href="<?=URL;?>apps/deletar/"+Id;
+
+        });
+    }
 </script>
+<? } ?>
 	<div id="row">
 		<div class="box box-primary">
 			<div class="box-header">
@@ -22,7 +35,7 @@
                         <thead>
                         <tr>
                         <th>Aplicação</th>
-                        <td width="50px"></td>
+                        <th style="width:18px" align="center"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,15 +47,24 @@
                                     ?>
                         <tr>
                             <td><?=$App->Descricao;?></td>
-                            <td>
-                                <a href="<?=URL;?>apps/cadastro/<?=$App->AplicacaoId;?>" class="btn btn-xs btn-primary
-btn-flat">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a href="<?=URL;?>apps/deletar/<?=$App->AplicacaoId;?>" class="btn btn-xs btn-danger
-btn-flat">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
+                            <td align="center">
+
+                                <div class="btn-group">
+                                        <i class="fa fa-bars" class="dropdown-toggle"
+                                           data-toggle="dropdown"></i>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="<?=URL;
+                                            ?>apps/cadastro/<?=$App->AplicacaoId;?>"><i class="fa fa-edit"></i>
+                                                Editar</a></li>
+                                        <li><a onclick="Excluir(<?=$App->AplicacaoId;?>)"><i
+                                                    class="fa
+                                        fa-trash-o"></i> Excluir</a></li>
+
+                                    </ul>
+
+
+                                </div>
+
                             </td>
                         </tr>
                         <?

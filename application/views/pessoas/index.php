@@ -7,6 +7,13 @@ if(is_array($Model->ListPessoa) && count($Model->ListPessoa) > 0)
             "aoColumns": [ null,null,null,null, {"bSortable": false} ]
         });
     });
+    function Excluir(Id){
+        bootbox.confirm('Deseja realmente excluir este item?', function(result){
+            if(result)
+                location.href="<?=URL;?>pessoas/deletar/"+Id;
+
+        });
+    }
 </script>
 <? } ?>
 	<div id="row">
@@ -28,7 +35,7 @@ if(is_array($Model->ListPessoa) && count($Model->ListPessoa) > 0)
                             <th>Email</th>
                             <th>Telefone</th>
                             <th>Celular</th>
-                        <td width="50px"></td>
+                        <th style="width:18px"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,15 +50,24 @@ if(is_array($Model->ListPessoa) && count($Model->ListPessoa) > 0)
                             <td><?=$Pessoa->Email;?></td>
                             <td><?=$Pessoa->Telefone;?></td>
                             <td><?=$Pessoa->Celular;?></td>
-                            <td>
-                                <a href="<?=URL;?>apps/cadastro/<?=$Pessoa->PessoaId;?>" class="btn btn-xs btn-primary
-btn-flat">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a href="<?=URL;?>apps/deletar/<?=$Pessoa->PessoaId;?>" class="btn btn-xs btn-danger
-btn-flat">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
+                            <td align="center">
+
+                                <div class="btn-group">
+                                    <i class="fa fa-bars" class="dropdown-toggle"
+                                       data-toggle="dropdown"></i>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="<?=URL;
+                                            ?>pessoas/cadastro/<?=$Pessoa->PessoaId;?>"><i class="fa fa-edit"></i>
+                                                Editar</a></li>
+                                        <li><a onclick="Excluir(<?=$Pessoa->PessoaId;?>)"><i
+                                                    class="fa
+                                        fa-trash-o"></i> Excluir</a></li>
+
+                                    </ul>
+
+
+                                </div>
+
                             </td>
                         </tr>
                         <?

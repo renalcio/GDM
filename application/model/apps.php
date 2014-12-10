@@ -24,7 +24,7 @@ class Apps
     {
         if($Model->AplicacaoId > 0)
         {
-            $Model = $this->getAppbyId($Model->AplicacaoId);
+            $Model = $this->pdo->GetById("Aplicacao", "AplicacaoId", $Model->AplicacaoId);
             if($Model != null)
             {
                 $Model->Pessoa = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
@@ -39,18 +39,10 @@ class Apps
         return $Model;
     }
 
-    public function getApps()
+    public function GetToIndex($model)
     {
-        $retorno = $this->pdo->select("SELECT * FROM Aplicacao");
-        return $retorno;
-    }
+        $model->ListApps = $this->pdo->select("SELECT * FROM Aplicacao", "", true);
 
-    public function getAppbyId($id)
-    {
-        $retorno = $this->pdo->select("SELECT * FROM Aplicacao WHERE AplicacaoId='$id'");
-        if(is_object($retorno))
-            return $retorno;
-
-        return null;
+        return $model;
     }
 }

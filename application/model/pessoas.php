@@ -32,7 +32,7 @@ class Pessoas
                     if($Model->TipoPessoaFisica)
                         $Model->Documento = $Model->PessoaFisica->CPF;
                     else
-                        $Model->Documento = $Model->PessoaJuridica->CNPJ;
+                        $Model->Documento = @$Model->PessoaJuridica->CNPJ;
                 }
             }
         }
@@ -55,5 +55,47 @@ class Pessoas
         }
 
         return $Model;
+    }
+    public function Save($model){
+        if($model!=null) {
+            $model = (object)$model;
+            Helper::cast($model, "DAL\\Pessoa");
+            Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
+            Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
+
+            $PessoaFisica = $model->PessoaFisica;
+            $PessoaJuridica = $model->PessoaJuridica;
+            $TipoPessoaFisica = $model->TipoPessoaFisica;
+
+            /* print_r($model);
+             print_r($PessoaFisica);
+             print_r($PessoaJuridica);*/
+
+            if($model->PessoaId > 0)
+                $this->pdo->update("Pessoa", $model, "PessoaId = ".$model->PessoaId);
+            else
+                $model->PessoaId = $this->pdo->insert("Pessoa", $model);
+
+            if($TipoPessoaFisica){
+
+                if($PessoaFisica->PessoaId > 0)
+                    $this->pdo->update("PessoaFisica", $PessoaFisica, "PessoaId = ".$model->PessoaId);
+                else {
+                    $PessoaFisica->PessoaId = $model->PessoaId;
+                    $this->pdo->insert("PessoaFisica", $PessoaFisica);
+                }
+
+            }else{
+
+                if($PessoaJuridica->PessoaId > 0)
+                    $this->pdo->update("PessoaJuridica", $PessoaJuridica, "PessoaId = ".$model->PessoaId);
+                else {
+                    $PessoaJuridica->PessoaId = $model->PessoaId;
+                    $this->pdo->insert("PessoaJuridica", $PessoaJuridica);
+                }
+
+            }
+
+        }
     }
 }

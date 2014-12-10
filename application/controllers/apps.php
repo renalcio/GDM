@@ -20,7 +20,7 @@ class Apps extends Controller
     {
         $model = new \stdClass();
         $this->loadModel();
-        $model->ListApps = $this->model->getApps();
+        $model = $this->model->GetToIndex($model);
 
         $this->ModelView($model);
     }

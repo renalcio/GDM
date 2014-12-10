@@ -79,9 +79,9 @@ class Controller
     
     public function Redirect($view, $controller = ""){
         if(empty($controller))
-            header('location: ' . URL . '/' . $view . '');
+            header('location: ' . URL . $view . '');
         else
-            header('location: ' . URL . '/' . $controller . '/' . $view . '');
+            header('location: ' . URL . $controller . '/' . $view . '');
     }
     
     public function Autenticar(){

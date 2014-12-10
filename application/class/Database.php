@@ -16,6 +16,7 @@
 
 
 namespace Classe;
+use Libs\ModelState;
 class Database extends \PDO
 
 {
@@ -156,6 +157,15 @@ class Database extends \PDO
     public function insert($table, $data)
 
     {
+        if (is_object($data))
+            ModelState::RemoveNotMapped($data);
+        else if(is_array($data)){
+            foreach($data as $item){
+                if(is_object($item))
+                    $this->insert($table,$item);
+            }
+        }
+        $data = (array)$data;
 
         // Ordena
 
@@ -232,7 +242,10 @@ class Database extends \PDO
     public function update($table, $data, $where)
 
     {
+        if (is_object($data))
+            ModelState::RemoveNotMapped($data);
 
+        $data = (array)$data;
         // Ordena
 
         ksort($data);
