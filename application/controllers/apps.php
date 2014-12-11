@@ -27,12 +27,20 @@ class Apps extends Controller
 
     public function cadastro($id = 0)
     {
-        $Model = new \stdClass;
-        $Model->AplicacaoId = $id;
+        $model = new \stdClass;
+        $model->AplicacaoId = $id;
         $this->loadModel();
 
-        $Model = $this->model->GetToEdit($Model);
+        $model = $this->model->GetToEdit($model);
 
-        $this->ModelView($Model);
+        $this->ModelView($model);
+    }
+
+    public function cadastro_post($model = null)
+    {
+        $this->loadModel();
+        echo "<pre>";
+        print_r($model);
+        echo "</pre>";
     }
 }

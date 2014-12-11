@@ -160,6 +160,7 @@ class Form
         Self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
     }
 
+
     public static function Password($Nome="", $Valor="", $htmlAttr = Array())
     {
         echo Self::Input("password", $Nome, $Valor, $htmlAttr);

@@ -35,14 +35,14 @@ class Aplicacao
             $this->NichoId = $NichoId;
         }
 
-        if($this->AplicacaoId > 0) {
+        if($this->AplicacaoId > 0 && $this->PessoaId) {
 
-            //$this->PessoaFisica = $this->pdo->GetById("PessoaFisica", "PessoaId", $this->PessoaId, "DAL\\PessoaFisica"); GET OBJETOS INTERNOS
+            $this->Pessoa = $this->pdo->GetById("Pessoa", "PessoaId", $this->PessoaId, "DAL\\Pessoa");
 
 
         }
         else {
-            //$this->PessoaFisica = new PessoaFisica($PessoaId); NEW OBJETOS INTERNOS
+            $this->Pessoa = new Pessoa();
         }
 
         return $this;

@@ -2,6 +2,7 @@
 namespace Core;
 use Controllers\Error;
 use Libs\Session;
+use Libs\Helper;
 class Application
 {
     /** @var null The controller */
@@ -58,28 +59,7 @@ class Application
                 //Verifica se exite post
                 if(isset($_POST) && count($_POST) > 0){
 
-                    $Model = Array();
-
-                    //trata o post adequadamente
-                    foreach($_POST as $key => $valor){
-                        //Verifica se a key tem _
-                        if(strpos($key, "_") !== false){
-                            //Monta o novo indice
-                            $nova_key = explode("_", $key)[0];
-                            $nova_subkey = explode("_", $key)[1];
-
-                            //Busca o novo indice no post
-                            if(isset($Model[$nova_key])){
-                                //Adiciona o valor ao nova key existente
-                                $Model[$nova_key][$nova_subkey] = $valor;
-                            }else{
-                                //Cria nova key no POST
-                                $Model[$nova_key] = Array($nova_subkey => $valor);
-                            }
-                        }else{
-                            $Model[$key] = $valor;
-                        }
-                    }
+                    $Model = Helper::CastPost();
 
                     //Verifica se o metodo de post existe
                     if(method_exists($this->url_controller, $this->url_postAction)) {

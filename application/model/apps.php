@@ -24,17 +24,7 @@ class Apps
     {
         if($Model->AplicacaoId > 0)
         {
-            $Model = $this->pdo->GetById("Aplicacao", "AplicacaoId", $Model->AplicacaoId);
-            if($Model != null)
-            {
-                $Model->Pessoa = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
-                if($Model->Pessoa != null){
-                    if($Model->Pessoa->TipoPessoaFisica)
-                        $Model->Documento = $Model->Pessoa->PessoaFisica->CPF;
-                    else
-                        $Model->Documento = $Model->Pessoa->PessoaJuridica->CNPJ;
-                }
-            }
+            $Model = $this->pdo->GetById("Aplicacao", "AplicacaoId", $Model->AplicacaoId, "DAL\\Aplicacao");
         }
         return $Model;
     }

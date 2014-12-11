@@ -69,3 +69,13 @@ function SetMenuAtivo($obj, Nivel){
         }
     });
 }
+
+//SubFormularios
+function SubFormulario(divForm, nomeObj){
+    $(divForm+" input, "+divForm+" select, "+divForm+" textarea").each(function(){
+        var Nome = $(this).attr("name"),
+            Id = $(this).attr("id");
+        $(this).attr("name", nomeObj+"_"+Nome);
+        $(this).attr("id", nomeObj+"_"+Id);
+    });
+}
