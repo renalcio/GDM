@@ -44,7 +44,8 @@ class Annotation {
     private $_attributes = array("Required" => array(),
                                  "NotMapped" => array(),
                                  "Range" => array(),
-                                 "Email" => array()
+                                 "Email" => array(),
+                                "Int" => array()
                             );
 
     /**

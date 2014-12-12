@@ -11,7 +11,6 @@ use Libs\Session;
     <?Form::Hidden("PessoaFisica_PessoaId", @$Model->PessoaFisica->PessoaId);?>
     <?Form::Hidden("PessoaJuridica_PessoaId", @$Model->PessoaJuridica->PessoaId);?>
     <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica);?>
-    <h3 class="page-header">Cadastro de Pessoa</h3>
     <div id="row">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -81,7 +80,7 @@ use Libs\Session;
                             <label>
                                 Nacionalidade:
                             </label>
-                            <? Form::Select2("PessoaFisica_Nacionalidade", @$Model->PessoaFisica->Nacionalidade, "", Array("class" => "form-control", "DataUrl" => URL."handler/index/pais/Select2" ))?>
+                            <? Form::Select2("PessoaFisica_Nacionalidade", @$Model->PessoaFisica->Nacionalidade, "", Array("class" => "form-control", "DataUrl" => URL."handler/pais/Select2" ))?>
                         </div>
 
                     </div>
@@ -128,7 +127,7 @@ use Libs\Session;
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title">
-                    Dados Gerais
+                    Dados da Pessoa
                 </h3>
 
             </div>

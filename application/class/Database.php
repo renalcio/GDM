@@ -158,7 +158,7 @@ class Database extends \PDO
 
     {
         if (is_object($data))
-            ModelState::RemoveNotMapped($data);
+            ModelState::TratamentoDB($data);
         else if(is_array($data)){
             foreach($data as $item){
                 if(is_object($item))
@@ -243,7 +243,7 @@ class Database extends \PDO
 
     {
         if (is_object($data))
-            ModelState::RemoveNotMapped($data);
+            ModelState::TratamentoDB($data);
 
         $data = (array)$data;
         // Ordena

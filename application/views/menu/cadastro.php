@@ -1,5 +1,4 @@
 ﻿
-	<script src="<?= URL ?>public/js/jquery.nestable.min.js">
 	</script>
 	<script>
 		$(function() {

@@ -26,7 +26,7 @@ class Pessoa
     public function __construct($PessoaId=0, $Nome="", $Email="", $Telefone="", $Celular="", $Observacao="",
                                 $TipoPessoaFisica = true)
     {
-        $this->pdo = new Database();
+        $pdo = new Database();
         if(!empty($Nome)) {
             $this->PessoaId = $PessoaId;
             $this->Nome = $Nome;
@@ -39,18 +39,24 @@ class Pessoa
 
         if($this->PessoaId > 0) {
 
-            $this->PessoaFisica = $this->pdo->GetById("PessoaFisica", "PessoaId", $this->PessoaId, "DAL\\PessoaFisica");
+            $this->PessoaFisica = $pdo->GetById("PessoaFisica", "PessoaId", $this->PessoaId, "DAL\\PessoaFisica");
 
-            $this->PessoaJuridica = $this->pdo->GetById("PessoaJuridica", "PessoaId", $this->PessoaId, "DAL\\PessoaJuridica");
+            $this->PessoaJuridica = $pdo->GetById("PessoaJuridica", "PessoaId", $this->PessoaId, "DAL\\PessoaJuridica");
 
-                if($this->PessoaJuridica == null)
+                if($this->PessoaJuridica == null) {
+                    $this->PessoaJuridica = new PessoaJuridica();
                     $this->TipoPessoaFisica = true;
+                }
                 else
                     $this->TipoPessoaFisica = false;
+
+             if($this->PessoaFisica == null)
+                $this->PessoaFisica = new PessoaFisica();
+
         }
         else {
             $this->PessoaFisica = new PessoaFisica($PessoaId);
-            $this->PessoaJuridica = new PessoaFisica($PessoaId);
+            $this->PessoaJuridica = new PessoaJuridica($PessoaId);
         }
 
         return $this;
@@ -61,6 +67,9 @@ class Pessoa
 class PessoaFisica
 {
     var $PessoaId;
+    /**
+     * @Int
+     */
     var $CPF;
     var $Nascimento;
     var $RG;
@@ -89,6 +98,9 @@ class PessoaJuridica
     var $NomeFantasia;
     var $IE;
     var $IM;
+    /**
+     * @Int
+     */
     var $CNPJ;
 
     public function __construct($PessoaId=0, $CNPJ="", $NomeFantasia="", $IE="", $IM="")

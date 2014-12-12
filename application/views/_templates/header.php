@@ -20,65 +20,69 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
 
 
     <!-- CSS -->
-    <link href="<?=URL?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="<?=URL?>css/style.css" rel="stylesheet" type="text/css" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="<?=URL?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <script>
+        var SiteURL = "<?=URL?>";
+    </script>
 
-    <!-- daterange picker -->
-    <link href="<?=URL?>css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link href="<?=URL?>css/iCheck/all.css" rel="stylesheet" type="text/css" />
-    <!-- Bootstrap Color Picker -->
-    <link href="<?=URL?>css/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet"/>
-    <!-- Bootstrap time Picker -->
-    <link href="<?=URL?>css/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+    <? \Libs\Helper::LoadMedia("css", Array(
+        "bootstrap.min.css",
+        "style.css",
+        "AdminLTE.css",
+        //DATEPICKER
+        "daterangepicker/daterangepicker-bs3.css",
+        "timepicker/bootstrap-timepicker.min.css",
+        "css/datepicker/datepicker3.css",
+        //iCheck
+        "iCheck/all.css",
+        //COLOR PICKER
+        "colorpicker/bootstrap-colorpicker.min.css",
+        //SELECT 2
+        "select2.css",
+        "select2-bootstrap.css",
+        //DATATABLE
+        "datatables/dataTables.bootstrap.css",
+    ));
 
-    <link href="<?=URL?>css/datepicker/datepicker3.css" rel="stylesheet"/>
+    \Libs\Helper::LoadMedia("js", Array(
+        //JQUERY
+        "jquery.js",
+        //BOOTSTRAP
+        "bootstrap.min.js",
+        //TEMA
+        "AdminLTE/app.js",
+        //DATA TABLES
+        "plugins/datatables/jquery.dataTables.js",
+        "plugins/datatables/dataTables.bootstrap.js",
+        //SELECT2
+        "plugins/select2.js",
+        "plugins/select2_locale_pt-BR.js",
+        //InputMask
+        "plugins/jquery.maskedinput.min.js",
+        //DataPicker
+        "plugins/daterangepicker/daterangepicker.js",
+        "plugins/datepicker/bootstrap-datepicker.js",
+        "plugins/timepicker/bootstrap-timepicker.min.js",
+        //Color Picker
+        "plugins/colorpicker/bootstrap-colorpicker.min.js",
+        //BOOTBOX
+        "plugins/bootbox.min.js",
+        //WYSIWYG
+        "markdown/bootstrap-markdown.min.js",
+        "plugins/jquery.hotkeys.min.js",
+        "plugins/bootstrap-wysiwyg.min.js",
+        "plugins/extra-elements.min.js",
+        //NESTABLE
+        "plugins/jquery.nestable.min.js",
+
+        //HELPER
+        "helper.js",
+        "pessoa.js",
+    ));?>
 
 
-    <link href="<?=URL?>css/select2.css" rel="stylesheet"/>
-    <link href="<?=URL?>css/select2-bootstrap.css" rel="stylesheet"/>
-
-
-    <!-- DATA TABLES -->
-    <link href="<?=URL?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-
-    <!-- Javascript -->
-    <!-- Jquery -->
-    <script src="<?=URL?>js/jquery.js" type="text/javascript"></script>
-    <!-- Bootstrap -->
-    <script src="<?=URL;?>js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- AdminLTE App -->
-    <script src="<?=URL;?>js/AdminLTE/app.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
-    <script src="<?=URL;?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="<?=URL;?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- Select2 -->
-    <script src="<?=URL?>js/select2.js" type="text/javascript"></script>
-    <script src="<?=URL?>js/select2_locale_pt-BR.js" type="text/javascript"></script>
-    <!-- InputMask -->
-    <script src="<?=URL?>js/jquery.maskedinput.min.js" type="text/javascript"></script>
-    <!-- date-range-picker -->
-    <script src="<?=URL?>js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-    <!-- date-picker -->
-    <script src="<?=URL?>js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- bootstrap color picker -->
-    <script src="<?=URL?>js/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
-    <!-- bootstrap time picker -->
-    <script src="<?=URL?>js/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
-    <!-- bootbox code -->
-    <script src="<?=URL?>js/bootbox.min.js"></script>
-
-
-    <!-- WYSIWYG -->
-    <script src="<?=URL?>js/markdown/bootstrap-markdown.min.js"></script>
-    <script src="<?=URL?>js/jquery.hotkeys.min.js"></script>
-    <script src="<?=URL?>js/bootstrap-wysiwyg.min.js"></script>
-    <script src="<?=URL?>js/extra-elements.min.js"></script>
     <script>
 
         function showErrorAlert (reason, detail) {
@@ -449,14 +453,14 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
                 <?
                 $act = \Libs\Helper::getAction();
                 if(strtolower($act) != "index"){ ?>
-                <small><?=\Libs\Helper::getAction();?></small>
+                    <small><?=\Libs\Helper::getAction();?></small>
                 <? } ?>
             </h1>
             <ol class="breadcrumb" style="text-transform: capitalize;">
                 <li><a href="<?=URL;?>home/"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active"><a href="<?=URL . \Libs\Helper::getController();?>"><?=\Libs\Helper::getController();?></a></li>
                 <? if(strtolower($act) != "index"){ ?>
-                <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=\Libs\Helper::getAction();?></a></li>
+                    <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=\Libs\Helper::getAction();?></a></li>
                 <? } ?>
             </ol>
         </section>

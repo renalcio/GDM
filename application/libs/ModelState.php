@@ -43,4 +43,22 @@ class ModelState {
         endforeach;
     }
 
+    public static function MSInt($model){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations();
+
+        foreach ($get as $campo=>$data):
+            if (array_key_exists("Int", $data)){
+                $pattern = "/[^0-9]/mi";
+                $model->$campo = preg_replace($pattern, '', $model->$campo);
+
+            }
+        endforeach;
+    }
+
+    public static function TratamentoDB($model){
+        self::MSInt($model);
+        self::RemoveNotMapped($model);
+    }
+
 } 

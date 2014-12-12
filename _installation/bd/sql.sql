@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Dez-2014 às 23:44
+-- Generation Time: 12-Dez-2014 às 21:44
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `Aplicacao` (
   `Titulo` varchar(255) CHARACTER SET latin1 NOT NULL,
   `Descricao` text CHARACTER SET latin1,
   `PessoaId` int(255) NOT NULL,
-  `DataCriacao` bigint(20) NOT NULL,
+  `DataCriacao` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `NichoId` int(255) NOT NULL,
   PRIMARY KEY (`AplicacaoId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `Aplicacao` (
 --
 
 INSERT INTO `Aplicacao` (`AplicacaoId`, `Titulo`, `Descricao`, `PessoaId`, `DataCriacao`, `NichoId`) VALUES
-(1, 'GDM', 'Gerenciador de Dados Modular', 1, 0, 1);
+(1, 'GDM', 'Gerenciador de Dados Modular', 1, '0', 1);
 
 -- --------------------------------------------------------
 
@@ -58,24 +58,26 @@ CREATE TABLE IF NOT EXISTS `Menu` (
   `AplicacaoId` int(255) NOT NULL,
   `Posicao` int(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`MenuId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=103 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=142 ;
 
 --
 -- Extraindo dados da tabela `Menu`
 --
 
 INSERT INTO `Menu` (`MenuId`, `Titulo`, `Url`, `Icone`, `Pai`, `AplicacaoId`, `Posicao`) VALUES
-(92, 'Home', '', 'fa-home', 0, 1, 0),
-(93, 'Painel de Controle', '', 'fa-gears', 0, 1, 1),
-(94, 'Configurações', 'painel/', 'fa-gear', 93, 1, 0),
-(95, 'Menu', '', 'fa-indent', 93, 1, 1),
-(96, 'Aplicação Atual', 'menu/cadastro', '', 95, 1, 0),
-(97, 'Todos os Menus', 'menu/', '', 95, 1, 1),
-(98, 'Permissões de Acesso', 'permissoes/', '', 93, 1, 2),
-(99, 'Aplicações', 'apps/', 'fa-th-large', 0, 1, 2),
-(100, 'Pessoas', '', 'fa-users', 0, 1, 3),
-(101, 'Pessoas', 'pessoas/', '', 100, 1, 0),
-(102, 'Usuarios', 'usuarios/', '', 100, 1, 1);
+(129, 'Home', '', 'fa-home', 0, 1, 0),
+(130, 'Painel de Controle', '', 'fa-gears', 0, 1, 1),
+(131, 'Configurações', 'painel/', 'fa-gear', 130, 1, 0),
+(132, 'Menu', '', 'fa-th-list', 130, 1, 1),
+(133, 'Aplicação Atual', 'menu/cadastro', '', 132, 1, 0),
+(134, 'Todos os Menus', 'menu/', '', 132, 1, 1),
+(135, 'Permissões de Acesso', 'permissoes/', 'fa-ban', 130, 1, 2),
+(136, 'Cadastros', '', 'fa-edit', 0, 1, 2),
+(137, 'Aplicações', 'apps/', 'fa-th-large', 136, 1, 0),
+(138, 'Pessoas', '', 'fa-users', 136, 1, 1),
+(139, 'Pessoas', 'pessoas/', '', 138, 1, 0),
+(140, 'Usuarios', 'usuarios/', '', 138, 1, 1),
+(141, 'Nicho', 'nicho', 'fa-sitemap', 136, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -402,14 +404,15 @@ CREATE TABLE IF NOT EXISTS `Pessoa` (
   `Celular` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `Observacao` text COLLATE utf8_bin,
   PRIMARY KEY (`PessoaId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `Pessoa`
 --
 
 INSERT INTO `Pessoa` (`PessoaId`, `Nome`, `Email`, `Telefone`, `Celular`, `Observacao`) VALUES
-(1, 'Administrador', 'admin@teste.com', '3454564654', '35454354', NULL);
+(1, 'Administrador', 'admin@teste.com', '(19) 3883-6146', '(19) 9823-49306', 'Pessoa Jurídica Now'),
+(2, 'Renalcio Carlos Vieira de Freitas Junior', 'r.carlos@live.com', '(19) 3883-6146', '(19) 9823-49306', '');
 
 -- --------------------------------------------------------
 
@@ -451,13 +454,13 @@ CREATE TABLE IF NOT EXISTS `PessoaEndereco` (
 --
 
 CREATE TABLE IF NOT EXISTS `PessoaFisica` (
-  `PessoaId` int(11) NOT NULL,
   `CPF` varchar(50) COLLATE utf8_bin NOT NULL,
   `Nascimento` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `RG` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `EstadoCivil` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `Nacionalidade` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `Sexo` varchar(50) COLLATE utf8_bin NOT NULL,
+  `PessoaId` int(11) NOT NULL,
   PRIMARY KEY (`PessoaId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -465,8 +468,9 @@ CREATE TABLE IF NOT EXISTS `PessoaFisica` (
 -- Extraindo dados da tabela `PessoaFisica`
 --
 
-INSERT INTO `PessoaFisica` (`PessoaId`, `CPF`, `Nascimento`, `RG`, `EstadoCivil`, `Nacionalidade`, `Sexo`) VALUES
-(1, '31321', '24/03/1995', '35435', 'Solteiro', 'Brasileiro', 'Masculino');
+INSERT INTO `PessoaFisica` (`CPF`, `Nascimento`, `RG`, `EstadoCivil`, `Nacionalidade`, `Sexo`, `PessoaId`) VALUES
+('410.982.848-10', '24/03/1995', '424364268', 'Solteiro', 'Brasil', 'Masculíno', 1),
+('41098284810', '24/03/1995', '424364268', 'Solteiro', 'Brasil', 'Masculíno', 2);
 
 -- --------------------------------------------------------
 
@@ -482,6 +486,13 @@ CREATE TABLE IF NOT EXISTS `PessoaJuridica` (
   `CNPJ` varchar(50) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`PessoaId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `PessoaJuridica`
+--
+
+INSERT INTO `PessoaJuridica` (`PessoaId`, `NomeFantasia`, `IE`, `IM`, `CNPJ`) VALUES
+(1, 'Admin LTDA', '52215566936358', '23.544.353/5735-87', '23544353573587');
 
 -- --------------------------------------------------------
 
