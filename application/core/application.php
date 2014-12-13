@@ -119,7 +119,6 @@ class Application
             // Put URL parts into according properties
             // By the way, the syntax here is just a short form of if/else, called "Ternary Operators"
             // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
-<<<<<<< HEAD
             if(isset($url[0]) && $url[0] == "handler"){
                 $this->url_controller = isset($url[1])  ? $url[0]."\\".$url[1]."Handler" : $url[0];
                 $this->url_action = isset($url[2]) ? $url[2] : null;
@@ -138,14 +137,7 @@ class Application
             }
 
 
-=======
-            $this->url_controller = isset($url[0]) ? $url[0] : null;
-            $this->url_action = isset($url[1]) ? $url[1] : null;
-            $this->url_postAction = isset($url[1]) ? $url[1]."_post" : null;
->>>>>>> parent of 32827cf... 12/12 - sc
-
-            // Remove controller and action from the split URL
-            unset($url[0], $url[1]);
+            
 
             // Rebase array keys and store the URL params
             $this->url_params = array_values($url);
