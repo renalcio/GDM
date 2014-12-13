@@ -1,5 +1,5 @@
 <?php
-/*namespace Controllers;
+namespace Controllers;
 use Core\Controller;
 use Classe\Database;
 class Handler extends Controller
@@ -18,4 +18,4 @@ class Handler extends Controller
         }
     }
 }
-*/
+

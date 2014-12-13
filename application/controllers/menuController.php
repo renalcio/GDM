@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 use Core\Controller;
-class Menu extends Controller
+class MenuController extends Controller
 {
     /**
      * PAGE: index

@@ -10,7 +10,7 @@
  */
 namespace Controllers;
 use Core\Controller;
-class Login extends Controller
+class LoginController extends Controller
 {
     /**
      * PAGE: index

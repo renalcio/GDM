@@ -5,7 +5,7 @@ use Libs\Helper;
 use Libs\Cookie;
 use Libs\Session;
 use DAL\Pessoa;
-class Apps
+class AppModel
 {
     /**
      * @param object $db A PDO database connection

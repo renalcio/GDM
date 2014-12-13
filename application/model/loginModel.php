@@ -4,7 +4,7 @@ use Classe\Database;
 use Libs\Helper;
 use Libs\Cookie;
 use Libs\Session;
-class Login
+class LoginModel
 {
     /**
      * @param object $db A PDO database connection
@@ -55,10 +55,8 @@ class Login
                                             (p.Email = '$Login' OR u.Login = '$Login')
                                             AND u.Senha = '$md5Senha'
                                             AND u.PessoaId = p.PessoaId");
-        if(count($query) > 0)                                 
-            return $query[0];
-        else
-            return null;
+
+            return $query;
     }
     
     public function SetLogin($Login, $Senha)

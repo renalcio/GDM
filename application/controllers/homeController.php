@@ -10,7 +10,7 @@
  */
 namespace Controllers;
 use Core\Controller;
-class Home extends Controller
+class HomeController extends Controller
 {
     /**
      * PAGE: index

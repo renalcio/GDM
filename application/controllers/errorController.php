@@ -10,7 +10,7 @@
  */
 namespace Controllers;
 use Core\Controller;
-class Error extends Controller
+class ErrorController extends Controller
 {
     /**
      * PAGE: index

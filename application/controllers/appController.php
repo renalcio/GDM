@@ -10,7 +10,7 @@
  */
 namespace Controllers;
 use Core\Controller;
-class Apps extends Controller
+class AppController extends Controller
 {
     /**
      * PAGE: index

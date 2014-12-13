@@ -2,7 +2,7 @@
 namespace Controllers\Handler;
 use Core\Controller;
 use Classe\Database;
-class Pais extends Controller
+class PaisHandler extends Controller
 {
     function GetAll()
     {

@@ -4,7 +4,7 @@ use Classe\Database;
 use Libs\Helper;
 use Libs\Cookie;
 use Libs\Session;
-class Menu
+class MenuModel
 {
     /**
      * @param object $db A PDO database connection

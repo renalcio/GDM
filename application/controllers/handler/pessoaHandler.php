@@ -4,7 +4,7 @@ use Core\Controller;
 use Classe\Database;
 use Libs\Helper;
 
-class Pessoa extends Controller
+class PessoaHandler extends Controller
 {
     function GetAll()
     {

@@ -22,11 +22,8 @@ class Application
      */
     public function __construct()
     {
-
         // create array with URL parts in $url
         $this->splitUrl();
-
-        $path = APP . 'controllers/' . $this->url_controller . '.php';
 
         // check for controller: no controller given ? then load start-page
         if (!$this->url_controller) {
@@ -35,14 +32,14 @@ class Application
 
             $session = new Session("GDMAuth");
             if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
-                $page = new \Controllers\Home();
+                $page = new \Controllers\HomeController();
                 $page->index();
             }else{
-                $page = new \Controllers\Login();
+                $page = new \Controllers\LoginController();
                 $page->index();
             }
 
-        } elseif (file_exists($path)) {
+        } elseif (file_exists(APP . 'controllers/' . $this->url_controller . '.php')) {
             //echo APP_ID;
             //print_r($_SESSION);if(defined('VAR_NAME')){
             $session = new Session("GDMAuth");
@@ -54,10 +51,7 @@ class Application
                 // if so, then load this file and create this controller
                 // example: if controller would be "car", then this line would translate into: $this->car = new car();
                 //require_once APP . 'controllers/' . $this->url_controller . '.php';
-
-
                 $this->url_controller = "\\Controllers\\".$this->url_controller;
-
                 $this->url_controller = new $this->url_controller();
 
                 // check for method: does such a method exist in the controller ?
@@ -69,7 +63,7 @@ class Application
 
                     //Verifica se o metodo de post existe
                     if(method_exists($this->url_controller, $this->url_postAction)) {
-                        $this->url_params = array_merge(array("model" => $Model),$this->url_params);
+                            $this->url_params = array_merge(array("model" => $Model),$this->url_params);
                         call_user_func_array(array($this->url_controller, $this->url_postAction), $this->url_params);
                     }else{
                         $this->url_params["model"] = $Model;
@@ -93,19 +87,19 @@ class Application
                     }
                     else {
                         // defined action not existent: show the error page
-                        $page = new Error();
+                        $page = new ErrorController();
                         $page->index();
                     }
                 }
             }
             else
             {
-                $page = new \Controllers\Login();
+                $page = new \Controllers\LoginController();
                 $page->index();
             }
 
         } else {
-            $page = new \Controllers\Error();
+            $page = new \Controllers\ErrorController();
             $page->index();
         }
     }
@@ -125,8 +119,9 @@ class Application
             // Put URL parts into according properties
             // By the way, the syntax here is just a short form of if/else, called "Ternary Operators"
             // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
+<<<<<<< HEAD
             if(isset($url[0]) && $url[0] == "handler"){
-                $this->url_controller = isset($url[1])  ? $url[0]."\\".$url[1] : $url[0];
+                $this->url_controller = isset($url[1])  ? $url[0]."\\".$url[1]."Handler" : $url[0];
                 $this->url_action = isset($url[2]) ? $url[2] : null;
                 $this->url_postAction = isset($url[2]) ? $url[2]."_post" : null;
 
@@ -134,7 +129,7 @@ class Application
                 unset($url[0], $url[1], $url[2]);
 
             }else{
-                $this->url_controller = isset($url[0]) ? $url[0] : null;
+                $this->url_controller = isset($url[0]) ? $url[0]."Controller" : null;
                 $this->url_action = isset($url[1]) ? $url[1] : null;
                 $this->url_postAction = isset($url[1]) ? $url[1]."_post" : null;
 
@@ -143,7 +138,14 @@ class Application
             }
 
 
+=======
+            $this->url_controller = isset($url[0]) ? $url[0] : null;
+            $this->url_action = isset($url[1]) ? $url[1] : null;
+            $this->url_postAction = isset($url[1]) ? $url[1]."_post" : null;
+>>>>>>> parent of 32827cf... 12/12 - sc
 
+            // Remove controller and action from the split URL
+            unset($url[0], $url[1]);
 
             // Rebase array keys and store the URL params
             $this->url_params = array_values($url);

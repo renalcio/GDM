@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Pessoas
+ * Class
  *
  * Please note:
  * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
@@ -14,7 +14,7 @@ use Dal\Pessoa;
 use Libs\Helper;
 use Libs\ModelState;
 
-class Pessoas extends Controller
+class PessoaController extends Controller
 {
     /**
      * PAGE: index
@@ -52,6 +52,6 @@ class Pessoas extends Controller
             $this->loadModel();
             $this->model->Save($model);
         }
-        $this->Redirect("Index", "pessoas");
+        $this->Redirect("Index", "pessoa");
     }
 }
