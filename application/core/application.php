@@ -137,7 +137,7 @@ class Application
             }
 
 
-            
+
 
             // Rebase array keys and store the URL params
             $this->url_params = array_values($url);
