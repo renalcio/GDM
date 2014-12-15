@@ -2,9 +2,6 @@
 namespace Model;
 use Classe\Database;
 use Libs\Helper;
-use Libs\Cookie;
-use Libs\Session;
-use DAL\Pessoa;
 class NichoModel
 {
     /**
@@ -14,7 +11,7 @@ class NichoModel
     {
         try {
             $this->db = $db;
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
@@ -32,7 +29,7 @@ class NichoModel
     public function GetToIndex($Model)
     {
 
-            $Model = $this->pdo->select("SELECT * FROM Nicho", "", true);
+        $Model = $this->pdo->select("SELECT * FROM Nicho", "", true);
 
         return $Model;
     }
@@ -51,6 +48,12 @@ class NichoModel
             else
                 $model->NichoId = $this->pdo->insert("Nicho", $model);
 
+        }
+    }
+
+    public function Deletar($id){
+        if($id > 0){
+            $this->pdo->delete("Nicho", "NichoId = '".$id."'");
         }
     }
 }

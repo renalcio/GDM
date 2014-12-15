@@ -78,9 +78,8 @@ class Controller
     }
     
     public function Redirect($view, $controller = ""){
-        if(empty($controller))
-            header('location: ' . URL . $view . '');
-        else
+        if(empty($controller)) $controller = Helper::getController();
+
             header('location: ' . URL . $controller . '/' . $view . '');
     }
     

@@ -10,10 +10,6 @@
  */
 namespace Controllers;
 use Core\Controller;
-use Dal\Pessoa;
-use Libs\Helper;
-use Libs\ModelState;
-
 class NichoController extends Controller
 {
     /**
@@ -25,6 +21,7 @@ class NichoController extends Controller
         // load views
         $this->loadModel();
         $Model = new \stdClass();
+        $this->loadModel();
         $Model = $this->model->GetToIndex($Model);
         $this->ModelView($Model);
     }
@@ -53,5 +50,13 @@ class NichoController extends Controller
             $this->model->Save($model);
         }
         $this->Redirect("Index", "nicho");
+    }
+    public function deletar($id){
+        if($id > 0){
+            $this->loadModel();
+            $this->model->Deletar($id);
+        }
+
+        $this->Redirect("Index");
     }
 }
