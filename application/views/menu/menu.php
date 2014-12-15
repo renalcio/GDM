@@ -59,7 +59,12 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
 
                             <li <?= $classSubmenu ?> >
                                 <a href="<?= URL . $SubItem->Url; ?>">
-                                    <i class="fa fa-angle-double-right"></i> <span><?= $SubItem->Titulo; ?></span>
+                                    <? if (!empty($SubItem->Icone)){?>
+                                    <i class="fa <?=$SubItem->Icone;?>"></i>
+                                    <? }else{?>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    <? } ?>
+                                    <span><?= $SubItem->Titulo; ?></span>
                                     <? if (!empty($classSubmenu)){?>
                                         <i class="fa fa-angle-left pull-right"></i>
                                     <? } ?>

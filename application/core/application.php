@@ -87,7 +87,7 @@ class Application
                     }
                     else {
                         // defined action not existent: show the error page
-                        $page = new ErrorController();
+                        $page = new \Controllers\ErrorController();
                         $page->index();
                     }
                 }

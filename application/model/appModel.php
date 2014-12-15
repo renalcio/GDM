@@ -35,4 +35,10 @@ class AppModel
 
         return $model;
     }
+
+    public function Deletar($id){
+        if($id > 0){
+            $this->pdo->delete("Aplicacao", "AplicacaoId = '".$id."'");
+        }
+    }
 }
