@@ -190,9 +190,9 @@ class Helper
         if(isset($arquivos) && count($arquivos > 0)){
             foreach($arquivos as $arquivo){
                 if($local=="js")
-                echo "<script src='".URL.$local."/".$arquivo."' type='text/javascript'></script>\n\r";
+                echo "<script src=\"".URL.$local."/".$arquivo."\" type=\"text/javascript\"></script>\n\r";
                 if($local=="css")
-                    echo "<link href='".URL.$local."/".$arquivo."'  rel='stylesheet' type='text/css' />\n\r";
+                    echo "<link href=\"".URL.$local."/".$arquivo."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
             }
         }
     }

@@ -40,7 +40,7 @@ class AppController extends Controller
     {
         $this->loadModel();
         echo "<pre>";
-        print_r($model);
+        $this->model->Save($model);
         echo "</pre>";
     }
 

@@ -1,7 +1,4 @@
-<?
-use Libs\Form;
-use Libs\Session;
-?>
+
 <form method="post">
     <h3 class="page-header">Cadastro de Pessoa</h3>
     <?  \Libs\Helper::LoadModelView($Model, "formulario", "pessoa");?>

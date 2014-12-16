@@ -36,6 +36,23 @@ class AppModel
         return $model;
     }
 
+    public function Save($model){
+        if($model!=null) {
+            $model = (object)$model;
+            Helper::cast($model, "DAL\\Aplicacao");
+            Helper::cast($model->Pessoa, "DAL\\Pessoa");
+            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
+            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+
+            $Pessoa = $model->Pessoa;
+            $PessoaFisica = $model->Pessoa->PessoaFisica;
+            $PessoaJuridica = $model->Pessoa->PessoaJuridica;
+            $TipoPessoaFisica = $model->Pessoa->TipoPessoaFisica;
+
+            print_r($model);
+        }
+    }
+
     public function Deletar($id){
         if($id > 0){
             $this->pdo->delete("Aplicacao", "AplicacaoId = '".$id."'");

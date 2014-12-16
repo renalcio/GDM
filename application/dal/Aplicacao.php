@@ -25,7 +25,7 @@ class Aplicacao
 
     public function __construct($AplicacaoId = 0, $Titulo="", $Descricao="", $PessoaId=0, $DataCriacao="", $NichoId=0)
     {
-        $this->pdo = new Database();
+        $pdo = new Database();
         if(!empty($Titulo)) {
             $this->AplicacaoId = $AplicacaoId;
             $this->Titulo = $Titulo;
@@ -37,7 +37,7 @@ class Aplicacao
 
         if($this->AplicacaoId > 0 && $this->PessoaId) {
 
-            $this->Pessoa = $this->pdo->GetById("Pessoa", "PessoaId", $this->PessoaId, "DAL\\Pessoa");
+            $this->Pessoa = $pdo->GetById("Pessoa", "PessoaId", $this->PessoaId, "DAL\\Pessoa");
 
 
         }

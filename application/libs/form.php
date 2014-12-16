@@ -73,12 +73,17 @@ class Form
 
     public static function Mask($Mascara, $Nome="", $Valor="", $htmlAttr = Array())
     {
+        if(isset($htmlAttr["class"]))
+            $htmlAttr["class"] .= " ".$Nome."Mask";
+        else
+            $htmlAttr["class"] = $Nome."Mask";
+
         if(isset($htmlAttr["placeholder"]) || isset($htmlAttr["Placeholder"])){
             $placeholder = isset($htmlAttr["placeholder"]) ? $htmlAttr["placeholder"] : $htmlAttr["Placeholder"];
             echo '
         <script>
         $(function(){
-            $("#'.$Nome.'").mask("'.$Mascara.'", {"placeholder": "'.$placeholder.'"});
+            $(".'.$Nome.'Mask").mask("'.$Mascara.'", {"placeholder": "'.$placeholder.'"});
         });
         </script>
         ';
@@ -86,7 +91,7 @@ class Form
             echo '
         <script>
         $(function(){
-            $("#'.$Nome.'").mask("'.$Mascara.'");
+            $(".'.$Nome.'Mask").mask("'.$Mascara.'");
             });
         </script>
         ';

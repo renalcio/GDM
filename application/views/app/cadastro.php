@@ -1,16 +1,19 @@
 <?
 use Libs\Form;
-use Libs\Session;
+use Libs\Helper;
 ?>
 <script>
     $(function(){
         SubFormulario("#formPessoa", "Pessoa");
+        $("#Pessoa_PessoaFisica, #Pessoa_PessoaJuridica_CNPJ").blur(function(){
+            BuscaPessoa($(this).val(), "#Pessoa_");
+        });
     });
 </script>
 <form method="post">
     <div id="formPessoa">
         <h3>Dados do Cliente</h3>
-        <?  \Libs\Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>
+        <?  Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>
     </div>
     <div id="row">
         <div class="box box-primary">

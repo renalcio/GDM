@@ -1,6 +1,5 @@
 <?
 use Libs\Form;
-use Libs\Session;
 ?>
     <script>
         function SetPF(valor){
