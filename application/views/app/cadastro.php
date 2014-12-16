@@ -9,6 +9,7 @@ use Libs\Session;
 </script>
 <form method="post">
     <div id="formPessoa">
+        <h3>Dados do Cliente</h3>
         <?  \Libs\Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>
     </div>
     <div id="row">
@@ -25,7 +26,10 @@ use Libs\Session;
                 </pre>
 
                 <?Form::Hidden("AplicacaoId", @$Model->AplicacaoId);?>
-
+                <div class="form-group">
+                    <label>Nicho</label>
+                <? Form::Select2("NichoId", @$Model->NichoId, "", Array("class" => "form-control", "DataUrl" => URL."handler/nicho/Select2" ))?>
+                </div>
                 <div class="form-group">
                     <label>
                         Título:
@@ -34,7 +38,7 @@ use Libs\Session;
                 </div>
                 <div class="form-group">
                     <label>
-                        Descricao:Metal war
+                        Descricao:
                     </label>
                     <?Form::Wysiwyg("Descricao", @$Model->Descricao);?>
                 </div>

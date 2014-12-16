@@ -21,7 +21,6 @@ class NichoController extends Controller
         // load views
         $this->loadModel();
         $Model = new \stdClass();
-        $this->loadModel();
         $Model = $this->model->GetToIndex($Model);
         $this->ModelView($Model);
     }

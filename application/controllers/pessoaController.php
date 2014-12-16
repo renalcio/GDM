@@ -54,4 +54,13 @@ class PessoaController extends Controller
         }
         $this->Redirect("Index", "pessoa");
     }
+
+    public function deletar($id){
+        if($id > 0){
+            $this->loadModel();
+            $this->model->Deletar($id);
+        }
+
+        $this->Redirect("Index");
+    }
 }

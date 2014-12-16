@@ -98,4 +98,12 @@ class PessoaModel
 
         }
     }
+
+    public function Deletar($id){
+        if($id > 0){
+            $this->pdo->delete("Pessoa", "PessoaId = '".$id."'");
+            $this->pdo->delete("PessoaFisica", "PessoaId = '".$id."'");
+            $this->pdo->delete("PessoaJuridica", "PessoaId = '".$id."'");
+        }
+    }
 }
