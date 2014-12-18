@@ -14,14 +14,6 @@ class Aplicacao
      * @NotMapped
      */
     var $Pessoa;
-    /**
-     * @NotMapped
-     */
-    var $ListNicho;
-    /**
-     * @NotMapped
-     */
-    var $Nicho;
 
     public function __construct($AplicacaoId = 0, $Titulo="", $Descricao="", $PessoaId=0, $DataCriacao="", $NichoId=0)
     {

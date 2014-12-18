@@ -47,7 +47,7 @@ class Controller
     {
         if(empty($model)) $model = Helper::getController();
         
-        require APP . '/model/' . $model . 'Model.php';
+        require_once APP . '/model/' . $model . 'Model.php';
         
         // create new "model" (and pass the database connection)
         $this->model = "Model\\".$model."Model";

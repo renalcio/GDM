@@ -62,7 +62,7 @@ class Form
         <script>
         $(function(){
             $("#'.$Nome.'").datepicker({
-                format: "dd/mm/yyyy",
+                format: "dd/mm/yyyy"
             });
         });
         </script>
@@ -146,19 +146,24 @@ class Form
      */
     public static function Select2($Nome="", $Valor="", $Opcoes = "", $htmlAttr = Array())
     {
+        if(isset($htmlAttr["class"]))
+            $htmlAttr["class"] .= " ".$Nome."Select2";
+        else
+            $htmlAttr["class"] = $Nome."Select2";
+
         if(isset($htmlAttr["DataUrl"]) && !empty($htmlAttr["DataUrl"])) {
             echo '<script>
                $(function(){
                    $.get("'.$htmlAttr["DataUrl"].'", function(data){
-                        $("#' . $Nome . '").html(data);
-                        $("#' . $Nome . '").val("'.$Valor.'").change();
+                        $("select.' . $Nome . 'Select2").html(data);
+                        $("select.' . $Nome . 'Select2").val("'.$Valor.'").change();
                    });
                });
              </script>';
         }
         echo '<script>
                 $(function(){
-                     $("#'.$Nome.'").select2();
+                     $("select.'.$Nome.'Select2").select2();
                 });
              </script>';
 
@@ -240,7 +245,7 @@ class Form
                         });
                 });
                 </script>
-                <div id='".$Nome."wysiwyg' class='wysiwyg-editor'></div>
+                <div id='".$Nome."wysiwyg' class='wysiwyg-editor'>".$Valor."</div>
                 ";
     }
 }

@@ -39,9 +39,10 @@ class AppController extends Controller
     public function cadastro_post($model = null)
     {
         $this->loadModel();
-        echo "<pre>";
+        //echo "<pre>";
         $this->model->Save($model);
-        echo "</pre>";
+        //echo "</pre>";
+        $this->Redirect("Index");
     }
 
     public function deletar($id){

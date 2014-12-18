@@ -29,9 +29,10 @@ class PessoaHandler extends Controller
         header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
         $doc = Helper::SomenteNumeros($doc);
-        $retorno = $pdo->select("SELECT p.* FROM Pessoa p, PessoaFisica pf, PessoaJuridica pj WHERE (p.PessoaId = pf.PessoaId AND pf.CPF = '$doc') OR
+        if(!empty($doc)) {
+            $retorno = $pdo->select("SELECT p.* FROM Pessoa p, PessoaFisica pf, PessoaJuridica pj WHERE (p.PessoaId = pf.PessoaId AND pf.CPF = '$doc') OR
  (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "DAL\\Pessoa");
-
+        }
         $retorno = json_encode($retorno);
 
         echo $retorno;

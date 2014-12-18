@@ -5,14 +5,14 @@ use Libs\Helper;
 <script>
     $(function(){
         SubFormulario("#formPessoa", "Pessoa");
-        $("#Pessoa_PessoaFisica, #Pessoa_PessoaJuridica_CNPJ").blur(function(){
-            BuscaPessoa($(this).val(), "#Pessoa_");
+        $("#Pessoa_PessoaFisica_CPF, #Pessoa_PessoaJuridica_CNPJ").blur(function(){
+            BuscaPessoa($(this).val(), "Pessoa");
         });
     });
 </script>
 <form method="post">
     <div id="formPessoa">
-        <h3>Dados do Cliente</h3>
+        <h3 class="page-header">Dados do Cliente</h3>
         <?  Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>
     </div>
     <div id="row">
@@ -29,6 +29,7 @@ use Libs\Helper;
                 </pre>
 
                 <?Form::Hidden("AplicacaoId", @$Model->AplicacaoId);?>
+                <?Form::Hidden("PessoaId", @$Model->PessoaId);?>
                 <div class="form-group">
                     <label>Nicho</label>
                 <? Form::Select2("NichoId", @$Model->NichoId, "", Array("class" => "form-control", "DataUrl" => URL."handler/nicho/Select2" ))?>

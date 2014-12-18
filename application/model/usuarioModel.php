@@ -5,7 +5,7 @@ use Libs\Helper;
 use Libs\Cookie;
 use Libs\Session;
 use DAL\Pessoa;
-class PessoaModel
+class UsuarioModel
 {
     /**
      * @param object $db A PDO database connection
@@ -22,19 +22,10 @@ class PessoaModel
 
     public function GetToEdit($Model)
     {
-        if($Model->PessoaId > 0)
+        if($Model->UsuarioId > 0)
         {
-            $Model = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
-            if($Model != null)
-            {
-                $Model = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
-                if($Model != null){
-                    if($Model->TipoPessoaFisica)
-                        $Model->Documento = $Model->PessoaFisica->CPF;
-                    else
-                        $Model->Documento = @$Model->PessoaJuridica->CNPJ;
-                }
-            }
+            $Model = $this->pdo->GetById("Usuario", "UsuarioId", $Model->UsuarioId, "DAL\\Usuario");
+
         }
         return $Model;
     }
@@ -42,16 +33,9 @@ class PessoaModel
     public function GetToIndex($Model)
     {
         if(defined('APP_ID') && APP_ID == 1)
-            $Model->ListPessoa = $this->pdo->select("SELECT * FROM Pessoa", "", true);
+            $Model->ListUsuario = $this->pdo->select("SELECT * FROM Usuario", "DAL\\Usuario", true);
         else {
-            $Model->ListPessoa = $this->pdo->select("SELECT p.*
-                                            FROM
-                                            Pessoa p,
-                                            PessoaEmpresa pe,
-                                            Aplicacao a
-                                            WHERE a.AplicacaoId = " . APP_ID . "
-                                            AND pe.EmpresaId = a.PessoaId
-                                            AND p.PessoaId = pe.PessoaId");
+            $Model->ListUsuario = $this->pdo->select("SELECT Usuario WHERE AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
         }
 
         return $Model;

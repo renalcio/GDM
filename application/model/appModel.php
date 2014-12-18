@@ -49,7 +49,17 @@ class AppModel
             $PessoaJuridica = $model->Pessoa->PessoaJuridica;
             $TipoPessoaFisica = $model->Pessoa->TipoPessoaFisica;
 
-            print_r($model);
+            $ModelPessoa = new PessoaModel($this->db);
+
+            $model->Pessoa = $ModelPessoa->Save($model->Pessoa);
+
+            $model->PessoaId = $model->Pessoa->PessoaId;
+
+            if($model->AplicacaoId > 0)
+                $this->pdo->update("Aplicacao", $model, "AplicacaoId = ".$model->AplicacaoId);
+            else
+                $this->pdo->insert("Aplicacao", $model);
+
         }
     }
 

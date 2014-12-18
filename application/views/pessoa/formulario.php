@@ -3,13 +3,13 @@ use Libs\Form;
 ?>
     <script>
         function SetPF(valor){
-            $("#TipoPessoaFisica").val(valor);
+            $(".TipoPessoaFisicaBit").val(valor);
         }
     </script>
     <?Form::Hidden("PessoaId", @$Model->PessoaId);?>
     <?Form::Hidden("PessoaFisica_PessoaId", @$Model->PessoaFisica->PessoaId);?>
     <?Form::Hidden("PessoaJuridica_PessoaId", @$Model->PessoaJuridica->PessoaId);?>
-    <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica);?>
+    <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica, Array("class"=>"TipoPessoaFisicaBit"));?>
     <div id="row">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
