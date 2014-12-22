@@ -12,6 +12,18 @@ use Libs\Form;
             </div>
 
             <div class="box-body">
+                <? if(APP_ID == 1){
+                    ?>
+                    <div class="form-group">
+                        <label>
+                            Aplicação:
+                        </label>
+                        <? Form::Select2("AplicacaoId", @$Model->AplicacaoId, "", Array("class" => "form-control", "DataUrl" => URL."handler/aplicacao/Select2" ))?>
+                    </div>
+                <?
+                }else{
+                    Form::Hidden("AplicacaoId", APP_ID);
+                }?>
                 <div class="form-group">
                     <label>
                         Login:
