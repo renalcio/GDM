@@ -158,7 +158,7 @@
 
 
                                 $(".imagePreviewArea").css("background-image", "url("+fileLoadedEvent.target.result+")");
-                                $(".imageCropArea").fadeIn().attr("src",fileLoadedEvent.target.result);
+                                //$(".imageCropArea").fadeIn().attr("src",fileLoadedEvent.target.result);
 
                                 $(".imageCropArea").cropper({
                                     aspectRatio: "auto",
@@ -168,8 +168,7 @@
                                             "url("+$(".imageCropArea").cropper("getDataURL")+")");
                                         //console.log($(".imageCropArea").cropper("getDataURL"));
                                     }
-                                });
-
+                                }).cropper("reset", true).cropper("replace", fileLoadedEvent.target.result);
                             };
 
                             fileReader.readAsDataURL(fileToLoad);
