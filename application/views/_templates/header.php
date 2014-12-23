@@ -42,6 +42,8 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
         "select2-bootstrap.css",
         //DATATABLE
         "datatables/dataTables.bootstrap.css",
+        //CROP
+        "cropper.css",
     ));
     \Libs\Helper::LoadMedia("js", Array(
         //JQUERY
@@ -73,6 +75,8 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
         "plugins/extra-elements.min.js",
         //NESTABLE
         "plugins/jquery.nestable.min.js",
+        //CROP
+        "plugins/cropper.js",
         //HELPER
         "helper.js",
         "pessoa.js",
@@ -108,7 +112,7 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
                         if( e.target instanceof HTMLImageElement ) {
                             if( !target.data('resizable') ) {
                                 target.resizable({
-                                    aspectRatio: e.target.width / e.target.height,
+                                    aspectRatio: e.target.width / e.target.height
                                 });
                                 target.data('resizable', true);
                                 if( lastResizableImg != null ) {//disable previous resizable image
