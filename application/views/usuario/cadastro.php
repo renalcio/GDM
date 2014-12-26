@@ -25,13 +25,10 @@
                     </div>
                 </div>
                 <br />
-                <style>
 
-
-                </style>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                <div class="imagePreviewArea image64PreviewArea img-circle">
+                <img class="imagePreviewArea image64PreviewArea img-circle" />
                 </div>
                         </div>
                     </div>
