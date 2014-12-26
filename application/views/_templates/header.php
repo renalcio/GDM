@@ -80,6 +80,7 @@ $PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
         //HELPER
         "helper.js",
         "pessoa.js",
+        "functions.js"
     ));?>
 
 

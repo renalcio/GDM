@@ -1,3 +1,53 @@
+.image64PreviewArea {
+  background-repeat: no-repeat;
+  -moz-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  height: 150px;
+  width: 150px;
+  border: 8px solid;
+  border-color: transparent;
+  border-color: #63A4C9;
+  margin: 0 auto;
+}
+
+.image64CropArea {
+  display:none;
+}
+
+.dropZone {
+  /*Sort of important*/
+  width: 100%;
+  /*Sort of important*/
+  padding: 50px 0;
+  border: 2px dashed rgba(0,0,0,.3);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  font-size: 20px;
+  color: rgba(0,0,0,.3);
+  margin: 0 auto;
+}
+
+.dropZone input {
+  /*Important*/
+  position: absolute;
+  /*Important*/
+  cursor: pointer;
+  left: 0px;
+  top: 0px;
+  /*Important This is only comment out for demonstration purpeses.*/
+  opacity:0;
+}
+
+/*Important*/
+.dropZone.mouse-over {
+  border: 2px dashed rgba(0,0,0,.5);
+  color: rgba(0,0,0,.5);
+}
+
+
+/** CROPPER */
 .cropper-container {
   position: relative;
   overflow: hidden;
@@ -12,7 +62,6 @@
 }
 
 .cropper-container img {
-  width: 50%;
     margin:0 auto;
   min-width: 0 !important;
   min-height: 0 !important;
