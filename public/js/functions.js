@@ -39,7 +39,6 @@
             //CHAMA CROPPER
             $(options.crop).cropper({
                 aspectRatio: "auto",
-                preview: options.preview,
                 done: function(data) {
                     // Output the result data for cropping image.
                     $(options.preview).css("background-image",
@@ -68,7 +67,7 @@
                     {
                         b64 = fileLoadedEvent.target.result;
 
-                        //$(options.preview).css("background-image", "url("+b64+")");
+                        $(options.preview).css("background-image", "url("+b64+")");
 
                         $(options.crop).cropper("reset", true).cropper("replace", b64);
 
