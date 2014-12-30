@@ -23,6 +23,11 @@ class Usuario
      */
     var $ConfirmarNovaSenha;
 
+    /**
+     * @NotMapped
+     */
+    var $file;
+
     public function __construct($UsuarioId=0, $PessoaId=0, $AplicacaoId = 0, $Login="", $Senha="", $Avatar="", $NovaSenha="", $ConfirmarNovaSenha="")
     {
         $pdo = new Database();

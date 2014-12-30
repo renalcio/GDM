@@ -2,6 +2,19 @@
 namespace Libs;
 class Helper
 {
+    public static function Abreviar($Nome, $NumNome = 2){
+        $array = explode(" ", $Nome);
+        $retorno= "";
+        for($i = 0; $i < $NumNome; $i++){
+            if(isset($array[$i])) {
+                $retorno .= $array[$i];
+                if ($i != ($NumNome - 1))
+                    $retorno .= " ";
+            }
+        }
+        return $retorno;
+    }
+
     public static function SomenteNumeros($Texto){
         $pattern = "/[^0-9]/mi";
         return preg_replace($pattern, '', $Texto);

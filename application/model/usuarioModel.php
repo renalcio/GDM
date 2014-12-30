@@ -43,40 +43,26 @@ class UsuarioModel
     public function Save($model){
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Pessoa");
-            Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
+            Helper::cast($model, "DAL\\Usuario");
+            echo "<pre>";
+            print_r($model);
+            echo "</pre>";
+            /*print_r($PessoaFisica);
+            print_r($PessoaJuridica);*/
 
-            $PessoaFisica = $model->PessoaFisica;
-            $PessoaJuridica = $model->PessoaJuridica;
-            $TipoPessoaFisica = $model->TipoPessoaFisica;
+             if($model->UsuarioId > 0) {
+                 $usuario = $this->pdo->GetById("Usuario", "UsuarioId", $model->UsuarioId, "DAL\\Usuario");
 
-            /* print_r($model);
-             print_r($PessoaFisica);
-             print_r($PessoaJuridica);*/
+                 if(!empty($model->NovaSenha) && !empty($model->ConfirmarNovaSenha) && $model->NovaSenha == $model->ConfirmarNovaSenha){
+                     $model->Senha = md5($model->NovaSenha);
+                 }else{
+                     $model->Senha = $usuario->Senha;
+                 }
 
-            if($model->PessoaId > 0)
-                $this->pdo->update("Pessoa", $model, "PessoaId = ".$model->PessoaId);
-            else
-                $model->PessoaId = $this->pdo->insert("Pessoa", $model);
-
-
-                if($PessoaFisica->PessoaId > 0)
-                    $this->pdo->update("PessoaFisica", $PessoaFisica, "PessoaId = ".$model->PessoaId);
-                else {
-                    $PessoaFisica->PessoaId = $model->PessoaId;
-                    $this->pdo->insert("PessoaFisica", $PessoaFisica);
-                }
-
-
-                if($PessoaJuridica->PessoaId > 0)
-                    $this->pdo->update("PessoaJuridica", $PessoaJuridica, "PessoaId = ".$model->PessoaId);
-                else {
-                    $PessoaJuridica->PessoaId = $model->PessoaId;
-                    $this->pdo->insert("PessoaJuridica", $PessoaJuridica);
-                }
-
-
+                 $this->pdo->update("Usuario", $model, "UsuarioId = " . $model->UsuarioId);
+             }
+             else
+                 $model->UsuarioId = $this->pdo->insert("Usuario", $model);
         }
         return $model;
     }

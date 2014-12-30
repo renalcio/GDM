@@ -52,7 +52,7 @@ class UsuarioController extends Controller
             $this->loadModel();
             $this->model->Save($model);
         }
-        $this->Redirect("Index", "usuario");
+        //$this->Redirect("Index", "usuario");
     }
 
     public function deletar($id){
