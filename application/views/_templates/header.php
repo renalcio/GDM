@@ -3,8 +3,7 @@ use Libs\Session;
 use Libs\Helper;
 $db = new Classe\Database();
 $sessao = new Session("GDMAuth");
-$PessoaUsuario = $db->GetById("Pessoa", "PessoaId", $sessao->Ver("PessoaId"));
-$UsuarioUsuario = $db->GetById("Usuario", "PessoaId", $sessao->Ver("PessoaId"));
+$PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHERE u.PessoaId = p.PessoaId AND p.PessoaId = '". $sessao->Ver("PessoaId"). "'");
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -376,7 +375,7 @@ $UsuarioUsuario = $db->GetById("Usuario", "PessoaId", $sessao->Ver("PessoaId"));
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header bg-light-blue">
-            <img src="<?=$UsuarioUsuario->Avatar;?>" class="img-circle" alt="User Image" />
+            <img src="<?=$PessoaUsuario->Avatar;?>" class="img-circle" alt="User Image" />
             <p>
                 <?=Helper::Abreviar($PessoaUsuario->Nome);?> - Web Developer
                 <small>Member since Nov. 2012</small>
@@ -417,7 +416,7 @@ $UsuarioUsuario = $db->GetById("Usuario", "PessoaId", $sessao->Ver("PessoaId"));
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?=$UsuarioUsuario->Avatar;?>" class="img-circle" alt="User Image" />
+                    <img src="<?=$PessoaUsuario->Avatar;?>" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
                     <p>Olá, <?=Helper::Abreviar($PessoaUsuario->Nome);?></p>

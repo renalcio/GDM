@@ -44,9 +44,9 @@ class UsuarioModel
         if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, "DAL\\Usuario");
-            echo "<pre>";
-            print_r($model);
-            echo "</pre>";
+            //echo "<pre>";
+            //print_r($model);
+            //echo "</pre>";
             /*print_r($PessoaFisica);
             print_r($PessoaJuridica);*/
 

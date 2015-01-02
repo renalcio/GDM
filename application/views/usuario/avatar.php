@@ -6,7 +6,7 @@ use Libs\Form;
 <div class="row" id="crop-avatar">
 
     <!-- Current avatar -->
-    <div class="avatar-view" title="Change the avatar">
+    <div class="avatar-view" title="Clique para alterar">
         <img src="<?=@$Model->Avatar;?>" alt="Avatar">
     </div>
 
@@ -18,7 +18,7 @@ use Libs\Form;
                 method="post">
                     <div class="modal-header">
                         <button class="close" data-dismiss="modal" type="button">&times;</button>
-                        <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+                        <h4 class="modal-title" id="avatar-modal-label">Mudar Avatar</h4>
                     </div>
                     <div class="modal-body">
                         <div class="avatar-body">
@@ -27,7 +27,7 @@ use Libs\Form;
                             <div class="avatar-upload">
                                 <input class="avatar-src" name="avatar_src" type="hidden">
                                 <input class="avatar-data" name="avatar_data" type="hidden">
-                                <label for="avatarInput">Local upload</label>
+                                <label for="avatarInput">Arquivo</label>
                                 <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
                             </div>
 
@@ -45,8 +45,8 @@ use Libs\Form;
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-                        <button class="btn btn-primary avatar-save" type="submit">Save</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
+                        <button class="btn btn-primary avatar-save" type="submit">Salvar</button>
                     </div>
                 </form>
             </div>

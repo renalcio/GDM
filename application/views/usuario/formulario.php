@@ -2,6 +2,7 @@
 use Libs\Form;
 ?>
 <?Form::Hidden("UsuarioId", @$Model->UsuarioId);?>
+<?Form::Hidden("PessoaId", @$Model->PessoaId);?>
 <?Form::Hidden("Avatar", @$Model->Avatar, Array("class" => "hiddenImgArea"));?>
 <div id="row">
     <div class="box box-primary">

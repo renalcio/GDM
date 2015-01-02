@@ -57,7 +57,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                                         <li><a href="<?=URL;
                                             ?>usuario/cadastro/<?=$item->UsuarioId;?>"><i class="fa fa-edit"></i>
                                                 Editar</a></li>
-                                        <li><a onclick="Excluir(<?=$item->UsuarioId;?>)"><i
+                                        <li class="dropdown-danger"><a onclick="Excluir(<?=$item->UsuarioId;?>)"><i
                                                     class="fa
                                         fa-trash-o"></i> Excluir</a></li>
 
