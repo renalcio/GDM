@@ -35,7 +35,7 @@ class LoginModel
         if(count($retorno) == 0){
             $md5Senha = md5($Senha);
             $check = $this->GetUsuarioByLoginSenha($Login, $Senha);
-            //var_dump($check);
+           // var_dump($check);
             if(empty($check))
                 $retorno[] = Helper::Utf("Login ou senha inválidos");
         }

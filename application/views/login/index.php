@@ -43,6 +43,7 @@
                 				data: dados,
                 				success: function( data )
                 				{
+									console.log(data);
                 				    data = JSON.parse(JSON.stringify(data));
                 					console.log(data.Erros.length);
                                     if(data.Erros.length > 0){

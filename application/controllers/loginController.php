@@ -28,12 +28,10 @@ class LoginController extends Controller
      */
     public function auth()
     {
-       
+        header('Content-Type: application/json; Charset=UTF-8');
+        //echo "Auth";
         extract($_POST);
-        
-       
-            $this->loadModel();            
-            header('Content-Type: application/json; Charset=UTF-8');
+            $this->loadModel();
             $retorno = new \stdClass;
             $retorno->Status = false;
             $retorno->Erros = Array();
@@ -50,18 +48,5 @@ class LoginController extends Controller
                 $this->model->SetLogin($Login, $Senha);
             }
             echo json_encode($retorno);
-    }
-
-    /**
-     * PAGE: exampletwo
-     * This method handles what happens when you move to http://yourproject/home/exampletwo
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
-     */
-    public function exampleTwo()
-    {
-        // load views
-        require APP . 'views/_templates/header.php';
-        require APP . 'views/home/example_two.php';
-        require APP . 'views/_templates/footer.php';
     }
 }

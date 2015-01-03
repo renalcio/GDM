@@ -44,8 +44,10 @@ class Application
             //print_r($_SESSION);if(defined('VAR_NAME')){
             $session = new Session("GDMAuth");
             //echo $session->Ver("AplicacaoId");
-            if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || $this->url_controller == "login")
+            //echo $this->url_controller;
+            if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || $this->url_controller == "loginController")
             {
+
                 // here we did check for controller: does such a controller exist ?
 
                 // if so, then load this file and create this controller
