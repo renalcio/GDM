@@ -23,6 +23,7 @@ class Usuario
      */
     var $ConfirmarNovaSenha;
 
+
     /**
      * @NotMapped
      */

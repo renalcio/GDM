@@ -5,9 +5,6 @@
 
 /**
  IMAGE UPLOAD AND CROP
- */
-
-
 (function($){
     $.fn.UploadCrop64 = function(options){
         // configurações padrão
@@ -82,8 +79,9 @@
         });
     };
 })(jQuery);
-
+*/
 function DropZone(dropZoneId, buttonId, mouseOverClass){
+
 
     var dropZone = $("#" + dropZoneId);
     var ooleft = dropZone.offset().left;
@@ -131,6 +129,6 @@ function DropZone(dropZoneId, buttonId, mouseOverClass){
 
 
 
-
+    console.log("chegou");
 }
 

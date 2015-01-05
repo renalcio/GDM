@@ -1,7 +1,14 @@
 <?
 use Libs\Form;
 ?>
-
+<script>
+    $(function(){
+        //DropZone("drop-avatar", "drop-avatar-btn", "mouse-over");
+        $('#avatar-modal').on('shown.bs.modal', function (e) {
+            DropZone("drop-avatar", "drop-avatar-btn", "mouse-over");
+        });
+    });
+</script>
 
 <div class="row" id="crop-avatar">
 
@@ -27,8 +34,18 @@ use Libs\Form;
                             <div class="avatar-upload">
                                 <input class="avatar-src" name="avatar_src" type="hidden">
                                 <input class="avatar-data" name="avatar_data" type="hidden">
+                                <!--
                                 <label for="avatarInput">Arquivo</label>
                                 <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                                -->
+                                <div id="drop-avatar" class="dropZone">
+                                    Arraste e solte uma imagem aqui...<br />
+                                    <div id="drop-avatar-btn" class="btn btn-sm btn-primary">
+                                        ou clique para escolher...
+                                        <input class="avatar-input" type="file" name="avatar_file" id="avatarInput" />
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- Crop and preview -->

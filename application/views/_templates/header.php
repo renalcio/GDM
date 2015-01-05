@@ -82,7 +82,8 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         //HELPER
         "helper.js",
         "pessoa.js",
-        "avatar.js"
+        "avatar.js",
+        "functions.js"
     ));?>
 
 
