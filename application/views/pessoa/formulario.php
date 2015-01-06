@@ -10,19 +10,20 @@ use Libs\Form;
     <?Form::Hidden("PessoaFisica_PessoaId", @$Model->PessoaFisica->PessoaId);?>
     <?Form::Hidden("PessoaJuridica_PessoaId", @$Model->PessoaJuridica->PessoaId);?>
     <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica, Array("class"=>"TipoPessoaFisicaBit"));?>
+<?=@$Model->TipoPessoaFisica?>
     <div id="row">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="<? if(@$Model->TipoPessoaFisica == 1) echo "active"; ?>"><a href="#pf" id="pfLink"
+                <li class="active"><a href="#pf" id="pfLink"
                                                                                        onclick="SetPF(1)"
                                                                                        data-toggle="tab">Pessoa Física</a></li>
-                <li class="<? if(@$Model->TipoPessoaFisica != true) echo "active"; ?>"><a href="#pj"
+                <li><a href="#pj"
                                                                                           onclick="SetPF
                                                                                                   (0)"
                                                                                           data-toggle="tab">Pessoa Jurídica</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane <? if(@$Model->TipoPessoaFisica == 1) echo "active"; ?>"
+                <div class="tab-pane active"
                      id="pf">
                     <div class="row">
                         <div class="form-group col-lg-4">
@@ -85,7 +86,7 @@ use Libs\Form;
                     </div>
 
                 </div><!-- /.tab-pane -->
-                <div class="tab-pane <? if(@$Model->TipoPessoaFisica != true) echo "active"; ?>"
+                <div class="tab-pane"
                      id="pj">
 
                     <div class="row">

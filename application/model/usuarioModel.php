@@ -44,10 +44,20 @@ class UsuarioModel
         if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, "DAL\\Usuario");
-            //echo "<pre>";
-            //print_r($model);
-            //echo "</pre>";
-            /*print_r($PessoaFisica);
+            Helper::cast($model->Pessoa, "DAL\\Pessoa");
+            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
+            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+
+            $ModelPessoa = new PessoaModel($this->db);
+
+            $model->Pessoa = $ModelPessoa->Save($model->Pessoa);
+
+            $model->PessoaId = $model->Pessoa->PessoaId;
+
+            /*echo "<pre>";
+            print_r($model);
+            echo "</pre>";
+            print_r($PessoaFisica);
             print_r($PessoaJuridica);*/
 
              if($model->UsuarioId > 0) {
@@ -61,17 +71,18 @@ class UsuarioModel
 
                  $this->pdo->update("Usuario", $model, "UsuarioId = " . $model->UsuarioId);
              }
-             else
+             else {
+                 $model->Senha = md5($model->Senha);
                  $model->UsuarioId = $this->pdo->insert("Usuario", $model);
+             }
+
         }
         return $model;
     }
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Pessoa", "PessoaId = '".$id."'");
-            $this->pdo->delete("PessoaFisica", "PessoaId = '".$id."'");
-            $this->pdo->delete("PessoaJuridica", "PessoaId = '".$id."'");
+            $this->pdo->delete("Usuario", "UsuarioId = '".$id."'");
         }
     }
 }
