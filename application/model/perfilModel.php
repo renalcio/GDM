@@ -48,7 +48,7 @@ class PerfilModel
              print_r($PessoaFisica);
              print_r($PessoaJuridica);*/
 
-            if($model->NichoId > 0)
+            if($model->PerfilId > 0)
                 $this->pdo->update("Perfil", $model, "PerfilId = ".$model->PerfilId);
             else {
                 $model->Ativo = 1;

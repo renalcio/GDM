@@ -15,7 +15,7 @@ use Libs\Session;
             <div class="box-body">
 
                 <?
-                Form::Hidden("PerfilId", @$Model->NichoId);
+                Form::Hidden("PerfilId", @$Model->PerfilId);
 
                 if(APPID == ROOTAPP){
                 ?>
@@ -27,7 +27,7 @@ use Libs\Session;
                     </div>
                 <?
                 }else
-                    Form::Hidden("PerfilId", @$Model->NichoId);
+                    Form::Hidden("AplicacaoId", @$Model->AplicacaoId);
 
                 Form::Hidden("Ativo", @$Model->Ativo);
                 ?>
