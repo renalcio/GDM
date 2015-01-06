@@ -51,8 +51,11 @@ define('DB_NAME', 'cdm');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
+define("ROOTAPP", 1);
+
 $appsess = new \Libs\Session("GDMAuth");
 $appid = $appsess->Ver("AplicacaoId");
 if(!empty($appid)){
     define('APP_ID', $appid);
+    define('APPID', $appid);
 }

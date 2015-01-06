@@ -46,6 +46,8 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         //CROP
         "avatar.css",
         "cropper.css",
+        //SWITCH
+        "bootstrap-switch.css"
     ));
     \Libs\Helper::LoadMedia("js", Array(
         //JQUERY
@@ -79,6 +81,11 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         "plugins/jquery.nestable.min.js",
         //CROP
         "plugins/cropper.js",
+        //SWITCH
+        "plugins/bootstrap-switch.min.js",
+        //iCheck
+        "plugins/iCheck/icheck.min.js",
+
         //HELPER
         "helper.js",
         "pessoa.js",

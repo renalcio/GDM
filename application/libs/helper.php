@@ -151,6 +151,21 @@ class Helper
         return $raw_sql;
     }
 
+    static function getUrl($Action="", $Controller="", $Parametros = ""){
+        if(empty($Action))
+            $Action = self::getAction();
+        if(empty($Controller))
+            $Controller = self::getController();
+
+        if(is_array($Parametros)){
+            for($i = 0; $i < count($Parametros), $i++){
+
+            }
+        }
+
+        return URL.$Controller."/".$Action."/";
+    }
+
     static function getAction(){
         // split URL
         if(isset($_GET['url'])){

@@ -3,8 +3,16 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 {?>
 <script type="text/javascript">
     $(function() {
+
+        $(".switch").on('switchChange.bootstrapSwitch', function(event, state) {
+            var ref = $(this).attr("ref"); // true | false
+            $.getJSON("<?=URL;?>handler/usuario/MudaStatus/"+ref+"/"+state, function(data){
+                //console.log(data);
+            });
+        });
+
         $("#listagem").dataTable({
-            "aoColumns": [ null,null,null, {"bSortable": false} ]
+            "aoColumns": [ null,null,null, {"bSortable": false}, {"bSortable": false} ]
         });
     });
     function Excluir(Id){
@@ -34,6 +42,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                         <th>Nome</th>
                             <th>Email</th>
                             <th>Login</th>
+                            <th width="30px">Ativo</th>
                         <th style="width:18px"></th>
                         </tr>
                         </thead>
@@ -48,6 +57,10 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                             <td><?=$item->Pessoa->Nome;?></td>
                             <td><?=$item->Pessoa->Email;?></td>
                             <td><?=$item->Login;?></td>
+                            <td>
+
+                                <input type="checkbox" ref="<?=@$item->UsuarioId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">
+                            </td>
                             <td align="center">
 
                                 <div class="btn-group">

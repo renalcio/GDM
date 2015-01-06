@@ -2,7 +2,12 @@
  * Created by Renalcio Junior on 23/12/2014.
  */
 
-
+/**
+ * SWITCH INPUT
+ */
+$(function(){
+    $("input.switch").bootstrapSwitch();
+});
 /**
  IMAGE UPLOAD AND CROP
 (function($){
