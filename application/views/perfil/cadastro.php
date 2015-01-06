@@ -14,8 +14,23 @@ use Libs\Session;
             </div>
             <div class="box-body">
 
+                <?
+                Form::Hidden("PerfilId", @$Model->NichoId);
 
-                <?Form::Hidden("NichoId", @$Model->NichoId);?>
+                if(APPID == ROOTAPP){
+                ?>
+                    <div class="form-group">
+                        <label>
+                            Aplicação:
+                        </label>
+                        <? Form::Select2("AplicacaoId", @$Model->AplicacaoId, "", Array("class" => "form-control", "DataUrl" => URL."handler/aplicacao/Select2" ))?>
+                    </div>
+                <?
+                }else
+                    Form::Hidden("PerfilId", @$Model->NichoId);
+
+                Form::Hidden("Ativo", @$Model->Ativo);
+                ?>
 
                 <div class="form-group">
                     <label>
@@ -30,6 +45,6 @@ use Libs\Session;
 
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=URL?>pessoas/" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index")?>">Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
     </div>
 </form>

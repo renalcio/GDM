@@ -19,7 +19,7 @@ if(is_array($Model) && count($Model) > 0)
         function Excluir(Id){
             bootbox.confirm('Deseja realmente excluir este item?', function(result){
                 if(result)
-                    location.href="<?=URL;?>perfil/deletar/"+Id;
+                    location.href="<?=\Libs\Helper::getUrl("deletar");?>"+Id;
 
             });
         }
@@ -37,9 +37,6 @@ if(is_array($Model) && count($Model) > 0)
             </div>
         </div>
         <div class="box-body">
-                <pre>
-                    <? print_r($Model) ?>
-                </pre>
             <table id="listagem" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -74,10 +71,9 @@ if(is_array($Model) && count($Model) > 0)
                                     <i class="fa fa-bars" class="dropdown-toggle"
                                        data-toggle="dropdown"></i>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="<?=URL;
-                                            ?>nicho/cadastro/<?=@$item->NichoId;?>"><i class="fa fa-edit"></i>
+                                        <li><a href="<?=\Libs\Helper::getUrl("cadastro","",@$item->PerfilId);?>"><i class="fa fa-edit"></i>
                                                 Editar</a></li>
-                                        <li><a onclick="Excluir(<?=@$item->NichoId;?>)"><i
+                                        <li><a onclick="Excluir(<?=@$item->PerfilId;?>)"><i
                                                     class="fa
                                         fa-trash-o"></i> Excluir</a></li>
 

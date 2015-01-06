@@ -1,9 +1,12 @@
 <?
 use Libs\Form;
 ?>
-<?Form::Hidden("UsuarioId", @$Model->UsuarioId);?>
-<?Form::Hidden("PessoaId", @$Model->PessoaId);?>
-<?Form::Hidden("Avatar", @$Model->Avatar, Array("class" => "hiddenImgArea"));?>
+<?
+Form::Hidden("UsuarioId", @$Model->UsuarioId);
+Form::Hidden("PessoaId", @$Model->PessoaId);
+Form::Hidden("Avatar", @$Model->Avatar, Array("class" => "hiddenImgArea"));
+Form::Hidden("Ativo", @$Model->Ativo);
+?>
 <div id="row">
     <div class="box box-primary">
         <div class="box-header">
@@ -14,7 +17,7 @@ use Libs\Form;
         </div>
 
         <div class="box-body">
-            <? if(APP_ID == 1){
+            <? if(APP_ID == ROOTAPP){
                 ?>
                 <div class="form-group">
                     <label>

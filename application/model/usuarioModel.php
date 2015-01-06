@@ -73,6 +73,7 @@ class UsuarioModel
              }
              else {
                  $model->Senha = md5($model->Senha);
+                 $model->Ativo = 1;
                  $model->UsuarioId = $this->pdo->insert("Usuario", $model);
              }
 

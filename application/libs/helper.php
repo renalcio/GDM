@@ -157,13 +157,15 @@ class Helper
         if(empty($Controller))
             $Controller = self::getController();
 
+        $strParametros = "";
         if(is_array($Parametros)){
-            for($i = 0; $i < count($Parametros), $i++){
-
+            foreach($Parametros as $key=>$valor){
+                $strParametros .= "/".$valor;
             }
-        }
+        }else
+            $strParametros = "/".$Parametros;
 
-        return URL.$Controller."/".$Action."/";
+        return URL.$Controller."/".$Action.$strParametros;
     }
 
     static function getAction(){

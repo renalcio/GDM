@@ -1,6 +1,7 @@
 <?php
 namespace Model;
 use Classe\Database;
+use DAL\Perfil;
 use Libs\Helper;
 class PerfilModel
 {
@@ -19,9 +20,11 @@ class PerfilModel
 
     public function GetToEdit($Model)
     {
-        if($Model->NichoId > 0)
+        if($Model->PerfilId > 0)
         {
             $Model = $this->pdo->GetById("Perfil", "PerfilId", $Model->PerfilId, "DAL\\Perfil");
+        }else{
+            $Model = new Perfil();
         }
         return $Model;
     }
@@ -47,10 +50,12 @@ class PerfilModel
 
             if($model->NichoId > 0)
                 $this->pdo->update("Perfil", $model, "PerfilId = ".$model->PerfilId);
-            else
-                $model->NichoId = $this->pdo->insert("Perfil", $model);
-
+            else {
+                $model->Ativo = 1;
+                $model->PerfilId = $this->pdo->insert("Perfil", $model);
+            }
         }
+        return $model;
     }
 
     public function Deletar($id){
