@@ -23,12 +23,43 @@ Form::Hidden("Ativo", @$Model->Ativo);
                     <label>
                         Aplicação:
                     </label>
-                    <? Form::Select2("AplicacaoId", @$Model->AplicacaoId, "", Array("class" => "form-control", "DataUrl" => URL."handler/aplicacao/Select2" ))?>
+                    <? Form::Select2("AplicacaoId", @$Model->AplicacaoId, "", Array("class" => "form-control AplicacaoSelect", "DataUrl" => URL."handler/aplicacao/Select2" ))?>
                 </div>
             <?
             }else{
+                $Model->AplicacaoId = APP_ID;
                 Form::Hidden("AplicacaoId", APP_ID);
             }?>
+
+            <div class="form-group">
+                <script>
+                    $(function(){
+                        $("select.AplicacaoSelect").change(function(){
+                            var appId = $(this).val();
+                            $.get("<?=URL;?>handler/perfil/Select2Tag/" + appId, function(data){
+                                console.log(data);
+                                //$("input.PerfilSelect").select2('destroy');
+                                $("input.PerfilSelect").select2({
+                                    multiple: true,
+                                    "data": data
+                                });
+                                if(appId != <?=$Model->AplicacaoId?>) {
+                                    $("input.PerfilSelect").val("").change();
+                                }else{
+                                    $("input.PerfilSelect").val("<?=$Model->ListPerfil?>").change();
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <label>
+                    Perfil:
+                </label>
+                <? Form::Select2Tag("ListPerfil", @$Model->ListPerfil, "", Array(
+                    "class" => "form-control PerfilSelect",
+                    "DataUrl" => URL."handler/perfil/Select2Tag/".@$Model->AplicacaoId))?>
+            </div>
+
             <div class="form-group">
                 <label>
                     Login:

@@ -170,6 +170,37 @@ class Form
         Self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
     }
 
+    public static function Select2Tag($Nome="", $Valor="", $Opcoes = "", $htmlAttr = Array())
+    {
+        if(isset($htmlAttr["class"]))
+            $htmlAttr["class"] .= " ".$Nome."Select2Tag";
+        else
+            $htmlAttr["class"] = $Nome."Select2Tag";
+
+        if(isset($htmlAttr["DataUrl"]) && !empty($htmlAttr["DataUrl"])) {
+            echo '<script>
+               $(function(){
+                   $.get("'.$htmlAttr["DataUrl"].'", function(data){
+                        console.log(data);
+                         $("input.' . $Nome . 'Select2Tag").select2({
+                              multiple: true,
+                              "data": data
+                              });
+                   });
+
+               });
+             </script>';
+        }else {
+            echo '<script>
+                $(function(){
+                     $("input.' . $Nome . 'Select2Tag").select2();
+                });
+             </script>';
+        }
+
+        Self::Hidden($Nome, $Valor, $htmlAttr);
+    }
+
 
     public static function Password($Nome="", $Valor="", $htmlAttr = Array())
     {

@@ -73,6 +73,8 @@ if(is_array($Model) && count($Model) > 0)
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li><a href="<?=\Libs\Helper::getUrl("cadastro","",@$item->PerfilId);?>"><i class="fa fa-edit"></i>
                                                 Editar</a></li>
+                                        <li><a href="<?=\Libs\Helper::getUrl("acesso","",@$item->PerfilId);?>"><i class="fa fa-gear"></i>
+                                                Permissões de Acesso</a></li>
                                         <li><a onclick="Excluir(<?=@$item->PerfilId;?>)"><i
                                                     class="fa
                                         fa-trash-o"></i> Excluir</a></li>

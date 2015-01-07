@@ -42,23 +42,26 @@ class UsuarioModel
     }
     public function Save($model){
         if($model!=null) {
+
+            /*echo "<pre>";
+            print_r($model);
+            echo "</pre>";*/
+
             $model = (object)$model;
             Helper::cast($model, "DAL\\Usuario");
             Helper::cast($model->Pessoa, "DAL\\Pessoa");
             Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
             Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
 
+            $listaPerfil = explode(",",$model->ListPerfil);
+            $this->pdo->delete("UsuarioPerfil", "UsuarioId = ".$model->UsuarioId." AND PerfilId NOT IN
+                (".$model->ListPerfil.")", 0);
+
             $ModelPessoa = new PessoaModel($this->db);
 
             $model->Pessoa = $ModelPessoa->Save($model->Pessoa);
 
             $model->PessoaId = $model->Pessoa->PessoaId;
-
-            /*echo "<pre>";
-            print_r($model);
-            echo "</pre>";
-            print_r($PessoaFisica);
-            print_r($PessoaJuridica);*/
 
              if($model->UsuarioId > 0) {
                  $usuario = $this->pdo->GetById("Usuario", "UsuarioId", $model->UsuarioId, "DAL\\Usuario");
@@ -76,6 +79,21 @@ class UsuarioModel
                  $model->Ativo = 1;
                  $model->UsuarioId = $this->pdo->insert("Usuario", $model);
              }
+
+
+
+
+
+
+            foreach($listaPerfil as $PerfilId){
+
+                $check = $this->pdo->select("SELECT * FROM usuarioperfil WHERE PerfilId = ".$PerfilId." AND UsuarioId = ".$model->UsuarioId);
+                if(empty($check)){
+                    $this->pdo->insert("UsuarioPerfil", Array("PerfilId" => $PerfilId, "UsuarioId" =>
+                        $model->UsuarioId));
+                }
+            }
+
 
         }
         return $model;

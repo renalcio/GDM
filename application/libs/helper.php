@@ -27,7 +27,7 @@ class Helper
         $Model = null;
         //Verifica se exite post
         if (isset($_POST) && count($_POST) > 0) {
-
+            //var_dump($_POST);
             $Model = self::CastArray($_POST);
         }
 

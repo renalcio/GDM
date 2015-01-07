@@ -29,6 +29,11 @@ class Usuario
      */
     var $file;
 
+    /**
+     * @NotMapped
+     */
+    var $ListPerfil;
+
     public function __construct($UsuarioId=0, $PessoaId=0, $AplicacaoId = 0, $Login="", $Senha="", $Avatar="", $NovaSenha="", $ConfirmarNovaSenha="")
     {
         $pdo = new Database();
@@ -43,9 +48,14 @@ class Usuario
             $this->ConfirmarNovaSenha = $ConfirmarNovaSenha;
         }
 
-        if($this->UsuarioId > 0 && $this->PessoaId > 0)
+        if($this->UsuarioId > 0 && $this->PessoaId > 0) {
             $this->Pessoa = $pdo->GetById("Pessoa", "PessoaId", $this->PessoaId, "DAL\\Pessoa");
-        else
+            $Perfis = $pdo->select("SELECT * FROM usuarioperfil WHERE UsuarioId = ".$this->UsuarioId, "", true);
+            $this->ListPerfil = "";
+            for($i = 0; $i < count($Perfis); $i++){
+                $this->ListPerfil .= $Perfis[$i]->PerfilId.($i ==(count($Perfis)-1) ? "" : ",");
+            }
+        }else
             $this->Pessoa = new Pessoa();
 
 
