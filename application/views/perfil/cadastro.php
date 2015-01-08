@@ -8,7 +8,7 @@ use Libs\Session;
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title">
-                  Dados do Nicho
+                    Dados do Nicho
                 </h3>
 
             </div>
@@ -18,7 +18,7 @@ use Libs\Session;
                 Form::Hidden("PerfilId", @$Model->PerfilId);
 
                 if(APPID == ROOTAPP){
-                ?>
+                    ?>
                     <div class="form-group">
                         <label>
                             Aplicação:
@@ -38,8 +38,15 @@ use Libs\Session;
                     </label>
                     <?Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"));?>
                 </div>
+
+                <div class="form-group">
+                    <label>
+                        Nivel:
+                    </label>
+                    <?Form::Number("Nivel", @$Model->Nivel, Array("class" => "form-control"));?>
+                </div>
             </div>
-            
+
         </div>
     </div>
 

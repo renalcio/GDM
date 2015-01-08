@@ -1,6 +1,4 @@
-<?
-use Libs\Form;
-?>
+
 <script>
     $(function(){
         //DropZone("drop-avatar", "drop-avatar-btn", "mouse-over");
@@ -68,9 +66,8 @@ use Libs\Form;
                 </form>
             </div>
         </div>
-    </div><!-- /.modal -->
+    </div>
 
-    <!-- Loading state -->
     <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 </div>
 

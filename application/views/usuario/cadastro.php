@@ -1,5 +1,4 @@
 <?
-use Libs\Form;
 use Libs\Helper;
 ?>
 <?  Helper::LoadModelView($Model, "avatar", "usuario");?>

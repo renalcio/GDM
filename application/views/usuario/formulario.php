@@ -31,11 +31,11 @@ Form::Hidden("Ativo", @$Model->Ativo);
                 Form::Hidden("AplicacaoId", APP_ID);
             }?>
 
-            <div class="form-group">
-                <script>
-                    $(function(){
+            <script>
+                $(function(){
                         $("select.AplicacaoSelect").change(function(){
                             var appId = $(this).val();
+                            console.log(appId);
                             $.get("<?=URL;?>handler/perfil/Select2Tag/" + appId, function(data){
                                 console.log(data);
                                 //$("input.PerfilSelect").select2('destroy');
@@ -50,8 +50,11 @@ Form::Hidden("Ativo", @$Model->Ativo);
                                 }
                             });
                         });
-                    });
-                </script>
+
+                });
+            </script>
+
+            <div class="form-group">
                 <label>
                     Perfil:
                 </label>

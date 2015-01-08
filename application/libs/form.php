@@ -181,7 +181,6 @@ class Form
             echo '<script>
                $(function(){
                    $.get("'.$htmlAttr["DataUrl"].'", function(data){
-                        console.log(data);
                          $("input.' . $Nome . 'Select2Tag").select2({
                               multiple: true,
                               "data": data

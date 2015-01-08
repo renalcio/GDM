@@ -3,6 +3,7 @@ namespace Controllers\Handler;
 use Core\Controller;
 use Classe\Database;
 use Libs\Helper;
+use Libs\Usuario;
 
 class PerfilHandler extends Controller
 {
@@ -21,11 +22,11 @@ class PerfilHandler extends Controller
         }
     }
 
-    function Select2($AplicacaoId = 0)
+    function Select2($AplicacaoId = APP_ID)
     {
         $retorno = "";
         $pdo = new Database();
-        $sql = $pdo->select("SELECT * FROM Perfil WHERE AplicacaoId = '".$AplicacaoId."' OR '".$AplicacaoId."' = '0'", "", true);
+        $sql = $pdo->select("SELECT * FROM Perfil WHERE AplicacaoId = '".$AplicacaoId."' ", "", true);
         if (count($sql) > 0) {
             foreach ($sql as $item) {
                 $retorno .= "<option value='" . $item->PerfilId . "'>" . $item->Titulo . "</option>";
@@ -40,13 +41,16 @@ class PerfilHandler extends Controller
         header('Content-Type: application/json; Charset=UTF-8');
         $retorno = Array();
         $pdo = new Database();
-        $sql = $pdo->select("SELECT * FROM Perfil WHERE AplicacaoId = '".$AplicacaoId."' OR '".$AplicacaoId."' = '0'", "", true);
-        if (count($sql) > 0) {
-            foreach ($sql as $item) {
-                $add = new \stdClass();
-                $add->id = $item->PerfilId;
-                $add->text = $item->Titulo;
-                $retorno[] = $add;
+        $NIvel = Usuario::GetNivel();
+        if($AplicacaoId > 0) {
+            $sql = $pdo->select("SELECT * FROM Perfil WHERE (AplicacaoId = '" . $AplicacaoId . "') AND Nivel >= '" . $NIvel . "'", "", true);
+            if (count($sql) > 0) {
+                foreach ($sql as $item) {
+                    $add = new \stdClass();
+                    $add->id = $item->PerfilId;
+                    $add->text = $item->Titulo;
+                    $retorno[] = $add;
+                }
             }
         }
 

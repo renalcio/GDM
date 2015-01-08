@@ -7,6 +7,7 @@ class Perfil
     var $AplicacaoId;
     var $Titulo;
     var $Ativo;
+    var $Nivel;
 
     /**
      * @NotMapped

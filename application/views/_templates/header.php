@@ -404,10 +404,10 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="#" class="btn btn-default btn-flat">Informações</a>
             </div>
             <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a href="<?=Helper::getUrl("logout", "login");?>" class="btn btn-default btn-flat">Sair</a>
             </div>
         </li>
     </ul>

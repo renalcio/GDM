@@ -109,4 +109,42 @@ class Session
     public static function VerSimples($Titulo){
         return $_SESSION[$Titulo];
     }
+
+    public static function Deletar($Titulo, $Campo = ""){
+
+        if(!isset($_SESSION))
+            session_start();
+
+        if(isset($_SESSION[$Titulo])) {
+
+            if (empty($Campo)) {
+
+                $_SESSION[$Titulo] = "";
+                unset($_SESSION[$Titulo]);
+
+            } else {
+                //Pega Session
+                $session = $_SESSION[$Titulo];
+
+                //Serializa
+                $valores = @unserialize($session) !== FALSE ? unserialize($session) : Array();
+
+                //Verifica campo
+                if (isset($valores[$Campo])) {
+
+                    //Apaga valor desejado
+                    $valores[$Campo] = "";
+                    unset($valores[$Campo]);
+
+                    //Serializa
+                    $serializado = serialize($valores);
+
+                    //Salva
+                    $_SESSION[$Titulo] = $serializado;
+                }
+
+            }
+        }
+
+    }
 }

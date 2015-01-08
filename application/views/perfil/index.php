@@ -12,7 +12,7 @@ if(is_array($Model) && count($Model) > 0)
             });
 
             $("#listagem").dataTable({
-                "aoColumns": [ null,null, {"bSortable": false}, {"bSortable": false} ]
+                "aoColumns": [ null,null,null, {"bSortable": false}, {"bSortable": false} ]
             });
         });
 
@@ -44,6 +44,7 @@ if(is_array($Model) && count($Model) > 0)
                     <? if(APPID == ROOTAPP) { ?>
                         <th>Aplicação</th>
                     <?}?>
+                    <th width="30px">Nível</th>
                     <th width="30px">Ativo</th>
                     <th style="width:18px" align="center"></th>
                 </tr>
@@ -60,7 +61,7 @@ if(is_array($Model) && count($Model) > 0)
                             <? if(APPID == ROOTAPP) { ?>
                                 <td><?=$item->Aplicacao->Titulo;?></td>
                             <?}?>
-
+                            <td align="center"><?=$item->Nivel;?></td>
                             <td>
 
                                 <input type="checkbox" ref="<?=@$item->PerfilId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">

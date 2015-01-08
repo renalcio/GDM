@@ -80,5 +80,4 @@ class LoginModel
             return false;
         }
     }
-    
 }

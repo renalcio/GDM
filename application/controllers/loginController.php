@@ -10,6 +10,8 @@
  */
 namespace Controllers;
 use Core\Controller;
+use \Libs\Cookie;
+use \Libs\Session;
 class LoginController extends Controller
 {
     /**
@@ -48,5 +50,14 @@ class LoginController extends Controller
                 $this->model->SetLogin($Login, $Senha);
             }
             echo json_encode($retorno);
+    }
+
+    public function Logout(){
+        \Libs\Session::Deletar("GDMAuth");
+        \Libs\Cookie::Deletar("GDMAuth");
+
+        session_destroy();
+
+        $this->Redirect("index");
     }
 }

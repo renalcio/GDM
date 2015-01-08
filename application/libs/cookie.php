@@ -76,4 +76,39 @@ class Cookie
                 
         setcookie($Titulo,$Valor, $Tempo, "/", $_SERVER['HTTP_HOST']);
     }
+
+    public static function Deletar($Titulo, $Campo = ""){
+
+        if(isset($_COOKIE[$Titulo])) {
+
+            if (empty($Campo)) {
+
+                $_COOKIE[$Titulo] = "";
+                unset($_COOKIE[$Titulo]);
+
+            } else {
+                //Pega Session
+                $cookie = $_COOKIE[$Titulo];
+
+                //Serializa
+                $valores = @unserialize($cookie) !== FALSE ? unserialize($cookie) : Array();
+
+                //Verifica campo
+                if (isset($valores[$Campo])) {
+
+                    //Apaga valor desejado
+                    $valores[$Campo] = "";
+                    unset($valores[$Campo]);
+
+                    //Serializa
+                    $serializado = serialize($valores);
+
+                    //Salva
+                    $_COOKIE[$Titulo] = $serializado;
+                }
+
+            }
+        }
+
+    }
 }

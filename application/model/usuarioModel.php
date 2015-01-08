@@ -4,7 +4,9 @@ use Classe\Database;
 use Libs\Helper;
 use Libs\Cookie;
 use Libs\Session;
+use Libs\Usuario;
 use DAL\Pessoa;
+use Libs\Debug;
 class UsuarioModel
 {
     /**
@@ -25,7 +27,8 @@ class UsuarioModel
         if($Model->UsuarioId > 0)
         {
             $Model = $this->pdo->GetById("Usuario", "UsuarioId", $Model->UsuarioId, "DAL\\Usuario");
-
+        }else{
+            $Model = new \DAL\Usuario();
         }
         return $Model;
     }
@@ -36,6 +39,15 @@ class UsuarioModel
             $Model->ListUsuario = $this->pdo->select("SELECT * FROM Usuario", "DAL\\Usuario", true);
         else {
             $Model->ListUsuario = $this->pdo->select("SELECT Usuario WHERE AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
+        }
+
+        for($i = 0; $i < count($Model->ListUsuario); $i++){
+            $NivelItem = Usuario::GetNivel($Model->ListUsuario[$i]->UsuarioId);
+            $NivelUser = Usuario::GetNivel();
+
+            if($NivelItem < $NivelUser){
+                unset($Model->ListUsuario[$i]);
+            }
         }
 
         return $Model;

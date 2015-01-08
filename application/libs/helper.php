@@ -2,6 +2,7 @@
 namespace Libs;
 class Helper
 {
+
     public static function Abreviar($Nome, $NumNome = 2){
         $array = explode(" ", $Nome);
         $retorno= "";
