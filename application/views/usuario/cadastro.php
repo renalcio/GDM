@@ -13,8 +13,12 @@ use Libs\Helper;
 </script>
 <form method="post">
 
-    <?  Helper::LoadModelView($Model, "formulario", "usuario");?>
+    <?
+    \Libs\ModelState::addError("Erro teste");
+    \Libs\Form::ValidationSummary();
+    ?>
 
+    <?  Helper::LoadModelView($Model, "formulario", "usuario");?>
     <div id="formPessoa">
         <h3 class="page-header">Dados Pessoais</h3>
         <?  Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>

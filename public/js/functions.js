@@ -3,6 +3,42 @@
  */
 
 /**
+ * STACK ALERT
+ */
+function alertaTopo(tipo) {
+
+    var stack_bar_top = {"dir1": "down", "dir2": "left", "push": "bottom", "spacing1": 0, "spacing2": 0};
+
+    var opts = {
+        title: "Over Here",
+        text: "Check me out. I'm in a different stack.",
+        addclass: "stack-bar-top",
+        //cornerclass: "",
+        //width: "100%",
+       stack: stack_bar_top,
+        animation: "slide"
+    };
+    switch (tipo) {
+        case 'error':
+            opts.title = "Oh No";
+            opts.text = "Watch out for that water tower!";
+            opts.type = "error";
+            break;
+        case 'info':
+            opts.title = "Breaking News";
+            opts.text = "Have you met Ted?";
+            opts.type = "info";
+            break;
+        case 'success':
+            opts.title = "Good News Everyone";
+            opts.text = "I've invented a device that bites shiny metal asses.";
+            opts.type = "success";
+            break;
+    }
+    new PNotify(opts);
+}
+
+/**
  * SWITCH INPUT
  */
 $(function(){

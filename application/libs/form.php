@@ -4,6 +4,35 @@ namespace Libs;
 class Form
 {
 
+    public static function ValidationSummary($htmlAttr = Array()){
+        $Erros = ModelState::getErrors();
+
+        if(count($Erros) > 0) {
+            echo '<div class="box box-danger">
+                                <div class="box-header">
+                                    <i class="fa fa-warning"></i>
+                                    <h3 class="box-title">Alertas</h3>
+                                </div>
+                                <div class="box-body">';
+
+            foreach ($Erros as $erro) {
+                echo '<div class="alert alert-danger alert-dismissable">
+                                        <i class="fa fa-ban"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <b>Erro!</b> ' . $erro . '
+                                    </div>';
+
+                echo '<script>
+    $(function(){
+
+    });
+</script>';
+            }
+            echo ' </div><!-- /.box-body -->
+                            </div>';
+        }
+    }
+
     public static function Input($Tipo, $Nome="", $Valor="", $htmlAttr = Array())
     {
         $html = "";

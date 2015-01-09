@@ -35,7 +35,7 @@ class UsuarioModel
 
     public function GetToIndex($Model)
     {
-        if(defined('APP_ID') && APP_ID == 1)
+        if(defined('APP_ID') && APP_ID == ROOTAPP)
             $Model->ListUsuario = $this->pdo->select("SELECT * FROM Usuario", "DAL\\Usuario", true);
         else {
             $Model->ListUsuario = $this->pdo->select("SELECT Usuario WHERE AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
@@ -45,7 +45,7 @@ class UsuarioModel
             $NivelItem = Usuario::GetNivel($Model->ListUsuario[$i]->UsuarioId);
             $NivelUser = Usuario::GetNivel();
 
-            if($NivelItem < $NivelUser){
+            if($NivelItem < $NivelUser && $Model->ListUsuario[$i]->AplicacaoId == APPID){
                 unset($Model->ListUsuario[$i]);
             }
         }
@@ -66,7 +66,8 @@ class UsuarioModel
             Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
 
             $listaPerfil = explode(",",$model->ListPerfil);
-            $this->pdo->delete("UsuarioPerfil", "UsuarioId = ".$model->UsuarioId." AND PerfilId NOT IN
+            if($model->UsuarioId > 0)
+            $this->pdo->delete("UsuarioPerfil", "UsuarioId = '".$model->UsuarioId."' AND PerfilId NOT IN
                 (".$model->ListPerfil.")", 0);
 
             $ModelPessoa = new PessoaModel($this->db);

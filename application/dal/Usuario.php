@@ -34,6 +34,11 @@ class Usuario
      */
     var $ListPerfil;
 
+    /**
+     * @NotMapped
+     */
+    var $Aplicacao;
+
     public function __construct($UsuarioId=0, $PessoaId=0, $AplicacaoId = 0, $Login="", $Senha="", $Avatar="", $NovaSenha="", $ConfirmarNovaSenha="")
     {
         $pdo = new Database();
@@ -55,6 +60,10 @@ class Usuario
             for($i = 0; $i < count($Perfis); $i++){
                 $this->ListPerfil .= $Perfis[$i]->PerfilId.($i ==(count($Perfis)-1) ? "" : ",");
             }
+
+            //Aplicacao
+            if($this->AplicacaoId > 0)
+                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
         }else
             $this->Pessoa = new Pessoa();
 

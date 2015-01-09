@@ -3,13 +3,13 @@ use Libs\Session;
 use Libs\Helper;
 $db = new Classe\Database();
 $sessao = new Session("GDMAuth");
-$PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHERE u.PessoaId = p.PessoaId AND p.PessoaId = '". $sessao->Ver("PessoaId"). "'");
+$HUser = $db->GetById("Usuario", "UsuarioId", $sessao->Ver("UsuarioId"), "DAL\\Usuario");
 ?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>GDM</title>
+    <title><?=$HUser->Aplicacao->Titulo;?></title>
     <meta name="description" content="Gerenciador de Dados Modular">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
@@ -26,6 +26,7 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         var SiteURL = "<?=URL?>";
     </script>
 
+    <!--CSS-->
     <? \Libs\Helper::LoadMedia("css", Array(
         "bootstrap.min.css",
         "style.css",
@@ -46,9 +47,12 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         //CROP
         "avatar.css",
         "cropper.css",
+        //Notofy
+        "pnotify.custom.css",
         //SWITCH
         "bootstrap-switch.css"
     ));
+    echo "<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", Array(
         //JQUERY
         "jquery.js",
@@ -85,6 +89,8 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
         "plugins/bootstrap-switch.min.js",
         //iCheck
         "plugins/iCheck/icheck.min.js",
+        //Notofy
+        "plugins/pnotify.custom.js",
 
         //HELPER
         "helper.js",
@@ -173,7 +179,7 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
 <header class="header">
 <a href="index.html" class="logo">
     <!-- Add the class icon to your logo image or logo icon to add the margining -->
-    GDM
+    <?=$HUser->Aplicacao->Titulo;?>
 </a>
 <!-- Header Navbar: style can be found in header.less -->
 <nav class="navbar navbar-static-top" role="navigation">
@@ -378,14 +384,14 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="glyphicon glyphicon-user"></i>
-        <span><?=Helper::Abreviar($PessoaUsuario->Nome);?> <i class="caret"></i></span>
+        <span><?=Helper::Abreviar($HUser->Pessoa->Nome);?> <i class="caret"></i></span>
     </a>
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header bg-light-blue">
-            <img src="<?=$PessoaUsuario->Avatar;?>" class="img-circle" alt="User Image" />
+            <img src="<?=$HUser->Avatar;?>" class="img-circle" alt="User Image" />
             <p>
-                <?=Helper::Abreviar($PessoaUsuario->Nome);?> - Web Developer
+                <?=Helper::Abreviar($HUser->Pessoa->Nome);?> - Web Developer
                 <small>Member since Nov. 2012</small>
             </p>
         </li>
@@ -424,10 +430,10 @@ $PessoaUsuario = $db->select("SELECT p.*, u.Avatar FROM Pessoa p, Usuario u WHER
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?=$PessoaUsuario->Avatar;?>" class="img-circle" alt="User Image" />
+                    <img src="<?=$HUser->Avatar;?>" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>Olá, <?=Helper::Abreviar($PessoaUsuario->Nome);?></p>
+                    <p>Olá, <?=Helper::Abreviar($HUser->Pessoa->Nome);?></p>
 
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>

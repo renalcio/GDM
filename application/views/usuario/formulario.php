@@ -43,14 +43,13 @@ Form::Hidden("Ativo", @$Model->Ativo);
                                     multiple: true,
                                     "data": data
                                 });
-                                if(appId != <?=$Model->AplicacaoId?>) {
+                                if(appId != '<?=$Model->AplicacaoId?>') {
                                     $("input.PerfilSelect").val("").change();
                                 }else{
                                     $("input.PerfilSelect").val("<?=$Model->ListPerfil?>").change();
                                 }
                             });
                         });
-
                 });
             </script>
 

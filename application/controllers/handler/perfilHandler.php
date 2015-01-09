@@ -43,7 +43,20 @@ class PerfilHandler extends Controller
         $pdo = new Database();
         $NIvel = Usuario::GetNivel();
         if($AplicacaoId > 0) {
-            $sql = $pdo->select("SELECT * FROM Perfil WHERE (AplicacaoId = '" . $AplicacaoId . "') AND Nivel >= '" . $NIvel . "'", "", true);
+            $sql = $pdo->select("
+                              SELECT *
+                              FROM Perfil
+                              WHERE
+                                (
+                                AplicacaoId = '" . $AplicacaoId . "'
+                                AND Nivel >= '" . $NIvel . "'
+                                )
+                              OR
+                                (
+                                '".APPID."' = '".ROOTAPP."'
+                                AND '".$AplicacaoId."' != '".ROOTAPP."'
+                                AND AplicacaoId = '".$AplicacaoId."'
+                                )", "", true);
             if (count($sql) > 0) {
                 foreach ($sql as $item) {
                     $add = new \stdClass();

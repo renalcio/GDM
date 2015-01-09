@@ -12,7 +12,7 @@ if(is_array($Model) && count($Model) > 0)
             });
 
             $("#listagem").dataTable({
-                "aoColumns": [ null,null,null, {"bSortable": false}, {"bSortable": false} ]
+                "aoColumns": [ null,null,<? if(APPID==ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
             });
         });
 

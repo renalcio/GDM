@@ -12,7 +12,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
         });
 
         $("#listagem").dataTable({
-            "aoColumns": [ null,null,null, {"bSortable": false}, {"bSortable": false} ]
+            "aoColumns": [ null,null,null,null,<? if(APPID==ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
         });
     });
     function Excluir(Id){
@@ -42,6 +42,10 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                         <th>Nome</th>
                             <th>Email</th>
                             <th>Login</th>
+                            <? if(APPID == ROOTAPP) {
+                                ?><th>Aplicação</th><?
+                            } ?>
+                            <th width="30px">Nível</th>
                             <th width="30px">Ativo</th>
                         <th style="width:18px"></th>
                         </tr>
@@ -57,6 +61,10 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                             <td><?=$item->Pessoa->Nome;?></td>
                             <td><?=$item->Pessoa->Email;?></td>
                             <td><?=$item->Login;?></td>
+                            <? if(APPID == ROOTAPP) {
+                                ?><td><?=$item->Aplicacao->Titulo;?></td><?
+                            } ?>
+                            <td><?=\Libs\Usuario::GetNivel($item->UsuarioId);?></td>
                             <td>
 
                                 <input type="checkbox" ref="<?=@$item->UsuarioId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">

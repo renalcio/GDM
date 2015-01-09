@@ -10,8 +10,7 @@ use Libs\Form;
     <?Form::Hidden("PessoaFisica_PessoaId", @$Model->PessoaFisica->PessoaId);?>
     <?Form::Hidden("PessoaJuridica_PessoaId", @$Model->PessoaJuridica->PessoaId);?>
     <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica, Array("class"=>"TipoPessoaFisicaBit"));?>
-<?=@$Model->TipoPessoaFisica?>
-    <div id="row">
+
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#pf" id="pfLink"
@@ -170,5 +169,5 @@ use Libs\Form;
 
             </div>
         </div>
-    </div>
+
 
