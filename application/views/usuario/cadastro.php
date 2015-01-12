@@ -12,9 +12,7 @@ use Libs\Helper;
     });
 </script>
 <form method="post">
-
     <?
-    \Libs\ModelState::addError("Erro teste");
     \Libs\Form::ValidationSummary();
     ?>
 

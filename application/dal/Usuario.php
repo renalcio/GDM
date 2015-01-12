@@ -5,7 +5,13 @@ class Usuario
 {
     var $PessoaId;
     var $UsuarioId;
+    /**
+     * @Required
+     */
     var $AplicacaoId;
+    /**
+     * @Required
+     */
     var $Login;
     var $Senha;
     var $Avatar;
@@ -31,6 +37,7 @@ class Usuario
 
     /**
      * @NotMapped
+     * @Required
      */
     var $ListPerfil;
 

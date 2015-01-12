@@ -104,4 +104,18 @@ class PessoaModel
             $this->pdo->delete("PessoaJuridica", "PessoaId = '".$id."'");
         }
     }
+
+    public function Validar($model)
+    {
+        $retorno = Array();
+        if($model != null) {
+            Helper::cast($model, "DAL\\Pessoa");
+            Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
+            Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
+
+
+        }
+
+        return $retorno;
+    }
 }

@@ -48,7 +48,7 @@ $HUser = $db->GetById("Usuario", "UsuarioId", $sessao->Ver("UsuarioId"), "DAL\\U
         "avatar.css",
         "cropper.css",
         //Notofy
-        "pnotify.custom.css",
+        "jquery.gritter.css",
         //SWITCH
         "bootstrap-switch.css"
     ));
@@ -90,7 +90,7 @@ $HUser = $db->GetById("Usuario", "UsuarioId", $sessao->Ver("UsuarioId"), "DAL\\U
         //iCheck
         "plugins/iCheck/icheck.min.js",
         //Notofy
-        "plugins/pnotify.custom.js",
+        "plugins/jquery.gritter.js",
 
         //HELPER
         "helper.js",

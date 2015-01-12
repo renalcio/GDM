@@ -55,58 +55,42 @@ class UsuarioModel
     public function Save($model){
         if($model!=null) {
 
-            /*echo "<pre>";
-            print_r($model);
-            echo "</pre>";*/
+                $listaPerfil = explode(",", $model->ListPerfil);
+                if ($model->UsuarioId > 0)
+                    $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN
+                (" . $model->ListPerfil . ")", 0);
 
-            $model = (object)$model;
-            Helper::cast($model, "DAL\\Usuario");
-            Helper::cast($model->Pessoa, "DAL\\Pessoa");
-            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+                $ModelPessoa = new PessoaModel($this->db);
 
-            $listaPerfil = explode(",",$model->ListPerfil);
-            if($model->UsuarioId > 0)
-            $this->pdo->delete("UsuarioPerfil", "UsuarioId = '".$model->UsuarioId."' AND PerfilId NOT IN
-                (".$model->ListPerfil.")", 0);
+                $model->Pessoa = $ModelPessoa->Save($model->Pessoa);
 
-            $ModelPessoa = new PessoaModel($this->db);
+                $model->PessoaId = $model->Pessoa->PessoaId;
 
-            $model->Pessoa = $ModelPessoa->Save($model->Pessoa);
+                if ($model->UsuarioId > 0) {
+                    $usuario = $this->pdo->GetById("Usuario", "UsuarioId", $model->UsuarioId, "DAL\\Usuario");
 
-            $model->PessoaId = $model->Pessoa->PessoaId;
+                    if (!empty($model->NovaSenha) && !empty($model->ConfirmarNovaSenha) && $model->NovaSenha == $model->ConfirmarNovaSenha) {
+                        $model->Senha = md5($model->NovaSenha);
+                    } else {
+                        $model->Senha = $usuario->Senha;
+                    }
 
-             if($model->UsuarioId > 0) {
-                 $usuario = $this->pdo->GetById("Usuario", "UsuarioId", $model->UsuarioId, "DAL\\Usuario");
-
-                 if(!empty($model->NovaSenha) && !empty($model->ConfirmarNovaSenha) && $model->NovaSenha == $model->ConfirmarNovaSenha){
-                     $model->Senha = md5($model->NovaSenha);
-                 }else{
-                     $model->Senha = $usuario->Senha;
-                 }
-
-                 $this->pdo->update("Usuario", $model, "UsuarioId = " . $model->UsuarioId);
-             }
-             else {
-                 $model->Senha = md5($model->Senha);
-                 $model->Ativo = 1;
-                 $model->UsuarioId = $this->pdo->insert("Usuario", $model);
-             }
-
-
-
-
-
-
-            foreach($listaPerfil as $PerfilId){
-
-                $check = $this->pdo->select("SELECT * FROM usuarioperfil WHERE PerfilId = ".$PerfilId." AND UsuarioId = ".$model->UsuarioId);
-                if(empty($check)){
-                    $this->pdo->insert("UsuarioPerfil", Array("PerfilId" => $PerfilId, "UsuarioId" =>
-                        $model->UsuarioId));
+                    $this->pdo->update("Usuario", $model, "UsuarioId = " . $model->UsuarioId);
+                } else {
+                    $model->Senha = md5($model->Senha);
+                    $model->Ativo = 1;
+                    $model->UsuarioId = $this->pdo->insert("Usuario", $model);
                 }
-            }
 
+
+                foreach ($listaPerfil as $PerfilId) {
+
+                    $check = $this->pdo->select("SELECT * FROM usuarioperfil WHERE PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId);
+                    if (empty($check)) {
+                        $this->pdo->insert("UsuarioPerfil", Array("PerfilId" => $PerfilId, "UsuarioId" =>
+                            $model->UsuarioId));
+                    }
+                }
 
         }
         return $model;
@@ -116,5 +100,32 @@ class UsuarioModel
         if($id > 0){
             $this->pdo->delete("Usuario", "UsuarioId = '".$id."'");
         }
+    }
+
+    public function Validar($model)
+    {
+        $retorno = Array();
+        if($model != null) {
+            //verifica usuario
+            $usuarios = $this->pdo->select("SELECT * FROM Usuario WHERE Login = '" . $model->Login . "' AND (PessoaId != '" . $model->Pessoa->PessoaId . "' OR
+'" . $model->Pessoa->PessoaId . "' = '') AND AplicacaoId = '".$model->AplicacaoId."' ", "", true);
+            if (count($usuarios) > 0)
+                $retorno[] = "Este nome de usuário já está sendo utilizado por outra pessoa.";
+
+            //Senha
+            if (!empty($model->NovaSenha) && !empty($model->ConfirmarNovaSenha) && $model->NovaSenha != $model->ConfirmarNovaSenha)
+                $retorno[] = "Senhas diferentes.";
+
+            //Aplicacao
+            if(empty($model->AplicacaoId))
+                $retorno[] = "Selecione uma aplicação";
+
+            //Perfil
+            if(empty($model->ListPerfil))
+                $retorno[] = "Selecione ao menos um perfil";
+
+        }
+
+        return $retorno;
     }
 }

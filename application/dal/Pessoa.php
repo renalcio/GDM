@@ -4,7 +4,13 @@ use Classe\Database;
 class Pessoa
 {
     var $PessoaId;
+    /**
+     * @Required
+     */
     var $Nome;
+    /**
+     * @Required
+     */
     var $Email;
     var $Telefone;
     var $Celular;

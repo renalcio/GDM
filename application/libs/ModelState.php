@@ -56,6 +56,23 @@ class ModelState {
         endforeach;
     }
 
+    public static function Required($model){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations();
+
+        foreach ($get as $campo=>$data):
+            if (array_key_exists("Required", $data)){
+                if(empty($model->$campo))
+                    self::addError("O campo ".$campo." é obrigatório");
+
+            }
+        endforeach;
+    }
+
+    public static function ValidateModel($model){
+        self::Required($model);
+    }
+
     public static function TratamentoDB($model){
         self::MSInt($model);
         self::RemoveNotMapped($model);

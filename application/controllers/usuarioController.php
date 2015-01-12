@@ -49,10 +49,39 @@ class UsuarioController extends Controller
     public function cadastro_post($model = null){
 
         if($model!=null) {
+           /* echo "<pre>";
+            var_dump($model);
+            echo "</pre>";*/
+            $model = (object)$model;
+            Helper::cast($model, "DAL\\Usuario");
+            Helper::cast($model->Pessoa, "DAL\\Pessoa");
+            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
+            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+
             $this->loadModel();
-            $this->model->Save($model);
+
+            //Valida Model
+            ModelState::ValidateModel($model);
+            ModelState::ValidateModel($model->Pessoa);
+
+            if(ModelState::isValid()) {
+
+                $validacao = $this->model->Validar($model);
+                if (count($validacao) > 0) {
+                    foreach ($validacao as $erro) {
+                        \Libs\ModelState::addError($erro);
+                    }
+                    $this->ModelView($model);
+                } else {
+                    $this->model->Save($model);
+                    $this->Redirect("Index", "usuario");
+                }
+
+                $this->ModelView($model);
+            }else{
+                $this->ModelView($model);
+            }
         }
-        $this->Redirect("Index", "usuario");
     }
 
     public function deletar($id){

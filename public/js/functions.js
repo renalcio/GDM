@@ -3,41 +3,45 @@
  */
 
 /**
- * STACK ALERT
+ * GRITTER ALERT
  */
-function alertaTopo(tipo) {
+function alerta(params){
+    if(!params.tempo){
+        params.tempo = 6000;
+    }
 
-    var stack_bar_top = {"dir1": "down", "dir2": "left", "push": "bottom", "spacing1": 0, "spacing2": 0};
+    var grit = {
+        title: params.titulo,
+        text: params.texto,
+        time: params.tempo
+    }
 
-    var opts = {
-        title: "Over Here",
-        text: "Check me out. I'm in a different stack.",
-        addclass: "stack-bar-top",
-        //cornerclass: "",
-        //width: "100%",
-       stack: stack_bar_top,
-        animation: "slide"
-    };
-    switch (tipo) {
-        case 'error':
-            opts.title = "Oh No";
-            opts.text = "Watch out for that water tower!";
-            opts.type = "error";
+    if(!params.topo){
+        grit.position = 'bottom-right';
+    }else if(params.topo == true){
+        grit.position = 'top';
+        grit.class_name = "gritter-topo";
+    }
+
+    switch(params.tipo) {
+        case 'erro':
+            grit.tipo = "erro";
             break;
-        case 'info':
-            opts.title = "Breaking News";
-            opts.text = "Have you met Ted?";
-            opts.type = "info";
+        case 'alerta':
+            grit.tipo = "alerta";
             break;
-        case 'success':
-            opts.title = "Good News Everyone";
-            opts.text = "I've invented a device that bites shiny metal asses.";
-            opts.type = "success";
+        case 'sucesso':
+            grit.tipo = "sucesso";
             break;
     }
-    new PNotify(opts);
-}
 
+
+    if(params.img){
+        grit.image = params.img;
+    }
+
+    $.gritter.add(grit);
+}
 /**
  * SWITCH INPUT
  */

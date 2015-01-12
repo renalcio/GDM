@@ -69,7 +69,7 @@ Form::Hidden("Ativo", @$Model->Ativo);
                 <?Form::Text("Login", @$Model->Login, Array("class" => "form-control"));?>
             </div>
 
-            <? if($Model->UsuarioId  == 0) { ?>
+            <? if(empty($Model->UsuarioId)) { ?>
                 <div class="form-group">
                     <label>
                         Senha:
@@ -80,7 +80,7 @@ Form::Hidden("Ativo", @$Model->Ativo);
         </div>
     </div>
 </div>
-<? if($Model->UsuarioId > 0) { ?>
+<? if(!empty($Model->UsuarioId)) { ?>
     <div id="row">
         <div class="box box-solid box-primary collapsed-box">
             <div class="box-header">
