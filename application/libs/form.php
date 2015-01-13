@@ -12,10 +12,11 @@ class Form
                 echo '<script>
                         $(function(){
                         alerta({
-                            texto: "' . $erro . '",
+                            texto: "' . $erro->Mensagem . '",
                             tipo: "erro",
                             topo: true
                             });
+                            fieldError("'.$erro->Campo.'");
                         });
                         </script>';
             }

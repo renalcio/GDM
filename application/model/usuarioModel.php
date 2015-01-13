@@ -1,8 +1,10 @@
 <?php
 namespace Model;
 use Classe\Database;
+use DAL\UsuarioAplicacao;
 use Libs\Helper;
 use Libs\Cookie;
+use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use DAL\Pessoa;
@@ -22,43 +24,44 @@ class UsuarioModel
         $this->pdo = new Database;
     }
 
-    public function GetToEdit($Model)
+    public function GetToEdit(\DAL\Usuario $model)
     {
-        if($Model->UsuarioId > 0)
+        if($model->UsuarioId > 0)
         {
-            $Model = $this->pdo->GetById("Usuario", "UsuarioId", $Model->UsuarioId, "DAL\\Usuario");
+            $model = $this->pdo->GetById("Usuario", "UsuarioId", $model->UsuarioId, "DAL\\Usuario");
         }else{
-            $Model = new \DAL\Usuario();
+            $model = new \DAL\Usuario();
         }
-        return $Model;
+        return $model;
     }
 
-    public function GetToIndex($Model)
+    public function GetToIndex($model)
     {
         if(defined('APP_ID') && APP_ID == ROOTAPP)
-            $Model->ListUsuario = $this->pdo->select("SELECT * FROM Usuario", "DAL\\Usuario", true);
+            $model->ListUsuario = $this->pdo->select("SELECT * FROM Usuario", "DAL\\Usuario", true);
         else {
-            $Model->ListUsuario = $this->pdo->select("SELECT Usuario WHERE AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
+            $model->ListUsuario = $this->pdo->select("SELECT Usuario WHERE AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
         }
 
-        for($i = 0; $i < count($Model->ListUsuario); $i++){
-            $NivelItem = Usuario::GetNivel($Model->ListUsuario[$i]->UsuarioId);
+        for($i = 0; $i < count($model->ListUsuario); $i++){
+            $NivelItem = Usuario::GetNivel($model->ListUsuario[$i]->UsuarioId);
             $NivelUser = Usuario::GetNivel();
 
-            if($NivelItem < $NivelUser && $Model->ListUsuario[$i]->AplicacaoId == APPID){
-                unset($Model->ListUsuario[$i]);
+            if($NivelItem < $NivelUser && $model->ListUsuario[$i]->AplicacaoId == APPID){
+                unset($model->ListUsuario[$i]);
             }
         }
 
-        return $Model;
+        return $model;
     }
-    public function Save($model){
+    public function Save(\DAL\Usuario $model){
         if($model!=null) {
 
                 $listaPerfil = explode(",", $model->ListPerfil);
-                if ($model->UsuarioId > 0)
+
+                if ($model->UsuarioId > 0 && APP_ID != ROOTAPP)
                     $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN
-                (" . $model->ListPerfil . ")", 0);
+                (" . $model->ListPerfil . ") AND AplicacaoId = '".APP_ID."'", 0);
 
                 $ModelPessoa = new PessoaModel($this->db);
 
@@ -92,6 +95,18 @@ class UsuarioModel
                     }
                 }
 
+            //UsuarioAplicacao
+            if(APP_ID != ROOTAPP) {
+                $UAcheck = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '".$model->UsuarioId."' AND AplicacaoId = '".APP_ID."'", "", true);
+                if(count($UAcheck) <= 0){
+                    $addUA = new UsuarioAplicacao();
+                    $addUA->AplicacaoId = APPID;
+                    $addUA->UsuarioId = $model->UsuarioId;
+
+                    $this->pdo->insert("UsuarioAplicacao", $addUA);
+                }
+            }
+
         }
         return $model;
     }
@@ -102,7 +117,7 @@ class UsuarioModel
         }
     }
 
-    public function Validar($model)
+    public function Validar(\DAL\Usuario $model)
     {
         $retorno = Array();
         if($model != null) {
@@ -110,19 +125,11 @@ class UsuarioModel
             $usuarios = $this->pdo->select("SELECT * FROM Usuario WHERE Login = '" . $model->Login . "' AND (PessoaId != '" . $model->Pessoa->PessoaId . "' OR
 '" . $model->Pessoa->PessoaId . "' = '') AND AplicacaoId = '".$model->AplicacaoId."' ", "", true);
             if (count($usuarios) > 0)
-                $retorno[] = "Este nome de usuário já está sendo utilizado por outra pessoa.";
+                ModelState::addError("Este nome de usuário já está sendo utilizado por outra pessoa", "Login", ModelState::DisplayName($model, "Login"));
 
             //Senha
-            if (!empty($model->NovaSenha) && !empty($model->ConfirmarNovaSenha) && $model->NovaSenha != $model->ConfirmarNovaSenha)
-                $retorno[] = "Senhas diferentes.";
-
-            //Aplicacao
-            if(empty($model->AplicacaoId))
-                $retorno[] = "Selecione uma aplicação";
-
-            //Perfil
-            if(empty($model->ListPerfil))
-                $retorno[] = "Selecione ao menos um perfil";
+            if (!empty($model->NovaSenha) && $model->NovaSenha != $model->ConfirmarNovaSenha)
+                ModelState::addError("Senhas diferentes", "ConfirmarNovaSenha", ModelState::DisplayName($model, "ConfirmarNovaSenha"));
 
         }
 

@@ -14,8 +14,13 @@ class ModelState {
     public static $errors = array();
 
 
-    public static function addError($erro){
-        array_push(self::$errors, $erro);
+    public static function addError($erro, $campo, $DisplayName = ""){
+        $addErro = new \stdClass();
+        $addErro->Campo = $campo;
+        $addErro->DisplayName = !empty($DisplayName) ? $DisplayName : $campo;
+        $addErro->Mensagem = $erro;
+
+        array_push(self::$errors, $addErro);
     }
 
     public static function getErrors(){
@@ -62,11 +67,26 @@ class ModelState {
 
         foreach ($get as $campo=>$data):
             if (array_key_exists("Required", $data)){
-                if(empty($model->$campo))
-                    self::addError("O campo ".$campo." é obrigatório");
+                if(empty($model->$campo)) {
+
+                    self::addError($annotation->getName($campo) . " é obrigatório", $campo, $annotation->getName($campo));
+                }
 
             }
         endforeach;
+    }
+
+    public static function DisplayName($model, $campo){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations();
+
+       if(property_exists($model, $campo)){
+           if(array_key_exists("DisplayName", $get[$campo]))
+               return $get[$campo]["DisplayName"];
+
+           return $campo;
+       }
+
     }
 
     public static function ValidateModel($model){

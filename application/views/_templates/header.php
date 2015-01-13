@@ -3,7 +3,7 @@ use Libs\Session;
 use Libs\Helper;
 $db = new Classe\Database();
 $sessao = new Session("GDMAuth");
-$HUser = $db->GetById("Usuario", "UsuarioId", $sessao->Ver("UsuarioId"), "DAL\\Usuario");
+$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "DAL\\UsuarioAplicacao");
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -384,14 +384,14 @@ $HUser = $db->GetById("Usuario", "UsuarioId", $sessao->Ver("UsuarioId"), "DAL\\U
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="glyphicon glyphicon-user"></i>
-        <span><?=Helper::Abreviar($HUser->Pessoa->Nome);?> <i class="caret"></i></span>
+        <span><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?> <i class="caret"></i></span>
     </a>
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header bg-light-blue">
-            <img src="<?=$HUser->Avatar;?>" class="img-circle" alt="User Image" />
+            <img src="<?=$HUser->Usuario->Avatar;?>" class="img-circle" alt="User Image" />
             <p>
-                <?=Helper::Abreviar($HUser->Pessoa->Nome);?> - Web Developer
+                <?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?> - Web Developer
                 <small>Member since Nov. 2012</small>
             </p>
         </li>
@@ -430,10 +430,10 @@ $HUser = $db->GetById("Usuario", "UsuarioId", $sessao->Ver("UsuarioId"), "DAL\\U
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?=$HUser->Avatar;?>" class="img-circle" alt="User Image" />
+                    <img src="<?=$HUser->Usuario->Avatar;?>" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>Olá, <?=Helper::Abreviar($HUser->Pessoa->Nome);?></p>
+                    <p>Olá, <?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?></p>
 
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>

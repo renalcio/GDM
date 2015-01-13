@@ -1,3 +1,10 @@
+//Add Error Class for Input
+function fieldError(DivFor){
+    var $div = $("[for='"+DivFor+"']");
+    $div.addClass("has-error");
+}
+
+
 //Converter Para Dinheiro (Casas, Símbolo Decimal, Símbolo de Milhar)
 Number.prototype.toMoney = function (c, d, t) {
     var n = this,

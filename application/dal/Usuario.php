@@ -5,12 +5,17 @@ class Usuario
 {
     var $PessoaId;
     var $UsuarioId;
+
     /**
+     * @NotMapped
      * @Required
+     * @DisplayName: Aplicação
      */
     var $AplicacaoId;
+
     /**
      * @Required
+     * @DisplayName: Nome de Usuário
      */
     var $Login;
     var $Senha;
@@ -20,15 +25,18 @@ class Usuario
      * @NotMapped
      */
     var $Pessoa;
+
     /**
      * @NotMapped
+     * @DisplayName: Nova Senha
      */
     var $NovaSenha;
+
     /**
      * @NotMapped
+     * @DisplayName: Confirmar Senha
      */
     var $ConfirmarNovaSenha;
-
 
     /**
      * @NotMapped
@@ -38,6 +46,7 @@ class Usuario
     /**
      * @NotMapped
      * @Required
+     * @DisplayName: Perfís
      */
     var $ListPerfil;
 

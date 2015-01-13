@@ -11,11 +11,11 @@
 namespace Controllers;
 use Core\Controller;
 use Dal\Pessoa;
-use DAL\Usuario;
+use DAL\UsuarioAplicacao;
 use Libs\Helper;
 use Libs\ModelState;
 
-class UsuarioController extends Controller
+class UsuarioAplicacaoController extends Controller
 {
     /**
      * PAGE: index
@@ -40,8 +40,8 @@ class UsuarioController extends Controller
     {
         // load views
         $this->loadModel();
-        $Model = new Usuario();
-        $Model->UsuarioId = $id;
+        $Model = new UsuarioAplicacao();
+        $Model->UsuarioAplicacaoId = $id;
         $Model = $this->model->GetToEdit($Model);
         $this->ModelView($Model);
 
@@ -50,31 +50,22 @@ class UsuarioController extends Controller
     public function cadastro_post($model = null){
 
         if($model!=null) {
-           /* echo "<pre>";
-            var_dump($model);
-            echo "</pre>";*/
+            /* echo "<pre>";
+             var_dump($model);
+             echo "</pre>";*/
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Usuario");
-            Helper::cast($model->Pessoa, "DAL\\Pessoa");
-            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+            Helper::cast($model, "DAL\\UsuarioAplicacao");
+            Helper::cast($model->Usuario, "DAL\\Usuario");
+            Helper::cast($model->Aplicacao, "DAL\\Aplicacao");
 
             $this->loadModel();
 
             //Valida Model
             ModelState::ValidateModel($model);
-            ModelState::ValidateModel($model->Pessoa);
 
             if(ModelState::isValid()) {
-
-                $validacao = $this->model->Validar($model);
-
-                if (ModelState::isValid()) {
-                    $this->model->Save($model);
-                    $this->Redirect("Index", "usuario");
-                }
-
-                $this->ModelView($model);
+                $this->model->Save($model);
+                $this->Redirect("Index", "usuario");
             }else{
                 $this->ModelView($model);
             }

@@ -190,7 +190,7 @@
 			});
 			
 			if(!sticky){
-				this._setFadeTimer(item, number);
+				this._setFadeTimer(item, number, grid_id);
 			}
 			
 			// Bind the hover/unhover states
@@ -202,7 +202,7 @@
 				}
 				else {
 					if(!sticky){
-						Gritter._setFadeTimer($(this), number);
+						Gritter._setFadeTimer($(this), number, grid_id);
 					}
 				}
 				Gritter._hoverState($(this), event.type);
@@ -210,7 +210,7 @@
 			
 			// Clicking (X) makes the perdy thing close
 			$(item).find('.gritter-close').click(function(){
-				Gritter.removeSpecific(number, {}, null, true);
+				Gritter.removeSpecific(number, {}, null, true, grid_id);
 			});
 			
 			return number;
@@ -224,7 +224,7 @@
 		* @param {Object} e The jQuery element that we're going to perform the remove() action on
 		* @param {Boolean} manual_close Did we close the gritter dialog with the (X) button
 		*/
-		_countRemoveWrapper: function(unique_id, e, manual_close){
+		_countRemoveWrapper: function(unique_id, e, manual_close, grid_id){
 			
 			// Remove it then run the callback function
 			e.remove();
@@ -245,7 +245,7 @@
 		* @param {Object} params An optional list of params to set fade speeds etc.
 		* @param {Boolean} unbind_events Unbind the mouseenter/mouseleave events if they click (X)
 		*/
-		_fade: function(e, unique_id, params, unbind_events){
+		_fade: function(e, unique_id, params, unbind_events, grid_id){
 
 			var params = params || {},
 				fade = (typeof(params.fade) != 'undefined') ? params.fade : true,
@@ -266,14 +266,14 @@
 					opacity: 0
 				}, fade_out_speed, function(){
 					e.animate({ height: 0 }, 300, function(){
-						Gritter._countRemoveWrapper(unique_id, e, manual_close);
+						Gritter._countRemoveWrapper(unique_id, e, manual_close, grid_id);
 					})
 				})
 				
 			}
 			else {
 				
-				this._countRemoveWrapper(unique_id, e);
+				this._countRemoveWrapper(unique_id, e, null, grid_id);
 				
 			}
 						
@@ -315,7 +315,7 @@
 		* @param {Object} e The jQuery element that we're "fading" then removing
 		* @param {Boolean} unbind_events If we clicked on the (X) we set this to true to unbind mouseenter/mouseleave
 		*/
-		removeSpecific: function(unique_id, params, e, unbind_events){
+		removeSpecific: function(unique_id, params, e, unbind_events, grid_id){
 			
 			if(!e){
 				var e = $('#gritter-item-' + unique_id);
@@ -323,7 +323,7 @@
 
 			// We set the fourth param to let the _fade function know to 
 			// unbind the "mouseleave" event.  Once you click (X) there's no going back!
-			this._fade(e, unique_id, params || {}, unbind_events);
+			this._fade(e, unique_id, params || {}, unbind_events, grid_id);
 			
 		},
 		
@@ -359,11 +359,11 @@
 		* @param {Object} item The HTML element we're dealing with
 		* @param {Integer} unique_id The ID of the element
 		*/
-		_setFadeTimer: function(e, unique_id){
+		_setFadeTimer: function(e, unique_id, grid_id){
 			
 			var timer_str = (this._custom_timer) ? this._custom_timer : this.time;
 			this['_int_id_' + unique_id] = setTimeout(function(){ 
-				Gritter._fade(e, unique_id);
+				Gritter._fade(e, unique_id, null, null, grid_id);
 			}, timer_str);
 		
 		},

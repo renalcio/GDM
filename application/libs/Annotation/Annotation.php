@@ -45,7 +45,8 @@ class Annotation {
                                  "NotMapped" => array(),
                                  "Range" => array(),
                                  "Email" => array(),
-                                "Int" => array()
+                                "Int" => array(),
+                                "DisplayName" => Array()
                             );
 
     /**
@@ -123,5 +124,12 @@ class Annotation {
 
     public function getAttributes(){
         return $this->_attributes;
+    }
+
+    public function getName($campo){
+        if(array_key_exists("DisplayName", $this->_annotations[$campo]))
+            return $this->_annotations[$campo]["DisplayName"];
+
+        return $campo;
     }
 } 
