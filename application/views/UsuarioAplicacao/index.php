@@ -28,7 +28,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 		<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">
-					Usuários
+					Vínculos de Usuários
 				</h3>
                 <div class="box-tools pull-right">
                     <a href="<?=URL?>usuario/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
@@ -46,7 +46,6 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                                 ?><th>Aplicação</th><?
                             } ?>
                             <th width="30px">Nível</th>
-                            <th width="30px">Ativo</th>
                         <th style="width:18px"></th>
                         </tr>
                         </thead>
@@ -58,17 +57,14 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                                 {
                                     ?>
                         <tr>
-                            <td><?=$item->Pessoa->Nome;?></td>
-                            <td><?=$item->Pessoa->Email;?></td>
-                            <td><?=$item->Login;?></td>
+                            <td><?=$item->Usuario->Pessoa->Nome;?></td>
+                            <td><?=$item->Usuario->Pessoa->Email;?></td>
+                            <td><?=$item->Usuario->Login;?></td>
                             <? if(APPID == ROOTAPP) {
                                 ?><td><?=$item->Aplicacao->Titulo;?></td><?
                             } ?>
                             <td><?=\Libs\Usuario::GetNivel($item->UsuarioId);?></td>
-                            <td>
 
-                                <input type="checkbox" ref="<?=@$item->UsuarioId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">
-                            </td>
                             <td align="center">
 
                                 <div class="btn-group">
@@ -76,9 +72,10 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                                        data-toggle="dropdown"></i>
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li><a href="<?=URL;
-                                            ?>usuario/cadastro/<?=$item->UsuarioId;?>"><i class="fa fa-edit"></i>
+                                            ?>usuario/cadastro/<?=$item->UsuarioAplicacaoId;?>"><i class="fa
+                                            fa-edit"></i>
                                                 Editar</a></li>
-                                        <li class="dropdown-danger"><a onclick="Excluir(<?=$item->UsuarioId;?>)"><i
+                                        <li class="dropdown-danger"><a onclick="Excluir(<?=$item->UsuarioAplicacaoId;?>)"><i
                                                     class="fa
                                         fa-trash-o"></i> Excluir</a></li>
 

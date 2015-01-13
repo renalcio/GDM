@@ -9,7 +9,7 @@ use Libs\Session;
 use Libs\Usuario;
 use DAL\Pessoa;
 use Libs\Debug;
-class UsuarioModel
+class UsuarioAplicacaoModel
 {
     /**
      * @param object $db A PDO database connection
@@ -52,7 +52,7 @@ class UsuarioModel
             }
         }
 
-        return $Model;
+        return $model;
     }
     public function Save(UsuarioAplicacao $model){
         if($model!=null) {

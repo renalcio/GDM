@@ -13,7 +13,9 @@ class Usuario
         if($UsuarioId == '0') {
             $sessao = new Session("GDMAuth");
 
-            $Usuario = $pdo->select("SELECT * FROM Usuario WHERE PessoaId = '" . $sessao->Ver("PessoaId") . "' AND AplicacaoId = '" . $sessao->Ver("AplicacaoId") . "'", "DAL\\Usuario");
+            $Usuario = $pdo->select("SELECT u.* FROM Usuario u, UsuarioAplicacao ua WHERE u.UsuarioId = ua.UsuarioId AND u.PessoaId = '" . $sessao->Ver("PessoaId") . "' AND ua
+.AplicacaoId =
+'" . $sessao->Ver("AplicacaoId") . "'", "DAL\\Usuario");
 
         }else {
             $Usuario = $pdo->select("SELECT * FROM Usuario WHERE UsuarioId = '" . $UsuarioId . "'", "DAL\\Usuario");
