@@ -1,6 +1,6 @@
 <div class="form-box" id="login-box">
 	<div class="header">
-		Entrar
+		Selecionar Aplicação
 	</div>
 	<form method="post" id="loginForm">
 		<div class="body bg-gray">
@@ -11,24 +11,35 @@
                                         <ul id="errosul"></ul>
                                     </div>
                                     </div>
-			<div class="form-group">
-				<input type="text" name="Login" class="form-control" placeholder="Usuario ou Email"/>
-			</div>
-			<div class="form-group">
-				<input type="password" name="Senha" class="form-control" placeholder="Senha"/>
-			</div>
-			<div class="form-group">
-				<input type="checkbox" name="remember_me"/>
-				Lembrar-me
+
+			<div class="list-group">
+				<?
+				if(count(@$Model) > 0){
+					foreach(@$Model as $item){
+						?>
+						<a href="<?=\Libs\Helper::getUrl("selecionaAplicacao", "login", $item->Aplicacao->AplicacaoId)
+						;?>"
+						   class="list-group-item">
+							<table width="100%">
+								<tr>
+									<td valign="middle"><?=$item->Aplicacao->Titulo;?></td>
+									<td valign="middle" align="right" width="24px">
+										<i class="glyphicon glyphicon-chevron-right text-green"></i>
+									</td>
+								</tr>
+							</table>
+						</a>
+						<?
+					}
+				}
+				?>
+
 			</div>
 		</div>
 		<div class="footer">
-			<button type="submit" class="btn bg-olive btn-block">
-				Entrar
-			</button>
-			<p>
-				<a href="#">Esqueci minha senha</a>
-			</p>
+			<a href="<?=\Libs\Helper::getUrl("logout");?>" class="btn bg-red btn-block">
+				Sair
+			</a>
 		</div>
 	</form>
 	<script>

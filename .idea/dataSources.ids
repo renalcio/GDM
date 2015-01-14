@@ -52,6 +52,13 @@
       <column name="Nivel" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
       <primary-key name="PRIMARY" columns="PerfilId"/>
     </table>
+    <table name="Permissao" schema="" catalog="cdm" type="TABLE">
+      <column name="PermissaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="MenuId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="PerfilId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="PermissaoId"/>
+    </table>
     <table name="Pessoa" schema="" catalog="cdm" type="TABLE">
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Nome" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -61,10 +68,10 @@
       <column name="Observacao" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="PessoaId"/>
     </table>
-    <table name="PessoaEmpresa" schema="" catalog="cdm" type="TABLE">
+    <table name="PessoaAplicacao" schema="" catalog="cdm" type="TABLE">
       <column name="PessoaEmpresaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="EmpresaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="Apagado" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
       <primary-key name="PRIMARY" columns="PessoaEmpresaId"/>
     </table>

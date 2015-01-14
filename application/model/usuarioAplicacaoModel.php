@@ -26,11 +26,11 @@ class UsuarioAplicacaoModel
 
     public function GetToEdit(UsuarioAplicacao $model)
     {
-        if($model->UsuarioId > 0)
+        if($model->UsuarioAplicacaoId > 0)
         {
-            $model = $this->pdo->GetById("UsuarioAplicacao", "UsuarioAplicacaoId", $Model->UsuarioId, "DAL\\UsuarioAplicacao");
+            $model = $this->pdo->GetById("UsuarioAplicacao", "UsuarioAplicacaoId", $model->UsuarioAplicacaoId, "DAL\\UsuarioAplicacao");
         }else{
-            $model = new \DAL\Usuario();
+            $model = new \DAL\UsuarioAplicacao();
         }
         return $model;
     }
@@ -58,11 +58,11 @@ class UsuarioAplicacaoModel
         if($model!=null) {
 
                 $listaPerfil = explode(",", $model->ListPerfil);
-                if ($model->UsuarioAplicacaoId > 0)
-                    $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN
-                (" . $model->ListPerfil . ") And AplicacaoId = '".$model->AplicacaoId."'", 0);
 
-                if ($model->UsuarioAplicacaoId > 0) {
+                if ($model->UsuarioAplicacaoId > 0){
+                    $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN (" . $model->ListPerfil . ") And PerfilId IN (SELECT PerfilId FROM Perfil WHERE AplicacaoId = '".$model->AplicacaoId."')
+                    ", 0);
+
                     $this->pdo->update("UsuarioAplicacao", $model, "UsuarioAplicacaoId = " . $model->UsuarioAplicacaoId);
                 } else {
                     $model->UsuarioAplicacaoId = $this->pdo->insert("UsuarioAplicacao", $model);
@@ -70,8 +70,7 @@ class UsuarioAplicacaoModel
 
 
                 foreach ($listaPerfil as $PerfilId) {
-
-                    $check = $this->pdo->select("SELECT * FROM usuarioperfil WHERE PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId);
+                    $check = $this->pdo->select("SELECT * FROM UsuarioPerfil WHERE PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId);
                     if (empty($check)) {
                         $this->pdo->insert("UsuarioPerfil", Array("PerfilId" => $PerfilId, "UsuarioId" =>
                             $model->UsuarioId));
@@ -88,8 +87,15 @@ class UsuarioAplicacaoModel
         }
     }
 
-    public function Validar($model)
+    public function Validar(UsuarioAplicacao $model)
     {
+
+        //Validar Usuario e Aplicacao
+        $check = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '".$model->UsuarioId."' AND
+        AplicacaoId = '".$model->AplicacaoId."'", "", true);
+
+        if(count($check) > 0 && empty($model->UsuarioAplicacaoId))
+            ModelState::addError("Este usuário já possui um vínculo nesta aplicação", "Documento");
 
     }
 }

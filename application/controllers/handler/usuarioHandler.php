@@ -21,6 +21,20 @@ class UsuarioHandler extends Controller
         }
     }
 
+    function GetByDoc($doc){
+        header('Content-Type: application/json; Charset=UTF-8');
+        $pdo = new Database();
+        $doc = Helper::SomenteNumeros($doc);
+        if(!empty($doc)) {
+            $retorno = $pdo->select("SELECT u.* FROM Usuario u, Pessoa p, PessoaFisica pf, PessoaJuridica pj WHERE u.PessoaId = p.PessoaId AND (p.PessoaId
+= pf
+.PessoaId AND pf.CPF = '$doc') OR
+ (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "DAL\\Usuario");
+        }
+        $retorno = json_encode($retorno);
+
+        echo $retorno;
+    }
 
 }
 ?>

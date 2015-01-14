@@ -37,7 +37,7 @@ class LoginModel
             $check = $this->GetUsuarioByLoginSenha($Login, $Senha);
            // var_dump($check);
             if(empty($check))
-                $retorno[] = Helper::Utf("Login ou senha inválidos");
+                $retorno[] = "Login ou senha inválidos";
         }
         
         return $retorno;
@@ -54,8 +54,22 @@ class LoginModel
                                             WHERE 
                                             (p.Email = '$Login' OR u.Login = '$Login')
                                             AND u.Senha = '$md5Senha'
-                                            AND u.PessoaId = p.PessoaId");
+                                            AND u.PessoaId = p.PessoaId LIMIT 1");
 
+        if($query != null) {
+            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '" . $query->UsuarioId
+                . "'",
+                "DAL\\UsuarioAplicacao", true);
+
+            if (count($aplicacoes) > 0) {
+                if (count($aplicacoes) > 1) {
+                    //Mais de uma
+                    $query->AplicacaoId = 0;
+                } else {
+                    $query->AplicacaoId = $aplicacoes[0]->AplicacaoId;
+                }
+            }
+        }
             return $query;
     }
     
@@ -63,10 +77,24 @@ class LoginModel
     {
         $Usuario = $this->GetUsuarioByLoginSenha($Login, $Senha);
         if(!empty($Usuario)){
-            
-            //Set Session e Cookies
-            $session = new Session("GDMAuth", Array("UsuarioId" => $Usuario->UsuarioId, "PessoaId" => $Usuario->PessoaId, "AplicacaoId" => $Usuario->AplicacaoId));
-            $cookie = new Cookie("GDMAuth", Array("UsuarioId" => $Usuario->UsuarioId, "PessoaId" => $Usuario->PessoaId, "AplicacaoId" => $Usuario->AplicacaoId));
+
+            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '".$Usuario->UsuarioId
+                ."'",
+                "DAL\\UsuarioAplicacao", true);
+
+            if(count($aplicacoes) > 0){
+                if(count($aplicacoes) > 1){
+                    //Mais de uma
+                    $Usuario->AplicacaoId = 0;
+                }else{
+                    $Usuario->AplicacaoId = $aplicacoes[0]->AplicacaoId;
+                }
+                //Set Session e Cookies
+                $session = new Session("GDMAuth", Array("UsuarioId" => $Usuario->UsuarioId, "PessoaId" => $Usuario->PessoaId, "AplicacaoId" => $Usuario->AplicacaoId));
+                $cookie = new Cookie("GDMAuth", Array("UsuarioId" => $Usuario->UsuarioId, "PessoaId" => $Usuario->PessoaId, "AplicacaoId" => $Usuario->AplicacaoId));
+            }
+
+
             
             //Cookie
             //$cookie->Definir("UsuarioId", $Usuario->UsuarioId);

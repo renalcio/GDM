@@ -50,9 +50,6 @@ class UsuarioAplicacaoController extends Controller
     public function cadastro_post($model = null){
 
         if($model!=null) {
-            /* echo "<pre>";
-             var_dump($model);
-             echo "</pre>";*/
             $model = (object)$model;
             Helper::cast($model, "DAL\\UsuarioAplicacao");
             Helper::cast($model->Usuario, "DAL\\Usuario");
@@ -64,12 +61,17 @@ class UsuarioAplicacaoController extends Controller
             ModelState::ValidateModel($model);
 
             if(ModelState::isValid()) {
-                $this->model->Save($model);
-                $this->Redirect("Index", "usuario");
-            }else{
-                $this->ModelView($model);
+                $this->model->Validar($model);
+                if(ModelState::isValid()) {
+                    $this->model->Save($model);
+                    $this->Redirect("Index");
+                }
             }
+        }else{
+            $model = new UsuarioAplicacao();
         }
+
+        $this->ModelView($model);
     }
 
     public function deletar($id){

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Jan-2015 às 21:11
+-- Generation Time: 15-Jan-2015 às 22:36
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -73,27 +73,38 @@ CREATE TABLE IF NOT EXISTS `Menu` (
   `AplicacaoId` int(255) NOT NULL,
   `Posicao` int(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`MenuId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=169 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=227 ;
 
 --
 -- Extraindo dados da tabela `Menu`
 --
 
 INSERT INTO `Menu` (`MenuId`, `Titulo`, `Url`, `Icone`, `Pai`, `AplicacaoId`, `Posicao`) VALUES
-(155, 'Home', 'home/', 'fa-home', 0, 1, 0),
-(156, 'Painel de Controle', '', 'fa-gears', 0, 1, 1),
-(157, 'Configurações', 'painel/', 'fa-gear', 156, 1, 0),
-(158, 'Menu', '', 'fa-th-list', 156, 1, 1),
-(159, 'Aplicação Atual', 'menu/cadastro', '', 158, 1, 0),
-(160, 'Todos os Menus', 'menu/', '', 158, 1, 1),
-(161, 'Permissões de Acesso', 'permissao/', 'fa-ban', 156, 1, 2),
-(162, 'Cadastros', '', 'fa-edit', 0, 1, 2),
-(163, 'Aplicações', 'app/', 'fa-th-large', 162, 1, 0),
-(164, 'Pessoas', '', 'fa-users', 162, 1, 1),
-(165, 'Pessoas', 'pessoa/', '', 164, 1, 0),
-(166, 'Usuarios', 'usuario/', '', 164, 1, 1),
-(167, 'Perfis', 'perfil/', '', 164, 1, 2),
-(168, 'Nicho', 'nicho', 'fa-sitemap', 162, 1, 2);
+(194, 'Home', 'home/', 'fa-home', 0, 1, 0),
+(195, 'Painel de Controle', '', 'fa-gears', 0, 1, 1),
+(196, 'Configurações', 'painel/', 'fa-gear', 195, 1, 0),
+(197, 'Menu', '', 'fa-th-list', 195, 1, 1),
+(198, 'Aplicação Atual', 'menu/cadastro', '', 197, 1, 0),
+(199, 'Todos as Aplicações', 'menu/', '', 197, 1, 1),
+(200, 'Permissões de Acesso', 'permissao/', 'fa-ban', 195, 1, 2),
+(201, 'Cadastros', '', 'fa-edit', 0, 1, 2),
+(202, 'Aplicações', 'app/', 'fa-th-large', 201, 1, 0),
+(203, 'Pessoas', '', 'fa-users', 201, 1, 1),
+(204, 'Pessoas', 'pessoa/', '', 203, 1, 0),
+(205, 'Usuarios', 'usuario/', '', 203, 1, 1),
+(206, 'Perfis', 'perfil/', '', 203, 1, 2),
+(207, 'Vínculos de Usuários', 'usuarioaplicacao/', '', 203, 1, 3),
+(208, 'Nicho', 'nicho', 'fa-sitemap', 201, 1, 2),
+(217, 'Inicio', 'home/', 'fa-home', 0, 2, 0),
+(218, 'Cadastros', '', 'fa-edit', 0, 2, 1),
+(219, 'Pessoas', '', 'fa-users', 218, 2, 0),
+(220, 'Pessoas', 'pessoa/', '', 219, 2, 0),
+(221, 'Usuarios', 'usuario/', '', 219, 2, 1),
+(222, 'Perfís', 'perfil/', '', 219, 2, 2),
+(223, 'Arquivos', '', ' fa-folder-open', 218, 2, 1),
+(224, 'Arquivos', 'arquivo/', '', 223, 2, 0),
+(225, 'Pastas', 'pasta/', '', 223, 2, 1),
+(226, 'Extensões de Arquivo', 'extensaoArquivo/', '', 223, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -421,6 +432,20 @@ INSERT INTO `Perfil` (`PerfilId`, `AplicacaoId`, `Titulo`, `Ativo`, `Nivel`) VAL
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `Permissao`
+--
+
+CREATE TABLE IF NOT EXISTS `Permissao` (
+  `PermissaoId` int(11) NOT NULL AUTO_INCREMENT,
+  `MenuId` int(11) NOT NULL DEFAULT '0',
+  `AplicacaoId` int(11) NOT NULL DEFAULT '0',
+  `PerfilId` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`PermissaoId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `Pessoa`
 --
 
@@ -445,13 +470,13 @@ INSERT INTO `Pessoa` (`PessoaId`, `Nome`, `Email`, `Telefone`, `Celular`, `Obser
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `PessoaEmpresa`
+-- Estrutura da tabela `PessoaAplicacao`
 --
 
-CREATE TABLE IF NOT EXISTS `PessoaEmpresa` (
+CREATE TABLE IF NOT EXISTS `PessoaAplicacao` (
   `PessoaEmpresaId` int(11) NOT NULL AUTO_INCREMENT,
   `PessoaId` int(11) NOT NULL,
-  `EmpresaId` int(11) NOT NULL,
+  `AplicacaoId` int(11) DEFAULT NULL,
   `Apagado` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`PessoaEmpresaId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
@@ -581,23 +606,43 @@ INSERT INTO `song` (`id`, `artist`, `track`, `link`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
   `UsuarioId` int(255) NOT NULL AUTO_INCREMENT,
-  `AplicacaoId` int(255) NOT NULL,
   `Login` varchar(255) COLLATE utf8_bin NOT NULL,
   `Senha` varchar(255) COLLATE utf8_bin NOT NULL,
   `PessoaId` int(255) NOT NULL,
   `Ativo` tinyint(1) NOT NULL DEFAULT '1',
   `Avatar` text COLLATE utf8_bin,
   PRIMARY KEY (`UsuarioId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `Usuario`
 --
 
-INSERT INTO `Usuario` (`UsuarioId`, `AplicacaoId`, `Login`, `Senha`, `PessoaId`, `Ativo`, `Avatar`) VALUES
-(1, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 1, 'http://localhost:8090/GDM/img/avatar/20150105151306.jpeg'),
-(2, 1, 'renalcio', '2fb43ff8bdc20515848441c2015e5c02', 2, 1, 'http://localhost:8090/GDM/img/avatar/20150106152932.jpeg'),
-(3, 2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 2, 1, 'http://localhost:8090/GDM/img/avatar5.png');
+INSERT INTO `Usuario` (`UsuarioId`, `Login`, `Senha`, `PessoaId`, `Ativo`, `Avatar`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 1, 'http://localhost:8090/GDM/img/avatar/20150105151306.jpeg'),
+(2, 'renalcio', '202cb962ac59075b964b07152d234b70', 2, 1, 'http://localhost:8090/GDM/img/avatar/20150106152932.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `UsuarioAplicacao`
+--
+
+CREATE TABLE IF NOT EXISTS `UsuarioAplicacao` (
+  `UsuarioAplicacaoId` int(11) NOT NULL AUTO_INCREMENT,
+  `UsuarioId` int(11) NOT NULL DEFAULT '0',
+  `AplicacaoId` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`UsuarioAplicacaoId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `UsuarioAplicacao`
+--
+
+INSERT INTO `UsuarioAplicacao` (`UsuarioAplicacaoId`, `UsuarioId`, `AplicacaoId`) VALUES
+(1, 2, 1),
+(2, 1, 1),
+(4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -610,16 +655,17 @@ CREATE TABLE IF NOT EXISTS `UsuarioPerfil` (
   `PerfilId` int(255) NOT NULL,
   `UsuarioId` int(255) NOT NULL,
   PRIMARY KEY (`UsuarioPerfilId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=32 ;
 
 --
 -- Extraindo dados da tabela `UsuarioPerfil`
 --
 
 INSERT INTO `UsuarioPerfil` (`UsuarioPerfilId`, `PerfilId`, `UsuarioId`) VALUES
-(1, 1, 1),
-(8, 3, 2),
-(9, 7, 3);
+(24, 3, 2),
+(25, 7, 2),
+(26, 8, 2),
+(31, 1, 1);
 
 -- --------------------------------------------------------
 

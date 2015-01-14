@@ -54,14 +54,15 @@ class UsuarioModel
 
         return $model;
     }
+
     public function Save(\DAL\Usuario $model){
         if($model!=null) {
 
                 $listaPerfil = explode(",", $model->ListPerfil);
 
-                if ($model->UsuarioId > 0 && APP_ID != ROOTAPP)
-                    $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN
-                (" . $model->ListPerfil . ") AND AplicacaoId = '".APP_ID."'", 0);
+                if ($model->UsuarioId > 0 && APP_ID != ROOTAPP) {
+                    $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN (" . $model->ListPerfil . ") AND PerfilId IN (SELECT PerfilId FROM Perfil Where AplicacaoId = '" . APP_ID . "')", 0);
+                }
 
                 $ModelPessoa = new PessoaModel($this->db);
 
@@ -123,7 +124,7 @@ class UsuarioModel
         if($model != null) {
             //verifica usuario
             $usuarios = $this->pdo->select("SELECT * FROM Usuario WHERE Login = '" . $model->Login . "' AND (PessoaId != '" . $model->Pessoa->PessoaId . "' OR
-'" . $model->Pessoa->PessoaId . "' = '') AND AplicacaoId = '".$model->AplicacaoId."' ", "", true);
+'" . $model->Pessoa->PessoaId . "' = '')", "", true);
             if (count($usuarios) > 0)
                 ModelState::addError("Este nome de usuário já está sendo utilizado por outra pessoa", "Login", ModelState::DisplayName($model, "Login"));
 

@@ -10,7 +10,11 @@ class MenuController extends Controller
     public function index()
     {
         // load views
-        $this->View("index");
+        $model = new \stdClass();
+        $this->loadModel("app");
+        $model = $this->model->GetToIndex($model);
+
+        $this->ModelView($model);
     }
     
     public function cadastro($App = 0)
@@ -19,7 +23,7 @@ class MenuController extends Controller
             $menu = new \stdClass;
             //Editar
             $this->loadModel();
-            $menu->ListMenu = $this->model->GetMenu();
+            $menu->ListMenu = $this->model->GetMenu(0, $App);
             $menu->AppId = $App;
             //print_r($menu);
             
@@ -37,20 +41,11 @@ class MenuController extends Controller
             
             $this->loadModel();
             
-            $this->model->LimpaMenu();
+            $this->model->LimpaMenu($App);
             
             $this->model->Save((Array)$menu, 0, $App);
             
         }
-    }
-
-    public function Listagem()
-    {
-        $model = new \stdClass();
-        $this->loadModel("apps");
-        $model->ListApps = $this->model->getApps();
-
-        $this->ModelView($model);
     }
 
     public function excluir()

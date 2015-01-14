@@ -18,28 +18,6 @@ Form::Hidden("Ativo", @$Model->Ativo);
 
         <div class="box-body">
             <? if(APP_ID != ROOTAPP){ ?>
-            <script>
-                $(function(){
-                    $("select.AplicacaoSelect").change(function(){
-                        var appId = $(this).val();
-                        console.log(appId);
-                        $.get("<?=URL;?>handler/perfil/Select2Tag/" + appId, function(data){
-                            console.log(data);
-                            //$("input.PerfilSelect").select2('destroy');
-                            $("input.PerfilSelect").select2({
-                                multiple: true,
-                                "data": data
-                            });
-                            if(appId != '<?=$Model->AplicacaoId?>') {
-                                $("input.PerfilSelect").val("").change();
-                            }else{
-                                $("input.PerfilSelect").val("<?=$Model->ListPerfil?>").change();
-                            }
-                        });
-                    });
-                });
-            </script>
-
             <div class="form-group" for="ListPerfil">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "ListPerfil");?>
@@ -49,6 +27,8 @@ Form::Hidden("Ativo", @$Model->Ativo);
                     "DataUrl" => URL."handler/perfil/Select2Tag/".APP_ID))?>
             </div>
             <?
+            }else{
+                Form::Hidden("ListPerfil", @$Model->ListPerfil);
             }
             ?>
 

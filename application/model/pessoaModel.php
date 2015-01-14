@@ -92,6 +92,17 @@ class PessoaModel
                     $this->pdo->insert("PessoaJuridica", $PessoaJuridica);
                 }
 
+            //PessoaAplicacao
+            $checkPA = $this->pdo->selec("SELECT * FROM PessoaAplicacao WHERE PessoaId = '".$model->PessoaId."' AND
+            AplicacaoId = '".APPID."'",
+                "", true);
+            if(count($checkPA)<=0){
+                $add = new \stdClass();
+                $add->PessoaId = $model->PessoaId;
+                $add->AplicacaoId = APPID;
+                $this->pdo->insert("PessoaAplicacao", $add);
+            }
+
 
         }
         return $model;

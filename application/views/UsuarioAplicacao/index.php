@@ -3,22 +3,14 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 {?>
 <script type="text/javascript">
     $(function() {
-
-        $(".switch").on('switchChange.bootstrapSwitch', function(event, state) {
-            var ref = $(this).attr("ref"); // true | false
-            $.getJSON("<?=URL;?>handler/usuario/MudaStatus/"+ref+"/"+state, function(data){
-                //console.log(data);
-            });
-        });
-
         $("#listagem").dataTable({
-            "aoColumns": [ null,null,null,null,<? if(APPID==ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
+            "aoColumns": [ null,null,null,<? if(APPID==ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
         });
     });
     function Excluir(Id){
         bootbox.confirm('Deseja realmente excluir este item?', function(result){
             if(result)
-                location.href="<?=URL;?>usuario/deletar/"+Id;
+                location.href="<?=URL;?>usuarioaplicacao/deletar/"+Id;
 
         });
     }
@@ -31,7 +23,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 					Vínculos de Usuários
 				</h3>
                 <div class="box-tools pull-right">
-                    <a href="<?=URL?>usuario/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
+                    <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
                     fa-plus"></i> Novo registro</a>
                 </div>
 			</div>
@@ -71,8 +63,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                                     <i class="fa fa-bars" class="dropdown-toggle"
                                        data-toggle="dropdown"></i>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="<?=URL;
-                                            ?>usuario/cadastro/<?=$item->UsuarioAplicacaoId;?>"><i class="fa
+                                        <li><a href="<?=\Libs\Helper::getUrl("cadastro", "usuarioaplicacao", $item->UsuarioAplicacaoId)?>"><i class="fa
                                             fa-edit"></i>
                                                 Editar</a></li>
                                         <li class="dropdown-danger"><a onclick="Excluir(<?=$item->UsuarioAplicacaoId;?>)"><i

@@ -56,6 +56,6 @@ define("ROOTAPP", 1);
 $appsess = new \Libs\Session("GDMAuth");
 $appid = $appsess->Ver("AplicacaoId");
 if(!empty($appid)){
-    define('APP_ID', $appid);
     define('APPID', $appid);
+    define('APP_ID', $appid);
 }

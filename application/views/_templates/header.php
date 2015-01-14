@@ -410,7 +410,7 @@ $HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sess
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Informações</a>
+                <a href="<?=Helper::getUrl("selecionaAplicacao", "login");?>" class="btn btn-default btn-flat">Selecionar Aplicaçao</a>
             </div>
             <div class="pull-right">
                 <a href="<?=Helper::getUrl("logout", "login");?>" class="btn btn-default btn-flat">Sair</a>

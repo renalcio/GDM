@@ -3,12 +3,26 @@ namespace DAL;
 use Classe\Database;
 class UsuarioAplicacao
 {
+    var $UsuarioAplicacaoId;
+
+    /**
+     * @Required
+     * @DisplayName: Usuário
+     */
     var $UsuarioId;
     /**
      * @Required
      * @DisplayName: Aplicação
      */
     var $AplicacaoId;
+
+
+    /**
+     * @NotMapped
+     * @Required
+     * @DisplayName: CPF / CNPJ
+     */
+    var $Documento;
 
     /**
      * @NotMapped
@@ -22,11 +36,12 @@ class UsuarioAplicacao
      */
     var $Usuario;
 
+
+
     /**
      * @NotMapped
-     * @DisplayName: CPF/CNPJ
+     * @DisplayName: Nome
      */
-    var $Documento;
     var $Nome;
 
     /**
@@ -34,10 +49,11 @@ class UsuarioAplicacao
      */
     var $Aplicacao;
 
-    public function __construct($UsuarioId=0, $AplicacaoId = 0, $Documento="", $Nome="")
+    public function __construct($UsuarioAplicacaoId = 0, $UsuarioId=0, $AplicacaoId = 0, $Documento="", $Nome="")
     {
         $pdo = new Database();
-        if(!empty($Login)) {
+        if(!empty($Documento)) {
+            $this->UsuarioAplicacaoId = $UsuarioAplicacaoId;
             $this->UsuarioId = $UsuarioId;
             $this->AplicacaoId = $AplicacaoId;
             $this->Documento = $Documento;
@@ -53,9 +69,15 @@ class UsuarioAplicacao
                 $this->ListPerfil .= $Perfis[$i]->PerfilId.($i ==(count($Perfis)-1) ? "" : ",");
             }
 
+            $this->Documento = empty($this->Usuario->Pessoa->PessoaFisica->CPF) ? $this->Usuario->Pessoa->PessoaJuridica->CNPJ : $this->Usuario->Pessoa->PessoaFisica->CPF;
+
             //Aplicacao
             if($this->AplicacaoId > 0)
                 $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+        }else{
+            $this->Aplicacao = new Aplicacao();
+            $this->Usuario = new Usuario();
+            $this->Usuario->Pessoa->Nome = "Nenhum usuário encontrado";
         }
 
 

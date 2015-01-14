@@ -20,9 +20,9 @@ class MenuModel
     }
 
     
-    public function GetMenu($Pai = 0){
+    public function GetMenu($Pai = 0, $AplicacaoId = APPID){
         $retorno = $this->pdo->select("SELECT * FROM Menu 
-                                        WHERE AplicacaoId='".APP_ID."'
+                                        WHERE AplicacaoId='".$AplicacaoId."'
                                         AND Pai = '$Pai'
                                         ORDER BY Posicao ASC");
         
@@ -30,16 +30,15 @@ class MenuModel
         {
             for($i = 0; $i < count($retorno); $i++)
             {
-                $retorno[$i]->ListSubMenu = $this->GetMenu($retorno[$i]->MenuId);
+                $retorno[$i]->ListSubMenu = $this->GetMenu($retorno[$i]->MenuId, $AplicacaoId);
             }
         }
                                        
         return $retorno;
     }
     
-    public function Save($model, $Pai = 0, $App = 0)
+    public function Save($model, $Pai = 0, $App = APP_ID)
     {
-        if($App == 0) $App = APP_ID;
         if(is_array($model))
         {
             $i = 0;
@@ -71,7 +70,7 @@ class MenuModel
                 
                 if(isset($menuItem["children"]))
                 {
-                    $this->Save($menuItem["children"], $PaiId);  
+                    $this->Save($menuItem["children"], $PaiId, $App);
                 }
                 $i++;
             }
@@ -79,8 +78,8 @@ class MenuModel
         
     }
     
-    public function LimpaMenu(){
+    public function LimpaMenu($AplicacaoId = APPID){
         //if(defined(APP_ID))
-            $this->pdo->delete("Menu", "AplicacaoId = ".APP_ID, 0);
+            $this->pdo->delete("Menu", "AplicacaoId = '".$AplicacaoId."'", 0);
     }
 }

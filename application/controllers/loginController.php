@@ -12,6 +12,8 @@ namespace Controllers;
 use Core\Controller;
 use \Libs\Cookie;
 use \Libs\Session;
+use Libs\Usuario;
+
 class LoginController extends Controller
 {
     /**
@@ -59,5 +61,20 @@ class LoginController extends Controller
         session_destroy();
 
         $this->Redirect("index");
+    }
+
+    public function SelecionaAplicacao($id = ""){
+        if(empty($id)) {
+            $model = Usuario::getAplicacoes();
+            if (count($model) > 0)
+                $this->ModelView($model, "selecionaAplicacao", "login", "header_login");
+            else
+                $this->Redirect("logout");
+
+        }else{
+            Usuario::setAplicacao($id);
+
+            $this->Redirect("index", "home");
+        }
     }
 }

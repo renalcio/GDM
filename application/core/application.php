@@ -32,8 +32,13 @@ class Application
 
             $session = new Session("GDMAuth");
             if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
-                $page = new \Controllers\HomeController();
-                $page->index();
+                if(APPID > 0) {
+                    $page = new \Controllers\HomeController();
+                    $page->index();
+                }else{
+                    $page = new \Controllers\LoginController();
+                    $page->SelecionaAplicacao();
+                }
             }else{
                 $page = new \Controllers\LoginController();
                 $page->index();
@@ -53,8 +58,13 @@ class Application
                 // if so, then load this file and create this controller
                 // example: if controller would be "car", then this line would translate into: $this->car = new car();
                 //require_once APP . 'controllers/' . $this->url_controller . '.php';
-                $this->url_controller = "\\Controllers\\".$this->url_controller;
-                $this->url_controller = new $this->url_controller();
+                if((defined('APP_ID') && APP_ID > 0) || $this->url_controller == "loginController") {
+                    $this->url_controller = "\\Controllers\\" . $this->url_controller;
+                    $this->url_controller = new $this->url_controller();
+                }else if(defined('APP_ID') && APP_ID <= 0){
+                    $page = new \Controllers\loginController();
+                    $page->SelecionaAplicacao();
+                }
 
                 // check for method: does such a method exist in the controller ?
 

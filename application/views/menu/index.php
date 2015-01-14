@@ -5,30 +5,8 @@
         });
     });
 </script>
-z
 
-    <div id="row">
-    <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Filtros</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
-               </div>
-        </div>
-        <div class="box-body" style="display: block;">
 
-        </div><!-- /.box-body -->
-        <div class="box-footer" style="display: block;">
-            <div class="row">
-                <button type="button" id="addMenuItem" class="btn btn-primary" style="float: right; margin-right: 15px;">
-                    Concluido
-                </button>
-            </div>
-        </div><!-- /.box-footer-->
-    </div>
-        </div>
-
-	<div id="row">
 		<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">
@@ -75,6 +53,5 @@ fa-edit"></i></a></td>
 				</div>
 			</div>
     </div>
-		</div>
 		<!-- /.box-body -->
 
