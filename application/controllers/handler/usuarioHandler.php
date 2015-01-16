@@ -17,7 +17,7 @@ class UsuarioHandler extends Controller
             else
                 $status = 0;
 
-            echo $pdo->update("Usuario", Array("Ativo" => $status), "UsuarioId = ".$id);
+            echo $pdo->update("UsuarioAplicacao", Array("Ativo" => $status), "UsuarioId = ".$id." AND AplicacaoId = '".APPID."'");
         }
     }
 

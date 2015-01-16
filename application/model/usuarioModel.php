@@ -40,7 +40,7 @@ class UsuarioModel
         if(defined('APP_ID') && APP_ID == ROOTAPP)
             $model->ListUsuario = $this->pdo->select("SELECT * FROM Usuario", "DAL\\Usuario", true);
         else {
-            $model->ListUsuario = $this->pdo->select("SELECT Usuario WHERE AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
+            $model->ListUsuario = $this->pdo->select("SELECT u.*, ua.Ativo FROM Usuario u, UsuarioAplicacao ua WHERE ua.UsuarioId = u.UsuarioId AND ua.AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
         }
 
         for($i = 0; $i < count($model->ListUsuario); $i++){

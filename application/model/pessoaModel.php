@@ -93,7 +93,7 @@ class PessoaModel
                 }
 
             //PessoaAplicacao
-            $checkPA = $this->pdo->selec("SELECT * FROM PessoaAplicacao WHERE PessoaId = '".$model->PessoaId."' AND
+            $checkPA = $this->pdo->select("SELECT * FROM PessoaAplicacao WHERE PessoaId = '".$model->PessoaId."' AND
             AplicacaoId = '".APPID."'",
                 "", true);
             if(count($checkPA)<=0){

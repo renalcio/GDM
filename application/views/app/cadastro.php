@@ -24,9 +24,6 @@ use Libs\Helper;
 
             </div>
             <div class="box-body">
-            <pre>
-            <? print_r($Model)?>
-                </pre>
 
                 <?Form::Hidden("AplicacaoId", @$Model->AplicacaoId);?>
                 <?Form::Hidden("PessoaId", @$Model->PessoaId);?>

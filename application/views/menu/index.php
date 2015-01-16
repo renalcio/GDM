@@ -6,7 +6,6 @@
     });
 </script>
 
-
 		<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">
@@ -29,7 +28,7 @@
                                 {
                                     ?>
                         <tr>
-                            <td><?=$App->Descricao;?></td>
+                            <td><?=$App->Titulo;?></td>
                             <td><a href="<?=URL;?>menu/cadastro/<?=$App->AplicacaoId;?>" class="btn btn-xs btn-primary
 btn-flat"><i
                             class="fa

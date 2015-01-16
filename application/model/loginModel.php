@@ -57,7 +57,7 @@ class LoginModel
                                             AND u.PessoaId = p.PessoaId LIMIT 1");
 
         if($query != null) {
-            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '" . $query->UsuarioId
+            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE Ativo = '1' AND UsuarioId = '" . $query->UsuarioId
                 . "'",
                 "DAL\\UsuarioAplicacao", true);
 
@@ -68,6 +68,8 @@ class LoginModel
                 } else {
                     $query->AplicacaoId = $aplicacoes[0]->AplicacaoId;
                 }
+            }else{
+                $query = null;
             }
         }
             return $query;
@@ -78,9 +80,7 @@ class LoginModel
         $Usuario = $this->GetUsuarioByLoginSenha($Login, $Senha);
         if(!empty($Usuario)){
 
-            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '".$Usuario->UsuarioId
-                ."'",
-                "DAL\\UsuarioAplicacao", true);
+            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE Ativo = '1'  AND UsuarioId = '".$Usuario->UsuarioId."'", "DAL\\UsuarioAplicacao", true);
 
             if(count($aplicacoes) > 0){
                 if(count($aplicacoes) > 1){
