@@ -12,7 +12,9 @@ use Classe\Database;
 class Permissao
 {
     var $PermissaoId;
-
+    var $MenuId;
+    var $AplicacaoId;
+    var $PerfilId;
     public function __construct($PermissaoId = 0)
     {
         $pdo = new Database();

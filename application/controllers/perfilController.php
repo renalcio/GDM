@@ -10,6 +10,8 @@
  */
 namespace Controllers;
 use Core\Controller;
+use DAL\Perfil;
+
 class PerfilController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class PerfilController extends Controller
     {
         // load views
         $this->loadModel();
-        $Model = new \stdClass();
+        $Model = new Perfil();
         $Model->PerfilId = $id;
         $Model = $this->model->GetToEdit($Model);
         $this->ModelView($Model);
@@ -50,6 +52,7 @@ class PerfilController extends Controller
         }
         $this->Redirect("Index");
     }
+
     public function deletar($id){
         if($id > 0){
             $this->loadModel();
@@ -57,5 +60,14 @@ class PerfilController extends Controller
         }
 
         $this->Redirect("Index");
+    }
+
+    public function acesso($id){
+        // load views
+        $this->loadModel();
+        $Model = new \stdClass();
+        $Model->PerfilId = $id;
+        $Model = $this->model->Acesso($Model);
+        $this->ModelView($Model);
     }
 }

@@ -32,8 +32,7 @@ if(is_array($Model) && count($Model) > 0)
                 Perfis
             </h3>
             <div class="box-tools pull-right">
-                <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
-                    fa-plus"></i> Novo Perfil</a>
+                <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa fa-plus"></i> Novo Perfil</a>
             </div>
         </div>
         <div class="box-body">
@@ -64,7 +63,7 @@ if(is_array($Model) && count($Model) > 0)
                             <td align="center"><?=$item->Nivel;?></td>
                             <td>
 
-                                <input type="checkbox" ref="<?=@$item->PerfilId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">
+                                <input type="checkbox" ref="<?=@$item->PerfilId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não" />
                             </td>
                             <td align="center">
 

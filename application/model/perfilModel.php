@@ -58,6 +58,18 @@ class PerfilModel
         return $model;
     }
 
+    public function Acesso($model){
+        if($model->PerfilId > 0) {
+            $model = $this->pdo->GetById("Perfil", "PerfilId", $model->PerfilId);
+
+            //Menu
+            $menumodel = new MenuModel($this->db);
+
+            $model->Menu = $menumodel->GetMenu(0, $model->AplicacaoId);
+        }
+        return $model;
+    }
+
     public function Deletar($id){
         if($id > 0){
             $this->pdo->delete("Perfil", "PerfilId = '".$id."'");
