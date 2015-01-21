@@ -41,7 +41,7 @@ class MenuController extends Controller
             
             $this->loadModel();
             
-            $this->model->LimpaMenu($App);
+            //$this->model->LimpaMenu($App);
             
             $this->model->Save((Array)$menu, 0, $App);
             

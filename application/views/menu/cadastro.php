@@ -1,7 +1,4 @@
-﻿
-	<script src="<?= URL ?>public/js/jquery.nestable.min.js">
-	</script>
-	<script>
+﻿	<script>
 		$(function() {
 			$('.dd').nestable({
 				maxDepth: 3
@@ -41,9 +38,10 @@
 				Url: $("#Url").val(),
 				Icone: $("#Icone").val(),
                 Index: parseInt($("#Index").val()),
+                MenuId: $("#MenuId").val().toInt()
 			};
             
-            if(!isNaN(Menu.Index) && Menu.Index > 0)
+            if(!isNaN(Menu.Index))
             {
                 $obj = $("li.dd-item[ref='"+Menu.Index+"']");
                 $obj.find(".dd-handle:first").html('<i class="fa ' + Menu.Icone + '" style="margin-right: 5px"></i>' + Menu.Titulo);
@@ -58,7 +56,7 @@
             {
                 Menu.Index = $("li.dd-item").size();
                 
-                var HTML = '<li class="dd-item" ref="' + Menu.Index + '" data-Titulo="' + Menu.Titulo + '" data-Url="' + Menu.Url + '" data-Icone="' + Menu.Icone + '">\
+                var HTML = '<li class="dd-item" ref="' + Menu.Index + '" data-Titulo="' + Menu.Titulo + '" data-Url="' + Menu.Url + '" data-Icone="' + Menu.Icone + '" data-MenuId="'+ Menu.MenuId +'" data-Apagar="0">\
                                 <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>\
                                 <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>\
 			                     <div class="dd-handle">\
@@ -71,7 +69,8 @@
             $("#Titulo").val("");
 			$("#Url").val("");
 			$("#Icone").val("");
-            $("#Index").val("0");
+            $("#Index").val("");
+            $("#MenuId").val("0");
             $("#menuIconediv i").attr("class", "");
             
 			
@@ -87,6 +86,7 @@
                 $("#Titulo").val($obj.attr("data-Titulo"));
                 $("#Url").val($obj.attr("data-Url"));
                 $("#Icone").val($obj.attr("data-Icone"));
+                $("#MenuId").val($obj.attr("data-MenuId"));
                 $("#Index").val(index);
 				$("#menuIconediv i").attr("class", "fa " + $obj.attr("data-Icone"));
                 
@@ -101,7 +101,7 @@
             });
             $(".removerMenu").click(function(){
                 $obj = $(this);
-                $obj.parent().remove();
+                $obj.parent().attr("data-Apagar", "1").hide();
             });
         }
         
@@ -137,7 +137,8 @@
                                         {
                                             $ref++;
                                             ?>
-                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$MenuItem->Titulo;?>" data-Url="<?=$MenuItem->Url;?>" data-Icone="<?=$MenuItem->Icone;?>">
+                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$MenuItem->Titulo;?>" data-Url="<?=$MenuItem->Url;?>" data-Icone="<?=$MenuItem->Icone;?>" data-MenuId="<?=$MenuItem->MenuId;?>"
+                                                data-Apagar="0">
                                                 <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
                                                 <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
                                                 <div class="dd-handle">
@@ -153,7 +154,7 @@
                                                         {
                                                             $ref++;
                                                             ?>
-                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubItem->Titulo;?>" data-Url="<?=$SubItem->Url;?>" data-Icone="<?=$SubItem->Icone;?>">
+                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubItem->Titulo;?>" data-Url="<?=$SubItem->Url;?>" data-Icone="<?=$SubItem->Icone;?>" data-MenuId="<?=$SubItem->MenuId;?>" data-Apagar="0">
                                                                 <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
                                                                 <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
                                                                 <div class="dd-handle">
@@ -169,7 +170,7 @@
                                                                         {
                                                                             $ref++;
                                                                             ?>
-                                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubSubItem->Titulo;?>" data-Url="<?=$SubSubItem->Url;?>" data-Icone="<?=$SubSubItem->Icone;?>">
+                                                                            <li class="dd-item" ref="<?=$ref;?>" data-Titulo="<?=$SubSubItem->Titulo;?>" data-Url="<?=$SubSubItem->Url;?>" data-Icone="<?=$SubSubItem->Icone;?>" data-MenuId="<?=$SubSubItem->MenuId;?>" data-Apagar="0">
                                                                                 <button data-rel="tooltip" data-placement="left" title="Editar Menu" href="#" class="btn btn-xs btn-success editarMenu" style="margin-left:0"><i class="fa fa-edit"></i></button>
                                                                                 <button data-rel="tooltip" data-placement="left" title="Excluir Menu" href="#" class="btn btn-xs btn-danger removerMenu" style="margin-left:0"><i class="fa fa-trash-o"></i></button>
                                                                                 <div class="dd-handle">
@@ -235,7 +236,8 @@
             </div> /.input group
             </div>-->
 
-            <input type="hidden" id="Index" value="0" />
+            <input type="hidden" id="Index" value="" />
+            <input type="hidden" id="MenuId" value="0" />
 
             <div class="form-group">
                 <label>

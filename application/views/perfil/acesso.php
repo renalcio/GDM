@@ -3,12 +3,16 @@
 <div id="Validacao" class="col-12"></div>
 <script type="text/javascript">
     $(function() {
-        $(".switch").on('switchChange.bootstrapSwitch', function(event, state) {
+        $(".switch").on('switchChange.bootstrapSwitch', function (event, state) {
             var ref = $(this).attr("ref"); // MenuId
-            $.getJSON("<?=URL;?>handler/permissao/acesso/"+ref+"/<?=@$Model->PerfilId;?>/"+state, function(data){
-                //console.log(data);
+            console.log(ref);
+            console.log(state);
+            $.getJSON("<?=URL;?>handler/permissao/acesso/" + ref + "/<?=@$Model->PerfilId;
+            ?>/" + state + "/<?=@$Model->AplicacaoId;?>", function (data) {
+                console.log(data);
             });
         });
+    });
 </script>
 <style>
     .listmenu {
