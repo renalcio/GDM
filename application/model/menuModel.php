@@ -80,7 +80,7 @@ class MenuModel
                     $i++;
                 }else{
                     //Apagar Item e Subitens
-                    if(isset($menuItem["menuid"])){
+                    if(isset($menuItem["menuid"]) && !empty($menuItem["menuid"])){
                         //Busca Filhos
                         $filhos = $this->pdo->select("SELECT * FROM Menu WHERE Pai = '".$menuItem["menuid"]."' AND AplicacaoId = '".$App."'", "",
                             true);

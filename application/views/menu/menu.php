@@ -27,71 +27,74 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
     <ul class="sidebar-menu">
         <?
         $ref = -1;
-        foreach ($menu as $MenuItem)
-        {
-            $ref++;
-            $classSubmenu = '';
-            if (isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                $classSubmenu = 'class="treeview"';
-            ?>
-
-            <li <?= $classSubmenu ?> >
-                <a href="<?= URL . $MenuItem->Url; ?>">
-                    <i class="fa <?= $MenuItem->Icone; ?>"></i> <span><?= $MenuItem->Titulo; ?></span>
-                    <? if (!empty($classSubmenu)){?>
-                    <i class="fa fa-angle-left pull-right"></i>
-                    <? } ?>
-
-                </a>
-                <?
+        foreach ($menu as $MenuItem) {
+            if (Libs\Usuario::GetAcessoByUsuarioId($MenuItem->MenuId)) {
+                $ref++;
+                $classSubmenu = '';
                 if (isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                {
-                    ?>
-                    <ul class="treeview-menu">
-                        <?php
-                        foreach ($MenuItem->ListSubMenu as $SubItem)
-                        {
-                            $ref++;
-                            $classSubmenu = '';
-                            if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                                $classSubmenu = 'class="treeview"';
-                            ?>
+                    $classSubmenu = 'class="treeview"';
+                ?>
 
-                            <li <?= $classSubmenu ?> >
-                                <a href="<?= URL . $SubItem->Url; ?>">
-                                    <? if (!empty($SubItem->Icone)){?>
-                                    <i class="fa <?=$SubItem->Icone;?>"></i>
-                                    <? }else{?>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    <? } ?>
-                                    <span><?= $SubItem->Titulo; ?></span>
-                                    <? if (!empty($classSubmenu)){?>
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    <? } ?>
-                                </a>
-                                <?php
-                                if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0) {
+                <li <?= $classSubmenu ?> >
+                    <a href="<?= URL . $MenuItem->Url; ?>">
+                        <i class="fa <?= $MenuItem->Icone; ?>"></i> <span><?= $MenuItem->Titulo; ?></span>
+                        <? if (!empty($classSubmenu)) { ?>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        <? } ?>
+
+                    </a>
+                    <?
+                    if (isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0) {
+                        ?>
+                        <ul class="treeview-menu">
+                            <?php
+                            foreach ($MenuItem->ListSubMenu as $SubItem) {
+                                if (Libs\Usuario::GetAcessoByUsuarioId($SubItem->MenuId)) {
+                                    $ref++;
+                                    $classSubmenu = '';
+                                    if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
+                                        $classSubmenu = 'class="treeview"';
                                     ?>
-                                    <ul class="treeview-menu">
+
+                                    <li <?= $classSubmenu ?> >
+                                        <a href="<?= URL . $SubItem->Url; ?>">
+                                            <? if (!empty($SubItem->Icone)) { ?>
+                                                <i class="fa <?= $SubItem->Icone; ?>"></i>
+                                            <? } else { ?>
+                                                <i class="fa fa-angle-double-right"></i>
+                                            <? } ?>
+                                            <span><?= $SubItem->Titulo; ?></span>
+                                            <? if (!empty($classSubmenu)) { ?>
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            <? } ?>
+                                        </a>
                                         <?php
-                                        foreach ($SubItem->ListSubMenu as $SubSubItem) {
+                                        if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0) {
                                             ?>
-                                            <li>
-                                                <a href="<?= URL . $SubSubItem->Url; ?>">
-                                                    <i class="fa fa-angle-double-right"></i><?= $SubSubItem->Titulo; ?>
-                                                </a>
-                                            </li>
-                                        <?php
-                                        }
-                                        ?>
-                                    </ul>
-                                <?php } ?>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                <?php } ?>
-            </li>
-        <?php } ?>
+                                            <ul class="treeview-menu">
+                                                <?php
+                                                foreach ($SubItem->ListSubMenu as $SubSubItem) {
+                                                    if (Libs\Usuario::GetAcessoByUsuarioId($SubSubItem->MenuId)) {
+                                                        ?>
+                                                        <li>
+                                                            <a href="<?= URL . $SubSubItem->Url; ?>">
+                                                                <i class="fa fa-angle-double-right"></i><?= $SubSubItem->Titulo; ?>
+                                                            </a>
+                                                        </li>
+                                                    <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </ul>
+                                        <?php } ?>
+                                    </li>
+                                <?php }
+                            }?>
+                        </ul>
+                    <?php } ?>
+                </li>
+            <?php }
+        }?>
 
     </ul>
 <?
