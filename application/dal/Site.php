@@ -40,6 +40,11 @@ class Site
      */
     var $Metatags;
 
+    /**
+     * @NotMapped
+     */
+    var $Aplicacao;
+
 
     public function __construct($SiteId = 0, $AplicacaoId = 0, $Titulo = "", $Url="", $NivelAcesso=0, $Descricao="",
                                 $Metatags="")
@@ -55,8 +60,8 @@ class Site
 
         $pdo = new Database();
 
-        if ($this->SiteId > 0) {
-
+        if ($this->AplicacaoId > 0) {
+            $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
         }
 
         return $this;

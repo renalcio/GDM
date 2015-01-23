@@ -50,7 +50,9 @@ $HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sess
         //Notofy
         "jquery.gritter.css",
         //SWITCH
-        "bootstrap-switch.css"
+        "bootstrap-switch.css",
+        //Tagsinput
+        "bootstrap-tagsinput.css",
     ));
     echo "<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", Array(
@@ -91,6 +93,8 @@ $HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sess
         "plugins/iCheck/icheck.min.js",
         //Notofy
         "plugins/jquery.gritter.js",
+        //Tagsinput
+        "plugins/bootstrap-tagsinput.js",
 
         //HELPER
         "helper.js",

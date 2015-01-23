@@ -1,18 +1,19 @@
 <?
 use Libs\Form;
-$Model = new \DAL\Site();
+//$Model = new \DAL\Site();
 ?>
 <h3 class="page-header">Cadastro de Site</h3>
 <form method="post">
-    <?Form::Hidden("NichoId", @$Model->SiteId);?>
+    <?Form::Hidden("SiteId", @$Model->SiteId);?>
 
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">
-                  Aplicação e Acesso
-                </h3>
-            </div>
-            <div class="box-body">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">
+                Aplicação e Acesso
+            </h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
                 <div class="form-group col-lg-6" for="AplicacaoId">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "AplicacaoId");?>
@@ -24,11 +25,12 @@ $Model = new \DAL\Site();
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "NivelAcesso");?>
                     </label>
-                    <? Form::Number("NivelAcesso", @$Model->NivelAcesso, "", Array("class" => "form-control"))?>
+                    <? Form::Number("NivelAcesso", @$Model->NivelAcesso, Array("class" => "form-control", "min" => "0"))?>
                 </div>
             </div>
-            
         </div>
+
+    </div>
 
     <div class="box box-primary">
         <div class="box-header">
@@ -37,11 +39,32 @@ $Model = new \DAL\Site();
             </h3>
         </div>
         <div class="box-body">
-            <div class="form-group">
+            <div class="form-group" for="Titulo">
                 <label>
-                    Título:
+                    <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
                 </label>
-                <?Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"));?>
+                <? Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"))?>
+            </div>
+
+            <div class="form-group" for="Descricao">
+                <label>
+                    <?=\Libs\ModelState::DisplayName($Model, "Descricao");?>
+                </label>
+                <? Form::Wysiwyg("Descricao", @$Model->Descricao, Array("class" => "form-control"))?>
+            </div>
+
+            <div class="form-group" for="Url">
+                <label>
+                    <?=\Libs\ModelState::DisplayName($Model, "Url");?>
+                </label>
+                <? Form::Text("Url", @$Model->Url, Array("class" => "form-control"))?>
+            </div>
+
+            <div class="form-group" for="Metatags">
+                <label>
+                    <?=\Libs\ModelState::DisplayName($Model, "Metatags");?>
+                </label>
+                <? Form::Text("Metatags", @$Model->Metatags, Array("class" => "form-control", "data-role" => "tagsinput", "style" => "width: 100%"))?>
             </div>
         </div>
 

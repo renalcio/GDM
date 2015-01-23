@@ -32,7 +32,7 @@ class siteModel
 
     public function GetToEdit(Site $model)
     {
-        if($model->UsuarioAplicacaoId > 0)
+        if($model->SiteId > 0)
         {
             $model = $this->pdo->GetById("Site", "SiteId", $model->SiteId, "DAL\\Site");
         }else{
@@ -52,9 +52,8 @@ class siteModel
     public function Save(Site $model){
 
         if($model!=null) {
-
+            
                 if ($model->SiteId > 0){
-
                     $this->pdo->update("Site", $model, "SiteId = " . $model->SiteId);
                 } else {
                     $model->SiteId = $this->pdo->insert("Site", $model);
