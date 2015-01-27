@@ -208,11 +208,33 @@ class Helper
         if(empty($controller)) $controller = Self::getController();
         // load views
 
+        $urlfinal = "";
 
         if(empty($controller))
-            require APP . 'views/' . $view . '.php';
+            $urlfinal = APP. MODULES . PASTA . 'views' . DIRECTORY_SEPARATOR . $view . '.php';
         else
-            require APP . 'views/' . $controller . '/' . $view . '.php';
+            $urlfinal = APP. MODULES . PASTA . 'views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
+
+        //echo $urlfinal;
+
+        if(file_exists($urlfinal))
+            require $urlfinal;
+        else{
+            if(empty($controller))
+                $urlfinal = APP. MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $view . '.php';
+            else
+                $urlfinal = APP. MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
+
+            if(file_exists($urlfinal))
+                require $urlfinal;
+            else {
+
+                if (empty($controller))
+                    require APP . 'views/' . $view . '.php';
+                else
+                    require APP . 'views/' . $controller . '/' . $view . '.php';
+            }
+        }
 
     }
 

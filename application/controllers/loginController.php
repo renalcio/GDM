@@ -10,9 +10,9 @@
  */
 namespace Controllers;
 use Core\Controller;
-use \Libs\Cookie;
-use \Libs\Session;
-use Libs\Usuario;
+use \Libs\CookieHelper;
+use \Libs\SessionHelper;
+use Libs\UsuarioHelper;
 
 class LoginController extends Controller
 {
@@ -35,7 +35,7 @@ class LoginController extends Controller
         header('Content-Type: application/json; Charset=UTF-8');
         //echo "Auth";
         extract($_POST);
-            $this->loadModel();
+            $this->loadBLL();
             $retorno = new \stdClass;
             $retorno->Status = false;
             $retorno->Erros = Array();
@@ -55,8 +55,8 @@ class LoginController extends Controller
     }
 
     public function Logout(){
-        \Libs\Session::Deletar("GDMAuth");
-        \Libs\Cookie::Deletar("GDMAuth");
+        \Libs\SessionHelper::Deletar("GDMAuth");
+        \Libs\CookieHelper::Deletar("GDMAuth");
 
         session_destroy();
 
@@ -65,14 +65,14 @@ class LoginController extends Controller
 
     public function SelecionaAplicacao($id = ""){
         if(empty($id)) {
-            $model = Usuario::getAplicacoes();
+            $model = UsuarioHelper::getAplicacoes();
             if (count($model) > 0)
                 $this->ModelView($model, "selecionaAplicacao", "login", "header_login");
             else
                 $this->Redirect("logout");
 
         }else{
-            Usuario::setAplicacao($id);
+            UsuarioHelper::setAplicacao($id);
 
             $this->Redirect("index", "home");
         }

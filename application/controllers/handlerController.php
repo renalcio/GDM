@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 use Core\Controller;
-use Classe\Database;
+use Libs\Database;
 class Handler extends Controller
 {
     function index($Handler, $Funcao){

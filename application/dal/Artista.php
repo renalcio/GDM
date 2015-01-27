@@ -7,7 +7,7 @@
  */
 namespace DAL;
 
-use Classe\Database;
+use Libs\Database;
 
 class Artista
 {
@@ -76,7 +76,7 @@ class Artista
 
         if ($this->ArtistaId > 0) {
             if(!empty($this->AplicacaoId))
-                $this->Aplicacao = $pdo->GetById("Aplicacao". "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
         }
 
         return $this;

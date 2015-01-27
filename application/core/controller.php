@@ -43,14 +43,27 @@ class Controller
      * Loads the "model".
      * @return object model
      */
-    public function loadModel($model = "")
+    public function loadBLL($bll = "")
     {
-        if(empty($model)) $model = Helper::getController();
+        if(empty($bll)) $bll = Helper::getController();
         
-        require_once APP . '/model/' . $model . 'Model.php';
+        $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . PASTA . $bll . 'BLL.php';
+
+
+        if(file_exists($urlfinal))
+            require_once $urlfinal;
+        else {
+            $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . $bll . 'BLL.php';
+
+            if(file_exists($urlfinal))
+                require_once $urlfinal;
+            else
+                require_once APP . '/BLL/' . $bll . 'BLL.php';
+        }
+
         
         // create new "model" (and pass the database connection)
-        $this->model = "Model\\".$model."Model";
+        $this->model = "BLL\\".$bll."BLL";
         $this->model = new $this->model($this->db);
     }
     
@@ -68,10 +81,12 @@ class Controller
         require APP . 'views/_templates/' . $header . '.php';
 		
 		
-        if(empty($controller))
+        /*if(empty($controller))
             require APP . 'views/' . $view . '.php';
         else
             require APP . 'views/' . $controller . '/' . $view . '.php';
+        */
+        Helper::LoadView($view, $controller);
         
 		
         require APP . 'views/_templates/' . $footer . '.php';

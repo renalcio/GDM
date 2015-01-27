@@ -1,7 +1,7 @@
 <?php
 namespace Controllers\Handler;
 use Core\Controller;
-use Classe\Database;
+use Libs\Database;
 use Libs\Helper;
 
 class LoginHandler extends Controller
@@ -10,7 +10,7 @@ class LoginHandler extends Controller
     {
         header('Content-Type: application/json; Charset=UTF-8');
         //extract($_POST);
-        $this->loadModel();
+        $this->loadBLL();
         $retorno = new \stdClass;
         $retorno->Status = false;
         $retorno->Erros = Array();

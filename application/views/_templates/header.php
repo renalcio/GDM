@@ -1,8 +1,8 @@
 <?
-use Libs\Session;
+use Libs\SessionHelper;
 use Libs\Helper;
-$db = new Classe\Database();
-$sessao = new Session("GDMAuth");
+$db = new Libs\Database();
+$sessao = new SessionHelper("GDMAuth");
 $HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "DAL\\UsuarioAplicacao");
 ?>
 <!DOCTYPE html>

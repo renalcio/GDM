@@ -1,6 +1,6 @@
 <?php
 namespace DAL;
-use Classe\Database;
+use Libs\Database;
 class Nicho
 {
     var $NichoId;

@@ -7,7 +7,7 @@
  */
 namespace DAL;
 
-use Classe\Database;
+use Libs\Database;
 
 class Permissao
 {

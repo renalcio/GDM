@@ -1,7 +1,7 @@
 <?php
 namespace Controllers\Handler;
 use Core\Controller;
-use Classe\Database;
+use Libs\Database;
 class PaisHandler extends Controller
 {
     function GetAll()

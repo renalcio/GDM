@@ -1,7 +1,7 @@
 <?php
 namespace Core;
 use Controllers\Error;
-use Libs\Session;
+use Libs\SessionHelper;
 use Libs\Helper;
 class Application
 {
@@ -30,7 +30,7 @@ class Application
 
             //require_once APP . 'controllers/home.php';
 
-            $session = new Session("GDMAuth");
+            $session = new SessionHelper("GDMAuth");
             if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
                 if(APPID > 0) {
                     $page = new \Controllers\HomeController();
@@ -47,7 +47,7 @@ class Application
         } elseif (file_exists(APP . 'controllers/' . $this->url_controller . '.php')) {
             //echo APP_ID;
             //print_r($_SESSION);if(defined('VAR_NAME')){
-            $session = new Session("GDMAuth");
+            $session = new SessionHelper("GDMAuth");
             //echo $session->Ver("AplicacaoId");
             //echo $this->url_controller;
             if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || $this->url_controller == "loginController")

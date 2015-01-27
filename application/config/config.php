@@ -51,11 +51,20 @@ define('DB_NAME', 'cdm');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-define("ROOTAPP", 1);
+define("ROOTAPP", 1); #AplicacaoId GDM
 
-$appsess = new \Libs\Session("GDMAuth");
+define("MODULES", "Modules" . DIRECTORY_SEPARATOR); #Pasta de Aplicações
+
+$appsess = new \Libs\SessionHelper("GDMAuth"); #Session
+
+
 $appid = $appsess->Ver("AplicacaoId");
 if(!empty($appid)){
-    define('APPID', $appid);
-    define('APP_ID', $appid);
+    define('APPID', $appid); #AplicacaoId
+    define('APP_ID', $appid); #AplicacaoId
+}
+
+$pasta = $appsess->Ver("Pasta");
+if(!empty($pasta)) {
+    define('PASTA', $pasta . DIRECTORY_SEPARATOR); #Pasta da Aplicacao
 }

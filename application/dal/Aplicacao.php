@@ -1,21 +1,38 @@
 <?php
 namespace DAL;
-use Classe\Database;
+use Libs\Database;
 class Aplicacao
 {
     var $AplicacaoId;
+    /**
+     * @Required
+     * @DisplayName: Título
+     */
     var $Titulo;
+    /**
+     * @DisplayName: Descrição
+     */
     var $Descricao;
     var $PessoaId;
     var $DataCriacao;
+
+    /**
+     * @Required
+     * @DisplayName: Nicho
+     */
     var $NichoId;
+
+    /**
+     * @DisplayName: Pasta da Aplicação
+     */
+    var $Pasta;
 
     /**
      * @NotMapped
      */
     var $Pessoa;
 
-    public function __construct($AplicacaoId = 0, $Titulo="", $Descricao="", $PessoaId=0, $DataCriacao="", $NichoId=0)
+    public function __construct($AplicacaoId = 0, $Titulo="", $Descricao="", $PessoaId=0, $DataCriacao="", $NichoId=0, $Pasta="")
     {
         $pdo = new Database();
         if(!empty($Titulo)) {
@@ -25,6 +42,7 @@ class Aplicacao
             $this->PessoaId = $PessoaId;
             $this->DataCriacao = $DataCriacao;
             $this->NichoId = $NichoId;
+            $this->Pasta = $Pasta;
         }
 
         if($this->AplicacaoId > 0 && $this->PessoaId) {
