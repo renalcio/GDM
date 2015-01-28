@@ -86,7 +86,7 @@ class Controller
         else
             require APP . 'views/' . $controller . '/' . $view . '.php';
         */
-        Helper::LoadView($view, $controller);
+        Helper::LoadModelView($Model, $view, $controller);
         
 		
         require APP . 'views/_templates/' . $footer . '.php';

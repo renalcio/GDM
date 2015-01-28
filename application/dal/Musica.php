@@ -50,19 +50,21 @@ class Musica
             $this->Titulo = $Titulo;
             $this->ArtistaId = $ArtistaId;
             $this->AplicacaoId = $AplicacaoId;
-            $this->Aplicacao = new Aplicacao();
-            $this->Artista = new Artista();
         }
-
-        if ($this->MusicaId > 0) {
+        if (!empty($this->MusicaId)) {
 
             if(!empty($this->AplicacaoId))
-                $this->Aplicacao = $pdo->GetById("Aplicacao". "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, new Artista());
 
             if(!empty($this->ArtistaId))
-                $this->Artista = $pdo->GetById("Artista". "ArtistaId", $this->ArtistaId, "DAL\\Artista");
+                $this->Artista = $pdo->GetById("Artista", "ArtistaId", $this->ArtistaId, new Artista());
 
         }
+        if($this->Aplicacao == null)
+            $this->Aplicacao = new Aplicacao();
+
+        if($this->Artista == null)
+            $this->Artista = new Artista();
 
         return $this;
     }

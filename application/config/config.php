@@ -67,4 +67,6 @@ if(!empty($appid)){
 $pasta = $appsess->Ver("Pasta");
 if(!empty($pasta)) {
     define('PASTA', $pasta . DIRECTORY_SEPARATOR); #Pasta da Aplicacao
+}else{
+    define('PASTA', ''); #Pasta da Aplicacao
 }

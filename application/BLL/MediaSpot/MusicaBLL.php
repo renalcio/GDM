@@ -44,7 +44,7 @@ class musicaBLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->pdo->select("SELECT Musica WHERE ", "DAL\\Musica", true);
+        $model->Lista = $this->pdo->select("SELECT * FROM Musica", "DAL\\Musica", true);
 
         return $model;
     }

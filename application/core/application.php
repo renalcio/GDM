@@ -26,6 +26,19 @@ class Application
         $this->splitUrl();
 
         // check for controller: no controller given ? then load start-page
+
+        //Verifica se tem pasta personalizada
+        $urlController = APP . 'modules' . DIRECTORY_SEPARATOR . PASTA . 'controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+        if(!file_exists($urlController)){
+            //Verifica se tem pasta generica
+            $urlController = APP . 'modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+
+            if(!file_exists($urlController)){
+                //Verifica se tem na pasta do sistema
+                $urlController = APP . 'controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+            }
+        }
+
         if (!$this->url_controller) {
 
             //require_once APP . 'controllers/home.php';
@@ -44,7 +57,8 @@ class Application
                 $page->index();
             }
 
-        } elseif (file_exists(APP . 'controllers/' . $this->url_controller . '.php')) {
+        } elseif (file_exists($urlController)) {
+            require_once $urlController;
             //echo APP_ID;
             //print_r($_SESSION);if(defined('VAR_NAME')){
             $session = new SessionHelper("GDMAuth");
