@@ -40,9 +40,9 @@ require APP . '/libs/helper.php';
 //require APP . '/core/controller.php';
 
 //CLASSES BY RENALCIO
-require APP . '/class/Database.php';
+//require APP . '/classe/Database.php';
 //LOADERS BY RENALCIO
- $pdo = new Classe\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+ $pdo = new Libs\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 
 // start the application
 $app = new Core\Application();
