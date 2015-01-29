@@ -1,14 +1,33 @@
 ﻿<?
-if(is_array($Model->Lista) && count($Model->Lista) > 0)
-{
+
     ?>
+<style>
+    .tdMenu{
+        text-align: center;
+    }
+</style>
     <script type="text/javascript">
-        $(function() {
+        $(function(){
             $("#listagem").dataTable({
-                "aoColumns": [ null, null, {"bSortable": false} ]
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "<?=URL?>handler/musica/DataTable/",
+                    "type": "POST"
+                },
+                "columns": [
+                    {"data": "Titulo" },
+                    {"data": "Artista.Titulo" },
+                    {   "data": "OptionsMenu",
+                        "orderable":      false,
+                        "className": "tdMenu"
+                    }
+                ]
+                //"aoColumns": [ null, null, {"bSortable": false} ]
             });
         });
 
+        ///"aoColumns": [ null, null, {"bSortable": false} ]
         function Excluir(Id){
             bootbox.confirm('Deseja realmente excluir este item?', function(result){
                 if(result)
@@ -16,8 +35,34 @@ if(is_array($Model->Lista) && count($Model->Lista) > 0)
 
             });
         }
+
+        function Filtrar(Destino, Pagina, Total, Titulo){
+            var Pagina = Pagina.toInt() > 0 ? Pagina.toInt() : 1,
+                Total = Total.toInt() > 0 ? Total.toInt() : 20,
+                Url = "<?=URL?>handler/musica/GetTable/"+Pagina+"/"+Total+"/"+Titulo;
+            $.get(Url, function(data){
+                if(data!=""){
+                    $(Destino+" tbody").html(data);
+                    $("#listagem").dataTable({
+                        "bFilter": false,
+                        "bInfo": false,
+                        "bPaginate": false,
+                        "aoColumns": [ null, null, {"bSortable": false} ]
+                    });
+                }else{
+
+                }
+            });
+        }
+        $(function(){
+           /*Filtrar("#listagem", "1","20","");
+            $("#paginacao li").click(function(){
+               var Pagina = $("a", this).html();
+                Filtrar("#listagem", Pagina, "20", "");
+            });*/
+        });
     </script>
-<? } ?>
+<?  ?>
 
 <div class="box box-primary">
     <div class="box-header">
@@ -66,12 +111,11 @@ if(is_array($Model->Lista) && count($Model->Lista) > 0)
                 }
             }else
             {
-                echo "<tr><td colspan='2'>Nenhum Registro</td></tr>";
+               // echo "<tr><td colspan='2'>Nenhum Registro</td></tr>";
             }
             ?>
             </tbody>
         </table>
-    </div>
 </div>
 </div>
 

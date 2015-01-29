@@ -104,6 +104,10 @@ $HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sess
     ));?>
 
 
+    <!--<script src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>-->
+
+
     <script>
         function showErrorAlert (reason, detail) {
             var msg='';

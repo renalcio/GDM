@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 20/01/2015
  */
-namespace Controllers\Handler;
+namespace Controllers\Handlers;
 use Core\Controller;
 use Libs\Database;
 use Libs\Helper;

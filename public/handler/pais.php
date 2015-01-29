@@ -1,5 +1,5 @@
 <?php
-namespace Controllers\Handler;
+namespace Controllers\Handlers;
 use Core\Controller;
 use Classe\Database;
 class Pais extends Controller
