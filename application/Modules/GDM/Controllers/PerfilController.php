@@ -23,7 +23,7 @@ class PerfilController extends Controller
         // load views
         $this->loadBLL();
         $Model = new \stdClass();
-        $Model = $this->model->GetToIndex($Model);
+        $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
 
@@ -39,7 +39,7 @@ class PerfilController extends Controller
         $this->loadBLL();
         $Model = new Perfil();
         $Model->PerfilId = $id;
-        $Model = $this->model->GetToEdit($Model);
+        $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
     }
@@ -48,7 +48,7 @@ class PerfilController extends Controller
 
         if($model!=null) {
             $this->loadBLL();
-            $this->model->Save($model);
+            $this->bll->Save($model);
         }
         $this->Redirect("Index");
     }
@@ -56,7 +56,7 @@ class PerfilController extends Controller
     public function deletar($id){
         if($id > 0){
             $this->loadBLL();
-            $this->model->Deletar($id);
+            $this->bll->Deletar($id);
         }
 
         $this->Redirect("Index");
@@ -67,7 +67,7 @@ class PerfilController extends Controller
         $this->loadBLL();
         $Model = new \stdClass();
         $Model->PerfilId = $id;
-        $Model = $this->model->Acesso($Model);
+        $Model = $this->bll->Acesso($Model);
         $this->ModelView($Model);
     }
 }

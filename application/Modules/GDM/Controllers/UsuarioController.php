@@ -26,7 +26,7 @@ class UsuarioController extends Controller
         // load views
         $this->loadBLL();
         $Model = new \stdClass();
-        $Model = $this->model->GetToIndex($Model);
+        $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
 
@@ -42,7 +42,7 @@ class UsuarioController extends Controller
         $this->loadBLL();
         $Model = new Usuario();
         $Model->UsuarioId = $id;
-        $Model = $this->model->GetToEdit($Model);
+        $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
     }
@@ -67,10 +67,10 @@ class UsuarioController extends Controller
 
             if(ModelState::isValid()) {
 
-                $validacao = $this->model->Validar($model);
+                $validacao = $this->bll->Validar($model);
 
                 if (ModelState::isValid()) {
-                    $this->model->Save($model);
+                    $this->bll->Save($model);
                     $this->Redirect("Index", "usuario");
                 }
 
@@ -84,7 +84,7 @@ class UsuarioController extends Controller
     public function deletar($id){
         if($id > 0){
             $this->loadBLL();
-            $this->model->Deletar($id);
+            $this->bll->Deletar($id);
         }
 
         $this->Redirect("Index");

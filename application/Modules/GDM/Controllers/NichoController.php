@@ -21,7 +21,7 @@ class NichoController extends Controller
         // load views
         $this->loadBLL();
         $Model = new \stdClass();
-        $Model = $this->model->GetToIndex($Model);
+        $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
 
@@ -37,7 +37,7 @@ class NichoController extends Controller
         $this->loadBLL();
         $Model = new \stdClass();
         $Model->NichoId = $id;
-        $Model = $this->model->GetToEdit($Model);
+        $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
     }
@@ -46,14 +46,14 @@ class NichoController extends Controller
 
         if($model!=null) {
             $this->loadBLL();
-            $this->model->Save($model);
+            $this->bll->Save($model);
         }
         $this->Redirect("Index", "nicho");
     }
     public function deletar($id){
         if($id > 0){
             $this->loadBLL();
-            $this->model->Deletar($id);
+            $this->bll->Deletar($id);
         }
 
         $this->Redirect("Index");

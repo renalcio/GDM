@@ -40,16 +40,16 @@ class LoginController extends Controller
             $retorno->Status = false;
             $retorno->Erros = Array();
             
-            $validacao = $this->model->VerificaDados($_POST);
+            $validacao = $this->bll->VerificaDados($_POST);
             if(count($validacao) > 0)
             {
                 $retorno->Erros = $validacao;
                 
             }else{
                 $retorno->Status = true;
-                $retorno->Usuario = $this->model->GetUsuarioByLoginSenha($Login, $Senha);
+                $retorno->Usuario = $this->bll->GetUsuarioByLoginSenha($Login, $Senha);
                 
-                $this->model->SetLogin($Login, $Senha);
+                $this->bll->SetLogin($Login, $Senha);
             }
             echo json_encode($retorno);
     }

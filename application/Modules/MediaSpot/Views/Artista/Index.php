@@ -12,7 +12,7 @@ if(is_array($Model->Lista) && count($Model->Lista) > 0)
         function Excluir(Id){
             bootbox.confirm('Deseja realmente excluir este item?', function(result){
                 if(result)
-                    location.href="<?=\Libs\Helper::getUrl("deletar")?>/"+Id;
+                    location.href="<?=\Libs\Helper::getUrl("deletar")?>"+Id;
 
             });
         }

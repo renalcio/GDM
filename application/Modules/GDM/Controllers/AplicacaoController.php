@@ -20,7 +20,7 @@ class AplicacaoController extends Controller
     {
         $model = new \stdClass();
         $this->loadBLL();
-        $model = $this->model->GetToIndex($model);
+        $model = $this->bll->GetToIndex($model);
 
         $this->ModelView($model);
     }
@@ -31,7 +31,7 @@ class AplicacaoController extends Controller
         $model->AplicacaoId = $id;
         $this->loadBLL();
 
-        $model = $this->model->GetToEdit($model);
+        $model = $this->bll->GetToEdit($model);
 
         $this->ModelView($model);
     }
@@ -40,7 +40,7 @@ class AplicacaoController extends Controller
     {
         $this->loadBLL();
         //echo "<pre>";
-        $this->model->Save($model);
+        $this->bll->Save($model);
         //echo "</pre>";
         $this->Redirect("Index");
     }
@@ -48,7 +48,7 @@ class AplicacaoController extends Controller
     public function deletar($id){
         if($id > 0){
             $this->loadBLL();
-            $this->model->Deletar($id);
+            $this->bll->Deletar($id);
         }
 
         $this->Redirect("Index");

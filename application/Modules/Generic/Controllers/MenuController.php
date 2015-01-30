@@ -12,7 +12,7 @@ class MenuController extends Controller
         // load views
         $model = new \stdClass();
         $this->loadBLL("app");
-        $model = $this->model->GetToIndex($model);
+        $model = $this->bll->GetToIndex($model);
 
         $this->ModelView($model);
     }
@@ -23,7 +23,7 @@ class MenuController extends Controller
             $menu = new \stdClass;
             //Editar
             $this->loadBLL();
-            $menu->ListMenu = $this->model->GetMenu(0, $App);
+            $menu->ListMenu = $this->bll->GetMenu(0, $App);
             $menu->AppId = $App;
             //print_r($menu);
             
@@ -43,7 +43,7 @@ class MenuController extends Controller
             
             //$this->model->LimpaMenu($App);
             
-            $this->model->Save((Array)$menu, 0, $App);
+            $this->bll->Save((Array)$menu, 0, $App);
             
         }
     }

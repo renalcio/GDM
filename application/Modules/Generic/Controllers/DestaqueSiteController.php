@@ -2,23 +2,23 @@
 /**
  * Controller
  *
- * Titulo: Musicas
+ * Titulo: Destaques do Site
  * Autor: renalcio.freitas
- * Data: 26/01/2015
+ * Data: 30/01/2015
  *
  */
 namespace Controllers;
 use Core\Controller;
-use DAL\Musica;
+use DAL\DestaqueSite;
 use Libs\Helper;
 use Libs\ModelState;
 
-class musicaController extends Controller
+class DestaqueSiteController extends Controller
 {
 
     public function index()
     {
-        $this->loadBLL();
+        $this->loadModel();
         $Model = new \stdClass();
         $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
@@ -27,9 +27,9 @@ class musicaController extends Controller
     public function cadastro($id = 0)
     {
         // load views
-        $this->loadBLL();
-        $Model = new Musica();
-        $Model->MusicaId = $id;
+        $this->loadModel();
+        $Model = new DestaqueSite();
+        $Model->DestaqueSiteId = $id;
         $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
@@ -39,8 +39,9 @@ class musicaController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Musica");
-            $this->loadBLL();
+            Helper::cast($model, "DAL\\DestaqueSiteId"); //TODO: Alterar metodo cast para pegar new objects() como no
+            // select
+            $this->loadModel();
 
             //Valida Model via ModelState
             ModelState::ValidateModel($model);
@@ -55,7 +56,7 @@ class musicaController extends Controller
                 }
             }
         }else{
-            $model = new Musica();
+            $model = new \stdClass();
         }
 
         $this->ModelView($model);
@@ -63,7 +64,7 @@ class musicaController extends Controller
 
     public function deletar($id){
         if($id > 0){
-            $this->loadBLL();
+            $this->loadModel();
             $this->bll->Deletar($id);
         }
 

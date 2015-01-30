@@ -20,7 +20,7 @@ class siteController extends Controller
     {
         $this->loadBLL();
         $Model = new \stdClass();
-        $Model = $this->model->GetToIndex($Model);
+        $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
 
@@ -30,7 +30,7 @@ class siteController extends Controller
         $this->loadBLL();
         $Model = new Site();
         $Model->SiteId = $id;
-        $Model = $this->model->GetToEdit($Model);
+        $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
     }
@@ -47,10 +47,10 @@ class siteController extends Controller
 
             if(ModelState::isValid()) {
                 //Valida model via Model
-                $this->model->Validar($model);
+                $this->bll->Validar($model);
 
                 if(ModelState::isValid()) {
-                    $this->model->Save($model); // Salva
+                    $this->bll->Save($model); // Salva
                     $this->Redirect("Index"); // Redireciona pra index do controller
                 }
             }
@@ -64,7 +64,7 @@ class siteController extends Controller
     public function deletar($id){
         if($id > 0){
             $this->loadBLL();
-            $this->model->Deletar($id);
+            $this->bll->Deletar($id);
         }
 
         $this->Redirect("Index");

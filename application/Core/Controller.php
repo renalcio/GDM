@@ -11,7 +11,7 @@ class Controller
     /**
      * @var null Model
      */
-    public $model = null;
+    public $bll = null;
     
 
     /**
@@ -40,7 +40,7 @@ class Controller
     }
 
     /**
-     * Loads the "model".
+     * Loads the "bll".
      * @return object model
      */
     public function loadBLL($bll = "")
@@ -63,8 +63,8 @@ class Controller
 
         
         // create new "model" (and pass the database connection)
-        $this->model = "BLL\\".$bll."BLL";
-        $this->model = new $this->model($this->db);
+        $this->bll = "BLL\\".$bll."BLL";
+        $this->bll = new $this->bll($this->db);
     }
     
     public function View($view = "", $controller = "", $header = "", $footer=""){

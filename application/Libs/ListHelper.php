@@ -7,13 +7,16 @@ class ListHelper {
     private $list;
     private $type;
 
-    public function __construct(Array $Array = Array()){
+    public function __construct($Array = Array()){
         if(count($Array) > 0){
             if(is_object($Array[0])){
                 $this->type = get_class($Array[0]);
             }
+            $this->list = $Array;
+        }else{
+            $this->list = Array();
         }
-        $this->list = $Array;
+
     }
 
     public function Add($Item){

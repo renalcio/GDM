@@ -21,6 +21,7 @@
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="DataCriacao" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="NichoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Pasta" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="AplicacaoId"/>
     </table>
     <table name="Artista" schema="" catalog="cdm" type="TABLE">
@@ -35,6 +36,14 @@
       <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="Relacionados" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="ArtistaId"/>
+    </table>
+    <table name="DestaqueSite" schema="" catalog="cdm" type="TABLE">
+      <column name="DestaqueSiteId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="SiteId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="Url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Imagem" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Posicao" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="DestaqueSiteId"/>
     </table>
     <table name="Menu" schema="" catalog="cdm" type="TABLE">
       <column name="MenuId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

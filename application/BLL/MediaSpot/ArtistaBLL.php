@@ -68,16 +68,12 @@ class ArtistaBLL
     }
 
     public function Deletar($id){
+        echo $id;
         if($id > 0){
-
-            //Apaga suas musicas
-            $musicas = new ArrayHelper($this->pdo->select("SELECT * FROM Musica WHERE Artista = '".$id."'", "", true));
-            $musicas->For_Each(function($item){
-               var_dump($item);
-            });
-
+            //Apaga Musicas
+            $this->pdo->delete("Musica", "ArtistaId = '".$id."'", 0);
             //Apaga item principal
-            //$this->pdo->delete("Artista", "ArtistaId = '".$id."'");
+            $this->pdo->delete("Artista", "ArtistaId = '".$id."'");
         }
     }
 

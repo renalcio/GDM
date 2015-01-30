@@ -6,8 +6,12 @@ namespace Libs;
 class ArrayHelper {
     private $array;
 
-    public function __construct(Array $Array = Array()){
-        $this->array = $Array;
+    public function __construct($Array = Array()){
+        if(count($Array) > 0) {
+            $this->array = $Array;
+        }else{
+            $this->array = Array();
+        }
     }
 
     public function Add($Item){
