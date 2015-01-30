@@ -54,7 +54,7 @@ class Musica
         if (!empty($this->MusicaId)) {
 
             if(!empty($this->AplicacaoId))
-                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, new Artista());
+                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, new Aplicacao());
 
             if(!empty($this->ArtistaId))
                 $this->Artista = $pdo->GetById("Artista", "ArtistaId", $this->ArtistaId, new Artista());

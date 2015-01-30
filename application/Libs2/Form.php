@@ -57,7 +57,7 @@ class Form
                 }
             }
 
-            if(!empty($Valor)) $html .= "value='$Valor' ";;
+            if(!empty($Valor)) $html .= "value=\"".$Valor."\" ";;
 
             $html .= "/>";
         }

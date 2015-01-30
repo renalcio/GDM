@@ -54,4 +54,11 @@ class ArrayHelper {
 
         return $retorno;
     }
+
+    public function For_Each($for){
+        $array = $this->array;
+        foreach($array as $key => $element)
+            $for($element,$key);
+        return $this;
+    }
 }

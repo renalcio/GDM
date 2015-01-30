@@ -116,7 +116,7 @@ class MusicaHandler extends Controller
                                 LOWER(Musica.Titulo) LIKE '%".$titulo."%'
                                 OR'".$titulo."' = ''
                                 )
-                                ORDER BY ".$orderby, new Musica(), true);
+                                ORDER BY ".$orderby, "", true);
 
         $array = Array();
 

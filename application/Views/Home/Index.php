@@ -6,7 +6,15 @@ use Libs\ArrayHelper;
     <p>
         <?
 
-        echo \Libs\UsuarioHelper::GetPasta();
+        $lista = new \Libs\ListHelper();
+        $lista->Add(new \DAL\PessoaFisica(0, "Teste"));
+        $lista->Add(new \DAL\PessoaFisica(0, "Teste2"));
+        $lista->Add(new \DAL\PessoaFisica(0, "Teste3"));
+
+        //var_dump($lista->ToList());
+        $lista->For_Each(function($item){
+            var_dump($item);
+        });
 
         ?>
 

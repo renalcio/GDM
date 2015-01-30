@@ -6,6 +6,7 @@
  * Data: 26/01/2015
  */
 namespace BLL;
+use Libs\ArrayHelper;
 use Libs\Database;
 use DAL\Artista;
 use Libs\Helper;
@@ -68,7 +69,15 @@ class ArtistaBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Artista", "ArtistaId = '".$id."'");
+
+            //Apaga suas musicas
+            $musicas = new ArrayHelper($this->pdo->select("SELECT * FROM Musica WHERE Artista = '".$id."'", "", true));
+            $musicas->For_Each(function($item){
+               var_dump($item);
+            });
+
+            //Apaga item principal
+            //$this->pdo->delete("Artista", "ArtistaId = '".$id."'");
         }
     }
 

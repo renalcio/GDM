@@ -55,7 +55,7 @@ class musicaController extends Controller
                 }
             }
         }else{
-            $model = new \stdClass();
+            $model = new Musica();
         }
 
         $this->ModelView($model);

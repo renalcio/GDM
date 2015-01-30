@@ -68,4 +68,12 @@ class ListHelper {
 
         return $retorno;
     }
+
+    public function For_Each($for){
+        $lista = $this->list;
+        foreach($lista as $key => $element)
+            $for($element,$key);
+        return $this;
+    }
+
 }

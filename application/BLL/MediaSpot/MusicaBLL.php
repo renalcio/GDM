@@ -32,7 +32,7 @@ class musicaBLL
 
     public function GetToEdit(Musica $model)
     {
-        if($model->UsuarioAplicacaoId > 0)
+        if($model->MusicaId > 0)
         {
             $model = $this->pdo->GetById("Musica", "MusicaId", $model->MusicaId, "DAL\\Musica");
         }else{
@@ -54,7 +54,6 @@ class musicaBLL
         if($model!=null) {
 
                 if ($model->MusicaId > 0){
-
                     $this->pdo->update("Musica", $model, "MusicaId = " . $model->MusicaId);
                 } else {
                     $model->MusicaId = $this->pdo->insert("Musica", $model);
