@@ -93,6 +93,9 @@ class Helper
     }
 
     private static function arrayToObject(array $array, $className) {
+        if(is_object($className))
+            $className = get_class($className);
+
         return unserialize(sprintf(
             'O:%d:"%s"%s',
             strlen($className),

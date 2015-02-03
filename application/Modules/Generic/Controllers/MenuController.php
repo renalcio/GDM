@@ -11,7 +11,7 @@ class MenuController extends Controller
     {
         // load views
         $model = new \stdClass();
-        $this->loadBLL("app");
+        $this->loadBLL("Aplicacao");
         $model = $this->bll->GetToIndex($model);
 
         $this->ModelView($model);

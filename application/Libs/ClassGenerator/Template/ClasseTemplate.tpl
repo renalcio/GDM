@@ -6,9 +6,13 @@
 * @date: ${date}
 */
 
-namespace Entities;
+namespace DAL;
 
-class ${C}{
+class ${C}
+{
     ${vars}
 
+    function __construct(${construct_parametros}){
+        ${construct_conteudo}
+    }
 }

@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         // load views
-        $this->View("index", "home");
+        $this->View("index");
     }
 
 
@@ -28,11 +28,9 @@ class HomeController extends Controller
      * This method handles what happens when you move to http://yourproject/home/exampletwo
      * The camelCase writing is just for better readability. The method name is case-insensitive.
      */
-    public function exampleTwo()
+    public function generator()
     {
         // load views
-        require APP . 'views/_templates/header.php';
-        require APP . 'views/home/example_two.php';
-        require APP . 'views/_templates/footer.php';
+        $this->View("generator");
     }
 }

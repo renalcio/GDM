@@ -99,6 +99,30 @@ class ClassGenerator
         }
     }
 
+    private function generateConstruct(){
+
+        $retorno = new \stdClass();
+        $i = 0;
+        $retorno->parametros = "";
+        $retorno->conteudo = "\n".'
+        if(!empty($'.$this->fields[1][0].')){
+        ';
+        foreach ($this->fields as $l) :
+            $retorno->parametros .=  '$'.$l[0].' = ""' . ($i < (count($this->fields)-1) ? "," : "");
+            $retorno->conteudo .= "\n".'  $this->'.$l[0].' = $'.$l[0].';';
+            $i++;
+        endforeach;
+        $retorno->conteudo .= "\n".'
+        }
+        '."\n".' if(!empty($this->'.$this->fields[0][0].')){
+        '."\n".'      //Virtuais e Referencias
+        '."\n".'
+        '."\n".' }
+        ';
+        //var_dump($this->fields);
+        return $retorno;
+    }
+
     private function generateClass($table)
     {
         $vars = "";
@@ -116,10 +140,8 @@ class ClassGenerator
                  * @Type: " . $type . "
                  */";
 
-                if ($type == 'timestamp')
-                    $vars .= "\n var $" . $l[0] . " = CURRENT_TIMESTAMP;\n";
-                else if ($type == 'tinyint(1)')
-                    $vars .= "\n var $" . $l[0] . " = false;\n";
+               if ($type == 'tinyint(1)')
+                    $vars .= "\n var $" . $l[0] . " = 0;\n";
                 else if (StringHelper::Contains($type, 'int'))
                     $vars .= "\n var $" . $l[0] . " = 0;\n";
                 else
@@ -154,10 +176,15 @@ class ClassGenerator
             }
         endforeach;
 
+        $construct = $this->generateConstruct();
+        var_dump($construct);
+
         $template = new Template(APP . 'Libs' . DIRECTORY_SEPARATOR . "ClassGenerator" . DIRECTORY_SEPARATOR . "Template" . DIRECTORY_SEPARATOR . "ClasseTemplate.tpl");
         $template->set('date', date("d/m/Y H:i:s"));
         $template->set('C', ucfirst($table));
         $template->set('vars', $vars);
+        $template->set('construct_parametros', $construct->parametros);
+        $template->set('construct_conteudo', $construct->conteudo);
         $template->write(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . ucfirst($table) . '.php');
     }
 
