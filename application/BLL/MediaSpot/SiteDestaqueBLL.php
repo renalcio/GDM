@@ -6,14 +6,18 @@
  * Data: 02/02/2015
  */
 namespace BLL;
+use DAL\Artista;
+use DAL\Site;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
+use Libs\ListHelper;
 use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
 use DAL\SiteDestaque;
+use Libs\UsuarioHelper;
 
 class SiteDestaqueBLL
 {
@@ -44,7 +48,7 @@ class SiteDestaqueBLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->pdo->select("SELECT * FROM SiteDestaque", "DAL\\SiteDestaque", true);
+        $model->Lista = $this->pdo->select("SELECT * FROM SiteDestaque ORDER BY Posicao ASC", "DAL\\SiteDestaque", true);
 
         return $model;
     }
@@ -53,12 +57,30 @@ class SiteDestaqueBLL
 
         if($model!=null) {
 
-                if ($model->SiteDestaqueId > 0){
+            $Artista = new Artista();
+            $Site = new Site();
 
+            $Site = UsuarioHelper::GetSite();
+
+            $Artista = $this->pdo->GetById("Artista", "ArtistaId", $model->ReferenciaId, new Artista());
+            if(empty($Artista)) $Artista = new Artista();
+
+            $Destaques = new ListHelper($this->pdo->select("SELECT * FROm SiteDestaque WHERE SiteId = '".$Site->SiteId
+                ."'", new Site(), true));
+
+            //Seta dados do destaque
+            $model->Titulo = $Artista->Titulo;
+            $model->Url = $Site->Url . "/artista/" . $Artista->Titulo;
+            $model->Imagem = $Artista->Imagem;
+            $model->SiteId = $Site->SiteId;
+            $model->Posicao = empty($model->Posicao) ? $Destaques->Count() + 1 : $model->Posicao;
+
+                if ($model->SiteDestaqueId > 0){
                     $this->pdo->update("SiteDestaque", $model, "SiteDestaqueId = " . $model->SiteDestaqueId);
                 } else {
                     $model->SiteDestaqueId = $this->pdo->insert("SiteDestaque", $model);
                 }
+            //var_dump($model);
         }
         return $model;
     }

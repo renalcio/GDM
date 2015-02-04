@@ -10,6 +10,8 @@
 namespace Controllers;
 use Core\Controller;
 use DAL\SiteDestaque;
+use Libs\ArrayHelper;
+use Libs\Database;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -18,56 +20,74 @@ class SiteDestaqueController extends Controller
 
     public function index()
     {
-        $this->loadModel();
+        $this->loadBLL();
         $Model = new \stdClass();
         $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
 
+    public function salvar()
+    {
+
+        extract($_POST);
+        if(isset($destaques))
+        {
+            $destaques = json_decode($destaques);
+            //print_r($menu);
+
+            $this->loadBLL();
+
+            //Passa destaque a destaque atualizando
+            $i = 0;
+            $Destaques = new ArrayHelper((Array)$destaques);
+
+            $Destaques->For_Each(function($destaque, $i){
+                $itemAdd = new SiteDestaque();
+                $itemAdd->ReferenciaId = $destaque->referenciaid;
+                $itemAdd->SiteDestaqueId = $destaque->sitedestaqueid;
+                $itemAdd->Posicao = $i+1;
+                $this->bll->Save($itemAdd);
+            });
+
+
+        }
+    }
+
     public function cadastro($id = 0)
     {
         // load views
-        $this->loadModel();
+        $this->loadBLL();
         $Model = new SiteDestaque();
-        $Model->DestaqueSiteId = $id;
+        $Model->SiteDestaqueId = $id;
         $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
     }
 
-    public function cadastro_post($model = null){
+    public function cadastro_post($model = null)
+    {
 
-        if($model!=null) {
+        if ($model != null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\DestaqueSiteId");
+            Helper::cast($model, "DAL\\SiteDestaque");
             // select
-            $this->loadModel();
+            $this->loadBLL();
 
-            //Valida Model via ModelState
-            ModelState::ValidateModel($model);
 
-            if(ModelState::isValid()) {
-                //Valida model via Model
-                $this->bll->Validar($model);
+            $this->bll->Save($model); // Salva
+            $this->Redirect("Index"); // Redireciona pra index do controller
 
-                if(ModelState::isValid()) {
-                    $this->bll->Save($model); // Salva
-                    $this->Redirect("Index"); // Redireciona pra index do controller
-                }
+
+           $this->ModelView($model);
+        }
+    }
+
+        public function deletar($id){
+            if($id > 0){
+                $this->loadBLL();
+                $this->bll->Deletar($id);
             }
-        }else{
-            $model = new \stdClass();
+
+            $this->Redirect("Index");
         }
-
-        $this->ModelView($model);
     }
-
-    public function deletar($id){
-        if($id > 0){
-            $this->loadModel();
-            $this->bll->Deletar($id);
-        }
-
-        $this->Redirect("Index");
-    }
-}

@@ -1,11 +1,25 @@
 <?php
 namespace Libs;
+use DAL\Site;
 use Libs\ArrayHelper;
 use Libs\Database;
 use DAL\UsuarioAplicacao;
 
 class UsuarioHelper
 {
+    public static function GetSite($UsuarioId = 0, $AplicacaoId = APPID)
+    {
+        $pdo = new Database();
+        $sessao = new SessionHelper("GDMAuth");
+        $UsuarioId = empty($UsuarioId) ?  $sessao->Ver("UsuarioId") : $UsuarioId;
+
+        $site = new Site();
+        $site = $pdo->select("SELECT * FROM Site WHERE AplicacaoId = '".$AplicacaoId."' LIMIT 1", new Site());
+        if(empty($site))
+            $site = new Site();
+
+        return $site;
+    }
 
     public static function GetNivel($UsuarioId = '0', $AplicacaoId = APPID)
     {
