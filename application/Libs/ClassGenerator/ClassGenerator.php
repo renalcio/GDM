@@ -104,9 +104,12 @@ class ClassGenerator
         $retorno = new \stdClass();
         $i = 0;
         $retorno->parametros = "";
-        $retorno->conteudo = "\n".'
-        if(!empty($'.$this->fields[1][0].')){
-        ';
+        $retorno->conteudo =
+            "\n".'
+            $pdo = new Database();'.
+            "\n".'
+            if(!empty($'.$this->fields[1][0].')){
+            ';
         foreach ($this->fields as $l) :
             $retorno->parametros .=  '$'.$l[0].' = ""' . ($i < (count($this->fields)-1) ? "," : "");
             $retorno->conteudo .= "\n".'  $this->'.$l[0].' = $'.$l[0].';';
@@ -137,6 +140,7 @@ class ClassGenerator
 
                 $vars .= "\n/**
                  * @Name: " . $l[0] . "
+                 * @DisplayName: " . $l[0] . "
                  * @Type: " . $type . "
                  */";
 
@@ -157,6 +161,7 @@ class ClassGenerator
                     $vars .= "/**
                      * @PrimaryKey
                      * @Name: " . $l[0] . "
+                     * @DisplayName: " . $l[0] . "
                      * @Type: " . $type . "
                      */";
                     $vars .= "\n var \$" . $l[0] . " = 0;\n";
@@ -167,6 +172,7 @@ class ClassGenerator
                          * @NotMapped
                          * @Virtual
                          * @Name: _" . ucfirst($l[0]) . "
+                         * @DisplayName: _" . ucfirst($l[0]) . "
                          * @Fk: " . $l[1] . "
                          * @Type: " . ucfirst($l[2]) . "
                          */";

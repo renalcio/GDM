@@ -3,34 +3,40 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:03
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class PessoaAplicacao
 {
     /**
                      * @PrimaryKey
                      * @Name: PessoaEmpresaId
+                     * @DisplayName: PessoaEmpresaId
                      * @Type: int(11)
                      */
  var $PessoaEmpresaId = 0;
 
 /**
                  * @Name: PessoaId
+                 * @DisplayName: PessoaId
                  * @Type: int(11)
                  */
  var $PessoaId = 0;
 
 /**
                  * @Name: AplicacaoId
+                 * @DisplayName: AplicacaoId
                  * @Type: int(11)
                  */
  var $AplicacaoId = 0;
 
 /**
                  * @Name: Apagado
+                 * @DisplayName: Apagado
                  * @Type: tinyint(4)
                  */
  var $Apagado = 0;
@@ -39,8 +45,10 @@ class PessoaAplicacao
     function __construct($PessoaEmpresaId = "",$PessoaId = "",$AplicacaoId = "",$Apagado = ""){
         
 
-        if(!empty($PessoaId)){
-        
+            $pdo = new Database();
+
+            if(!empty($PessoaId)){
+            
   $this->PessoaEmpresaId = $PessoaEmpresaId;
   $this->PessoaId = $PessoaId;
   $this->AplicacaoId = $AplicacaoId;

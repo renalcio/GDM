@@ -3,34 +3,40 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:02
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class Musica
 {
     /**
                      * @PrimaryKey
                      * @Name: MusicaId
+                     * @DisplayName: MusicaId
                      * @Type: int(255)
                      */
  var $MusicaId = 0;
 
 /**
                  * @Name: ArtistaId
+                 * @DisplayName: ArtistaId
                  * @Type: int(255)
                  */
  var $ArtistaId = 0;
 
 /**
                  * @Name: Titulo
+                 * @DisplayName: Titulo
                  * @Type: varchar(255)
                  */
  var $Titulo;
 
 /**
                  * @Name: AplicacaoId
+                 * @DisplayName: AplicacaoId
                  * @Type: int(255)
                  */
  var $AplicacaoId = 0;
@@ -39,8 +45,10 @@ class Musica
     function __construct($MusicaId = "",$ArtistaId = "",$Titulo = "",$AplicacaoId = ""){
         
 
-        if(!empty($ArtistaId)){
-        
+            $pdo = new Database();
+
+            if(!empty($ArtistaId)){
+            
   $this->MusicaId = $MusicaId;
   $this->ArtistaId = $ArtistaId;
   $this->Titulo = $Titulo;

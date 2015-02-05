@@ -3,22 +3,26 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:02
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class Nicho
 {
     /**
                      * @PrimaryKey
                      * @Name: NichoId
+                     * @DisplayName: NichoId
                      * @Type: int(11)
                      */
  var $NichoId = 0;
 
 /**
                  * @Name: Titulo
+                 * @DisplayName: Titulo
                  * @Type: varchar(255)
                  */
  var $Titulo;
@@ -27,8 +31,10 @@ class Nicho
     function __construct($NichoId = "",$Titulo = ""){
         
 
-        if(!empty($Titulo)){
-        
+            $pdo = new Database();
+
+            if(!empty($Titulo)){
+            
   $this->NichoId = $NichoId;
   $this->Titulo = $Titulo;
 

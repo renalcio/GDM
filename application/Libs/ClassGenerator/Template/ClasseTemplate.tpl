@@ -8,6 +8,8 @@
 
 namespace DAL;
 
+use Libs\Database;
+
 class ${C}
 {
     ${vars}

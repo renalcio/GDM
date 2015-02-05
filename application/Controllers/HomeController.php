@@ -23,11 +23,10 @@ class HomeController extends Controller
     }
 
 
-    /**
-     * PAGE: exampletwo
-     * This method handles what happens when you move to http://yourproject/home/exampletwo
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
-     */
+    public function index_post($model = null){
+        var_dump($model);
+    }
+
     public function generator()
     {
         // load views

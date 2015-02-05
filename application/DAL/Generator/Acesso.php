@@ -3,34 +3,40 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:06
+* @date: 05/02/2015 14:07:01
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class Acesso
 {
     /**
                      * @PrimaryKey
                      * @Name: AcessoId
+                     * @DisplayName: AcessoId
                      * @Type: int(11)
                      */
  var $AcessoId = 0;
 
 /**
                  * @Name: AplicacaoId
+                 * @DisplayName: AplicacaoId
                  * @Type: int(11)
                  */
  var $AplicacaoId = 0;
 
 /**
                  * @Name: PerfilId
+                 * @DisplayName: PerfilId
                  * @Type: int(11)
                  */
  var $PerfilId = 0;
 
 /**
                  * @Name: MenuId
+                 * @DisplayName: MenuId
                  * @Type: int(11)
                  */
  var $MenuId = 0;
@@ -39,8 +45,10 @@ class Acesso
     function __construct($AcessoId = "",$AplicacaoId = "",$PerfilId = "",$MenuId = ""){
         
 
-        if(!empty($AplicacaoId)){
-        
+            $pdo = new Database();
+
+            if(!empty($AplicacaoId)){
+            
   $this->AcessoId = $AcessoId;
   $this->AplicacaoId = $AplicacaoId;
   $this->PerfilId = $PerfilId;

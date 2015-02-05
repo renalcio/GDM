@@ -3,40 +3,47 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:03
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class PessoaJuridica
 {
     /**
                      * @PrimaryKey
                      * @Name: PessoaId
+                     * @DisplayName: PessoaId
                      * @Type: int(11)
                      */
  var $PessoaId = 0;
 
 /**
                  * @Name: NomeFantasia
+                 * @DisplayName: NomeFantasia
                  * @Type: varchar(255)
                  */
  var $NomeFantasia;
 
 /**
                  * @Name: IE
+                 * @DisplayName: IE
                  * @Type: varchar(50)
                  */
  var $IE;
 
 /**
                  * @Name: IM
+                 * @DisplayName: IM
                  * @Type: varchar(50)
                  */
  var $IM;
 
 /**
                  * @Name: CNPJ
+                 * @DisplayName: CNPJ
                  * @Type: varchar(50)
                  */
  var $CNPJ;
@@ -45,8 +52,10 @@ class PessoaJuridica
     function __construct($PessoaId = "",$NomeFantasia = "",$IE = "",$IM = "",$CNPJ = ""){
         
 
-        if(!empty($NomeFantasia)){
-        
+            $pdo = new Database();
+
+            if(!empty($NomeFantasia)){
+            
   $this->PessoaId = $PessoaId;
   $this->NomeFantasia = $NomeFantasia;
   $this->IE = $IE;

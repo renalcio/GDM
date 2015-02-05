@@ -3,64 +3,75 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:03
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class PessoaEndereco
 {
     /**
                      * @PrimaryKey
                      * @Name: PessoaId
+                     * @DisplayName: PessoaId
                      * @Type: int(11)
                      */
  var $PessoaId = 0;
 
 /**
                  * @Name: Rua
+                 * @DisplayName: Rua
                  * @Type: varchar(255)
                  */
  var $Rua;
 
 /**
                  * @Name: Numero
+                 * @DisplayName: Numero
                  * @Type: varchar(20)
                  */
  var $Numero;
 
 /**
                  * @Name: Bairro
+                 * @DisplayName: Bairro
                  * @Type: varchar(100)
                  */
  var $Bairro;
 
 /**
                  * @Name: Cidade
+                 * @DisplayName: Cidade
                  * @Type: varchar(200)
                  */
  var $Cidade;
 
 /**
                  * @Name: EstadoId
+                 * @DisplayName: EstadoId
                  * @Type: int(11)
                  */
  var $EstadoId = 0;
 
 /**
                  * @Name: PaisId
+                 * @DisplayName: PaisId
                  * @Type: int(11)
                  */
  var $PaisId = 0;
 
 /**
                  * @Name: Titulo
+                 * @DisplayName: Titulo
                  * @Type: varchar(255)
                  */
  var $Titulo;
 
 /**
                  * @Name: Apagado
+                 * @DisplayName: Apagado
                  * @Type: tinyint(4)
                  */
  var $Apagado = 0;
@@ -69,8 +80,10 @@ class PessoaEndereco
     function __construct($PessoaId = "",$Rua = "",$Numero = "",$Bairro = "",$Cidade = "",$EstadoId = "",$PaisId = "",$Titulo = "",$Apagado = ""){
         
 
-        if(!empty($Rua)){
-        
+            $pdo = new Database();
+
+            if(!empty($Rua)){
+            
   $this->PessoaId = $PessoaId;
   $this->Rua = $Rua;
   $this->Numero = $Numero;

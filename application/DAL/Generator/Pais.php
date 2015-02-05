@@ -3,28 +3,33 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:02
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class Pais
 {
     /**
                      * @PrimaryKey
                      * @Name: PaisId
+                     * @DisplayName: PaisId
                      * @Type: tinyint(3) unsigned
                      */
  var $PaisId = 0;
 
 /**
                  * @Name: Nome
+                 * @DisplayName: Nome
                  * @Type: varchar(50)
                  */
  var $Nome;
 
 /**
                  * @Name: Name
+                 * @DisplayName: Name
                  * @Type: varchar(50)
                  */
  var $Name;
@@ -33,8 +38,10 @@ class Pais
     function __construct($PaisId = "",$Nome = "",$Name = ""){
         
 
-        if(!empty($Nome)){
-        
+            $pdo = new Database();
+
+            if(!empty($Nome)){
+            
   $this->PaisId = $PaisId;
   $this->Nome = $Nome;
   $this->Name = $Name;

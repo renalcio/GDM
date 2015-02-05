@@ -93,7 +93,9 @@ class Application
                         call_user_func_array(array($this->url_controller, $this->url_postAction), $this->url_params);
                     }else{
                         $this->url_params["model"] = $Model;
-                        call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
+                        //var_dump($this->url_postAction);
+                        call_user_func_array(array($this->url_controller, $this->url_action),
+                            $this->url_params);
                     }
 
                 }else if (method_exists($this->url_controller, $this->url_action)) {
@@ -147,16 +149,16 @@ class Application
             // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
             if(isset($url[0]) && $url[0] == "handler"){
                 $this->url_controller = isset($url[1])  ? $url[0]."s".DIRECTORY_SEPARATOR.$url[1]."Handler" : $url[0];
-                $this->url_action = isset($url[2]) ? $url[2] : null;
-                $this->url_postAction = isset($url[2]) ? $url[2]."_post" : null;
+                $this->url_action = isset($url[2]) ? $url[2] : "index";
+                $this->url_postAction = isset($url[2]) ? $url[2]."_post" : "index_post";
 
                 // Remove controller and action from the split URL
                 unset($url[0], $url[1], $url[2]);
 
             }else{
                 $this->url_controller = isset($url[0]) ? $url[0]."Controller" : null;
-                $this->url_action = isset($url[1]) ? $url[1] : null;
-                $this->url_postAction = isset($url[1]) ? $url[1]."_post" : null;
+                $this->url_action = isset($url[1]) ? $url[1] : "index";
+                $this->url_postAction = isset($url[1]) ? $url[1]."_post" : "index_post";
 
                 // Remove controller and action from the split URL
                 unset($url[0], $url[1]);

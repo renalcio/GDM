@@ -3,52 +3,61 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 03/02/2015 14:52:07
+* @date: 05/02/2015 14:07:03
 */
 
 namespace DAL;
+
+use Libs\Database;
 
 class PessoaFisica
 {
     /**
                      * @PrimaryKey
                      * @Name: CPF
+                     * @DisplayName: CPF
                      * @Type: varchar(50)
                      */
  var $CPF = 0;
 
 /**
                  * @Name: Nascimento
+                 * @DisplayName: Nascimento
                  * @Type: varchar(50)
                  */
  var $Nascimento;
 
 /**
                  * @Name: RG
+                 * @DisplayName: RG
                  * @Type: varchar(255)
                  */
  var $RG;
 
 /**
                  * @Name: EstadoCivil
+                 * @DisplayName: EstadoCivil
                  * @Type: varchar(50)
                  */
  var $EstadoCivil;
 
 /**
                  * @Name: Nacionalidade
+                 * @DisplayName: Nacionalidade
                  * @Type: varchar(100)
                  */
  var $Nacionalidade;
 
 /**
                  * @Name: Sexo
+                 * @DisplayName: Sexo
                  * @Type: varchar(50)
                  */
  var $Sexo;
 
 /**
                  * @Name: PessoaId
+                 * @DisplayName: PessoaId
                  * @Type: int(11)
                  */
  var $PessoaId = 0;
@@ -57,8 +66,10 @@ class PessoaFisica
     function __construct($CPF = "",$Nascimento = "",$RG = "",$EstadoCivil = "",$Nacionalidade = "",$Sexo = "",$PessoaId = ""){
         
 
-        if(!empty($Nascimento)){
-        
+            $pdo = new Database();
+
+            if(!empty($Nascimento)){
+            
   $this->CPF = $CPF;
   $this->Nascimento = $Nascimento;
   $this->RG = $RG;
