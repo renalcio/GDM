@@ -28,6 +28,26 @@ class Aplicacao
     var $Pasta;
 
     /**
+     * @DisplayName: Host do Bando de Dados
+     */
+    var $DbHost;
+
+    /**
+     * @DisplayName: Usuario do Banco de Dados
+     */
+    var $DbUsuario;
+
+    /**
+     * @DisplayName: Senha do Banco de Dados
+     */
+    var $DbSenha;
+
+    /**
+     * @DisplayName: Banco de Dados
+     */
+    var $DbBanco;
+
+    /**
      * @NotMapped
      */
     var $Pessoa;

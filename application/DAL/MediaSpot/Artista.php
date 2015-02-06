@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 26/01/2015
  */
-namespace DAL;
+namespace DAL\MediaSpot;
 
 use Libs\Database;
 

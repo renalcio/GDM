@@ -7,7 +7,7 @@
  */
 namespace BLL;
 use Libs\Database;
-use DAL\Musica;
+use DAL\MediaSpot\Musica;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;
@@ -15,7 +15,7 @@ use Libs\SessionHelper;
 use Libs\UsuarioHelper;
 use Libs\Debug;
 
-class musicaBLL
+class MusicaBLL
 {
     /**
      * @param object $db A PDO database connection

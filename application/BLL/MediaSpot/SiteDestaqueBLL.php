@@ -6,7 +6,7 @@
  * Data: 02/02/2015
  */
 namespace BLL;
-use DAL\Artista;
+use DAL\MediaSpot\Artista;
 use DAL\Site;
 use Libs\Database;
 use Libs\Helper;
@@ -16,7 +16,7 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
-use DAL\SiteDestaque;
+use DAL\MediaSpot\SiteDestaque;
 use Libs\UsuarioHelper;
 
 class SiteDestaqueBLL

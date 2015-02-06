@@ -52,6 +52,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 define("ROOTAPP", 1); #AplicacaoId GDM
+define("ROOTDB", "GDM"); #banco Principal
 
 define("MODULES", "Modules" . DIRECTORY_SEPARATOR); #Pasta de Aplicações
 

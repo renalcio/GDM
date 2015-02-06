@@ -8,7 +8,7 @@
 namespace BLL;
 use Libs\ArrayHelper;
 use Libs\Database;
-use DAL\Artista;
+use DAL\MediaSpot\Artista;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;

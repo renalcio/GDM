@@ -5,8 +5,9 @@
  * Autor: renalcio.freitas
  * Data: 26/01/2015
  */
-namespace DAL;
+namespace DAL\MediaSpot;
 
+use DAL\Aplicacao;
 use Libs\Database;
 
 class Musica
