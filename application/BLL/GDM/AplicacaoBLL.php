@@ -1,12 +1,17 @@
 <?php
 namespace BLL;
+use DAL\Aplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
 use DAL\Pessoa;
+use Libs\UnitofWork;
+
 class AplicacaoBLL
 {
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -18,6 +23,7 @@ class AplicacaoBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)
@@ -31,7 +37,7 @@ class AplicacaoBLL
 
     public function GetToIndex($model)
     {
-        $model->ListApps = $this->pdo->select("SELECT * FROM Aplicacao", "", true);
+        $model->ListApps = $this->unitofwork->Get(new Aplicacao())->ToArray();
 
         return $model;
     }
@@ -56,16 +62,16 @@ class AplicacaoBLL
             $model->PessoaId = $model->Pessoa->PessoaId;
 
             if($model->AplicacaoId > 0)
-                $this->pdo->update("Aplicacao", $model, "AplicacaoId = ".$model->AplicacaoId);
+                $this->unitofwork->Update($model);
             else
-                $this->pdo->insert("Aplicacao", $model);
+                $this->unitofwork->Insert($model);
 
         }
     }
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Aplicacao", "AplicacaoId = '".$id."'");
+            $this->pdo->Delete(new Aplicacao(), $id);
         }
     }
 }

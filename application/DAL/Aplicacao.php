@@ -1,8 +1,13 @@
 <?php
 namespace DAL;
 use Libs\Database;
+use Libs\UnitofWork;
+
 class Aplicacao
 {
+    /**
+     * @PrimaryKey
+     */
     var $AplicacaoId;
     /**
      * @Required
@@ -28,33 +33,13 @@ class Aplicacao
     var $Pasta;
 
     /**
-     * @DisplayName: Host do Bando de Dados
-     */
-    var $DbHost;
-
-    /**
-     * @DisplayName: Usuario do Banco de Dados
-     */
-    var $DbUsuario;
-
-    /**
-     * @DisplayName: Senha do Banco de Dados
-     */
-    var $DbSenha;
-
-    /**
-     * @DisplayName: Banco de Dados
-     */
-    var $DbBanco;
-
-    /**
      * @NotMapped
      */
     var $Pessoa;
 
     public function __construct($AplicacaoId = 0, $Titulo="", $Descricao="", $PessoaId=0, $DataCriacao="", $NichoId=0, $Pasta="")
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Titulo)) {
             $this->AplicacaoId = $AplicacaoId;
             $this->Titulo = $Titulo;
@@ -67,7 +52,7 @@ class Aplicacao
 
         if($this->AplicacaoId > 0 && $this->PessoaId) {
 
-            $this->Pessoa = $pdo->GetById("Pessoa", "PessoaId", $this->PessoaId, "DAL\\Pessoa");
+            $this->Pessoa = $pdo->GetById(new Pessoa(), $this->PessoaId);
 
 
         }

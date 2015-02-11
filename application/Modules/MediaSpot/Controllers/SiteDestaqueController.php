@@ -9,7 +9,7 @@
  */
 namespace Controllers;
 use Core\Controller;
-use DAL\SiteDestaque;
+use DAL\MediaSpot\SiteDestaque;
 use Libs\ArrayHelper;
 use Libs\Database;
 use Libs\Helper;
@@ -69,7 +69,7 @@ class SiteDestaqueController extends Controller
 
         if ($model != null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\SiteDestaque");
+            Helper::cast($model, new SiteDestaque());
             // select
             $this->loadBLL();
 

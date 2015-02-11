@@ -23,12 +23,18 @@ class ClassGenerator
 
     private $db;
 
+    var $pasta;
+
+    public function __construct($Pasta = "GDM"){
+        $this->pasta = $Pasta;
+    }
+
     public function run()
     {
         $this->db = new Database();
 
-        if (!is_dir(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator'))
-            @mkdir(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator');
+        if (!is_dir(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta))
+            @mkdir(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta);
 
         $this->getTables();
     }
@@ -36,7 +42,7 @@ class ClassGenerator
     private function getTables()
     {
         //Consulta as tabelas
-        $tables = $this->db->Select("SELECT TABLE_NAME AS Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" . DB_NAME . "'", '', true);
+        $tables = $this->db->Select("SELECT TABLE_NAME AS Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" . DB_PREFIX . $this->pasta . "'", '', true);
 
         if (is_array($tables)):
             foreach ($tables as $table):
@@ -70,7 +76,7 @@ class ClassGenerator
         $consulta .= "       referenced_table_name  AS TabelaReferencia ";
         $consulta .= "FROM   information_schema.key_column_usage ";
         $consulta .= "WHERE  table_name = '$table' ";
-        $consulta .= "AND TABLE_SCHEMA = '" . DB_NAME . "'";
+        $consulta .= "AND TABLE_SCHEMA = '" . DB_PREFIX . $this->pasta . "'";
         #endregion
 
         $fields = $this->db->Select($consulta, '', true);
@@ -185,13 +191,19 @@ class ClassGenerator
         $construct = $this->generateConstruct();
         var_dump($construct);
 
+        $namespace = "DAL";
+        if(!empty($this->pasta) && $this->pasta != "GDM"){
+            $namespace .= "\\".$this->pasta;
+        }
+
         $template = new Template(APP . 'Libs' . DIRECTORY_SEPARATOR . "ClassGenerator" . DIRECTORY_SEPARATOR . "Template" . DIRECTORY_SEPARATOR . "ClasseTemplate.tpl");
+        $template->set('NameSpace', $namespace);
         $template->set('date', date("d/m/Y H:i:s"));
         $template->set('C', ucfirst($table));
         $template->set('vars', $vars);
         $template->set('construct_parametros', $construct->parametros);
         $template->set('construct_conteudo', $construct->conteudo);
-        $template->write(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . ucfirst($table) . '.php');
+        $template->write(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta . DIRECTORY_SEPARATOR  . ucfirst($table) . '.php');
     }
 
 } 

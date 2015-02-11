@@ -42,12 +42,13 @@ class Annotation {
      * @description: receives type annotations
      */
     private $_attributes = array("Required" => array(),
-                                 "NotMapped" => array(),
-                                 "Range" => array(),
-                                 "Email" => array(),
-                                "Int" => array(),
-                                "DisplayName" => Array()
-                            );
+        "NotMapped" => array(),
+        "Range" => array(),
+        "Email" => array(),
+        "Int" => array(),
+        "DisplayName" => Array(),
+        "PrimaryKey" => Array()
+    );
 
     /**
      * @param: $class Class

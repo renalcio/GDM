@@ -3,10 +3,10 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 05/02/2015 14:07:02
+* @date: 09/02/2015 18:51:58
 */
 
-namespace DAL;
+namespace DAL\MediaSpot;
 
 use Libs\Database;
 

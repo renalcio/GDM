@@ -3,29 +3,22 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 05/02/2015 14:07:03
+* @date: 10/02/2015 15:04:12
 */
 
 namespace DAL;
 
 use Libs\Database;
 
-class Permissao
+class Acesso
 {
     /**
                      * @PrimaryKey
-                     * @Name: PermissaoId
-                     * @DisplayName: PermissaoId
+                     * @Name: AcessoId
+                     * @DisplayName: AcessoId
                      * @Type: int(11)
                      */
- var $PermissaoId = 0;
-
-/**
-                 * @Name: MenuId
-                 * @DisplayName: MenuId
-                 * @Type: int(11)
-                 */
- var $MenuId = 0;
+ var $AcessoId = 0;
 
 /**
                  * @Name: AplicacaoId
@@ -41,22 +34,29 @@ class Permissao
                  */
  var $PerfilId = 0;
 
+/**
+                 * @Name: MenuId
+                 * @DisplayName: MenuId
+                 * @Type: int(11)
+                 */
+ var $MenuId = 0;
 
-    function __construct($PermissaoId = "",$MenuId = "",$AplicacaoId = "",$PerfilId = ""){
+
+    function __construct($AcessoId = "",$AplicacaoId = "",$PerfilId = "",$MenuId = ""){
         
 
             $pdo = new Database();
 
-            if(!empty($MenuId)){
+            if(!empty($AplicacaoId)){
             
-  $this->PermissaoId = $PermissaoId;
-  $this->MenuId = $MenuId;
+  $this->AcessoId = $AcessoId;
   $this->AplicacaoId = $AplicacaoId;
   $this->PerfilId = $PerfilId;
+  $this->MenuId = $MenuId;
 
         }
         
- if(!empty($this->PermissaoId)){
+ if(!empty($this->AcessoId)){
         
       //Virtuais e Referencias
         

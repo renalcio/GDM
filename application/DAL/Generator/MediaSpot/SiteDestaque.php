@@ -3,10 +3,10 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 05/02/2015 14:07:03
+* @date: 09/02/2015 18:51:58
 */
 
-namespace DAL;
+namespace DAL\MediaSpot;
 
 use Libs\Database;
 
@@ -14,10 +14,17 @@ class SiteDestaque
 {
     /**
                      * @PrimaryKey
-                     * @Name: SiteId
-                     * @DisplayName: SiteId
+                     * @Name: SiteDestaqueId
+                     * @DisplayName: SiteDestaqueId
                      * @Type: int(11)
                      */
+ var $SiteDestaqueId = 0;
+
+/**
+                 * @Name: SiteId
+                 * @DisplayName: SiteId
+                 * @Type: int(11)
+                 */
  var $SiteId = 0;
 
 /**
@@ -62,21 +69,15 @@ class SiteDestaque
                  */
  var $ReferenciaId = 0;
 
-/**
-                 * @Name: SiteDestaqueId
-                 * @DisplayName: SiteDestaqueId
-                 * @Type: int(11)
-                 */
- var $SiteDestaqueId = 0;
 
-
-    function __construct($SiteId = "",$Url = "",$Imagem = "",$Posicao = "",$Titulo = "",$Descricao = "",$ReferenciaId = "",$SiteDestaqueId = ""){
+    function __construct($SiteDestaqueId = "",$SiteId = "",$Url = "",$Imagem = "",$Posicao = "",$Titulo = "",$Descricao = "",$ReferenciaId = ""){
         
 
             $pdo = new Database();
 
-            if(!empty($Url)){
+            if(!empty($SiteId)){
             
+  $this->SiteDestaqueId = $SiteDestaqueId;
   $this->SiteId = $SiteId;
   $this->Url = $Url;
   $this->Imagem = $Imagem;
@@ -84,11 +85,10 @@ class SiteDestaque
   $this->Titulo = $Titulo;
   $this->Descricao = $Descricao;
   $this->ReferenciaId = $ReferenciaId;
-  $this->SiteDestaqueId = $SiteDestaqueId;
 
         }
         
- if(!empty($this->SiteId)){
+ if(!empty($this->SiteDestaqueId)){
         
       //Virtuais e Referencias
         

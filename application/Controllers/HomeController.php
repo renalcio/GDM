@@ -32,4 +32,14 @@ class HomeController extends Controller
         // load views
         $this->View("generator");
     }
+
+    public function generator_post($model = null)
+    {
+        // load views
+        $this->View("generator");
+        $this->loadBLL();
+        //echo $model['AplicacaoId'];
+        $model = $this->bll->Generator($model['AplicacaoId']);
+        var_dump($model);
+    }
 }

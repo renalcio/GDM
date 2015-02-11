@@ -1,5 +1,6 @@
 <?php
 namespace BLL;
+use DAL\UsuarioPerfil;
 use Libs\Database;
 use DAL\UsuarioAplicacao;
 use Libs\Helper;
@@ -9,8 +10,11 @@ use Libs\SessionHelper;
 use Libs\UsuarioHelper;
 use DAL\Pessoa;
 use Libs\Debug;
+use Libs\ArrayHelper;
 class UsuarioAplicacaoBLL
 {
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -22,13 +26,14 @@ class UsuarioAplicacaoBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit(UsuarioAplicacao $model)
     {
         if($model->UsuarioAplicacaoId > 0)
         {
-            $model = $this->pdo->GetById("UsuarioAplicacao", "UsuarioAplicacaoId", $model->UsuarioAplicacaoId, "DAL\\UsuarioAplicacao");
+            $model = $this->unitofwork->GetById(new UsuarioAplicacao(), $model->UsuarioAplicacaoId);
         }else{
             $model = new \DAL\UsuarioAplicacao();
         }
@@ -38,9 +43,9 @@ class UsuarioAplicacaoBLL
     public function GetToIndex($model)
     {
         if(APP_ID == ROOTAPP)
-            $model->ListUsuario = $this->pdo->select("SELECT * FROM UsuarioAplicacao", "DAL\\UsuarioAplicacao", true);
+            $model->ListUsuario = $this->unitofwork->Get(new UsuarioAplicacao())->ToArray();
         else {
-            $model->ListUsuario = $this->pdo->select("SELECT UsuarioAplicacao WHERE AplicacaoId = " . APP_ID, "DAL\\UsuarioAplicacao", true);
+            $model->ListUsuario = $this->unitofwork->Get(new UsuarioAplicacao(), "AplicacaoId = " . APP_ID)->ToArray();
         }
 
         for($i = 0; $i < count($model->ListUsuario); $i++){
@@ -60,20 +65,23 @@ class UsuarioAplicacaoBLL
                 $listaPerfil = explode(",", $model->ListPerfil);
 
                 if ($model->UsuarioAplicacaoId > 0){
-                    $this->pdo->delete("UsuarioPerfil", "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN (" . $model->ListPerfil . ") And PerfilId IN (SELECT PerfilId FROM Perfil WHERE AplicacaoId = '".$model->AplicacaoId."')
-                    ", 0);
+                    $this->unitofwork->Delete(new UsuarioPerfil(), "UsuarioId = '" . $model->UsuarioId . "' AND PerfilId NOT IN (" . $model->ListPerfil . ") And PerfilId IN (SELECT PerfilId FROM ".DB_NAME.".Perfil WHERE AplicacaoId = '".$model->AplicacaoId."')
+                    ");
 
-                    $this->pdo->update("UsuarioAplicacao", $model, "UsuarioAplicacaoId = " . $model->UsuarioAplicacaoId);
+                    $this->unitofwork->Update($model);
                 } else {
-                    $model->UsuarioAplicacaoId = $this->pdo->insert("UsuarioAplicacao", $model);
+                    $this->unitofwork->Insert($model);
                 }
 
 
                 foreach ($listaPerfil as $PerfilId) {
-                    $check = $this->pdo->select("SELECT * FROM UsuarioPerfil WHERE PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId);
+                    $check = $this->unitofwork->Get(new UsuarioPerfil(), "WHERE PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId)->ToArray();
                     if (empty($check)) {
-                        $this->pdo->insert("UsuarioPerfil", Array("PerfilId" => $PerfilId, "UsuarioId" =>
-                            $model->UsuarioId));
+                        $objAdd = new UsuarioPerfil();
+                        $objAdd->PerfilId = $PerfilId;
+                        $objAdd->UsuarioId = $model->UsuarioId;
+
+                        $this->unitofwork->Insert($objAdd);
                     }
                 }
 
@@ -83,7 +91,7 @@ class UsuarioAplicacaoBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("UsuarioAplicacao", "UsuarioAplicacaoId = '".$id."'");
+            $this->unitofwork->Delete(new UsuarioAplicacao(), $id);
         }
     }
 
@@ -91,10 +99,10 @@ class UsuarioAplicacaoBLL
     {
 
         //Validar Usuario e Aplicacao
-        $check = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '".$model->UsuarioId."' AND
-        AplicacaoId = '".$model->AplicacaoId."'", "", true);
+        $check = $this->unitofwork->Get(new UsuarioAplicacao(), "UsuarioId = '".$model->UsuarioId."' AND
+        AplicacaoId = '".$model->AplicacaoId."'")->ToList();
 
-        if(count($check) > 0 && empty($model->UsuarioAplicacaoId))
+        if($check->Count() > 0 && empty($model->UsuarioAplicacaoId))
             ModelState::addError("Este usuário já possui um vínculo nesta aplicação", "Documento");
 
     }

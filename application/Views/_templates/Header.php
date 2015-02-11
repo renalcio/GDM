@@ -1,15 +1,18 @@
 <?
 use Libs\SessionHelper;
 use Libs\Helper;
-$db = new Libs\Database();
+$db = new Libs\UnitofWork();
 $sessao = new SessionHelper("GDMAuth");
-$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "DAL\\UsuarioAplicacao");
+//$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "DAL\\UsuarioAplicacao");
+$HUser = new \DAL\UsuarioAplicacao();
+$HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'")->First();
+//var_dump($HUser);
 ?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title><?=$HUser->Aplicacao->Titulo;?></title>
+    <title><?=$HUser->Aplicacao->Titulo?></title>
     <meta name="description" content="Gerenciador de Dados Modular">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 

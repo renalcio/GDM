@@ -1,11 +1,15 @@
 <?php
 namespace BLL;
+use DAL\Menu;
+use DAL\Permissao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
 class MenuBLL
 {
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -17,14 +21,12 @@ class MenuBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     
     public function GetMenu($Pai = 0, $AplicacaoId = APPID){
-        $retorno = $this->pdo->select("SELECT * FROM Menu 
-                                        WHERE AplicacaoId='".$AplicacaoId."'
-                                        AND Pai = '".$Pai."'
-                                        ORDER BY Posicao ASC", "", true);
+        $retorno = $this->unitofwork->Get(new Menu(), "AplicacaoId='".$AplicacaoId."' AND Pai = '".$Pai."'")->OrderBy("Posicao")->ToArray();
         
         if(is_array($retorno) && count($retorno) > 0)
         {
@@ -56,6 +58,7 @@ class MenuBLL
 
                 if(!isset($menuItem["apagar"]) || $menuItem["apagar"] == "0" || $menuItem["apagar"] == 0) {
                     //Inserir ou Atualizar
+                    $Item = new Menu();
                     $Item->MenuId = $menuItem["menuid"];
                     $Item->Titulo = $menuItem["titulo"];
                     $Item->Url = $menuItem["url"];
@@ -68,9 +71,9 @@ class MenuBLL
                     //echo "<br>\n\r";
 
                     if (empty($Item->MenuId)) {
-                        $Item->MenuId = $this->pdo->insert("Menu", (Array)$Item);
+                        $this->unitofwork->Insert($Item);
                     } else {
-                        $this->pdo->update("Menu", (Array)$Item, "MenuId='" . $Item->MenuId . "'");
+                        $this->unitofwork->Update($Item);
                     }
 
 
@@ -82,22 +85,20 @@ class MenuBLL
                     //Apagar Item e Subitens
                     if(isset($menuItem["menuid"]) && !empty($menuItem["menuid"])){
                         //Busca Filhos
-                        $filhos = $this->pdo->select("SELECT * FROM Menu WHERE Pai = '".$menuItem["menuid"]."' AND AplicacaoId = '".$App."'", "",
-                            true);
+                        $filhos = $this->unitofwork->Get(new Menu(), "Pai = '".$menuItem["menuid"]."' AND AplicacaoId = '".$App."'")->ToArray();
 
                         //Apaga Filhos
                         if(count($filhos) > 0){
                             foreach($filhos as $filho){
                                 //Apaga Permissões do filho
-                                $this->pdo->delete("Permissao", "MenuId='".$filho->MenuId."' AND AplicacaoId = '".$App."'", 0);
+                                $this->unitofwork->Delete(new Permissao(), "MenuId='".$filho->MenuId."' AND AplicacaoId = '".$App."'");
                             }
                         }
                         //Exclui Permissões do Principal
-                        $this->pdo->delete("Permissao", "MenuId='".$menuItem["menuid"]."' AND AplicacaoId = '".$App."'", 0);
+                        $this->unitofwork->Delete(new Permissao(), "MenuId='".$menuItem["menuid"]."' AND AplicacaoId = '".$App."'");
 
                         //Exclui principal
-                        $this->pdo->delete("Menu", "MenuId = '".$menuItem["menuid"]."' OR Pai = '".$menuItem["menuid"]
-                            ."' AND AplicacaoId = '".$App."'");
+                        $this->unitofwork->Delete(new Menu(), "MenuId = '".$menuItem["menuid"]."' OR Pai = '".$menuItem["menuid"]."' AND AplicacaoId = '".$App."'");
                     }
                 }
 
@@ -108,6 +109,6 @@ class MenuBLL
     
     public function LimpaMenu($AplicacaoId = APPID){
         //if(defined(APP_ID))
-            $this->pdo->delete("Menu", "AplicacaoId = '".$AplicacaoId."'", 0);
+            $this->unitofwork->Delete(new Menu(), "AplicacaoId = '".$AplicacaoId."'");
     }
 }

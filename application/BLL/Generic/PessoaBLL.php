@@ -7,6 +7,8 @@ use Libs\SessionHelper;
 use DAL\Pessoa;
 class PessoaBLL
 {
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -18,6 +20,7 @@ class PessoaBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)
@@ -42,16 +45,16 @@ class PessoaBLL
     public function GetToIndex($Model)
     {
         if(defined('APP_ID') && APP_ID == 1)
-            $Model->ListPessoa = $this->pdo->select("SELECT * FROM Pessoa", "", true);
+            $Model->ListPessoa = $this->unitofwork->Get(new Pessoa())->ToArray();
         else {
-            $Model->ListPessoa = $this->pdo->select("SELECT p.*
+            $Model->ListPessoa = $this->unitofwork->Get("SELECT p.*
                                             FROM
                                             Pessoa p,
                                             PessoaEmpresa pe,
                                             Aplicacao a
                                             WHERE a.AplicacaoId = " . APP_ID . "
                                             AND pe.EmpresaId = a.PessoaId
-                                            AND p.PessoaId = pe.PessoaId");
+                                            AND p.PessoaId = pe.PessoaId", "", true);
         }
 
         return $Model;

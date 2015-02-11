@@ -6,7 +6,7 @@
 * @date: ${date}
 */
 
-namespace DAL;
+namespace ${NameSpace};
 
 use Libs\Database;
 

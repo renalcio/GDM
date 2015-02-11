@@ -1,8 +1,13 @@
 <?php
 namespace DAL;
 use Libs\Database;
+use Libs\UnitofWork;
+
 class Perfil
 {
+    /**
+     * @PrimaryKey
+     */
     var $PerfilId;
     var $AplicacaoId;
     var $Titulo;
@@ -21,7 +26,7 @@ class Perfil
 
     public function __construct($PerfilId = 0, $AplicacaoId = 0, $Titulo="", $Ativo = 1, $Acessos = Array())
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Titulo)) {
             $this->PerfilId = $PerfilId;
             $this->AplicacaoId = $AplicacaoId;
@@ -31,8 +36,8 @@ class Perfil
         }
 
         if($this->PerfilId > 0) {
-            $this->Acessos = $pdo->select("SELECT * FROM Acesso WHERE PerfilId ='".$this->PerfilId."'", "", true);
-            $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+            $this->Acessos = $pdo->pdo->select("SELECT * FROM Acesso WHERE PerfilId ='".$this->PerfilId."'", "", true);
+            $this->Aplicacao = $pdo->GetById(new Aplicacao(), $this->AplicacaoId);
         }
         else {
             $this->Aplicacao = new Aplicacao;

@@ -1,9 +1,15 @@
 <?php
 namespace DAL;
 use Libs\Database;
+use Libs\UnitofWork;
+
 class Usuario
 {
     var $PessoaId;
+
+    /**
+     * @PrimaryKey
+     */
     var $UsuarioId;
 
     /**
@@ -57,7 +63,7 @@ class Usuario
 
     public function __construct($UsuarioId=0, $PessoaId=0, $AplicacaoId = 0, $Login="", $Senha="", $Avatar="", $NovaSenha="", $ConfirmarNovaSenha="")
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Login)) {
             $this->PessoaId = $PessoaId;
             $this->UsuarioId = $UsuarioId;
@@ -70,8 +76,8 @@ class Usuario
         }
 
         if($this->UsuarioId > 0 && $this->PessoaId > 0) {
-            $this->Pessoa = $pdo->GetById("Pessoa", "PessoaId", $this->PessoaId, "DAL\\Pessoa");
-            $Perfis = $pdo->select("SELECT * FROM usuarioperfil WHERE UsuarioId = ".$this->UsuarioId, "", true);
+            $this->Pessoa = $pdo->GetById(new Pessoa(), $this->PessoaId);
+            $Perfis = $pdo->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".usuarioperfil WHERE UsuarioId = ".$this->UsuarioId, "", true);
             $this->ListPerfil = "";
             for($i = 0; $i < count($Perfis); $i++){
                 $this->ListPerfil .= $Perfis[$i]->PerfilId.($i ==(count($Perfis)-1) ? "" : ",");
@@ -79,7 +85,7 @@ class Usuario
 
             //Aplicacao
             if($this->AplicacaoId > 0)
-                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+                $this->Aplicacao = $pdo->GetById(new Aplicacao(), $this->AplicacaoId);
         }else
             $this->Pessoa = new Pessoa();
 

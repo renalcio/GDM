@@ -5,6 +5,9 @@ use DAL\Perfil;
 use Libs\Helper;
 class PerfilBLL
 {
+
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -16,13 +19,14 @@ class PerfilBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)
     {
         if($Model->PerfilId > 0)
         {
-            $Model = $this->pdo->GetById("Perfil", "PerfilId", $Model->PerfilId, "DAL\\Perfil");
+            $Model = $this->unitofwork->GetById(new Perfil(), $Model->PerfilId);
         }else{
             $Model = new Perfil();
         }
@@ -32,27 +36,20 @@ class PerfilBLL
     public function GetToIndex($Model)
     {
 
-        $Model = $this->pdo->select("SELECT * FROM Perfil WHERE AplicacaoId = ".APPID." OR ".APPID." = ".ROOTAPP,
-            "DAL\\Perfil",
-            true);
-
+        $Model = $this->unitofwork->Get(new Perfil(), "AplicacaoId = ".APPID." OR ".APPID." = ".ROOTAPP)->ToArray();
         return $Model;
     }
+
     public function Save($model){
         if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, "DAL\\Perfil");
 
-
-            /* print_r($model);
-             print_r($PessoaFisica);
-             print_r($PessoaJuridica);*/
-
             if($model->PerfilId > 0)
-                $this->pdo->update("Perfil", $model, "PerfilId = ".$model->PerfilId);
+                $this->unitofwork->Update($model);
             else {
                 $model->Ativo = 1;
-                $model->PerfilId = $this->pdo->insert("Perfil", $model);
+                $this->unitofwork->Insert($model);
             }
         }
         return $model;
@@ -60,7 +57,7 @@ class PerfilBLL
 
     public function Acesso($model){
         if($model->PerfilId > 0) {
-            $model = $this->pdo->GetById("Perfil", "PerfilId", $model->PerfilId);
+            $model = $this->unitofwork->GetById(new Perfil(), $model->PerfilId);
 
             //Menu
             $menumodel = new MenuModel($this->db);
@@ -72,7 +69,7 @@ class PerfilBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Perfil", "PerfilId = '".$id."'");
+            $this->unitofwork->Delete(new Perfil(), $id);
         }
     }
 }

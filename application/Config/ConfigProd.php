@@ -45,19 +45,15 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Configuration for: Database
  * This is the place where you define your database credentials, database type etc.
  */
+define('DB_TYPE', 'mysql');
+define('DB_HOST', 'localhost');
+define('DB_NAME', '');
+define('DB_USER', 'movew579_gdm');
+define('DB_PASS', 'movew579');
+define('DB_PREFIX', 'movew579_');
 
 define("ROOTAPP", 1); #AplicacaoId GDM
 define("ROOTDB", "GDM"); #banco Principal
-
-
-define('DB_PREFIX', '');
-define('DB_TYPE', 'mysql');
-define('DB_HOST', 'localhost');
-define('DB_NAME', DB_PREFIX.ROOTDB);
-define('DB_USER', 'root');
-define('DB_PASS', '');
-
-
 
 define("MODULES", "Modules" . DIRECTORY_SEPARATOR); #Pasta de Aplicações
 

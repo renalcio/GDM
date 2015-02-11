@@ -7,10 +7,15 @@
  */
 namespace DAL\MediaSpot;
 
+use DAL\Site;
 use Libs\Database;
+use Libs\UnitofWork;
 
 class SiteDestaque
 {
+    /**
+     * @PrimaryKey
+     */
     var $SiteDestaqueId;
     var $SiteId;
 
@@ -47,7 +52,7 @@ class SiteDestaque
     public function __construct($DestaqueSiteId = 0, $SiteId=0, $Titulo="", $Descricao="", $Url="", $Imagem="",
                                 $Posicao=0, $ReferenciaId=0)
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Titulo)){
             $this->SiteDestaqueId = $DestaqueSiteId;
             $this->SiteId = $SiteId;
@@ -61,7 +66,7 @@ class SiteDestaque
 
         if ($this->SiteDestaqueId > 0) {
             if(!empty($this->SiteId))
-                $this->Site = $pdo->GetById("Site", "SiteId", $this->SiteId, "DAL\\Site");
+                $this->Site = $pdo->GetById(new Site(), $this->SiteId);
         }
 
         return $this;

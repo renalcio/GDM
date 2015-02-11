@@ -73,12 +73,12 @@ class Controller
     
     public function ModelView($Model = "", $view = "", $controller = "", $header = "", $footer = ""){
         if(empty($view)) $view = Helper::getAction();
-        if(empty($header))  $header = "header";
-        if(empty($footer))  $footer = "footer";
+        if(empty($header))  $header = "Header";
+        if(empty($footer))  $footer = "Footer";
         if(empty($controller)) $controller = Helper::getController();
         // load views
 		
-        require APP . 'views/_templates/' . $header . '.php';
+        require APP . 'Views/_templates/' . ucfirst($header) . '.php';
 		
 		
         /*if(empty($controller))
@@ -89,13 +89,13 @@ class Controller
         Helper::LoadModelView($Model, $view, $controller);
         
 		
-        require APP . 'views/_templates/' . $footer . '.php';
+        require APP . 'Views/_templates/' . ucfirst($footer) . '.php';
     }
     
     public function Redirect($view, $controller = ""){
         if(empty($controller)) $controller = Helper::getController();
 
-            header('location: ' . URL . $controller . '/' . $view . '');
+            header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '');
     }
     
     public function Autenticar(){

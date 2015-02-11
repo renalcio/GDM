@@ -22,7 +22,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $this->View("index", "login", "header_login");
+        $this->View("index", "login", "Header_Login");
     }
 
     /**
@@ -67,7 +67,7 @@ class LoginController extends Controller
         if(empty($id)) {
             $model = UsuarioHelper::getAplicacoes();
             if (count($model) > 0)
-                $this->ModelView($model, "selecionaAplicacao", "login", "header_login");
+                $this->ModelView($model, "selecionaAplicacao", "login", "Header_Login");
             else
                 $this->Redirect("logout");
 

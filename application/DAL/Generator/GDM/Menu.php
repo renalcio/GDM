@@ -3,22 +3,22 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 05/02/2015 14:07:02
+* @date: 10/02/2015 15:04:12
 */
 
 namespace DAL;
 
 use Libs\Database;
 
-class MenuSite
+class Menu
 {
     /**
                      * @PrimaryKey
-                     * @Name: MenuSiteId
-                     * @DisplayName: MenuSiteId
+                     * @Name: MenuId
+                     * @DisplayName: MenuId
                      * @Type: int(11)
                      */
- var $MenuSiteId = 0;
+ var $MenuId = 0;
 
 /**
                  * @Name: Titulo
@@ -37,7 +37,7 @@ class MenuSite
 /**
                  * @Name: Icone
                  * @DisplayName: Icone
-                 * @Type: varchar(255)
+                 * @Type: varchar(70)
                  */
  var $Icone;
 
@@ -51,26 +51,26 @@ class MenuSite
 /**
                  * @Name: AplicacaoId
                  * @DisplayName: AplicacaoId
-                 * @Type: int(11)
+                 * @Type: int(255)
                  */
  var $AplicacaoId = 0;
 
 /**
                  * @Name: Posicao
                  * @DisplayName: Posicao
-                 * @Type: int(11)
+                 * @Type: int(255)
                  */
  var $Posicao = 0;
 
 
-    function __construct($MenuSiteId = "",$Titulo = "",$Url = "",$Icone = "",$Pai = "",$AplicacaoId = "",$Posicao = ""){
+    function __construct($MenuId = "",$Titulo = "",$Url = "",$Icone = "",$Pai = "",$AplicacaoId = "",$Posicao = ""){
         
 
             $pdo = new Database();
 
             if(!empty($Titulo)){
             
-  $this->MenuSiteId = $MenuSiteId;
+  $this->MenuId = $MenuId;
   $this->Titulo = $Titulo;
   $this->Url = $Url;
   $this->Icone = $Icone;
@@ -80,7 +80,7 @@ class MenuSite
 
         }
         
- if(!empty($this->MenuSiteId)){
+ if(!empty($this->MenuId)){
         
       //Virtuais e Referencias
         

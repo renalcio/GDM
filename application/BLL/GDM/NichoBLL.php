@@ -1,9 +1,14 @@
 <?php
 namespace BLL;
+use DAL\Nicho;
 use Libs\Database;
 use Libs\Helper;
+use Libs\UnitofWork;
+
 class NichoBLL
 {
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -15,13 +20,14 @@ class NichoBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)
     {
         if($Model->NichoId > 0)
         {
-            $Model = $this->pdo->GetById("Nicho", "NichoId", $Model->NichoId, "DAL\\Nicho");
+            $Model = $this->unitofwork->GetById(new Nicho(), $Model->NichoId);
         }
         return $Model;
     }
@@ -29,7 +35,7 @@ class NichoBLL
     public function GetToIndex($Model)
     {
 
-        $Model = $this->pdo->select("SELECT * FROM Nicho", "", true);
+        $Model = $this->unitofwork->Get(new Nicho())->ToArray();
 
         return $Model;
     }
@@ -44,16 +50,16 @@ class NichoBLL
              print_r($PessoaJuridica);*/
 
             if($model->NichoId > 0)
-                $this->pdo->update("Nicho", $model, "NichoId = ".$model->NichoId);
+                $this->unitofwork->Update($model);
             else
-                $model->NichoId = $this->pdo->insert("Nicho", $model);
+                $this->unitofwork->Insert($model);
 
         }
     }
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Nicho", "NichoId = '".$id."'");
+            $this->unitofwork->Delete(new Nicho(), $id);
         }
     }
 }

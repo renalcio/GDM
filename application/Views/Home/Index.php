@@ -14,24 +14,56 @@ use DAL\Site;
     </form>
 
     <?
-    /*$classe = get_class($obj);
 
-    $classe = explode("\\", $classe);
-    $banco = isset($classe[2]) ? $classe[1] : ROOTDB;
-    $tabela = isset($classe[2]) ? $classe[2] : $classe[1];
-
-    $pdo = new \Libs\Database();
-    $sql = $pdo->select("SELECT * FROM ".$banco.".".$tabela);
-    var_dump($sql);
-    */
+    $time = microtime(1);
+    $mem = memory_get_usage();
 
     $unitofwork = new \Libs\UnitofWork();
 
-    $dados = $unitofwork->Get(new \DAL\MediaSpot\Artista())->First();
+    /*$artistas = $unitofwork->Get(new stdClass(), "a.AplicacaoId = '" . APP_ID . "' AND pe.EmpresaId = a.PessoaId AND p.PessoaId = pe.PessoaId")->Select("SELECT p.*
+                                            FROM
+                                            Pessoa p,
+                                            PessoaEmpresa pe,
+                                            Aplicacao a")*/
+    echo APP_ID."<br>";
 
-    var_dump((Array)$dados);
+    //echo $artistas->Count();
+
+    echo 'Tempo: ', (microtime(1) - $time), "s\n";
+    echo 'Memória: ', (memory_get_usage() - $mem) / (1024 * 1024) . " Mb";
+
+    var_dump($artistas);
 
     ?>
+    SELECT p.*
+    FROM
+    GDM.Pessoa p,
+    GDM.PessoaAplicacao pa,
+    GDM.Aplicacao a
+    WHERE a.AplicacaoId = '3'
+    AND pa.AplicacaoId = a.AplicacaoId
+    AND p.PessoaId = pa.PessoaId
 
+    SELECT GDM.Pessoa.* FROM GDM.Pessoa
+    INNER JOIN GDM.Aplicacao
+    INNER JOIN GDM.PessoaAplicacao ON GDM.PessoaAplicacao.PessoaId = GDM.Pessoa.PessoaId AND GDM.PessoaAplicacao
+    .AplicacaoId = GDM.Aplicacao.AplicacaoId
+    WHERE GDM.Aplicacao.AplicacaoId = '3'
+
+    /**
+    Ideias:
+    Criar um Objeto de Retorno como stdClass e nele adicionar objetos com os tipos especificados no JOIN
+    ex:
+    Sem join: $retorno->Get = Objeto do GET
+    Joins:
+    $retorno->Get = Objeto do GET
+    $retorno->Join1 = Objeto do Join1
+    $retorno->Join2 = Objeto do Join2
+
+    no Select deixar padrão o Objeto do GET e permitir que ele identifique quais quer retornar em uma logica parecida com
+    a do WHERE do ArrayHelper
+    Ex:
+    Select(function($x){$x->Join1; })->....
+    */
     </p>
 </div>

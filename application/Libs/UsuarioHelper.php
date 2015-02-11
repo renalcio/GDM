@@ -1,6 +1,8 @@
 <?php
 namespace Libs;
+use DAL\Aplicacao;
 use DAL\Site;
+use DAL\Usuario;
 use Libs\ArrayHelper;
 use Libs\Database;
 use DAL\UsuarioAplicacao;
@@ -91,7 +93,7 @@ class UsuarioHelper
     }
 
     public static function getAplicacoes($UsuarioId = '0'){
-        $pdo = new Database();
+        $unitofwork = new UnitofWork();
 
         //Verifica UsuarioId
         if($UsuarioId == '0' || empty($UsuarioId)){
@@ -99,7 +101,9 @@ class UsuarioHelper
             $UsuarioId = $sessao->Ver("UsuarioId");
         }
 
-        $UsuarioAplicacao = $pdo->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '" . $UsuarioId . "'", "DAL\\UsuarioAplicacao", true);
+        $UsuarioAplicacao = $unitofwork->Get(new UsuarioAplicacao(), "UsuarioId = '" . $UsuarioId . "'")->ToList();
+
+        //var_dump($UsuarioAplicacao);
 
         if(empty($UsuarioAplicacao))
             $UsuarioAplicacao = Array();
@@ -113,9 +117,9 @@ class UsuarioHelper
         $sessao = new SessionHelper("GDMAuth");
         $cookie = new CookieHelper("GDMAuth");
 
-        $pdo = new Database();
+        $unitofwork = new UnitofWork();
 
-        $Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $AplicacaoId, "DAL\\Aplicacao");
+        $Aplicacao = $unitofwork->GetById(new Aplicacao(), $AplicacaoId);
 
         $Pasta = empty($Aplicacao->Pasta) ? "" : $Aplicacao->Pasta;
 
@@ -128,12 +132,12 @@ class UsuarioHelper
     }
 
     public static function GetAcessoByPerfil($MenuId, $PerfilId = 0){
-        $pdo = new Database();
+        $unitofwork = new UnitofWork();
 
         if(empty($MenuId) || empty($PerfilId))
             return false;
 
-        $Permissao = $pdo->select("SELECT * FROM Permissao WHERE Menuid='".$MenuId."' AND PerfilId='"
+        $Permissao = $unitofwork->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".Permissao WHERE Menuid='".$MenuId."' AND PerfilId='"
             .$PerfilId."' LIMIT 1");
         if(!empty($Permissao))
             return true;
@@ -142,24 +146,24 @@ class UsuarioHelper
     }
 
     public static function GetAcessoByUsuarioId($MenuId, $UsuarioId = 0){
-        $pdo = new Database();
+        $unitofwork = new UnitofWork();
 
         //Verifica UsuarioId
         if($UsuarioId == '0' || empty($UsuarioId)){
             $sessao = new SessionHelper("GDMAuth");
             $UsuarioId = $sessao->Ver("UsuarioId");
-            $Usuario = $pdo->GetById("Usuario", "UsuarioId", $UsuarioId, "DAL\\Usuario");
+            $Usuario = $unitofwork->GetById(new Usuario(), $UsuarioId);
         }
 
         if($Usuario == null || empty($Usuario) || empty($MenuId))
             return false;
 
-        $Menu = $pdo->GetById("Menu", "MenuId", $MenuId);
+        $Menu = $unitofwork->pdo->GetById(DB_PREFIX.ROOTDB.".Menu", "MenuId", $MenuId);
 
-        $Perfis = $pdo->select("
+        $Perfis = $unitofwork->pdo->select("
                                 SELECT p.*
-                                FROM UsuarioPerfil up,
-                                Perfil p
+                                FROM ".DB_PREFIX.ROOTDB.".UsuarioPerfil up,
+                                ".DB_PREFIX.ROOTDB.".Perfil p
                                 WHERE p.AplicacaoId = '".$Menu->AplicacaoId."'
                                 AND up.UsuarioId = '".$Usuario->UsuarioId."'
                                 AND p.PerfilId = up.PerfilId
@@ -170,8 +174,7 @@ class UsuarioHelper
             return false;
 
         foreach($Perfis as $perfil){
-            $Permissao = $pdo->select("SELECT * FROM Permissao WHERE Menuid='".$Menu->MenuId."' AND PerfilId='"
-                .$perfil->PerfilId."' LIMIT 1");
+            $Permissao = $unitofwork->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".Permissao WHERE Menuid='".$Menu->MenuId."' AND PerfilId='".$perfil->PerfilId."' LIMIT 1");
             if(!empty($Permissao))
                 return true;
         }

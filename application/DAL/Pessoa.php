@@ -1,8 +1,13 @@
 <?php
 namespace DAL;
 use Libs\Database;
+use Libs\UnitofWork;
+
 class Pessoa
 {
+    /**
+     * @PrimaryKey
+     */
     var $PessoaId;
     /**
      * @Required
@@ -32,7 +37,7 @@ class Pessoa
     public function __construct($PessoaId=0, $Nome="", $Email="", $Telefone="", $Celular="", $Observacao="",
                                 $TipoPessoaFisica = true)
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Nome)) {
             $this->PessoaId = $PessoaId;
             $this->Nome = $Nome;
@@ -45,9 +50,9 @@ class Pessoa
 
         if($this->PessoaId > 0) {
 
-            $this->PessoaFisica = $pdo->GetById("PessoaFisica", "PessoaId", $this->PessoaId, "DAL\\PessoaFisica");
+            $this->PessoaFisica = $pdo->GetById(new PessoaFisica(), $this->PessoaId);
 
-            $this->PessoaJuridica = $pdo->GetById("PessoaJuridica", "PessoaId", $this->PessoaId, "DAL\\PessoaJuridica");
+            $this->PessoaJuridica = $pdo->GetById(new PessoaFisica(), $this->PessoaId);
 
                 if($this->PessoaJuridica == null) {
                     $this->PessoaJuridica = new PessoaJuridica();
@@ -72,6 +77,9 @@ class Pessoa
 
 class PessoaFisica
 {
+    /**
+     * @PrimaryKey
+     */
     var $PessoaId;
     /**
      * @Int
@@ -100,6 +108,9 @@ class PessoaFisica
 
 class PessoaJuridica
 {
+    /**
+     * @PrimaryKey
+     */
     var $PessoaId;
     var $NomeFantasia;
     var $IE;

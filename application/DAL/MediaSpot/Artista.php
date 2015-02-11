@@ -7,10 +7,15 @@
  */
 namespace DAL\MediaSpot;
 
+use DAL\Aplicacao;
 use Libs\Database;
+use Libs\UnitofWork;
 
 class Artista
 {
+    /**
+     * @PrimaryKey
+     */
     var $ArtistaId;
 
     /**
@@ -60,7 +65,7 @@ class Artista
     public function __construct($ArtistaId = 0, $Titulo = "", $Descricao="", $Imagem="", $Ativo=0, $md5="",
                                 $Visitas=0, $mbid=0, $AplicacaoId=0, $Relacionados="")
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Titulo)){
             $this->ArtistaId = $ArtistaId;
             $this->Titulo = $Titulo;
@@ -76,7 +81,7 @@ class Artista
 
         if ($this->ArtistaId > 0) {
             if(!empty($this->AplicacaoId))
-                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+                $this->Aplicacao = $pdo->GetById(new Aplicacao(), $this->AplicacaoId);
         }
 
         return $this;

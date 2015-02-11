@@ -17,6 +17,9 @@ use Libs\Debug;
 
 class SiteBLL
 {
+
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -28,13 +31,14 @@ class SiteBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit(Site $model)
     {
         if($model->SiteId > 0)
         {
-            $model = $this->pdo->GetById("Site", "SiteId", $model->SiteId, "DAL\\Site");
+            $model = $this->unitofwork->GetById(new Site(), $model->SiteId);
         }else{
             $model = new Site();
         }
@@ -44,8 +48,7 @@ class SiteBLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->pdo->select("SELECT * FROM Site", "DAL\\Site", true);
-
+        $model->Lista = $this->unitofwork->Get(new Site())->ToArray();
         return $model;
     }
 
@@ -54,9 +57,9 @@ class SiteBLL
         if($model!=null) {
             
                 if ($model->SiteId > 0){
-                    $this->pdo->update("Site", $model, "SiteId = " . $model->SiteId);
+                    $this->unitofwork->Update($model);
                 } else {
-                    $model->SiteId = $this->pdo->insert("Site", $model);
+                    $this->unitofwork->Insert($model);
                 }
         }
         return $model;
@@ -64,7 +67,7 @@ class SiteBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Site", "SiteId = '".$id."'");
+            $this->unitofwork->Delete(new Site(), $id);
         }
     }
 

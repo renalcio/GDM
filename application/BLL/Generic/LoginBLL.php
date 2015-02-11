@@ -1,11 +1,17 @@
 <?php
 namespace BLL;
+use DAL\Aplicacao;
+use DAL\UsuarioAplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
+use Libs\UnitofWork;
+
 class LoginBLL
 {
+    var $pdo;
+    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -17,6 +23,7 @@ class LoginBLL
             exit('Database connection could not be established.');
         }
         $this->pdo = new Database;
+        $this->unitofwork = new UnitofWork();
     }
 
     /**
@@ -49,17 +56,18 @@ class LoginBLL
         $query = $this->pdo->select("SELECT 
                                             p.Email, 
                                             u.* 
-                                            FROM Usuario u, 
-                                            Pessoa p 
+                                            FROM ".DB_NAME.".Usuario u,
+                                            ".DB_NAME.".Pessoa p
                                             WHERE 
                                             (p.Email = '$Login' OR u.Login = '$Login')
                                             AND u.Senha = '$md5Senha'
                                             AND u.PessoaId = p.PessoaId LIMIT 1");
 
         if($query != null) {
-            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE Ativo = '1' AND UsuarioId = '" . $query->UsuarioId
-                . "'",
-                "DAL\\UsuarioAplicacao", true);
+            //$aplicacoes = $this->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".UsuarioAplicacao WHERE Ativo = '1' AND UsuarioId = '" . $query->UsuarioId
+            // . "'",
+            // "DAL\\UsuarioAplicacao", true);
+            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND  UsuarioId = '" . $query->UsuarioId."'")->ToArray();
 
             if (count($aplicacoes) > 0) {
                 if (count($aplicacoes) > 1) {
@@ -81,7 +89,7 @@ class LoginBLL
         $Pasta = "";
         if(!empty($Usuario)){
 
-            $aplicacoes = $this->pdo->select("SELECT * FROM UsuarioAplicacao WHERE Ativo = '1'  AND UsuarioId = '".$Usuario->UsuarioId."'", "DAL\\UsuarioAplicacao", true);
+            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '".$Usuario->UsuarioId."'")->ToArray();
 
             if(count($aplicacoes) > 0){
                 if(count($aplicacoes) > 1){
@@ -89,7 +97,7 @@ class LoginBLL
                     $Usuario->AplicacaoId = 0;
                 }else{
                     $Usuario->AplicacaoId = $aplicacoes[0]->AplicacaoId;
-                    $Aplicacao = $this->pdo->GetById("Aplicacao", "AplicacaoId", $Usuario->AplicacaoId, "DAL\\Aplicacao");
+                    $Aplicacao = $this->unitofwork->GetById(new Aplicacao(), $Usuario->AplicacaoId);
                     $Pasta = $Aplicacao->Pasta;
                 }
                 //Set Session e Cookies

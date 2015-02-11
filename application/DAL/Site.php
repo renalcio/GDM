@@ -8,9 +8,13 @@
 namespace DAL;
 
 use Libs\Database;
+use Libs\UnitofWork;
 
 class Site
 {
+    /**
+     * @PrimaryKey
+     */
     var $SiteId;
     /**
      * @Required
@@ -58,10 +62,10 @@ class Site
             $this->Metatags = $Metatags;
         }
 
-        $pdo = new Database();
+        $pdo = new UnitofWork();
 
         if ($this->AplicacaoId > 0) {
-            $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, "DAL\\Aplicacao");
+            $this->Aplicacao = $pdo->GetById(new Aplicacao(), $this->AplicacaoId);
         }
 
         return $this;

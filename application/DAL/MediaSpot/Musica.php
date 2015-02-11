@@ -9,9 +9,13 @@ namespace DAL\MediaSpot;
 
 use DAL\Aplicacao;
 use Libs\Database;
+use Libs\UnitofWork;
 
 class Musica
 {
+    /**
+     * @PrimaryKey
+     */
     var $MusicaId;
 
     /**
@@ -45,7 +49,7 @@ class Musica
 
     public function __construct($MusicaId = 0, $Titulo="", $ArtistaId=0, $AplicacaoId=0)
     {
-        $pdo = new Database();
+        $pdo = new UnitofWork();
         if(!empty($Titulo)){
             $this->MusicaId = $MusicaId;
             $this->Titulo = $Titulo;
@@ -55,10 +59,10 @@ class Musica
         if (!empty($this->MusicaId)) {
 
             if(!empty($this->AplicacaoId))
-                $this->Aplicacao = $pdo->GetById("Aplicacao", "AplicacaoId", $this->AplicacaoId, new Aplicacao());
+                $this->Aplicacao = $pdo->GetById(new Aplicacao(), $this->AplicacaoId);
 
             if(!empty($this->ArtistaId))
-                $this->Artista = $pdo->GetById("Artista", "ArtistaId", $this->ArtistaId, new Artista());
+                $this->Artista = $pdo->GetById(new Artista(), $this->ArtistaId);
 
         }
         if($this->Aplicacao == null)

@@ -75,11 +75,11 @@
       <primary-key name="PRIMARY" columns="PessoaId"/>
     </table>
     <table name="PessoaAplicacao" schema="" catalog="GDM" type="TABLE">
-      <column name="PessoaEmpresaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PessoaAplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="Apagado" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
-      <primary-key name="PRIMARY" columns="PessoaEmpresaId"/>
+      <primary-key name="PRIMARY" columns="PessoaAplicacaoId"/>
     </table>
     <table name="PessoaEndereco" schema="" catalog="GDM" type="TABLE">
       <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>

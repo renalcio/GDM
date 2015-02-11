@@ -3,29 +3,29 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 05/02/2015 14:07:04
+* @date: 10/02/2015 15:04:13
 */
 
 namespace DAL;
 
 use Libs\Database;
 
-class UsuarioAplicacao
+class PessoaAplicacao
 {
     /**
                      * @PrimaryKey
-                     * @Name: UsuarioAplicacaoId
-                     * @DisplayName: UsuarioAplicacaoId
+                     * @Name: PessoaEmpresaId
+                     * @DisplayName: PessoaEmpresaId
                      * @Type: int(11)
                      */
- var $UsuarioAplicacaoId = 0;
+ var $PessoaEmpresaId = 0;
 
 /**
-                 * @Name: UsuarioId
-                 * @DisplayName: UsuarioId
+                 * @Name: PessoaId
+                 * @DisplayName: PessoaId
                  * @Type: int(11)
                  */
- var $UsuarioId = 0;
+ var $PessoaId = 0;
 
 /**
                  * @Name: AplicacaoId
@@ -35,28 +35,28 @@ class UsuarioAplicacao
  var $AplicacaoId = 0;
 
 /**
-                 * @Name: Ativo
-                 * @DisplayName: Ativo
+                 * @Name: Apagado
+                 * @DisplayName: Apagado
                  * @Type: tinyint(4)
                  */
- var $Ativo = 0;
+ var $Apagado = 0;
 
 
-    function __construct($UsuarioAplicacaoId = "",$UsuarioId = "",$AplicacaoId = "",$Ativo = ""){
+    function __construct($PessoaEmpresaId = "",$PessoaId = "",$AplicacaoId = "",$Apagado = ""){
         
 
             $pdo = new Database();
 
-            if(!empty($UsuarioId)){
+            if(!empty($PessoaId)){
             
-  $this->UsuarioAplicacaoId = $UsuarioAplicacaoId;
-  $this->UsuarioId = $UsuarioId;
+  $this->PessoaEmpresaId = $PessoaEmpresaId;
+  $this->PessoaId = $PessoaId;
   $this->AplicacaoId = $AplicacaoId;
-  $this->Ativo = $Ativo;
+  $this->Apagado = $Apagado;
 
         }
         
- if(!empty($this->UsuarioAplicacaoId)){
+ if(!empty($this->PessoaEmpresaId)){
         
       //Virtuais e Referencias
         

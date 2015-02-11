@@ -32,7 +32,7 @@ class Database extends \PDO
 
 
 
-    public function __construct($DB_TYPE = "mysql", $DB_HOST = "localhost", $DB_NAME = "cdm", $DB_USER = "root", $DB_PASS = "")
+    public function __construct($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, $DB_NAME = DB_NAME, $DB_USER = DB_USER, $DB_PASS = DB_PASS)
 
     {
 

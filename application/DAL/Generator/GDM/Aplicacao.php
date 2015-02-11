@@ -3,7 +3,7 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 05/02/2015 14:07:02
+* @date: 10/02/2015 15:04:12
 */
 
 namespace DAL;
@@ -62,8 +62,36 @@ class Aplicacao
                  */
  var $Pasta;
 
+/**
+                 * @Name: DbHost
+                 * @DisplayName: DbHost
+                 * @Type: varchar(255)
+                 */
+ var $DbHost;
 
-    function __construct($AplicacaoId = "",$Titulo = "",$Descricao = "",$PessoaId = "",$DataCriacao = "",$NichoId = "",$Pasta = ""){
+/**
+                 * @Name: DbSenha
+                 * @DisplayName: DbSenha
+                 * @Type: varchar(255)
+                 */
+ var $DbSenha;
+
+/**
+                 * @Name: DbUsuario
+                 * @DisplayName: DbUsuario
+                 * @Type: varchar(255)
+                 */
+ var $DbUsuario;
+
+/**
+                 * @Name: DbBanco
+                 * @DisplayName: DbBanco
+                 * @Type: varchar(255)
+                 */
+ var $DbBanco;
+
+
+    function __construct($AplicacaoId = "",$Titulo = "",$Descricao = "",$PessoaId = "",$DataCriacao = "",$NichoId = "",$Pasta = "",$DbHost = "",$DbSenha = "",$DbUsuario = "",$DbBanco = ""){
         
 
             $pdo = new Database();
@@ -77,6 +105,10 @@ class Aplicacao
   $this->DataCriacao = $DataCriacao;
   $this->NichoId = $NichoId;
   $this->Pasta = $Pasta;
+  $this->DbHost = $DbHost;
+  $this->DbSenha = $DbSenha;
+  $this->DbUsuario = $DbUsuario;
+  $this->DbBanco = $DbBanco;
 
         }
         

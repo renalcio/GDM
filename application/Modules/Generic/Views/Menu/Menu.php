@@ -3,7 +3,7 @@ $controle = Libs\Helper::getController();
 function LoadMenuObj($Pai = 0)
 {
     $pdo = new Libs\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
-    $menu = $pdo->select("SELECT * FROM Menu
+    $menu = $pdo->select("SELECT * FROM ".DB_NAME.".Menu
                                         WHERE AplicacaoId='" . APP_ID . "'
                                         AND Pai = '$Pai'
                                         ORDER BY Posicao ASC");

@@ -46,11 +46,15 @@ class Helper
                     $nivel = substr_count($key, "_");
                     $na = 0;
                     //Monta o novo indice
-                    $nova_key = explode("_", $key)[$na];
-                    $nova_subkey = explode("_", $key)[$na + 1];
+                    $nova_key = explode("_", $key);
+                    $nova_key = $nova_key[$na];
+                    $nova_subkey = explode("_", $key);
+                    $nova_subkey = $nova_subkey[$na + 1];
                     if($nivel > 1) {
                         for ($na = 1; $na < $nivel; $na++) {
-                            $nova_subkey .= "_" . explode("_", $key)[$na + 1];
+                            $arrtemp = explode("_", $key);
+                            $nova_subkey .= "_" . $arrtemp[$na + 1];
+
                         }
                     }
                     //Busca o novo indice no post
@@ -105,6 +109,9 @@ class Helper
     }
 
     private static function objectToObject($instance, $className) {
+        if(is_object($className))
+            $className = get_class($className);
+
         return unserialize(sprintf(
             'O:%d:"%s"%s',
             strlen($className),
@@ -207,16 +214,16 @@ class Helper
     }
 
     static function LoadModelView($Model = null, $view = "", $controller = ""){
-        if(empty($view)) $view = Self::getAction();
-        if(empty($controller)) $controller = Self::getController();
+        if(empty($view)) $view = ucfirst(Self::getAction());
+        if(empty($controller)) $controller = ucfirst(Self::getController());
         // load views
 
         $urlfinal = "";
 
         if(empty($controller))
-            $urlfinal = APP. MODULES . PASTA . 'views' . DIRECTORY_SEPARATOR . $view . '.php';
+            $urlfinal = APP. MODULES . PASTA . 'Views' . DIRECTORY_SEPARATOR . $view . '.php';
         else
-            $urlfinal = APP. MODULES . PASTA . 'views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
+            $urlfinal = APP. MODULES . PASTA . 'Views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
 
         //echo $urlfinal;
 
@@ -233,9 +240,9 @@ class Helper
             else {
 
                 if (empty($controller))
-                    require APP . 'views/' . $view . '.php';
+                    require APP . 'Views/' . ucfirst($view) . '.php';
                 else
-                    require APP . 'views/' . $controller . '/' . $view . '.php';
+                    require APP . 'Views/' . ucfirst($controller) . '/' . ucfirst($view) . '.php';
             }
         }
 
