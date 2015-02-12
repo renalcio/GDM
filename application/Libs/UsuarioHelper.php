@@ -12,11 +12,12 @@ class UsuarioHelper
     public static function GetSite($UsuarioId = 0, $AplicacaoId = APPID)
     {
         $pdo = new Database();
+        $uow = new Database();
         $sessao = new SessionHelper("GDMAuth");
         $UsuarioId = empty($UsuarioId) ?  $sessao->Ver("UsuarioId") : $UsuarioId;
 
         $site = new Site();
-        $site = $pdo->select("SELECT * FROM Site WHERE AplicacaoId = '".$AplicacaoId."' LIMIT 1", new Site());
+        $site = $uow->Get(new Site(), "AplicacaoId = '".$AplicacaoId."'")->First();
         if(empty($site))
             $site = new Site();
 
@@ -101,7 +102,7 @@ class UsuarioHelper
             $UsuarioId = $sessao->Ver("UsuarioId");
         }
 
-        $UsuarioAplicacao = $unitofwork->Get(new UsuarioAplicacao(), "UsuarioId = '" . $UsuarioId . "'")->ToList();
+        $UsuarioAplicacao = $unitofwork->Get(new UsuarioAplicacao(), "UsuarioId = '" . $UsuarioId . "'")->ToArray();
 
         //var_dump($UsuarioAplicacao);
 

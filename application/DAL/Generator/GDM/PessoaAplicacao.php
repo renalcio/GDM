@@ -3,7 +3,7 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 10/02/2015 15:04:13
+* @date: 12/02/2015 14:27:15
 */
 
 namespace DAL;
@@ -14,11 +14,11 @@ class PessoaAplicacao
 {
     /**
                      * @PrimaryKey
-                     * @Name: PessoaEmpresaId
-                     * @DisplayName: PessoaEmpresaId
+                     * @Name: PessoaAplicacaoId
+                     * @DisplayName: PessoaAplicacaoId
                      * @Type: int(11)
                      */
- var $PessoaEmpresaId = 0;
+ var $PessoaAplicacaoId = 0;
 
 /**
                  * @Name: PessoaId
@@ -42,21 +42,21 @@ class PessoaAplicacao
  var $Apagado = 0;
 
 
-    function __construct($PessoaEmpresaId = "",$PessoaId = "",$AplicacaoId = "",$Apagado = ""){
+    function __construct($PessoaAplicacaoId = "",$PessoaId = "",$AplicacaoId = "",$Apagado = ""){
         
 
             $pdo = new Database();
 
             if(!empty($PessoaId)){
             
-  $this->PessoaEmpresaId = $PessoaEmpresaId;
+  $this->PessoaAplicacaoId = $PessoaAplicacaoId;
   $this->PessoaId = $PessoaId;
   $this->AplicacaoId = $AplicacaoId;
   $this->Apagado = $Apagado;
 
         }
         
- if(!empty($this->PessoaEmpresaId)){
+ if(!empty($this->PessoaAplicacaoId)){
         
       //Virtuais e Referencias
         

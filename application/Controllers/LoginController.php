@@ -71,6 +71,7 @@ class LoginController extends Controller
             else
                 $this->Redirect("logout");
 
+            var_dump($model);
         }else{
             UsuarioHelper::setAplicacao($id);
 

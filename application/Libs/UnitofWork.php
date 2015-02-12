@@ -38,12 +38,21 @@ class UnitofWork {
     private $query;
     private $results;
 
+    private $join;
+
+    private $bolJoin;
+
+    private $as;
+
+
     private $groupby; /* TODO */
 
     public function __construct(){
         $this->pdo = new Database();
         $this->lista = new ArrayHelper();
         $this->results  = new ArrayHelper();
+        $this->bolJoin = false;
+        return $this;
     }
 
     /**
@@ -80,23 +89,70 @@ class UnitofWork {
         }
 
         //echo "SELECT * FROM ". $this->from . $where;
+
+
+        $retorno = clone $this;
+
+        return $retorno;
+    }
+
+    public function Select($select, $objeto = "\\stdClass"){
+
+        $this->GetClass($objeto);
+
+        $nSelect = "";
+        $xVirgula = explode(",", $select);
+        if(count($xVirgula) > 0){
+            for($i = 0; $i < count($xVirgula); $i++){
+                $xPoint = explode(".", $xVirgula[$i]);
+                if(count($xPoint) <= 1){
+                    $xVirgula[$i] .= ".*";
+                }
+
+                $nSelect .= " ".$xVirgula[$i] . ($i < (count($xVirgula) - 1) ? "," : "");
+            }
+        }
+
+        $this->select = $nSelect;
+
+        $this->BuildQuery();
+        echo $this->query;
+
         return $this;
     }
 
-    public function Select($select){
-        $this->select = $select;
+    public function Join(UnitofWork $join, $refPai, $refItem){
+
+        $this->SetJoin($join, $refPai, $refItem);
+
+        $strJoin = " JOIN ".$join->from." AS ".$join->as." ON ".$refItem." = ".$refPai;
+
+        $this->join .= $strJoin;
+
+        //echo  $this->join."<br>";
+
+        //$this->BuildQuery();
+
+        //echo $this->query;
+
         return $this;
     }
 
-    public function Join($objeto, $where){
-        /**
-         * TODO
-         */
+    public function LeftJoin(UnitofWork $join, $refPai, $refItem){
 
+        $this->SetJoin($join, $refPai, $refItem);
+
+        $strJoin = " LEFT JOIN ".$join->from." AS ".$join->as." ON ".$refItem." = ".$refPai;
+
+        $this->join .= $strJoin;
+
+        return $this;
     }
+
+
 
     public function Where($where){
-        $this->where = $where;
+        $this->where = " WHERE ".$where;
         return $this;
     }
 
@@ -157,22 +213,7 @@ class UnitofWork {
         return $this;
     }
 
-    private function ExecuteQuery(){
 
-        if(empty($this->take) && !empty($this->skip))
-            $this->take = "18446744073709551615"; //Pula x e pega TODOS
-
-        if(!empty($this->take) && !empty($this->skip))
-            $this->limit = " LIMIT ". $this->skip .",". $this->take;
-        else if(!empty($this->take) && empty($this->skip))
-            $this->limit = " LIMIT ". $this->take;
-
-
-        $this->query = "SELECT " .$this->select. " FROM " .$this->from . $this->where . $this->orderby . $this->limit;
-        //echo $this->query;
-        $this->results = $this->pdo->select($this->query, ($this->select == "*" ? $this->classe : ""), true);
-
-    }
 
     /** AUTOMATICAS */
 
@@ -207,6 +248,7 @@ class UnitofWork {
         $this->Initialize($objeto);
 
         $this->lista->For_Each(function($key,$item) {
+            $item = $this->ClearClass($item);
             //Verifica PK
             $pk = $this->pk;
             if (empty($item->$pk))
@@ -227,6 +269,7 @@ class UnitofWork {
         $this->Initialize($objeto);
 
         $this->lista->For_Each(function($key,$item){
+            $item = $this->ClearClass($item);
             $pk = $this->pk;
             $this->objeto->$pk = $this->pdo->Insert($this->from, $item);
             $this->lista[$key]->$pk = $this->objeto->$pk;
@@ -283,7 +326,6 @@ class UnitofWork {
                 $objeto->For_Each(function($key,$item){
                     $this->lista->Add($item);
                 });
-            $this->classe = get_class($this->lista->First());
 
             $this->objeto = $this->lista->First();
         }else{
@@ -294,8 +336,10 @@ class UnitofWork {
                 $this->objeto = new $objeto();
 
             $this->lista->Add($this->objeto);
-            $this->classe = get_class($this->objeto);
+
         }
+
+        $this->GetClass($this->objeto);
 
         $this->GetBase();
         $this->GetTable();
@@ -304,6 +348,33 @@ class UnitofWork {
         $this->from = $this->banco . "." . $this->tabela;
 
         $this->pdo = new Database();
+    }
+
+    /** GETS E SETS **/
+
+    private function SetJoin(UnitofWork $join, $refPai, $refItem){
+        if($this->bolJoin==false) {
+            //Pai
+            $xPai = explode(".", $refPai);
+            $paiTabela = (isset($xPai[1]) ? $xPai[1] : $xPai[0]);
+            $paiAs = (isset($xPai[1]) ? $xPai[0] : "");
+
+            $this->SetAs($paiAs);
+        }
+        $this->bolJoin = true;
+
+        //Item
+        $xItem = explode(".", $refItem);
+        $itemTabela = (isset($xItem[1]) ? $xItem[1] : $xItem[0]);
+        $itemAs = (isset($xItem[1]) ? $xItem[0] : "");
+        $join->SetAs($itemAs);
+    }
+
+    private function GetClass($objeto){
+        if(is_object($objeto))
+            $this->classe = get_class($objeto);
+        else
+            $this->classe = $objeto;
     }
 
     private function GetPK(){
@@ -341,6 +412,51 @@ class UnitofWork {
                 throw new \Exception("stdClass não é permitido");
         }else
             throw new \Exception("Objeto ou classe inválida em GetTable");
+    }
+
+    private function SetAs($as){
+        $this->as = $as;
+        //$this->from .= " AS ".$as;
+
+        return $this;
+    }
+
+    /** FINAL **/
+
+    private function ExecuteQuery(){
+
+        $this->BuildQuery();
+
+        $this->results = $this->pdo->select($this->query, $this->classe, true);
+
+    }
+
+    private function BuildQuery(){
+        if(empty($this->take) && !empty($this->skip))
+            $this->take = "18446744073709551615"; //Pula x e pega TODOS
+
+        if(!empty($this->take) && !empty($this->skip))
+            $this->limit = " LIMIT ". $this->skip .",". $this->take;
+        else if(!empty($this->take) && empty($this->skip))
+            $this->limit = " LIMIT ". $this->take;
+
+        //echo $this->as;
+
+        $this->query = "SELECT " .$this->select. " FROM " .$this->from. (empty($this->as) ? "" : " AS ".$this->as) .
+            $this->join .
+            $this->where .
+            $this->orderby .
+            $this->limit;
+    }
+
+    public function ClearClass($objeto){
+        $classe = get_class($objeto);
+        $retorno = new $classe();
+        foreach($objeto as $key=>$item){
+            if(!property_exists($retorno, $key))
+                unset($objeto->$key);
+        }
+        return $objeto;
     }
 
 }

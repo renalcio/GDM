@@ -20,21 +20,24 @@ use DAL\Site;
 
     $unitofwork = new \Libs\UnitofWork();
 
-    /*$artistas = $unitofwork->Get(new stdClass(), "a.AplicacaoId = '" . APP_ID . "' AND pe.EmpresaId = a.PessoaId AND p.PessoaId = pe.PessoaId")->Select("SELECT p.*
-                                            FROM
-                                            Pessoa p,
-                                            PessoaEmpresa pe,
-                                            Aplicacao a")*/
-    echo APP_ID."<br>";
+    //$artistas = $unitofwork->Get(new \DAL\Pessoa())->Join(new \DAL\PessoaAplicacao(), "PessoaId", "PessoaId");
 
-    //echo $artistas->Count();
+   /* $artistas = $unitofwork->Get(new \DAL\MediaSpot\Artista())->Join(
+        $unitofwork->Get(new \DAL\Aplicacao()),
+        "AR.AplicacaoId", "AP.AplicacaoId")->Join(
+        $unitofwork->Get(new Site()), "AP.AplicacaoId", "S.AplicacaoId"
+    )
+        ->Select("S", new Site())
+        ->ToList();
+   */
 
-    echo 'Tempo: ', (microtime(1) - $time), "s\n";
-    echo 'Memória: ', (memory_get_usage() - $mem) / (1024 * 1024) . " Mb";
+
+    echo '<br>Tempo: ', (microtime(1) - $time), "s\n";
+    echo '<br>Memória: ', (memory_get_usage() - $mem) / (1024 * 1024) . " Mb";
 
     var_dump($artistas);
 
-    ?>
+    /**
     SELECT p.*
     FROM
     GDM.Pessoa p,
@@ -50,7 +53,7 @@ use DAL\Site;
     .AplicacaoId = GDM.Aplicacao.AplicacaoId
     WHERE GDM.Aplicacao.AplicacaoId = '3'
 
-    /**
+
     Ideias:
     Criar um Objeto de Retorno como stdClass e nele adicionar objetos com os tipos especificados no JOIN
     ex:
@@ -65,5 +68,6 @@ use DAL\Site;
     Ex:
     Select(function($x){$x->Join1; })->....
     */
+    ?>
     </p>
 </div>

@@ -27,10 +27,10 @@ class PessoaBLL
     {
         if($Model->PessoaId > 0)
         {
-            $Model = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
+            $Model = $this->unitofwork->GetById(new Pessoa(), $Model->PessoaId);
             if($Model != null)
             {
-                $Model = $this->pdo->GetById("Pessoa", "PessoaId", $Model->PessoaId, "DAL\\Pessoa");
+                $Model = $this->unitofwork->GetById(new Pessoa(), $Model->PessoaId);
                 if($Model != null){
                     if($Model->TipoPessoaFisica)
                         $Model->Documento = $Model->PessoaFisica->CPF;
@@ -47,11 +47,11 @@ class PessoaBLL
         if(defined('APP_ID') && APP_ID == 1)
             $Model->ListPessoa = $this->unitofwork->Get(new Pessoa())->ToArray();
         else {
-            $Model->ListPessoa = $this->unitofwork->Get("SELECT p.*
+            $Model->ListPessoa = $this->unitofwork->pdo->select("SELECT p.*
                                             FROM
-                                            Pessoa p,
-                                            PessoaEmpresa pe,
-                                            Aplicacao a
+                                            ".DB_NAME.".Pessoa p,
+                                            ".DB_NAME.".PessoaEmpresa pe,
+                                            ".DB_NAME.".Aplicacao a
                                             WHERE a.AplicacaoId = " . APP_ID . "
                                             AND pe.EmpresaId = a.PessoaId
                                             AND p.PessoaId = pe.PessoaId", "", true);

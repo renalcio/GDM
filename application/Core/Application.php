@@ -28,16 +28,20 @@ class Application
         // check for controller: no controller given ? then load start-page
 
         //Verifica se tem pasta personalizada
-        $urlController = APP . 'modules' . DIRECTORY_SEPARATOR . PASTA . 'controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+        $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . PASTA . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+
+        //echo $urlController;
         if(!file_exists($urlController)){
             //Verifica se tem pasta generica
-            $urlController = APP . 'modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+            $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
 
             if(!file_exists($urlController)){
                 //Verifica se tem na pasta do sistema
-                $urlController = APP . 'controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+                $urlController = APP . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
             }
         }
+
+
 
         if (!$this->url_controller) {
 
@@ -175,5 +179,6 @@ class Application
             //echo 'Action: ' . $this->url_action . '<br>';
             //echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
         }
+        //var_dump($this);
     }
 }
