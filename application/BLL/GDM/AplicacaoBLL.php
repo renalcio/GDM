@@ -8,10 +8,9 @@ use Libs\SessionHelper;
 use DAL\Pessoa;
 use Libs\UnitofWork;
 
-class AplicacaoBLL
+class AplicacaoBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
+
     /**
      * @param object $db A PDO database connection
      */
@@ -22,15 +21,13 @@ class AplicacaoBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)
     {
         if($Model->AplicacaoId > 0)
         {
-            $Model = $this->pdo->GetById("Aplicacao", "AplicacaoId", $Model->AplicacaoId, "DAL\\Aplicacao");
+            $Model = $this->unitofwork->GetById(new Aplicacao(), $Model->AplicacaoId);
         }
         return $Model;
     }

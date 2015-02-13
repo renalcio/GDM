@@ -12,7 +12,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
             });
 
             $("#listagem").dataTable({
-                "aoColumns": [ null,null,null,<? if(APPID!=ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
+                "aoColumns": [ null,null,null,<? if(APPID!=ROOTAPP) { echo 'null,  {"bSortable": false}, '; } ?> {"bSortable": false} ]
             });
         });
         function Excluir(Id){

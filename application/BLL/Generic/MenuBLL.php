@@ -6,10 +6,8 @@ use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
-class MenuBLL
+class MenuBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -20,8 +18,6 @@ class MenuBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     

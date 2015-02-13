@@ -8,10 +8,8 @@ use Libs\CookieHelper;
 use Libs\SessionHelper;
 use Libs\UnitofWork;
 
-class HomeBLL
+class HomeBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -22,8 +20,6 @@ class HomeBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function Generator($AplicacaoId = APPID){

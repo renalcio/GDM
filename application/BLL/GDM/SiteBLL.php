@@ -15,11 +15,8 @@ use Libs\SessionHelper;
 use Libs\UsuarioHelper;
 use Libs\Debug;
 
-class SiteBLL
+class SiteBLL extends BLL
 {
-
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -30,8 +27,6 @@ class SiteBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit(Site $model)

@@ -3,11 +3,8 @@ namespace BLL;
 use Libs\Database;
 use DAL\Perfil;
 use Libs\Helper;
-class PerfilBLL
+class PerfilBLL extends BLL
 {
-
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -18,8 +15,6 @@ class PerfilBLL
         } catch (\PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)

@@ -5,10 +5,8 @@ use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;
 
-class NichoBLL
+class NichoBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -19,8 +17,6 @@ class NichoBLL
         } catch (\PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)

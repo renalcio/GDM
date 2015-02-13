@@ -6,6 +6,7 @@
  * Data: 26/01/2015
  */
 namespace BLL;
+use DAL\MediaSpot\Musica;
 use Libs\ArrayHelper;
 use Libs\Database;
 use DAL\MediaSpot\Artista;
@@ -13,10 +14,11 @@ use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;
 use Libs\SessionHelper;
+use Libs\UnitofWork;
 use Libs\UsuarioHelper;
 use Libs\Debug;
 
-class ArtistaBLL
+class ArtistaBLL extends BLL
 {
     /**
      * @param object $db A PDO database connection
@@ -28,14 +30,14 @@ class ArtistaBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
+
     }
 
     public function GetToEdit(Artista $model)
     {
         if($model->ArtistaId > 0)
         {
-            $model = $this->pdo->GetById("Artista", "ArtistaId", $model->ArtistaId, "DAL\\Artista");
+            $model = $this->unitofwork->GetById(new Artista(), $model->ArtistaId);
         }else{
             $model = new Artista();
         }
@@ -45,7 +47,7 @@ class ArtistaBLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->pdo->select("SELECT * FROM Artista", "DAL\\Artista", true);
+        $model->Lista = $this->unitofwork->Get(new Artista())->ToArray();
 
         return $model;
     }
@@ -59,9 +61,9 @@ class ArtistaBLL
                 $this->AplicacaoId = APPID;
 
             if ($model->ArtistaId > 0){
-                $this->pdo->update("Artista", $model, "ArtistaId = " . $model->ArtistaId);
+                $this->unitofwork->Update($model);
             } else {
-                $model->ArtistaId = $this->pdo->insert("Artista", $model);
+                $this->unitofwork->Insert($model);
             }
         }
         return $model;
@@ -71,9 +73,9 @@ class ArtistaBLL
         echo $id;
         if($id > 0){
             //Apaga Musicas
-            $this->pdo->delete("Musica", "ArtistaId = '".$id."'", 0);
+            $this->unitofwork->Delete(new Musica(), "ArtistaId = '".$id."'", 0);
             //Apaga item principal
-            $this->pdo->delete("Artista", "ArtistaId = '".$id."'");
+            $this->unitofwork->Delete(new Artista(), "ArtistaId = '".$id."'");
         }
     }
 

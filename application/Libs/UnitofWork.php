@@ -62,8 +62,8 @@ class UnitofWork {
      * @return UnitofWork
      */
     public function Get($objeto, $where = ""){
+        $this->Clear();
         $this->Initialize($objeto);
-
         if(!empty($where)){
             $comparacoes = "";
 
@@ -83,17 +83,15 @@ class UnitofWork {
             }
 
             if(!empty($comparacoes))
-                $this->where = " WHERE ".$comparacoes;
+                $this->Where($comparacoes);
             else
-                $this->where = null;
+                $this->where = "";
         }
 
         //echo "SELECT * FROM ". $this->from . $where;
 
 
-        $retorno = clone $this;
-
-        return $retorno;
+        return clone $this;
     }
 
     public function Select($select, $objeto = "\\stdClass"){
@@ -115,10 +113,10 @@ class UnitofWork {
 
         $this->select = $nSelect;
 
-        $this->BuildQuery();
-        echo $this->query;
+        //$this->BuildQuery();
+        //echo $this->query;
 
-        return $this;
+        return clone $this;
     }
 
     public function Join(UnitofWork $join, $refPai, $refItem){
@@ -129,13 +127,19 @@ class UnitofWork {
 
         $this->join .= $strJoin;
 
+        $this->where = $join->where;
+
+        //echo "<br>This Where: ".$this->where;
+        //echo "<br>Join Where: ".$join->where;
+
+
         //echo  $this->join."<br>";
 
         //$this->BuildQuery();
 
         //echo $this->query;
 
-        return $this;
+        return clone $this;
     }
 
     public function LeftJoin(UnitofWork $join, $refPai, $refItem){
@@ -146,13 +150,23 @@ class UnitofWork {
 
         $this->join .= $strJoin;
 
-        return $this;
+        $this->Where($join->where);
+
+        return clone $this;
     }
 
 
 
     public function Where($where){
-        $this->where = " WHERE ".$where;
+        if($where != null) {
+            if (empty($this->where))
+                $this->where = " (" . $where . ")";
+            else
+                $this->where .= " AND (" . $where . ")";
+        }else{
+            $this->where = "";
+        }
+
         return $this;
     }
 
@@ -178,27 +192,21 @@ class UnitofWork {
     }
 
     public function OrderBy($order){
-        $orders = explode(",", $order);
-
-        foreach($orders as $ord) {
-            if (empty($this->orderby))
-                $this->orderby = " ORDER BY " .$ord;
-            else
-                $this->orderby .= ", " .$ord;
-        }
+        if (empty($this->orderby))
+            $this->orderby = " ORDER BY " .$order;
+        else
+            $this->orderby .= "," .$order;
 
         return $this;
     }
 
     public function OrderByDescending($order){
-        $orders = explode(",", $order);
 
-        foreach($orders as $ord) {
-            if (empty($this->orderby))
-                $this->orderby = " ORDER BY " .$ord. " DESC";
-            else
-                $this->orderby .= ", " .$ord. " DESC";
-        }
+        if (empty($this->orderby))
+            $this->orderby = " ORDER BY " .$order. " DESC";
+        else
+            $this->orderby .= "," .$order. " DESC";
+
 
         return $this;
     }
@@ -414,7 +422,7 @@ class UnitofWork {
             throw new \Exception("Objeto ou classe inválida em GetTable");
     }
 
-    private function SetAs($as){
+    public function SetAs($as){
         $this->as = $as;
         //$this->from .= " AS ".$as;
 
@@ -440,13 +448,16 @@ class UnitofWork {
         else if(!empty($this->take) && empty($this->skip))
             $this->limit = " LIMIT ". $this->take;
 
-        //echo $this->as;
 
-        $this->query = "SELECT " .$this->select. " FROM " .$this->from. (empty($this->as) ? "" : " AS ".$this->as) .
-            $this->join .
-            $this->where .
-            $this->orderby .
+
+        $this->query = "SELECT " .$this->select. " FROM " .$this->from. (empty($this->as) ? "" : " AS ".$this->as).
+            $this->join.
+            " WHERE".
+            $this->where.
+            $this->orderby.
             $this->limit;
+
+        // echo $this->query;
     }
 
     public function ClearClass($objeto){
@@ -457,6 +468,28 @@ class UnitofWork {
                 unset($objeto->$key);
         }
         return $objeto;
+    }
+
+    public function Clear(){
+        $this->banco = "";
+        $this->tabela = "";
+        $this->retorno = "";
+        $this->pk = "";
+        $this->objeto = "";
+        $this->lista = "";
+        $this->classe = "";
+        $this->select = "*";
+        $this->from;
+        $this->orderby = null;
+        $this->limit = null;
+        $this->skip = null;
+        $this->take = null;
+        $this->query = "";
+        $this->results = "";
+        $this->join = "";
+        $this->bolJoin = false;
+        $this->as = "";
+        $this->where = "";
     }
 
 }

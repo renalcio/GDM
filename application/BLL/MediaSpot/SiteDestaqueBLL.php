@@ -19,7 +19,7 @@ use Libs\Debug;
 use DAL\MediaSpot\SiteDestaque;
 use Libs\UsuarioHelper;
 
-class SiteDestaqueBLL
+class SiteDestaqueBLL extends BLL
 {
     /**
      * @param object $db A PDO database connection
@@ -38,7 +38,7 @@ class SiteDestaqueBLL
     {
         if($model->SiteDestaqueId > 0)
         {
-            $model = $this->pdo->GetById("SiteDestaque", "SiteDestaqueId", $model->SiteDestaqueId, "DAL\\SiteDestaque");
+            $model = $this->unitofwork->GetById(new SiteDestaque(), $model->SiteDestaqueId);
         }else{
             $model = new SiteDestaque();
         }
@@ -48,7 +48,7 @@ class SiteDestaqueBLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->pdo->select("SELECT * FROM SiteDestaque ORDER BY Posicao ASC", "DAL\\SiteDestaque", true);
+        $model->Lista = $this->unitofwork->Get(new SiteDestaque())->OrderBy("Posicao")->ToArray();
 
         return $model;
     }
@@ -62,11 +62,10 @@ class SiteDestaqueBLL
 
             $Site = UsuarioHelper::GetSite();
 
-            $Artista = $this->pdo->GetById("Artista", "ArtistaId", $model->ReferenciaId, new Artista());
+            $Artista = $this->unitofwork->GetById(new Artista(), $model->ReferenciaId);
             if(empty($Artista)) $Artista = new Artista();
 
-            $Destaques = new ListHelper($this->pdo->select("SELECT * FROm SiteDestaque WHERE SiteId = '".$Site->SiteId
-                ."'", new Site(), true));
+            $Destaques = $this->unitofwork->Get(new SiteDestaque(), "SiteId = '".$Site->SiteId."'")->ToList();
 
             //Seta dados do destaque
             $model->Titulo = $Artista->Titulo;
@@ -87,7 +86,7 @@ class SiteDestaqueBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("SiteDestaque", "SiteDestaqueId = '".$id."'");
+            $this->unitofwork->Delete(new SiteDestaque(), "SiteDestaqueId = '".$id."'");
         }
     }
 

@@ -15,7 +15,7 @@ use Libs\SessionHelper;
 use Libs\UsuarioHelper;
 use Libs\Debug;
 
-class MusicaBLL
+class MusicaBLL extends BLL
 {
     /**
      * @param object $db A PDO database connection
@@ -34,7 +34,7 @@ class MusicaBLL
     {
         if($model->MusicaId > 0)
         {
-            $model = $this->pdo->GetById("Musica", "MusicaId", $model->MusicaId, "DAL\\Musica");
+            $model = $this->unitofwork->GetById(new Musica(), $model->MusicaId);
         }else{
             $model = new Musica();
         }
@@ -44,7 +44,7 @@ class MusicaBLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->pdo->select("SELECT * FROM Musica LIMIT 0", "DAL\\Musica", true);
+        //$model->Lista = $this->unitofwork->Get("SELECT * FROM Musica LIMIT 0", "DAL\\Musica", true);
 
         return $model;
     }
@@ -54,9 +54,9 @@ class MusicaBLL
         if($model!=null) {
 
                 if ($model->MusicaId > 0){
-                    $this->pdo->update("Musica", $model, "MusicaId = " . $model->MusicaId);
+                    $this->unitofwork->Update($model);
                 } else {
-                    $model->MusicaId = $this->pdo->insert("Musica", $model);
+                    $this->unitofwork->Insert($model);
                 }
         }
         return $model;
@@ -64,7 +64,7 @@ class MusicaBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Musica", "MusicaId = '".$id."'");
+            $this->unitofwork->Delete(new Musica(), "MusicaId = '".$id."'");
         }
     }
 

@@ -8,14 +8,12 @@ use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;
 use Libs\SessionHelper;
+use Libs\UnitofWork;
 use Libs\UsuarioHelper;
 use DAL\Pessoa;
 use Libs\Debug;
-class UsuarioBLL
+class UsuarioBLL extends BLL
 {
-
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -46,7 +44,11 @@ class UsuarioBLL
         if(defined('APP_ID') && APP_ID == ROOTAPP)
             $model->ListUsuario = $this->unitofwork->Get(new Usuario())->ToArray();
         else {
-            $model->ListUsuario = $this->pdo->select("SELECT u.*, ua.Ativo FROM ".DB_NAME.".Usuario u, ".DB_NAME.".UsuarioAplicacao ua WHERE ua.UsuarioId = u.UsuarioId AND ua.AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
+            //$model->ListUsuario = $this->pdo->select("SELECT u.*, ua.Ativo FROM ".DB_NAME.".Usuario u, ".DB_NAME.".UsuarioAplicacao ua WHERE ua.UsuarioId = u.UsuarioId AND ua.AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
+            $model->ListUsuario = $this->unitofwork->Get(new Usuario())->Join(
+                $this->unitofwork->Get(new UsuarioAplicacao(), "ua.AplicacaoId = ".APPID),
+                "u.UsuarioId",
+                "ua.UsuarioId")->Select("u.*, ua.Ativo", new Usuario())->ToArray();
         }
 
         for($i = 0; $i < count($model->ListUsuario); $i++){

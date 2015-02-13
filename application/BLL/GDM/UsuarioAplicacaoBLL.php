@@ -11,10 +11,8 @@ use Libs\UsuarioHelper;
 use DAL\Pessoa;
 use Libs\Debug;
 use Libs\ArrayHelper;
-class UsuarioAplicacaoBLL
+class UsuarioAplicacaoBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -25,8 +23,6 @@ class UsuarioAplicacaoBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit(UsuarioAplicacao $model)

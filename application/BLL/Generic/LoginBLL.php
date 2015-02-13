@@ -1,6 +1,8 @@
 <?php
 namespace BLL;
 use DAL\Aplicacao;
+use DAL\Pessoa;
+use DAL\Usuario;
 use DAL\UsuarioAplicacao;
 use Libs\Database;
 use Libs\Helper;
@@ -8,10 +10,8 @@ use Libs\CookieHelper;
 use Libs\SessionHelper;
 use Libs\UnitofWork;
 
-class LoginBLL
+class LoginBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -22,8 +22,6 @@ class LoginBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     /**
@@ -53,7 +51,7 @@ class LoginBLL
     public function GetUsuarioByLoginSenha($Login, $Senha)
     {
         $md5Senha = md5($Senha);
-        $query = $this->pdo->select("SELECT 
+        /*$query = $this->pdo->select("SELECT
                                             p.Email, 
                                             u.* 
                                             FROM ".DB_NAME.".Usuario u,
@@ -61,13 +59,20 @@ class LoginBLL
                                             WHERE 
                                             (p.Email = '$Login' OR u.Login = '$Login')
                                             AND u.Senha = '$md5Senha'
-                                            AND u.PessoaId = p.PessoaId LIMIT 1");
+                                            AND u.PessoaId = p.PessoaId LIMIT 1");*/
+
+        $query = $this->unitofwork->Get(new Usuario(), "u.Senha = '$md5Senha'")->Join(
+            $this->unitofwork->Get(new Pessoa(), "p.Email = '$Login' OR u.Login = '$Login'"),
+            "u.PessoaId",
+            "p.PessoaId")->Select("p.Email, u.*")->First();
+
+        //var_dump($query);
 
         if($query != null) {
             //$aplicacoes = $this->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".UsuarioAplicacao WHERE Ativo = '1' AND UsuarioId = '" . $query->UsuarioId
             // . "'",
             // "DAL\\UsuarioAplicacao", true);
-            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND  UsuarioId = '" . $query->UsuarioId."'")->ToArray();
+            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '" . $query->UsuarioId."'")->ToArray();
 
             if (count($aplicacoes) > 0) {
                 if (count($aplicacoes) > 1) {

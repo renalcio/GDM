@@ -34,7 +34,7 @@ class LoginController extends Controller
     {
         header('Content-Type: application/json; Charset=UTF-8');
         //echo "Auth";
-        extract($_POST);
+        extract($_REQUEST);
             $this->loadBLL();
             $retorno = new \stdClass;
             $retorno->Status = false;

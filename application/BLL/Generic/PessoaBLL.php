@@ -1,14 +1,15 @@
 <?php
 namespace BLL;
+use DAL\PessoaAplicacao;
+use DAL\PessoaFisica;
+use DAL\PessoaJuridica;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
 use DAL\Pessoa;
-class PessoaBLL
+class PessoaBLL extends BLL
 {
-    var $pdo;
-    var $unitofwork;
     /**
      * @param object $db A PDO database connection
      */
@@ -19,8 +20,6 @@ class PessoaBLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit($Model)
@@ -47,14 +46,20 @@ class PessoaBLL
         if(defined('APP_ID') && APP_ID == 1)
             $Model->ListPessoa = $this->unitofwork->Get(new Pessoa())->ToArray();
         else {
-            $Model->ListPessoa = $this->unitofwork->pdo->select("SELECT p.*
+            /*$Model->ListPessoa = $this->unitofwork->pdo->select("SELECT p.*
                                             FROM
                                             ".DB_NAME.".Pessoa p,
                                             ".DB_NAME.".PessoaEmpresa pe,
                                             ".DB_NAME.".Aplicacao a
                                             WHERE a.AplicacaoId = " . APP_ID . "
                                             AND pe.EmpresaId = a.PessoaId
-                                            AND p.PessoaId = pe.PessoaId", "", true);
+                                            AND p.PessoaId = pe.PessoaId", "", true);*/
+
+            $Model->ListPessoa = $this->unitofwork->Get(new Pessoa())->Join(
+                $this->unitofwork->Get(new PessoaAplicacao(), "pa.AplicacaoId = ".APPID),
+                "p.PessoaId",
+                "pa.PessoaId")->Select("p")->ToArray();
+
         }
 
         return $Model;
@@ -75,35 +80,36 @@ class PessoaBLL
              print_r($PessoaJuridica);*/
 
             if($model->PessoaId > 0)
-                $this->pdo->update("Pessoa", $model, "PessoaId = ".$model->PessoaId);
+                $this->unitofwork->Update($model);
             else
-                $model->PessoaId = $this->pdo->insert("Pessoa", $model);
+                $model->PessoaId = $this->unitofwork->insert($model);
 
 
                 if($PessoaFisica->PessoaId > 0)
-                    $this->pdo->update("PessoaFisica", $PessoaFisica, "PessoaId = ".$model->PessoaId);
+                    $this->unitofwork->Update($PessoaFisica, "PessoaId = ".$model->PessoaId);
                 else {
                     $PessoaFisica->PessoaId = $model->PessoaId;
-                    $this->pdo->insert("PessoaFisica", $PessoaFisica);
+                    $this->unitofwork->Insert($PessoaFisica);
                 }
 
 
                 if($PessoaJuridica->PessoaId > 0)
-                    $this->pdo->update("PessoaJuridica", $PessoaJuridica, "PessoaId = ".$model->PessoaId);
+                    $this->unitofwork->Update($PessoaJuridica, "PessoaId = ".$model->PessoaId);
                 else {
                     $PessoaJuridica->PessoaId = $model->PessoaId;
-                    $this->pdo->insert("PessoaJuridica", $PessoaJuridica);
+                    $this->unitofwork->Insert($PessoaJuridica);
                 }
 
             //PessoaAplicacao
-            $checkPA = $this->pdo->select("SELECT * FROM PessoaAplicacao WHERE PessoaId = '".$model->PessoaId."' AND
-            AplicacaoId = '".APPID."'",
-                "", true);
+            //$checkPA = $this->unitofwork->select("SELECT * FROM PessoaAplicacao WHERE PessoaId = '".$model->PessoaId ."' AND AplicacaoId = '".APPID."'", "", true);
+
+            $checkPA = $this->unitofwork->Get(new PessoaAplicacao(), "PessoaId = '".$model->PessoaId."' AND AplicacaoId = '".APPID."'")->First();
+
             if(count($checkPA)<=0){
-                $add = new \stdClass();
+                $add = new PessoaAplicacao();
                 $add->PessoaId = $model->PessoaId;
                 $add->AplicacaoId = APPID;
-                $this->pdo->insert("PessoaAplicacao", $add);
+                $this->unitofwork->Insert($add);
             }
 
 
@@ -113,9 +119,7 @@ class PessoaBLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->pdo->delete("Pessoa", "PessoaId = '".$id."'");
-            $this->pdo->delete("PessoaFisica", "PessoaId = '".$id."'");
-            $this->pdo->delete("PessoaJuridica", "PessoaId = '".$id."'");
+            $this->unitofwork->Delete(new PessoaAplicacao(), "PessoaId = '".$id."' AND AplicacaoId = ".APPID);
         }
     }
 
