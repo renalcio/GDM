@@ -1,14 +1,14 @@
 <?php
 namespace Controllers\Handlers;
 use Core\Controller;
+use DAL\Pais;
 use Libs\Database;
 class PaisHandler extends Controller
 {
     function GetAll()
     {
         header('Content-Type: application/json; Charset=UTF-8');
-        $pdo = new Database();
-        $retorno = $pdo->select("SELECT * FROM Pais");
+        $retorno = $this->unitofwork->Get(new Pais())->ToArray();
 
         $retorno = json_encode($retorno);
 
@@ -18,8 +18,7 @@ class PaisHandler extends Controller
     function Select2()
     {
         $retorno = "";
-        $pdo = new Database();
-        $sql = $pdo->select("SELECT * FROM Pais");
+        $sql = $this->unitofwork->Get(new Pais())->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $pais) {
                 $retorno .= "<option value='" . $pais->Nome . "'>" . $pais->Nome . "</option>";
@@ -32,14 +31,13 @@ class PaisHandler extends Controller
 
     function FixName()
     {
-        $pdo = new Database();
-        $retorno = $pdo->select("SELECT * FROM Pais");
+        $retorno = $this->unitofwork->Get(new Pais())->ToArray();
         foreach ($retorno as $pais) {
             $pais->Nome = ucfirst(mb_strtolower($pais->Nome, "UTF-8"));
             $pais->Name = ucfirst(mb_strtolower($pais->Name, "UTF-8"));
-            $pdo->update("Pais", (Array)$pais, "PaisId = '" . $pais->PaisId . "'");
+            $this->unitofwork->update($pais);
         }
-        $retorno = $pdo->select("SELECT * FROM Pais");
+        $retorno = $this->unitofwork->Get(new Pais())->ToArray();
         $retorno = json_encode($retorno);
 
         echo $retorno;

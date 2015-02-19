@@ -1,6 +1,9 @@
 <?php
 namespace Core;
+use Libs\Database;
 use Libs\Helper;
+use Libs\UnitofWork;
+
 class Controller
 {
     /**
@@ -12,6 +15,9 @@ class Controller
      * @var null Model
      */
     public $bll = null;
+
+    public $unitofwork = null;
+    public $pdo = null;
     
 
     /**
@@ -20,6 +26,8 @@ class Controller
     function __construct()
     {
         $this->openDatabaseConnection();
+        $this->pdo = new Database();
+        $this->unitofwork = new UnitofWork();
         //$this->loadModel();
     }
 
@@ -46,7 +54,7 @@ class Controller
     public function loadBLL($bll = "")
     {
         if(empty($bll)) $bll = Helper::getController();
-        
+
         $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . PASTA . $bll . 'BLL.php';
 
 
@@ -54,11 +62,12 @@ class Controller
             require_once $urlfinal;
         else {
             $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . $bll . 'BLL.php';
+            //echo "\n\nBLL: ".$urlfinal;
 
             if(file_exists($urlfinal))
                 require_once $urlfinal;
             else
-                require_once APP . '/BLL/' . $bll . 'BLL.php';
+                require_once APP . '/BLL/' . ucfirst($bll) . 'BLL.php';
         }
 
         

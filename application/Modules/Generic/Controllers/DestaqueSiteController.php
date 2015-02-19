@@ -39,7 +39,7 @@ class DestaqueSiteController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\DestaqueSiteId"); //TODO: Alterar metodo cast para pegar new objects() como no
+            Helper::cast($model, "DAL\\DestaqueSiteId");
             // select
             $this->loadModel();
 

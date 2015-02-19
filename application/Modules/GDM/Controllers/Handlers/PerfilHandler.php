@@ -1,8 +1,10 @@
 <?php
 namespace Controllers\Handlers;
 use Core\Controller;
+use DAL\Perfil;
 use Libs\Database;
 use Libs\Helper;
+use Libs\UnitofWork;
 use Libs\UsuarioHelper;
 
 class PerfilHandler extends Controller
@@ -11,22 +13,28 @@ class PerfilHandler extends Controller
     {
         header('Content-Type: application/json; Charset=UTF-8');
         if($id > 0 && !empty($status)) {
-            $pdo = new Database();
+            $uow = new UnitofWork();
 
             if($status == "true")
                 $status = 1;
             else
                 $status = 0;
 
-            echo $pdo->update("Perfil", Array("Ativo" => $status), "PerfilId = ".$id);
+            $Perfil = new Perfil();
+            $Perfil->Ativo = $status;
+            $Perfil->PerfilId = $id;
+
+            $uow->Update($Perfil);
+
+            echo json_encode($Perfil);
         }
     }
 
     function Select2($AplicacaoId = APP_ID)
     {
         $retorno = "";
-        $pdo = new Database();
-        $sql = $pdo->select("SELECT * FROM Perfil WHERE AplicacaoId = '".$AplicacaoId."' ", "", true);
+        $uow = new UnitofWork();
+        $sql = $uow->Get(new Perfil(), "AplicacaoId = '".$AplicacaoId."' ")->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $item) {
                 $retorno .= "<option value='" . $item->PerfilId . "'>" . $item->Titulo . "</option>";
@@ -40,13 +48,10 @@ class PerfilHandler extends Controller
     {
         header('Content-Type: application/json; Charset=UTF-8');
         $retorno = Array();
-        $pdo = new Database();
+        $uow = new UnitofWork();
         $NIvel = UsuarioHelper::GetNivel();
         if($AplicacaoId > 0) {
-            $sql = $pdo->select("
-                              SELECT *
-                              FROM Perfil
-                              WHERE
+            $sql = $uow->Get(new Perfil(), "
                                 (
                                 AplicacaoId = '" . $AplicacaoId . "'
                                 AND Nivel >= '" . $NIvel . "'
@@ -56,7 +61,7 @@ class PerfilHandler extends Controller
                                 '".APPID."' = '".ROOTAPP."'
                                 AND '".$AplicacaoId."' != '".ROOTAPP."'
                                 AND AplicacaoId = '".$AplicacaoId."'
-                                )", "", true);
+                                )")->ToArray();
             if (count($sql) > 0) {
                 foreach ($sql as $item) {
                     $add = new \stdClass();

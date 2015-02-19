@@ -36,6 +36,7 @@ class LoginHandler extends Controller
                                             (p.Email = '$Login' OR u.Login = '$Login')
                                             AND u.Senha = '$md5Senha'
                                             AND u.PessoaId = p.PessoaId");
+
             var_dump($check);
             if(empty($check))
                 $validacao[] = Helper::Utf("Login ou senha inválidos");

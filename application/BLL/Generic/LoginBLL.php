@@ -51,22 +51,16 @@ class LoginBLL extends BLL
     public function GetUsuarioByLoginSenha($Login, $Senha)
     {
         $md5Senha = md5($Senha);
-        /*$query = $this->pdo->select("SELECT
-                                            p.Email, 
-                                            u.* 
-                                            FROM ".DB_NAME.".Usuario u,
-                                            ".DB_NAME.".Pessoa p
-                                            WHERE 
-                                            (p.Email = '$Login' OR u.Login = '$Login')
-                                            AND u.Senha = '$md5Senha'
-                                            AND u.PessoaId = p.PessoaId LIMIT 1");*/
+        var_dump($this->unitofwork);
+        $query = $this->unitofwork->Get(new Usuario(), "u.Senha = '".$md5Senha."'");
+        //$query = $this->unitofwork->Get(new Usuario(), "u.Senha = '$md5Senha'");
+        $query->Join($this->unitofwork->Get(new Pessoa(), "p.Email = '$Login' OR u.Login = '$Login'"),"u.PessoaId","p.PessoaId");
+        $query->Select("p.Email, u.*");
 
-        $query = $this->unitofwork->Get(new Usuario(), "u.Senha = '$md5Senha'")->Join(
-            $this->unitofwork->Get(new Pessoa(), "p.Email = '$Login' OR u.Login = '$Login'"),
-            "u.PessoaId",
-            "p.PessoaId")->Select("p.Email, u.*")->First();
+        $query->BuildQuery();
+       echo $query->query;
 
-        //var_dump($query);
+        $query->First();
 
         if($query != null) {
             //$aplicacoes = $this->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".UsuarioAplicacao WHERE Ativo = '1' AND UsuarioId = '" . $query->UsuarioId

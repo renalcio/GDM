@@ -9,13 +9,16 @@
 namespace BLL;
 
 
+use Libs\Database;
+use Libs\UnitofWork;
+
 class BLL {
     public $pdo;
     public $unitofwork;
 
 
     public function __construct(){
-        $this->pdo = new Database;
+        $this->pdo = new Database();
         $this->unitofwork = new UnitofWork();
     }
 }

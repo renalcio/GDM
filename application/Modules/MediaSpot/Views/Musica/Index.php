@@ -17,7 +17,7 @@
                 },
                 "columns": [
                     {"data": "Titulo" },
-                    {"data": "Artista.Titulo" },
+                    {"data": "a.Titulo" },
                     {   "data": "OptionsMenu",
                         "orderable":      false,
                         "className": "tdMenu"

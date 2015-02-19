@@ -13,7 +13,6 @@ use Libs\CookieHelper;
 use Libs\ModelState;
 use Libs\SessionHelper;
 use Libs\UsuarioHelper;
-use Libs\Debug;
 
 class MusicaBLL extends BLL
 {
@@ -27,7 +26,7 @@ class MusicaBLL extends BLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-        $this->pdo = new Database;
+        //$this->pdo = new Database;
     }
 
     public function GetToEdit(Musica $model)
@@ -43,8 +42,7 @@ class MusicaBLL extends BLL
 
     public function GetToIndex($model)
     {
-
-        //$model->Lista = $this->unitofwork->Get("SELECT * FROM Musica LIMIT 0", "DAL\\Musica", true);
+        $model->Lista = array();
 
         return $model;
     }

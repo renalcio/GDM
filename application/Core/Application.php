@@ -1,6 +1,7 @@
 <?php
 namespace Core;
 use Controllers\Error;
+use Controllers\LoginController;
 use Libs\SessionHelper;
 use Libs\Helper;
 class Application
@@ -42,8 +43,10 @@ class Application
         }
 
 
+        //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
 
-        if (!$this->url_controller) {
+
+        if (empty($this->url_controller)) {
 
             //require_once APP . 'controllers/home.php';
 
@@ -67,8 +70,7 @@ class Application
             //print_r($_SESSION);if(defined('VAR_NAME')){
             $session = new SessionHelper("GDMAuth");
             //echo $session->Ver("AplicacaoId");
-            //echo $this->url_controller;
-            if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || $this->url_controller == "loginController")
+            if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || strtolower($this->url_controller) == "logincontroller")
             {
 
                 // here we did check for controller: does such a controller exist ?
@@ -76,11 +78,11 @@ class Application
                 // if so, then load this file and create this controller
                 // example: if controller would be "car", then this line would translate into: $this->car = new car();
                 //require_once APP . 'controllers/' . $this->url_controller . '.php';
-                if((defined('APP_ID') && APP_ID > 0) || $this->url_controller == "loginController") {
+                if((defined('APP_ID') && APP_ID > 0) || strtolower($this->url_controller) == "logincontroller") {
                     $this->url_controller = "\\Controllers\\" . $this->url_controller;
                     $this->url_controller = new $this->url_controller();
                 }else if(defined('APP_ID') && APP_ID <= 0){
-                    $page = new \Controllers\loginController();
+                    $page = new LoginController();
                     $page->SelecionaAplicacao();
                 }
 
@@ -152,7 +154,7 @@ class Application
             // By the way, the syntax here is just a short form of if/else, called "Ternary Operators"
             // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
             if(isset($url[0]) && $url[0] == "handler"){
-                $this->url_controller = isset($url[1])  ? $url[0]."s".DIRECTORY_SEPARATOR.$url[1]."Handler" : $url[0];
+                $this->url_controller = isset($url[1])  ? $url[0]."s".DIRECTORY_SEPARATOR.ucfirst($url[1])."Handler" : $url[0];
                 $this->url_action = isset($url[2]) ? $url[2] : "index";
                 $this->url_postAction = isset($url[2]) ? $url[2]."_post" : "index_post";
 
@@ -160,7 +162,7 @@ class Application
                 unset($url[0], $url[1], $url[2]);
 
             }else{
-                $this->url_controller = isset($url[0]) ? $url[0]."Controller" : null;
+                $this->url_controller = isset($url[0]) ? ucfirst($url[0])."Controller" : null;
                 $this->url_action = isset($url[1]) ? $url[1] : "index";
                 $this->url_postAction = isset($url[1]) ? $url[1]."_post" : "index_post";
 

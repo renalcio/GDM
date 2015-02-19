@@ -35,7 +35,7 @@ class UnitofWork {
     private $skip = null;
     private $take = null;
 
-    private $query;
+    public $query;
     private $results;
 
     private $join;
@@ -171,9 +171,10 @@ class UnitofWork {
     }
 
     public function First(){
-        $this->take = 1;
-        $this->ExecuteQuery();
-        $retorno = new ArrayHelper($this->results);
+        $obj = clone $this;
+        $obj->take = 1;
+        $obj->ExecuteQuery();
+        $retorno = new ArrayHelper($obj->results);
         return $retorno->First();
     }
 
@@ -182,13 +183,15 @@ class UnitofWork {
     }
 
     public function ToList(){
-        $this->ExecuteQuery();
-        return new ArrayHelper($this->results);
+        $obj = clone $this;
+        $obj->ExecuteQuery();
+        return new ArrayHelper($obj->results);
     }
 
     public function ToArray(){
-        $this->ExecuteQuery();
-        return $this->results;
+        $obj = clone $this;
+        $obj->ExecuteQuery();
+        return $obj->results;
     }
 
     public function OrderBy($order){
@@ -439,7 +442,7 @@ class UnitofWork {
 
     }
 
-    private function BuildQuery(){
+    public function BuildQuery(){
         if(empty($this->take) && !empty($this->skip))
             $this->take = "18446744073709551615"; //Pula x e pega TODOS
 
@@ -452,8 +455,7 @@ class UnitofWork {
 
         $this->query = "SELECT " .$this->select. " FROM " .$this->from. (empty($this->as) ? "" : " AS ".$this->as).
             $this->join.
-            " WHERE".
-            $this->where.
+            (empty($this->where) ? "" : " WHERE". $this->where).
             $this->orderby.
             $this->limit;
 

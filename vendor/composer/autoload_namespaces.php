@@ -14,4 +14,5 @@ return array(
     'Class\\' => array($baseDir . '/application'),
     'Handler\\' => array($baseDir . '/application'),
     'DAL\\' => array($baseDir . '/application'),
+    'BLL\\' => array($baseDir . '/application'),
 );

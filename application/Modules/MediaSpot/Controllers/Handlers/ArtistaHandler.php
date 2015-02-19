@@ -17,7 +17,7 @@ class ArtistaHandler extends Controller
     {
         $retorno = "";
         $pdo = new Database();
-        $sql = $pdo->select("SELECT * FROM Artista WHERE AplicacaoId = '".$AplicacaoId."'", new Artista(), true);
+        $sql = $this->unitofwork->Get(new \DAL\MediaSpot\Artista(), "AplicacaoId = '".$AplicacaoId."'")->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $item) {
                 $retorno .= "<option value='" . $item->ArtistaId . "'>" . $item->Titulo . "</option>";

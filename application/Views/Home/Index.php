@@ -18,19 +18,15 @@ use DAL\Site;
     $time = microtime(1);
     $mem = memory_get_usage();
 
-    $unitofwork = new \Libs\UnitofWork();
+    $uow = new \Libs\UnitofWork();
 
-    //$artistas = $unitofwork->Get(new \DAL\Pessoa())->Join(new \DAL\PessoaAplicacao(), "PessoaId", "PessoaId");
+    $retorno = $uow->Get(new \DAL\Usuario())->Join($uow->Get(new \DAL\Pessoa()), "u.PessoaId", "p.PessoaId")->LeftJoin($uow->Get(new \DAL\PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($uow->Get(new \DAL\PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId
+= pf
+.PessoaId AND pf.CPF = '') OR
+ (p.PessoaId = pj.PessoaId AND pj.CNPJ = '')")->Select("u.*", new \DAL\Usuario());
 
-   /* $artistas = $unitofwork->Get(new \DAL\MediaSpot\Artista())->Join(
-        $unitofwork->Get(new \DAL\Aplicacao()),
-        "AR.AplicacaoId", "AP.AplicacaoId")->Join(
-        $unitofwork->Get(new Site()), "AP.AplicacaoId", "S.AplicacaoId"
-    )
-        ->Select("S", new Site())
-        ->ToList();
-   */
-
+    $retorno->BuildQuery();
+    echo $retorno->query;
 
     echo '<br>Tempo: ', (microtime(1) - $time), "s\n";
     echo '<br>Memória: ', (memory_get_usage() - $mem) / (1024 * 1024) . " Mb";

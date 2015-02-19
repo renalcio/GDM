@@ -202,7 +202,7 @@ class Helper
         }else
             $retorno = "error";
 
-        return $retorno;
+        return ucfirst($retorno);
     }
 
     static function Utf($Mensagem){

@@ -7,6 +7,7 @@
  */
 namespace Controllers\Handlers;
 use Core\Controller;
+use DAL\MediaSpot\Artista;
 use DAL\Musica;
 use Libs\Database;
 use Libs\Helper;
@@ -24,7 +25,7 @@ class MusicaHandler extends Controller
         echo "\nLIMIT: ".$pinicio;
         echo "\nTermo de Busca: ".$titulo."\n";*/
 
-        $retorno = $pdo->select("SELECT * FROM Musica WHERE LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total, new Musica(), true);
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
 
         $retorno = json_encode($retorno);
 
@@ -41,7 +42,7 @@ class MusicaHandler extends Controller
         echo "\nLIMIT: ".$pinicio;
         echo "\nTermo de Busca: ".$titulo."\n";*/
         $retorno = "";
-        $query = $pdo->select("SELECT * FROM Musica WHERE LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total, new Musica(), true);
+        $query = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
         //var_dump($query);
         foreach($query as $item){
             $retorno .= '<tr>
@@ -85,46 +86,33 @@ class MusicaHandler extends Controller
         $orders = $_REQUEST["order"];
         $colunas = $_REQUEST{"columns"};
             $iColuna = $orders[0]["column"];
-            $nomeColuna = $colunas[$iColuna]["data"];
+            $nomeColuna = isset($colunas[$iColuna]["data"]["sort"]) && !empty(
+$colunas[$iColuna]["data"]["sort"]) ? $colunas[$iColuna]["data"]["sort"] : $colunas[$iColuna]["data"];
             $direcao = $orders[0]["dir"];
 
+        //print_r($colunas[$iColuna]["data"]);
         $orderby = $nomeColuna." ".strtoupper($direcao);
 
         //echo $orderby;
 
-        $retorno = $pdo->select("
-                                SELECT
-                                Musica.*
-                                FROM Musica, Artista
-                                WHERE Artista.ArtistaId = Musica.ArtistaId
-                                AND (
-                                      (
-                                        LOWER(Musica.Titulo) LIKE '%" . $titulo . "%'
-                                        OR LOWER(Artista.Titulo) LIKE '%" . $titulo . "%'
-                                      )
-                                OR'".$titulo."' = ''
-                                )
-                                ORDER BY ".$orderby."
-                                LIMIT ".$inicio.", ".$total, new Musica(), true);
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'".$titulo."' = ''")->OrderBy($orderby)->Select("m.*");
 
-        $retornoTotal = $pdo->select("
-                                SELECT
-                                Musica.*
-                                FROM Musica, Artista
-                                WHERE Artista.ArtistaId = Musica.ArtistaId
-                                AND (
-                                LOWER(Musica.Titulo) LIKE '%".$titulo."%'
-                                OR'".$titulo."' = ''
-                                )
-                                ORDER BY ".$orderby, "", true);
+
+        //$retorno->BuildQuery();
+        //echo $retorno->query;
+
+        $retornoTotal = $retorno->ToArray();
 
         $array = Array();
 
-        $retorno = (array)$retorno;
+        $retorno = $retorno->Skip($inicio)->Take($total);
+
+        $retorno = $retorno->ToArray();
 
         for($i = 0; $i < count($retorno); $i++){
             $retorno[$i]->OptionsMenu = '<div class="btn-group">
-                                                <i class="fa fa-bars" class="dropdown-toggle" data-toggle="dropdown"></i>
+                                                <i class= "fa fa-bars" class="dropdown-toggle"
+                                                data-toggle="dropdown"></i>
                                                 <ul class="dropdown-menu pull-right" role="menu">
                                                     <li>
                                                         <a href="'.\Libs\Helper::getUrl("cadastro","musica",
@@ -139,6 +127,7 @@ class MusicaHandler extends Controller
                                                     </li>
                                                 </ul>
                                             </div>';
+            $retorno[$i]->a = $this->unitofwork->GetById(new Artista(), $retorno[$i]->ArtistaId);
         }
 
         $array["data"] = $retorno;

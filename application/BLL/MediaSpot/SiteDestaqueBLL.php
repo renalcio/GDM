@@ -75,9 +75,9 @@ class SiteDestaqueBLL extends BLL
             $model->Posicao = empty($model->Posicao) ? $Destaques->Count() + 1 : $model->Posicao;
 
                 if ($model->SiteDestaqueId > 0){
-                    $this->pdo->update("SiteDestaque", $model, "SiteDestaqueId = " . $model->SiteDestaqueId);
+                    $this->unitofwork->Update($model);
                 } else {
-                    $model->SiteDestaqueId = $this->pdo->insert("SiteDestaque", $model);
+                    $this->unitofwork->Insert($model);
                 }
             //var_dump($model);
         }
