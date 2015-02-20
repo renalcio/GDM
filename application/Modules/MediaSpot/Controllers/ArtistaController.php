@@ -9,7 +9,7 @@
  */
 namespace Controllers;
 use Core\Controller;
-use DAL\Artista;
+use DAL\MediaSpot\Artista;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -39,7 +39,7 @@ class ArtistaController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Artista");
+            Helper::cast($model, new Artista());
             $this->loadBLL();
 
             //Valida Model via ModelState

@@ -30,7 +30,7 @@ class ArtistaBLL extends BLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
-
+        $this->unitofwork = new UnitofWork();
     }
 
     public function GetToEdit(Artista $model)

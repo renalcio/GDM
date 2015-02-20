@@ -1,2 +1,6 @@
 RewriteEngine on
 RewriteRule ^(.*) public/$1 [L]
+
+# Habilitar o PHP 5.3
+#AddType application/x-httpd-php53 .php
+

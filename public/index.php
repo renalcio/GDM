@@ -42,7 +42,7 @@ require APP . 'Libs'. DIRECTORY_SEPARATOR . 'Helper.php';
 //CLASSES BY RENALCIO
 //require APP . '/classe/Database.php';
 //LOADERS BY RENALCIO
- $pdo = new Libs\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+//$pdo = new Libs\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 
 // start the application
 $app = new Core\Application();
