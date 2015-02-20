@@ -51,21 +51,9 @@ class LoginBLL extends BLL
     public function GetUsuarioByLoginSenha($Login, $Senha)
     {
         $md5Senha = md5($Senha);
-        var_dump($this->unitofwork);
-        $query = $this->unitofwork->Get(new Usuario(), "u.Senha = '".$md5Senha."'");
-        //$query = $this->unitofwork->Get(new Usuario(), "u.Senha = '$md5Senha'");
-        $query->Join($this->unitofwork->Get(new Pessoa(), "p.Email = '$Login' OR u.Login = '$Login'"),"u.PessoaId","p.PessoaId");
-        $query->Select("p.Email, u.*");
-
-        $query->BuildQuery();
-       echo $query->query;
-
-        $query->First();
-
+        $this->unitofwork = new UnitofWork();
+        $query = $this->unitofwork->Get(new Usuario(), "u.Senha = '".$md5Senha."'")->Join($this->unitofwork->Get(new Pessoa(), "p.Email = '$Login' OR u.Login = '$Login'"),"u.PessoaId","p.PessoaId")->Select("p.Email, u.*")->First();
         if($query != null) {
-            //$aplicacoes = $this->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".UsuarioAplicacao WHERE Ativo = '1' AND UsuarioId = '" . $query->UsuarioId
-            // . "'",
-            // "DAL\\UsuarioAplicacao", true);
             $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '" . $query->UsuarioId."'")->ToArray();
 
             if (count($aplicacoes) > 0) {

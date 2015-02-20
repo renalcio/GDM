@@ -43,7 +43,6 @@ class Application
         }
 
 
-        //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
 
 
         if (empty($this->url_controller)) {
@@ -79,7 +78,8 @@ class Application
                 // example: if controller would be "car", then this line would translate into: $this->car = new car();
                 //require_once APP . 'controllers/' . $this->url_controller . '.php';
                 if((defined('APP_ID') && APP_ID > 0) || strtolower($this->url_controller) == "logincontroller") {
-                    $this->url_controller = "\\Controllers\\" . $this->url_controller;
+                    $this->url_controller = "\\Controllers\\" . str_replace("/","\\", $this->url_controller);
+                    //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
                     $this->url_controller = new $this->url_controller();
                 }else if(defined('APP_ID') && APP_ID <= 0){
                     $page = new LoginController();
@@ -154,7 +154,7 @@ class Application
             // By the way, the syntax here is just a short form of if/else, called "Ternary Operators"
             // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
             if(isset($url[0]) && $url[0] == "handler"){
-                $this->url_controller = isset($url[1])  ? $url[0]."s".DIRECTORY_SEPARATOR.ucfirst($url[1])."Handler" : $url[0];
+                $this->url_controller = isset($url[1])  ? ucfirst($url[0])."s".DIRECTORY_SEPARATOR.ucfirst($url[1])."Handler" : ucfirst($url[0]);
                 $this->url_action = isset($url[2]) ? $url[2] : "index";
                 $this->url_postAction = isset($url[2]) ? $url[2]."_post" : "index_post";
 

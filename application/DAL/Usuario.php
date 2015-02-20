@@ -77,7 +77,7 @@ class Usuario
 
         if($this->UsuarioId > 0 && $this->PessoaId > 0) {
             $this->Pessoa = $pdo->GetById(new Pessoa(), $this->PessoaId);
-            $Perfis = $pdo->pdo->select("SELECT * FROM ".DB_PREFIX.ROOTDB.".usuarioperfil WHERE UsuarioId = ".$this->UsuarioId, "", true);
+            $Perfis = $pdo->Get(new UsuarioPerfil(), "UsuarioId = ".$this->UsuarioId)->ToArray();
             $this->ListPerfil = "";
             for($i = 0; $i < count($Perfis); $i++){
                 $this->ListPerfil .= $Perfis[$i]->PerfilId.($i ==(count($Perfis)-1) ? "" : ",");

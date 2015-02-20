@@ -214,8 +214,11 @@ class Helper
     }
 
     static function LoadModelView($Model = null, $view = "", $controller = ""){
-        if(empty($view)) $view = ucfirst(Self::getAction());
-        if(empty($controller)) $controller = ucfirst(Self::getController());
+        if(empty($view)) $view = Self::getAction();
+        if(empty($controller)) $controller = Self::getController();
+
+        $view = ucfirst($view);
+        $controller = ucfirst($controller);
         // load views
 
         $urlfinal = "";
@@ -225,24 +228,24 @@ class Helper
         else
             $urlfinal = APP. MODULES . PASTA . 'Views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
 
-        //echo $urlfinal;
+
 
         if(file_exists($urlfinal))
             require $urlfinal;
         else{
             if(empty($controller))
-                $urlfinal = APP. MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $view . '.php';
+                $urlfinal = APP. MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view . '.php';
             else
-                $urlfinal = APP. MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
-
+                $urlfinal = APP. MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $controller . DIRECTORY_SEPARATOR . $view . '.php';
+            //echo $urlfinal;
             if(file_exists($urlfinal))
                 require $urlfinal;
             else {
 
                 if (empty($controller))
-                    require APP . 'Views/' . ucfirst($view) . '.php';
+                    require APP . 'Views/' . $view . '.php';
                 else
-                    require APP . 'Views/' . ucfirst($controller) . '/' . ucfirst($view) . '.php';
+                    require APP . 'Views/' . $controller . '/' . $view . '.php';
             }
         }
 
