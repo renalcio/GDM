@@ -71,8 +71,8 @@ class MusicaHandler extends Controller
         echo $retorno;
     }
 
-    public function DataTable(){
-        //print_r($_REQUEST);
+    public function DataTable($ArtistaId = 0){
+        //print_r($ArtistaId);
 
         header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
@@ -83,18 +83,31 @@ class MusicaHandler extends Controller
         $titulo = strtolower($_REQUEST["search"]["value"]);
 
         $orderby = "";
-        $orders = $_REQUEST["order"];
-        $colunas = $_REQUEST{"columns"};
+        $orders = isset($_REQUEST["order"]) ? $_REQUEST["order"] : "";
+        if(!empty($orders)) {
+            $colunas = $_REQUEST{"columns"};
             $iColuna = $orders[0]["column"];
             $nomeColuna = $colunas[$iColuna]["data"];
             $direcao = $orders[0]["dir"];
 
-        //print_r($colunas[$iColuna]["data"]);
-        $orderby = $nomeColuna." ".strtoupper($direcao);
+            //print_r($colunas[$iColuna]["data"]);
+            $orderby = $nomeColuna . " " . strtoupper($direcao);
+        }
 
         //echo $orderby;
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
 
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'".$titulo."' = ''")->OrderBy($orderby)->Select("m.*");
+        if($ArtistaId > 0) {
+            $retorno = $retorno->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
+        }else{
+            $retorno = $retorno->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = ''");
+        }
+
+        if(!empty($orderby))
+            $retorno = $retorno->OrderBy($orderby)->Select("m.*");
+        else
+            $retorno = $retorno->Select("m.*");
+
 
 
         //$retorno->BuildQuery();
@@ -139,6 +152,92 @@ class MusicaHandler extends Controller
 
         $array["recordsTotal"] = count($retornoTotal);
         $array["recordsFiltered"] = count($retornoTotal);
+
+        echo json_encode($array);
+
+    }
+
+    public function Consulta($ArtistaId = 0){
+        //print_r($ArtistaId);
+
+        header('Content-Type: application/json; Charset=UTF-8');
+        $pdo = new Database();
+
+        $inicio = $_REQUEST["start"];
+        $total = $_REQUEST["length"];
+        $pinicio = $inicio * $total;
+        $titulo = strtolower($_REQUEST["search"]["value"]);
+
+        $orderby = "";
+        $orders = isset($_REQUEST["order"]) ? $_REQUEST["order"] : "";
+        if(!empty($orders)) {
+            $colunas = $_REQUEST{"columns"};
+            $iColuna = $orders[0]["column"];
+            $nomeColuna = $colunas[$iColuna]["data"];
+            $direcao = $orders[0]["dir"];
+
+            //print_r($colunas[$iColuna]["data"]);
+            $orderby = $nomeColuna . " " . strtoupper($direcao);
+        }
+
+        //echo $orderby;
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
+
+        if($ArtistaId > 0) {
+            $retorno = $retorno->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
+        }else{
+            $retorno = $retorno->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = ''");
+        }
+
+        if(!empty($orderby))
+            $retorno = $retorno->OrderBy($orderby)->Select("m.*");
+        else
+            $retorno = $retorno->Select("m.*");
+
+
+
+        //$retorno->BuildQuery();
+        //echo $retorno->query;
+
+        $retornoTotal = $retorno->ToArray();
+
+        $array = Array();
+
+        $retorno = $retorno->Skip($inicio)->Take($total);
+
+        $retorno = $retorno->ToArray();
+
+        if($retorno != null) {
+            for ($i = 0; $i < count($retorno); $i++) {
+                $retorno[$i]->OptionsMenu = '<div class="btn-group">
+                                                <i class= "fa fa-bars" class="dropdown-toggle"
+                                                data-toggle="dropdown"></i>
+                                                <ul class="dropdown-menu pull-right" role="menu">
+                                                    <li>
+                                                        <a href="' . \Libs\Helper::getUrl("cadastro", "musica",
+                        $retorno[$i]->MusicaId) . '">
+                                                            <i class="fa fa-edit"></i> Editar
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a onclick="Excluir(' . $retorno[$i]->MusicaId . ')">
+                                                            <i class="fa fa-trash-o"></i> Excluir
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>';
+                $retorno[$i]->a = $this->unitofwork->GetById(new Artista(), $retorno[$i]->ArtistaId);
+            }
+        }else{
+            $retorno = Array();
+        }
+
+        $array["data"] = $retorno;
+        //print_r($array);
+        $array["draw"] = $_REQUEST["draw"];
+
+        //$array["recordsTotal"] = count($retornoTotal);
+        //$array["recordsFiltered"] = count($retornoTotal);
 
         echo json_encode($array);
 

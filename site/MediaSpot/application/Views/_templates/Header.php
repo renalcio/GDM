@@ -263,21 +263,19 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
     <aside class="right-side" style="margin-left: 0px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1 style="text-transform: capitalize;">
-                <?=\Libs\Helper::getController();?>
-                <?
-                $act = \Libs\Helper::getAction();
-                if(strtolower($act) != "index"){ ?>
-                    <small><?=\Libs\Helper::getAction();?></small>
-                <? } ?>
-            </h1>
-            <ol class="breadcrumb" style="text-transform: capitalize;">
-                <li><a href="<?=URL;?>home/"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active"><a href="<?=URL . \Libs\Helper::getController();?>"><?=\Libs\Helper::getController();?></a></li>
-                <? if(strtolower($act) != "index"){ ?>
-                    <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=\Libs\Helper::getAction();?></a></li>
-                <? } ?>
-            </ol>
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <form class="search-form" method="post" action="<?=\Libs\Helper::getUrl("","Busca");?>">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Pesquisar">
+                            <div class="input-group-btn">
+                                <button type="submit" name="submit" class="btn btn-primary"><i class="fa
+                                fa-search"></i></button>
+                            </div>
+                        </div><!-- /.input-group -->
+                    </form>
+                </div>
+            </div>
         </section>
 
         <!-- Main content -->

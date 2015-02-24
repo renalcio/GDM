@@ -33,6 +33,38 @@
         <option name="myItemId" value="GDM" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MediaSpot" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="GDM" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MediaSpot" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Artista" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="GDM" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -41,167 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UnitofWork.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Libs/UnitofWork.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2091">
-              <caret line="177" column="33" selection-start-line="177" selection-start-column="33" selection-end-line="177" selection-end-column="33" />
-              <folding>
-                <element signature="e#117#212#0#PHP" expanded="false" />
-                <element signature="e#692#906#0#PHP" expanded="false" />
-                <element signature="e#912#1164#0#PHP" expanded="false" />
-                <element signature="e#1169#2001#0#PHP" expanded="false" />
-                <element signature="e#1280#1909#0#PHP" expanded="false" />
-                <element signature="e#1344#1765#0#PHP" expanded="false" />
-                <element signature="e#1445#1765#0#PHP" expanded="false" />
-                <element signature="e#1573#1751#0#PHP" expanded="false" />
-                <element signature="e#2007#2656#0#PHP" expanded="false" />
-                <element signature="e#2174#2525#0#PHP" expanded="false" />
-                <element signature="e#2212#2515#0#PHP" expanded="false" />
-                <element signature="e#2325#2410#0#PHP" expanded="false" />
-                <element signature="e#2662#3164#0#PHP" expanded="false" />
-                <element signature="e#3170#3483#0#PHP" expanded="false" />
-                <element signature="e#3491#3798#0#PHP" expanded="false" />
-                <element signature="e#3530#3769#0#PHP" expanded="false" />
-                <element signature="e#3723#3769#0#PHP" expanded="false" />
-                <element signature="e#4007#4077#0#PHP" expanded="false" />
-                <element signature="e#4083#4219#0#PHP" expanded="false" />
-                <element signature="e#4225#4345#0#PHP" expanded="false" />
-                <element signature="e#4351#4554#0#PHP" expanded="false" />
-                <element signature="e#4560#4793#0#PHP" expanded="false" />
-                <element signature="e#4799#4888#0#PHP" expanded="false" />
-                <element signature="e#4894#4983#0#PHP" expanded="false" />
-                <element signature="e#5015#5198#0#PHP" expanded="false" />
-                <element signature="e#5204#5860#0#PHP" expanded="false" />
-                <element signature="e#5281#5654#0#PHP" expanded="false" />
-                <element signature="e#5304#5653#2#PHP" expanded="false" />
-                <element signature="e#5367#5643#0#PHP" expanded="false" />
-                <element signature="e#5866#6557#0#PHP" expanded="false" />
-                <element signature="e#5945#6352#0#PHP" expanded="false" />
-                <element signature="e#5968#6351#2#PHP" expanded="false" />
-                <element signature="e#6204#6341#0#PHP" expanded="false" />
-                <element signature="e#6563#7108#0#PHP" expanded="false" />
-                <element signature="e#6642#6903#0#PHP" expanded="false" />
-                <element signature="e#6665#6902#2#PHP" expanded="false" />
-                <element signature="e#7114#7318#0#PHP" expanded="false" />
-                <element signature="e#7323#8409#0#PHP" expanded="false" />
-                <element signature="e#7429#8403#0#PHP" expanded="false" />
-                <element signature="e#7505#7940#0#PHP" expanded="false" />
-                <element signature="e#7528#7939#2#PHP" expanded="false" />
-                <element signature="e#7768#7925#0#PHP" expanded="false" />
-                <element signature="e#7951#8403#0#PHP" expanded="false" />
-                <element signature="e#7969#8393#0#PHP" expanded="false" />
-                <element signature="e#8258#8393#0#PHP" expanded="false" />
-                <element signature="e#8415#9413#0#PHP" expanded="false" />
-                <element signature="e#8549#9191#0#PHP" expanded="false" />
-                <element signature="e#8779#8883#0#PHP" expanded="false" />
-                <element signature="e#8797#8882#2#PHP" expanded="false" />
-                <element signature="e#8946#9191#0#PHP" expanded="false" />
-                <element signature="e#9444#10016#0#PHP" expanded="false" />
-                <element signature="e#9515#9770#0#PHP" expanded="false" />
-                <element signature="e#10022#10192#0#PHP" expanded="false" />
-                <element signature="e#10198#10291#0#PHP" expanded="false" />
-                <element signature="e#10297#10785#0#PHP" expanded="false" />
-                <element signature="e#10339#10779#0#PHP" expanded="false" />
-                <element signature="e#10791#11341#0#PHP" expanded="false" />
-                <element signature="e#10833#11335#0#PHP" expanded="false" />
-                <element signature="e#11030#11246#0#PHP" expanded="false" />
-                <element signature="e#11347#11465#0#PHP" expanded="false" />
-                <element signature="e#11490#11640#0#PHP" expanded="false" />
-                <element signature="e#11646#12336#0#PHP" expanded="false" />
-                <element signature="e#12342#12618#0#PHP" expanded="false" />
-                <element signature="e#12459#12588#0#PHP" expanded="false" />
-                <element signature="e#12624#13176#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Views/Musica/Index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="2159">
-              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArtistaController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Controllers/ArtistaController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="1207">
-              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-              <folding>
-                <element signature="e#123#143#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Libs/Form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="3077">
-              <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
-              <folding>
-                <element signature="e#41#650#0#PHP" expanded="false" />
-                <element signature="e#155#644#0#PHP" expanded="false" />
-                <element signature="e#191#633#0#PHP" expanded="false" />
-                <element signature="e#656#1780#0#PHP" expanded="false" />
-                <element signature="e#768#1752#0#PHP" expanded="false" />
-                <element signature="e#929#1132#0#PHP" expanded="false" />
-                <element signature="e#1007#1118#0#PHP" expanded="false" />
-                <element signature="e#1261#1752#0#PHP" expanded="false" />
-                <element signature="e#1444#1647#0#PHP" expanded="false" />
-                <element signature="e#1522#1633#0#PHP" expanded="false" />
-                <marker date="1424456645821" expanded="false" signature="248:616" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="286:581" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="319:493" placeholder="{&quot;texto&quot;: &quot;EXTERNAL_FRAGMENT&quot;...}" />
-                <marker date="1424456645821" expanded="true" signature="2246:2392" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="2268:2373" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="2309:2361" placeholder="{&quot;format&quot;: &quot;dd/mm/yyyy&quot;...}" />
-                <marker date="1424456645821" expanded="true" signature="2947:3090" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="2969:3071" placeholder="{...}" />
-                <marker date="1424456645821" expanded="true" signature="3152:3262" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="3174:3243" placeholder="{...}" />
-                <marker date="1424456645821" expanded="true" signature="4925:5242" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="4954:5218" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="5023:5199" placeholder="{...}" />
-                <marker date="1424456645821" expanded="true" signature="5277:5411" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="5307:5387" placeholder="{...}" />
-                <marker date="1424456645821" expanded="true" signature="5844:6201" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="5873:6177" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="5942:6157" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="6012:6134" placeholder="{&quot;multiple&quot;: true...}" />
-                <marker date="1424456645821" expanded="true" signature="6246:6386" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="6276:6362" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="7393:10054" placeholder="..." />
-                <marker date="1424456645821" expanded="false" signature="7433:10027" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="7583:9838" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="7654:9684" placeholder="[...]" />
-                <marker date="1424456645821" expanded="false" signature="9725:9812" placeholder="{...}" />
-                <marker date="1424456645821" expanded="false" signature="9915:10007" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Helper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/Helper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="4607">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.020807834" vertical-offset="3485" max-vertical-offset="5032">
-              <caret line="203" column="8" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="8" />
+            <state vertical-scroll-proportion="-8.145454" vertical-offset="4159" max-vertical-offset="4964">
+              <caret line="271" column="90" selection-start-line="271" selection-start-column="90" selection-end-line="271" selection-end-column="90" />
               <folding>
                 <element signature="e#3#26#0#PHP" expanded="true" />
               </folding>
@@ -209,22 +85,135 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/MediaSpot/old/index.php">
+      <file leaf-file-name="BuscaBLL.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="9996">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="-26.038462" vertical-offset="71" max-vertical-offset="901">
+              <caret line="44" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#90#0#PHP" expanded="true" />
+                <element signature="e#106#132#0#PHP" expanded="true" />
+                <marker date="1424811833616" expanded="true" signature="341:366" placeholder="SELECT * FRO..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuscaController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="646">
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+              <folding>
+                <element signature="e#6#108#0#PHP" expanded="true" />
+                <element signature="e#132#152#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-23.423077" vertical-offset="1159" max-vertical-offset="1989">
+              <caret line="106" column="45" selection-start-line="106" selection-start-column="45" selection-end-line="106" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArtistaBLL.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/BLL/MediaSpot/ArtistaBLL.php">
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Busca/Index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1309">
-              <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+            <state vertical-scroll-proportion="-5.769231" vertical-offset="173" max-vertical-offset="1003">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Player.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="799">
+              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+              <folding>
+                <element signature="e#6#85#0#PHP" expanded="true" />
+                <element signature="e#112#130#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24216868" vertical-offset="768" max-vertical-offset="1802">
+              <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+              <folding>
+                <element signature="e#1017#1208#0#HTML" expanded="true" />
+                <element signature="e#2128#2148#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MusicaHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.76923" vertical-offset="3471" max-vertical-offset="4386">
+              <caret line="239" column="10" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
+              <folding>
+                <element signature="e#6#90#0#PHP" expanded="true" />
+                <element signature="e#123#143#0#PHP" expanded="true" />
+                <marker date="1424814411611" expanded="true" signature="1553:2762" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="1717:2731" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="1773:2697" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="1969:2658" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="2014:2303" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="2126:2257" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="2348:2616" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="2435:2570" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="4730:5924" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="4826:4901" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="4999:5873" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="5056:5435" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="5222:5377" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="5492:5819" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="5602:5761" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="8287:9481" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="8383:8458" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="8556:9430" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="8613:8992" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="8779:8934" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="9049:9376" placeholder="..." />
+                <marker date="1424814411611" expanded="true" signature="9159:9318" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Musica/Index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.653847" vertical-offset="0" max-vertical-offset="1445">
+              <caret line="27" column="11" selection-start-line="8" selection-start-column="3" selection-end-line="27" selection-end-column="11" />
+              <folding>
+                <element signature="n#table#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/PlayerController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="561">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+              <folding>
+                <element signature="e#6#109#0#PHP" expanded="true" />
+                <element signature="e#133#153#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -252,17 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/DAL/UsuarioPerfil.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/Controllers/Handlers/AplicacaoHandler.php" />
-        <option value="$PROJECT_DIR$/application/DAL/PessoaAplicacao.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/Views/Usuario/Index.php" />
-        <option value="$PROJECT_DIR$/application/BLL/GDM/AplicacaoBLL.php" />
-        <option value="$PROJECT_DIR$/application/BLL/GDM/NichoBLL.php" />
-        <option value="$PROJECT_DIR$/application/BLL/GDM/PerfilBLL.php" />
-        <option value="$PROJECT_DIR$/application/BLL/GDM/SiteBLL.php" />
-        <option value="$PROJECT_DIR$/application/BLL/GDM/UsuarioAplicacaoBLL.php" />
-        <option value="$PROJECT_DIR$/application/BLL/GDM/UsuarioBLL.php" />
-        <option value="$PROJECT_DIR$/application/BLL/Generic/HomeBLL.php" />
         <option value="$PROJECT_DIR$/application/BLL/Generic/MenuBLL.php" />
         <option value="$PROJECT_DIR$/application/BLL/Generic/PessoaBLL.php" />
         <option value="db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/" />
@@ -281,7 +259,6 @@
         <option value="$PROJECT_DIR$/application/Modules/Generic/Controllers/DestaqueSiteController.php" />
         <option value="$PROJECT_DIR$/application/Modules/MediaSpot/Controllers/Handlers/ArtistaHandler.php" />
         <option value="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
-        <option value="$PROJECT_DIR$/application/BLL/BLL.php" />
         <option value="$PROJECT_DIR$/application/BLL/MediaSpot/MusicaBLL.php" />
         <option value="$PROJECT_DIR$/application/Modules/MediaSpot/Views/Musica/Index.php" />
         <option value="$PROJECT_DIR$/application/Core/Controller.php" />
@@ -302,7 +279,19 @@
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/site/MediaSpot/.htaccess" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Footer.php" />
+        <option value="$PROJECT_DIR$/application/BLL/BLL.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Busca.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Busca/Busca.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Player.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/PlayerBLL.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/PlayerController.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Busca/Index.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php" />
       </list>
     </option>
   </component>
@@ -441,6 +430,36 @@
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -468,11 +487,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="_templates" />
+              <option name="myItemId" value="Player" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -495,6 +522,346 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Musica" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Busca" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Handlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Generic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pessoa" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Generic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Generic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DAL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DAL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BLL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BLL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -545,20 +912,17 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -568,6 +932,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -770,7 +1137,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1296" height="1040" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938388" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -779,21 +1146,21 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22087379" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22411004" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39479637" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5017794" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -815,9 +1182,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30825242" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -876,111 +1243,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/BLL/MediaSpot/SiteDestaqueBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47980416" vertical-offset="679" max-vertical-offset="1496">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Controllers/ErrorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="856">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Controllers/HandlerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="442">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3686747" vertical-offset="0" max-vertical-offset="830">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Libs/ArrayHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49156627" vertical-offset="306" max-vertical-offset="1241">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/Handlers/AplicacaoHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26626506" vertical-offset="0" max-vertical-offset="830">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/Handlers/NichoHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57349396" vertical-offset="0" max-vertical-offset="830">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/Handlers/PerfilHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67228913" vertical-offset="496" max-vertical-offset="1326">
-          <caret line="67" column="47" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/Handlers/PermissaoHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1872705" vertical-offset="0" max-vertical-offset="817">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Libs/UsuarioHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.692307" vertical-offset="2672" max-vertical-offset="3502">
-          <caret line="181" column="110" selection-start-line="181" selection-start-column="110" selection-end-line="181" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/AplicacaoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/NichoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24939759" vertical-offset="207" max-vertical-offset="1037">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/PerfilController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/SiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/UsuarioAplicacaoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65903616" vertical-offset="547" max-vertical-offset="1377">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Perfil/Index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1819">
@@ -1083,13 +1345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="1768">
           <caret line="79" column="96" selection-start-line="79" selection-start-column="96" selection-end-line="79" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Libs/Helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4114" max-vertical-offset="4607">
-          <caret line="242" column="14" selection-start-line="242" selection-start-column="14" selection-end-line="242" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1244,7 +1499,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="1207">
           <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
           <folding>
-            <element signature="e#123#143#0#PHP" expanded="true" />
+            <element signature="e#123#143#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1273,7 +1528,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/Libs/Form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="3077">
+        <state vertical-scroll-proportion="-6.730769" vertical-offset="29" max-vertical-offset="3077">
           <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
           <folding>
             <element signature="e#41#650#0#PHP" expanded="false" />
@@ -1286,33 +1541,33 @@
             <element signature="e#1261#1752#0#PHP" expanded="false" />
             <element signature="e#1444#1647#0#PHP" expanded="false" />
             <element signature="e#1522#1633#0#PHP" expanded="false" />
-            <marker date="1424456645821" expanded="false" signature="248:616" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="286:581" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="319:493" placeholder="{&quot;texto&quot;: &quot;EXTERNAL_FRAGMENT&quot;...}" />
-            <marker date="1424456645821" expanded="true" signature="2246:2392" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="2268:2373" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="2309:2361" placeholder="{&quot;format&quot;: &quot;dd/mm/yyyy&quot;...}" />
-            <marker date="1424456645821" expanded="true" signature="2947:3090" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="2969:3071" placeholder="{...}" />
-            <marker date="1424456645821" expanded="true" signature="3152:3262" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="3174:3243" placeholder="{...}" />
-            <marker date="1424456645821" expanded="true" signature="4925:5242" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="4954:5218" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="5023:5199" placeholder="{...}" />
-            <marker date="1424456645821" expanded="true" signature="5277:5411" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="5307:5387" placeholder="{...}" />
-            <marker date="1424456645821" expanded="true" signature="5844:6201" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="5873:6177" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="5942:6157" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="6012:6134" placeholder="{&quot;multiple&quot;: true...}" />
-            <marker date="1424456645821" expanded="true" signature="6246:6386" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="6276:6362" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="7393:10054" placeholder="..." />
-            <marker date="1424456645821" expanded="false" signature="7433:10027" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="7583:9838" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="7654:9684" placeholder="[...]" />
-            <marker date="1424456645821" expanded="false" signature="9725:9812" placeholder="{...}" />
-            <marker date="1424456645821" expanded="false" signature="9915:10007" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{&quot;texto&quot;: &quot;EXTERNAL_FRAGMENT&quot;...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{&quot;format&quot;: &quot;dd/mm/yyyy&quot;...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{&quot;multiple&quot;: true...}" />
+            <marker date="1424456645821" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="[...]" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1424456645821" expanded="false" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1324,14 +1579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/old/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="9996">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/Helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="4607">
@@ -1340,12 +1587,199 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/Generic/Views/Pessoa/Cadastro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="856">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/BLL/BLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.061445784" vertical-offset="0" max-vertical-offset="830">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Busca.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14337349" vertical-offset="0" max-vertical-offset="830">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#115#133#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/Generic/Views/Pessoa/Formulario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="1173">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="123" selection-end-column="14" />
+          <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/old/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3686747" vertical-offset="595" max-vertical-offset="10166">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Artista.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1674699" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/PlayerBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6554217" vertical-offset="0" max-vertical-offset="830">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="25" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <element signature="e#107#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/PlayerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="561">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding>
+            <element signature="e#6#109#0#PHP" expanded="true" />
+            <element signature="e#133#153#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.038462" vertical-offset="71" max-vertical-offset="901">
+          <caret line="44" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+            <element signature="e#106#132#0#PHP" expanded="true" />
+            <marker date="1424811833616" expanded="true" signature="341:366" placeholder="SELECT * FRO..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Libs/Helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5072289" vertical-offset="2503" max-vertical-offset="4641">
+          <caret line="172" column="48" selection-start-line="172" selection-start-column="48" selection-end-line="172" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.423077" vertical-offset="1159" max-vertical-offset="1989">
+          <caret line="106" column="45" selection-start-line="106" selection-start-column="45" selection-end-line="106" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="646">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding>
+            <element signature="e#6#108#0#PHP" expanded="true" />
+            <element signature="e#132#152#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.020807834" vertical-offset="3485" max-vertical-offset="5032">
-          <caret line="203" column="8" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="8" />
+        <state vertical-scroll-proportion="-8.145454" vertical-offset="4159" max-vertical-offset="4964">
+          <caret line="271" column="90" selection-start-line="271" selection-start-column="90" selection-end-line="271" selection-end-column="90" />
           <folding>
             <element signature="e#3#26#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Musica/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.653847" vertical-offset="0" max-vertical-offset="1445">
+          <caret line="27" column="11" selection-start-line="8" selection-start-column="3" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="n#table#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Player.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="799">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding>
+            <element signature="e#6#85#0#PHP" expanded="true" />
+            <element signature="e#112#130#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.76923" vertical-offset="3471" max-vertical-offset="4386">
+          <caret line="239" column="10" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+            <element signature="e#123#143#0#PHP" expanded="true" />
+            <marker date="1424814411611" expanded="true" signature="1553:2762" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="1717:2731" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="1773:2697" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="1969:2658" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="2014:2303" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="2126:2257" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="2348:2616" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="2435:2570" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="4730:5924" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="4826:4901" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="4999:5873" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="5056:5435" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="5222:5377" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="5492:5819" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="5602:5761" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="8287:9481" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="8383:8458" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="8556:9430" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="8613:8992" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="8779:8934" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="9049:9376" placeholder="..." />
+            <marker date="1424814411611" expanded="true" signature="9159:9318" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Busca/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.769231" vertical-offset="173" max-vertical-offset="1003">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24216868" vertical-offset="768" max-vertical-offset="1802">
+          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+          <folding>
+            <element signature="e#1017#1208#0#HTML" expanded="true" />
+            <element signature="e#2128#2148#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

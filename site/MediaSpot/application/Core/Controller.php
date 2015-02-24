@@ -101,10 +101,10 @@ class Controller
         require APP . 'Views/_templates/' . ucfirst($footer) . '.php';
     }
     
-    public function Redirect($view, $controller = ""){
+    public function Redirect($view, $controller = "", $parametros = ""){
         if(empty($controller)) $controller = Helper::getController();
 
-            header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '');
+            header('location: ' . Helper::getUrl($view, $controller, $parametros) . '');
     }
     
     public function Autenticar(){
