@@ -95,4 +95,49 @@ if(isset($Model)&& !empty($Model)){
             </div><!-- /.box -->
             </div>
     </div>
+    <script type="text/javascript">
+        $(function() {
+            /* ION SLIDER */
+            $("#player_timeline").ionRangeSlider({
+                min: 0,
+                max: 198,
+                prettify: function (num) {
+                    var minutos = parseInt(num / 60);
+                    var segundos = parseInt(num - (minutos * 60));
+                    if(segundos < 10) segundos = "0"+segundos;
+                    if(minutos < 10) minutos = "0"+minutos;
+                    return minutos + ":" + segundos;
+                    //return moment().set({'minute': minutos, 'second': segundos}).format("mm:ss");
+                }
+            });
+            $("#player_volume").ionRangeSlider({
+                min: 0,
+                max: 100
+            });
+            $("#player_timeline, #player_volume").change(function(){
+                console.log($(this).val());
+            });
+        });
+            </script>
+    <div class="row" style="min-height: 200px;">
+        <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0;">
+            <div class="box-body bg-primary">
+                <div class="row">
+                <div class="col-md-2">
+                    <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                <input id="player_timeline" type="text" name="player_timeline" value="" />
+                </div>
+                <div class="col-md-2">
+                    <input id="player_volume" type="text" name="player_volume" value="" />
+                </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
 <? } ?>

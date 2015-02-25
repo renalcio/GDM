@@ -56,6 +56,9 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "bootstrap-switch.css",
         //Tagsinput
         "bootstrap-tagsinput.css",
+        //IonSlide
+        "ionslider/ion.rangeSlider.css",
+        "ionslider/ion.rangeSlider.skinNice.css"
     ));
     echo "<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", Array(
@@ -98,6 +101,9 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "plugins/jquery.gritter.js",
         //Tagsinput
         "plugins/bootstrap-tagsinput.js",
+        //ISONSLIDE
+        "plugins/moment.js",
+        "plugins/ionslider/ion.rangeSlider.js",
 
         //HELPER
         "helper.js",
