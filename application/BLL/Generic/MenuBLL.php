@@ -18,6 +18,7 @@ class MenuBLL extends BLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
+        parent::__construct();
     }
 
     
@@ -41,8 +42,8 @@ class MenuBLL extends BLL
         {
             $i = 0;
             foreach($model as $menuItem) {
-                $Item = new \stdClass;
-
+                //$Item = new \stdClass;
+                $Item = new Menu();
                 //echo "<br>MenuItem <br>";
                 //print_r($menuItem);
 
@@ -50,11 +51,11 @@ class MenuBLL extends BLL
 
 
                 //echo "<br>MenuItem Convertido <br>";
-                print_r($menuItem["apagar"]);
+                //print_r($menuItem["apagar"]);
 
                 if(!isset($menuItem["apagar"]) || $menuItem["apagar"] == "0" || $menuItem["apagar"] == 0) {
                     //Inserir ou Atualizar
-                    $Item = new Menu();
+
                     $Item->MenuId = $menuItem["menuid"];
                     $Item->Titulo = $menuItem["titulo"];
                     $Item->Url = $menuItem["url"];
@@ -63,7 +64,7 @@ class MenuBLL extends BLL
                     $Item->Posicao = $i;
                     $Item->AplicacaoId = $App;
 
-                    //print_r($Item);
+                   //print_r($Item);
                     //echo "<br>\n\r";
 
                     if (empty($Item->MenuId)) {

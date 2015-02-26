@@ -24,7 +24,7 @@
                                                             <b>Sucesso!</b><br>O menu foi salvo com sucesso... \
                                                         </div>');
                                     setTimeout(function(){
-                                        location.reload();
+                                        //location.reload();
                                     }, 1500);
                 				}
 			     });

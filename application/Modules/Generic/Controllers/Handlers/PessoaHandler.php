@@ -2,6 +2,8 @@
 namespace Controllers\Handlers;
 use Core\Controller;
 use DAL\Pessoa;
+use DAL\PessoaFisica;
+use DAL\PessoaJuridica;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;
@@ -33,7 +35,7 @@ class PessoaHandler extends Controller
             /*$retorno = $this->unitofwork->select("SELECT p.* FROM Pessoa p, PessoaFisica pf, PessoaJuridica pj WHERE (p.PessoaId = pf.PessoaId AND pf.CPF = '$doc') OR
  (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "DAL\\Pessoa");*/
 
-            $retorno = $this->unitofwork->Get(new Pessoa())->LeftJoin($this->unitofwork->Get(new PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($this->unitofwork->Get(new PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId = pf.PessoaId AND pf.CPF = '') OR (p.PessoaId = pj.PessoaId AND pj.CNPJ = '')")->Select("p.*", new Pessoa())->First();
+            $retorno = $this->unitofwork->Get(new Pessoa())->LeftJoin($this->unitofwork->Get(new PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($this->unitofwork->Get(new PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId = pf.PessoaId AND pf.CPF = '".$doc."') OR (p.PessoaId = pj.PessoaId AND pj.CNPJ = '".$doc."')")->Select("p.*", new Pessoa())->First();
         }
         $retorno = json_encode($retorno);
 

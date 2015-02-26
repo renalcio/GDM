@@ -22,7 +22,7 @@ class NichoHandler extends Controller
     {
         $retorno = "";
         $uow = new UnitofWork();
-        $sql = $uow->select(new Nicho())->ToArray();
+        $sql = $uow->Get(new Nicho())->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $item) {
                 $retorno .= "<option value='" . $item->NichoId . "'>" . $item->Titulo . "</option>";

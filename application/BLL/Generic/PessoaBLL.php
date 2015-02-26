@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\Generic;
+use BLL\BLL;
 use DAL\PessoaAplicacao;
 use DAL\PessoaFisica;
 use DAL\PessoaJuridica;
@@ -20,6 +21,8 @@ class PessoaBLL extends BLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
+
+        parent::__construct();
     }
 
     public function GetToEdit($Model)

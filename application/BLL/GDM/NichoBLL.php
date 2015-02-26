@@ -17,6 +17,7 @@ class NichoBLL extends BLL
         } catch (\PDOException $e) {
             exit('Database connection could not be established.');
         }
+        parent::__construct();
     }
 
     public function GetToEdit($Model)

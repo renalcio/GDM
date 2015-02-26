@@ -62,7 +62,7 @@ class ArrayHelper {
     public function For_Each($for){
         $array = $this->array;
         foreach($array as $key => $element)
-            $for($element,$key);
+            $for($key,$element);
         return $this;
     }
 }

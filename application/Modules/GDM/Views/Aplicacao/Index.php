@@ -12,7 +12,7 @@ if(is_array($Model->ListApps) && count($Model->ListApps) > 0)
     function Excluir(Id){
         bootbox.confirm('Deseja realmente excluir este item?', function(result){
             if(result)
-                location.href="<?=URL;?>app/deletar/"+Id;
+                location.href="<?=URL;?>Aplicacao/deletar/"+Id;
 
         });
     }
@@ -54,7 +54,7 @@ if(is_array($Model->ListApps) && count($Model->ListApps) > 0)
                                            data-toggle="dropdown"></i>
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li><a href="<?=URL;
-                                            ?>app/cadastro/<?=$App->AplicacaoId;?>"><i class="fa fa-edit"></i>
+                                            ?>Aplicacao/cadastro/<?=$App->AplicacaoId;?>"><i class="fa fa-edit"></i>
                                                 Editar</a></li>
                                         <li><a onclick="Excluir(<?=$App->AplicacaoId;?>)"><i
                                                     class="fa

@@ -257,9 +257,11 @@ class UnitofWork {
 
     public function Update(&$objeto){
         $this->Initialize($objeto);
-
-        $this->lista->For_Each(function($key,$item) {
-            $item = $this->ClearClass($item);
+       // print_r($this->lista);
+        $this->lista->For_Each(function($item) {
+            //print_r($item);
+            if(is_object($item))
+                $item = $this->ClearClass($item);
             //Verifica PK
             $pk = $this->pk;
             if (empty($item->$pk))
@@ -280,10 +282,11 @@ class UnitofWork {
         $this->Initialize($objeto);
 
         $this->lista->For_Each(function($key,$item){
+            print_r($item);
             $item = $this->ClearClass($item);
             $pk = $this->pk;
             $this->objeto->$pk = $this->pdo->Insert($this->from, $item);
-            $this->lista[$key]->$pk = $this->objeto->$pk;
+            $this->lista->ToList()[$key]->$pk = $this->objeto->$pk;
         });
 
         if (is_object($objeto) && (get_class($objeto) == "ArrayHelper" || get_class($objeto) == "ListHelper"))
