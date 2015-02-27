@@ -271,7 +271,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         <section class="content-header">
             <div class="row">
                 <div class="col-lg-offset-1 col-lg-10">
-                    <form class="search-form" method="post" action="<?=\Libs\Helper::getUrl("","Busca");?>">
+                    <form class="search-form" method="post" action="<?=\Libs\Helper::getUrl("Index","Busca");?>">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Pesquisar">
                             <div class="input-group-btn">
