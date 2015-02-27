@@ -24,11 +24,13 @@ if(isset($Model)&& !empty($Model)){
                 //"aoColumns": [ null, null, {"bSortable": false} ]
             });
         });
-        </script>
+    </script>
+
     <div class="row">
         <div class="col-md-3">
             <div class="box box-solid">
-                <div class="box-body" style="background: url(<?=$Model->Artista->Imagem;?>) no-repeat;-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 200px;">
+                <div class="box-body no-padding" style="background: url(<?=$Model->Artista->Imagem;?>) no-repeat;-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 200px;">
+                    <div id="yt_player"></div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
@@ -55,8 +57,8 @@ if(isset($Model)&& !empty($Model)){
                     <table id="listagem" class="table table-bordered table-hover">
                         <thead style="display:none">
                         <tr>
-                        <th></th>
                             <th></th>
+                            <th width="30"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -67,19 +69,8 @@ if(isset($Model)&& !empty($Model)){
                                 //var_dump($Item);
                                 ?>
                                 <tr>
-                                    <td><?=$Item->Titulo;?></td>
+                                    <td></td>
                                     <td align="center">
-
-                                        <div class="btn-group">
-                                            <i class="fa fa-bars" class="dropdown-toggle"
-                                               data-toggle="dropdown"></i>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                                <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->MusicaId)?>"><i
-                                                            class="fa fa-edit"></i>
-                                                        Editar</a></li>
-                                                <li><a onclick="Excluir(<?=@$Item->MusicaId;?>)"><i class="fa fa-trash-o"></i> Excluir</a></li></ul>
-                                        </div>
-
                                     </td>
                                 </tr>
                             <?
@@ -93,8 +84,107 @@ if(isset($Model)&& !empty($Model)){
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
-            </div>
+        </div>
     </div>
+
+
+    <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        var playing = false;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt_player', {
+                height: '200',
+                width: '100%',
+                videoId: 'bHQqvYy5KYo',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            //event.target.playVideo();
+            setInterval(UpdatePlayer, 1000);
+            //Define Volume
+            var slider = $("#player_volume").data("ionRangeSlider");
+            //console.log(getVolume());
+            slider.update({
+                from: getVolume()
+            });
+        }
+
+        //https://developers.google.com/youtube/iframe_api_reference?hl=pt-br#loadVideoById
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                playing = true;
+                $("#player_play>span").attr("class", "glyphicon glyphicon-pause");
+            }else{
+                playing = false;
+                $("#player_play>span").attr("class", "glyphicon glyphicon-play");
+            }
+        }
+        function stopVideo() {
+            playing = false;
+            player.stopVideo();
+        }
+        function playVideo() {
+            playing = true;
+            player.playVideo();
+        }
+        function pauseVideo(){
+            playing = false;
+            player.pauseVideo();
+        }
+        function togglePlayer(){
+            if(playing == true)
+                playVideo();
+            else
+                pauseVideo();
+
+            playing = !playing;
+
+        }
+        function LoadVideo(VID){
+            player.loadVideoById(VID, 0, "small");
+        }
+        function seekTo(SEG, Refresh){
+            player.seekTo(SEG, Refresh);
+        }
+        function getVolume(){
+            return player.getVolume();
+        }
+        function setVolume(VOL){
+            player.setVolume(VOL);
+        }
+
+        function UpdatePlayer(){
+            console.log(playing);
+            if(playing == true) {
+                var TempoCorrido = player.getCurrentTime();
+                console.log(TempoCorrido);
+                var slider = $("#player_timeline").data("ionRangeSlider");
+                slider.update({
+                    from: TempoCorrido
+                });
+            }
+        }
+    </script>
+
     <script type="text/javascript">
         $(function() {
             /* ION SLIDER */
@@ -112,30 +202,40 @@ if(isset($Model)&& !empty($Model)){
             });
             $("#player_volume").ionRangeSlider({
                 min: 0,
-                max: 100
+                max: 100,
+                from: 0
+            });
+
+            $("#player_play").click(function(){
+                togglePlayer();
             });
             $("#player_timeline, #player_volume").change(function(){
                 console.log($(this).val());
             });
+
         });
-            </script>
+    </script>
     <div class="row" style="min-height: 200px;">
-        <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0;">
+        <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0; z-index: 999">
             <div class="box-body bg-primary">
                 <div class="row">
-                <div class="col-md-2">
-                    <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                            <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
+                            <button id="player_play" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+                        </div>
+                                </div>
+                            </div>
                     </div>
-                </div>
-                <div class="col-md-8">
-                <input id="player_timeline" type="text" name="player_timeline" value="" />
-                </div>
-                <div class="col-md-2">
-                    <input id="player_volume" type="text" name="player_volume" value="" />
-                </div>
+                    <div class="col-md-8">
+                        <input id="player_timeline" type="text" name="player_timeline" value="" />
+                    </div>
+                    <div class="col-md-2">
+                        <input id="player_volume" type="text" name="player_volume" value="" />
+                    </div>
                 </div>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
