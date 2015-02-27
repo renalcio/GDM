@@ -152,9 +152,9 @@ if(isset($Model)&& !empty($Model)){
         }
         function togglePlayer(){
             if(playing == true)
-                playVideo();
-            else
                 pauseVideo();
+            else
+                playVideo();
 
             playing = !playing;
 
@@ -175,10 +175,12 @@ if(isset($Model)&& !empty($Model)){
         function UpdatePlayer(){
             console.log(playing);
             if(playing == true) {
-                var TempoCorrido = player.getCurrentTime();
+                var TempoCorrido = player.getCurrentTime(),
+                    TempoTotal = player.getDuration();
                 console.log(TempoCorrido);
                 var slider = $("#player_timeline").data("ionRangeSlider");
                 slider.update({
+                    max: TempoTotal,
                     from: TempoCorrido
                 });
             }
@@ -210,7 +212,8 @@ if(isset($Model)&& !empty($Model)){
                 togglePlayer();
             });
             $("#player_timeline, #player_volume").change(function(){
-                console.log($(this).val());
+                //var Segundos = $(this).val();
+                //seekTo(Segundos, false);
             });
 
         });

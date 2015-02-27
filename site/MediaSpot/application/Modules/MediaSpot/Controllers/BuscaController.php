@@ -16,11 +16,12 @@ use Libs\ModelState;
 class BuscaController extends Controller
 {
 
-    public function index($model)
+    public function index($model = "")
     {
         $this->loadBLL();
         $Model = new Busca();
-        $Model = $this->bll->Index($model);
+        if(!empty($model))
+            $Model = $this->bll->Index($model);
         if($Model->ListArtista->Count() == 1){
             $this->Redirect("", "Player", $Model->ListArtista->First()->ArtistaId);
         }else if($Model->ListMusica->Count() == 1){
