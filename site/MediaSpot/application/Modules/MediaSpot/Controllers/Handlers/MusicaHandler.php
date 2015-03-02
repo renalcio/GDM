@@ -210,7 +210,7 @@ class MusicaHandler extends Controller
         if($retorno != null) {
             for ($i = 0; $i < count($retorno); $i++) {
                 $retorno[$i]->OptionsMenu = '<div class="btn-group">
-                                                <i class= "fa fa-bars" class="dropdown-toggle"
+                                                <i class= "fa fa-play" class="dropdown-toggle"
                                                 data-toggle="dropdown"></i>
                                                 <ul class="dropdown-menu pull-right" role="menu">
                                                     <li>
@@ -226,7 +226,11 @@ class MusicaHandler extends Controller
                                                     </li>
                                                 </ul>
                                             </div>';
+
                 $retorno[$i]->a = $this->unitofwork->GetById(new Artista(), $retorno[$i]->ArtistaId);
+
+                $retorno[$i]->PlayButtom = '<button onclick="BuscaMusica('.$i.', \''.addslashes($retorno[$i]->a->Titulo).' - '.addslashes($retorno[$i]->Titulo).'\')" class="btn btn-default btnPlay"><i class= "fa fa-play" class="dropdown-toggle" data-toggle="dropdown"></i></button>';
+
             }
         }else{
             $retorno = Array();

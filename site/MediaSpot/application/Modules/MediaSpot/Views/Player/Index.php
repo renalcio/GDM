@@ -16,7 +16,7 @@ if(isset($Model)&& !empty($Model)){
                 },
                 "columns": [
                     {"data": "Titulo" },
-                    {   "data": "OptionsMenu",
+                    {   "data": "PlayButtom",
                         "orderable":      false,
                         "className": "tdMenu"
                     }
@@ -25,6 +25,11 @@ if(isset($Model)&& !empty($Model)){
             });
         });
     </script>
+    <style>
+        .tdMenu{
+            width: 25px;
+        }
+    </style>
 
     <div class="row">
         <div class="col-md-3">
@@ -98,8 +103,12 @@ if(isset($Model)&& !empty($Model)){
 
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
-        var player;
-        var playing = false;
+        var player,
+            playing = false,
+            playerShow = false,
+            playIndex = null,
+            playTermo = "";
+
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('yt_player', {
                 height: '200',
@@ -141,14 +150,21 @@ if(isset($Model)&& !empty($Model)){
         function stopVideo() {
             playing = false;
             player.stopVideo();
+            playIndex = null;
+            $(".btnPlay i").attr("class", "fa fa-play");
         }
         function playVideo() {
             playing = true;
             player.playVideo();
+            ShowPlayer();
+
+            var btn = $(".btnPlay:eq("+playIndex+")");
+            btn.find("i").attr("class", "fa fa-pause");
         }
         function pauseVideo(){
             playing = false;
             player.pauseVideo();
+            $(".btnPlay i").attr("class", "fa fa-play");
         }
         function togglePlayer(){
             if(playing == true)
@@ -169,7 +185,14 @@ if(isset($Model)&& !empty($Model)){
             return player.getVolume();
         }
         function setVolume(VOL){
+            //pauseVideo();
             player.setVolume(VOL);
+            //playVideo();
+        }
+
+        function LoadVideobyId(videoId){
+            player.loadVideoById(videoId);
+            ShowPlayer();
         }
 
         function UpdatePlayer(){
@@ -177,12 +200,67 @@ if(isset($Model)&& !empty($Model)){
             if(playing == true) {
                 var TempoCorrido = player.getCurrentTime(),
                     TempoTotal = player.getDuration();
-                console.log(TempoCorrido);
+                //console.log(TempoCorrido);
                 var slider = $("#player_timeline").data("ionRangeSlider");
                 slider.update({
                     max: TempoTotal,
                     from: TempoCorrido
                 });
+            }
+        }
+
+        function ShowPlayer(){
+            if(playerShow != true){
+                $("#player_row").slideDown();
+            }
+        }
+
+
+        function BuscaMusica(index, termo){
+            if(index == playIndex && playTermo == termo){
+                togglePlayer();
+            }else{
+                var search_input = termo;
+                var keyword= encodeURIComponent(search_input);
+                console.clear();
+                console.log(search_input);
+                console.log(keyword);
+                // Youtube API
+                var yt_url='http://gdata.youtube.com/feeds/api/videos?q='+keyword+'&format=5&max-results=1&v=2&alt=jsonc&start-index=1';
+
+                $.ajax
+                ({
+                    type: "GET",
+                    url: yt_url,
+                    dataType:"jsonp",
+                    success: function(response)
+                    {
+                        if(response.data.items)
+                        {
+                            $.each(response.data.items, function(i,data)
+                            {
+                                var video_id=data.id;
+                                var video_title=data.title;
+                                var video_viewCount=data.viewCount;
+                                var video_urlFinal = "http://www.youtube.com/embed/"+video_id+"?enablejsapi=1";
+                                LoadVideobyId(video_id);
+                                //Notificar
+                                //notificar({mensagem:search_input.replace("- ", "\n").Capitalize(), tempo: 5000, imagem: $("#imgCapa").attr("src")});
+
+                            });
+                        }
+                    }
+                });
+
+                console.log(index);
+                var btn = $(".btnPlay:eq("+index+")");
+                $(".btnPlay i").attr("class", "fa fa-play");
+                btn.find("i").attr("class", "fa fa-pause");
+
+                playIndex = index;
+                playTermo = termo;
+
+                console.log(playIndex);
             }
         }
     </script>
@@ -200,31 +278,45 @@ if(isset($Model)&& !empty($Model)){
                     if(minutos < 10) minutos = "0"+minutos;
                     return minutos + ":" + segundos;
                     //return moment().set({'minute': minutos, 'second': segundos}).format("mm:ss");
+                },
+                onChange: function (data) {
+                    var Segundos = data.from;
+                    console.log(Segundos);
+                    seekTo(Segundos, true);
                 }
             });
             $("#player_volume").ionRangeSlider({
                 min: 0,
                 max: 100,
-                from: 0
+                from: 0,
+                hide_min_max: true,
+                prettify: function (num) {
+                    return "Volume: " + num;
+                }
             });
 
             $("#player_play").click(function(){
                 togglePlayer();
             });
-            $("#player_timeline, #player_volume").change(function(){
-                //var Segundos = $(this).val();
-                //seekTo(Segundos, false);
+            /*$("#player_timeline").change(function(){
+                var Segundos = $(this).val();
+                seekTo(Segundos, false);
+            });*/
+
+            $("#player_volume").change(function(){
+                var Volume = $(this).val();
+                setVolume(Volume);
             });
 
         });
     </script>
-    <div class="row" style="min-height: 200px;">
+    <div class="row" style="min-height: 200px; display: none;" id="player_row">
         <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0; z-index: 999">
             <div class="box-body bg-primary">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="row">
-                            <div class="col-md-offset-1 col-md-10">
+                            <div class="col-md-12">
                             <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
                             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
                             <button id="player_play" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
