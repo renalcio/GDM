@@ -286,7 +286,9 @@ class UnitofWork {
             $item = $this->ClearClass($item);
             $pk = $this->pk;
             $this->objeto->$pk = $this->pdo->Insert($this->from, $item);
-            $this->lista->ToList()[$key]->$pk = $this->objeto->$pk;
+            $array = $this->lista->ToList();
+            $array[$key]->$pk = $this->objeto->$pk;
+            $this->lista = new ArrayHelper($array);
         });
 
         if (is_object($objeto) && (get_class($objeto) == "ArrayHelper" || get_class($objeto) == "ListHelper"))

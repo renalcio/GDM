@@ -35,7 +35,7 @@ if(isset($Model)&& !empty($Model)){
         <div class="col-md-3">
             <div class="box box-solid">
                 <div class="box-body no-padding" style="background: url(<?=$Model->Artista->Imagem;?>) no-repeat;-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 200px;">
-                    <div id="yt_player"></div>
+                    <div id="yt_content" class="invisible"><div id="yt_player"></div></div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
@@ -54,16 +54,16 @@ if(isset($Model)&& !empty($Model)){
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-header">
-                    <h3 class="box-title">Músicas - Datatables</h3>
+                    <h3 class="box-title">Músicas</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-
+                    <div class="table-responsive">
                     <table id="listagem" class="table table-bordered table-hover">
                         <thead style="display:none">
                         <tr>
                             <th></th>
-                            <th width="30"></th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,13 +72,13 @@ if(isset($Model)&& !empty($Model)){
                             $Model->ListMusica->For_Each(function ($Item) {
                                 //$Item = new \DAL\Musica();
                                 //var_dump($Item);
-                                ?>
+                               /*
                                 <tr>
                                     <td></td>
                                     <td align="center">
                                     </td>
                                 </tr>
-                            <?
+                            */
                             });
                         }else
                         {
@@ -87,6 +87,7 @@ if(isset($Model)&& !empty($Model)){
                         ?>
                         </tbody>
                     </table>
+                        </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
@@ -114,6 +115,7 @@ if(isset($Model)&& !empty($Model)){
                 height: '200',
                 width: '100%',
                 videoId: 'bHQqvYy5KYo',
+                playerVars: { 'autoplay': 0, 'controls': 0, 'showinfo': 0, 'rel': 0 },
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -142,6 +144,7 @@ if(isset($Model)&& !empty($Model)){
             if (event.data == YT.PlayerState.PLAYING) {
                 playing = true;
                 $("#player_play>span").attr("class", "glyphicon glyphicon-pause");
+                $("#yt_content").removeClass("invisible");
             }else{
                 playing = false;
                 $("#player_play>span").attr("class", "glyphicon glyphicon-play");
@@ -263,6 +266,21 @@ if(isset($Model)&& !empty($Model)){
                 console.log(playIndex);
             }
         }
+
+        function playAt(index){
+            var btn = $(".btnPlay:eq("+index+")");
+            btn.click();
+        }
+
+        function playNext(){
+            playIndex = playIndex >= 0 ? playIndex+1 : 0;
+            playAt(playIndex);
+        }
+
+        function playPrev(){
+            playIndex = playIndex > 0 ? playIndex-1 : 0;
+            playAt(playIndex);
+        }
     </script>
 
     <script type="text/javascript">
@@ -318,9 +336,9 @@ if(isset($Model)&& !empty($Model)){
                         <div class="row">
                             <div class="col-md-12">
                             <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
-                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
+                            <button onclick="playPrev()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
                             <button id="player_play" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+                            <button onclick="playNext()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
                         </div>
                                 </div>
                             </div>

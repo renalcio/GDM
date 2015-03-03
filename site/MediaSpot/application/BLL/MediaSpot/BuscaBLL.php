@@ -18,6 +18,8 @@ use Libs\UnitofWork;
 use Libs\Usuario;
 use Libs\Debug;
 
+include_once (APP . "Libs/lastfm/lastfm.api.php");
+
 class BuscaBLL extends BLL
 {
     /**
@@ -33,16 +35,42 @@ class BuscaBLL extends BLL
         parent::__construct();
     }
 
-    public function Index($model)
+    public function Index($termo)
     {
-        $termo = isset($model["q"]) ? $model["q"] : $model;
         $termo = strtolower($termo);
         $Model = new Busca();
         $Model->Termo = $termo;
-        $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")
-            ->ToList();
+        //var_dump($termo);
+        $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
         $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
 
         return $Model;
+    }
+
+    public function GetArtistaLFM(Artista $Artista, $pagina = 1, $limite = 30){
+
+
+        CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
+
+        $musicas = Artist::getTopTracks($Artista->Titulo, $Artista->mbid, $limite, $pagina);
+
+        foreach($musicas as $key => $musica) {
+
+            //Adiciona ao banco de dados
+
+            $mAdd = new Musica();
+
+            $mAdd->ArtistaId = $Artista->ArtistaId;
+
+            $mAdd->Titulo = MusicaNome($musica->getName());
+
+            $mAdd->MusicaId = $this->unitofwork->Insert($mAdd);
+        }
+    }
+
+    function MusicaNome($texto){
+        $este = Array("´");
+        $por = Array("'");
+        return str_replace( $este, $por, $texto);
     }
 }

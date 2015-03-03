@@ -12,8 +12,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
 <html lang="pt">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title><?=$HUser->Aplicacao->Titulo?></title>
-    <meta name="description" content="Gerenciador de Dados Modular">
+    <title>MediaSpot</title>
+    <meta name="description" content="Ouvir Musica Online, Videos e Imagens.">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- JS -->
@@ -194,74 +194,82 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
 <body class="skin-blue">
 <!-- header logo: style can be found in header.less -->
 <header class="header">
-<a href="index.html" class="logo">
-    <!-- Add the class icon to your logo image or logo icon to add the margining -->
-    <?=$HUser->Aplicacao->Titulo;?>
-</a>
-<!-- Header Navbar: style can be found in header.less -->
-<nav class="navbar navbar-static-top" role="navigation">
-<!-- Sidebar toggle button-->
-<div class="navbar-right">
-<ul class="nav navbar-nav">
-<!-- Messages: style can be found in dropdown.less-->
-<li class="dropdown messages-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        Músicas
+    <a href="index.html" class="logo">
+        <!-- Add the class icon to your logo image or logo icon to add the margining -->
+        MediaSpot
     </a>
-</li>
-<!-- Notifications: style can be found in dropdown.less -->
-<li class="dropdown notifications-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        Vídeos
-    </a>
-</li>
-<!-- Tasks: style can be found in dropdown.less -->
-<li class="dropdown tasks-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        Imagens
-    </a>
-</li>
-<!-- User Account: style can be found in dropdown.less -->
-<li class="dropdown user user-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="glyphicon glyphicon-user"></i>
-        <span><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?> <i class="caret"></i></span>
-    </a>
-    <ul class="dropdown-menu">
-        <!-- User image -->
-        <li class="user-header bg-light-blue">
-            <img src="<?=$HUser->Usuario->Avatar;?>" class="img-circle" alt="User Image" />
-            <p>
-                <?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?> - Web Developer
-                <small>Member since Nov. 2012</small>
-            </p>
-        </li>
-        <!-- Menu Body -->
-        <li class="user-body">
-            <div class="col-xs-4 text-center">
-                <a href="#">Followers</a>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Sales</a>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Friends</a>
-            </div>
-        </li>
-        <!-- Menu Footer-->
-        <li class="user-footer">
-            <div class="pull-left">
-                <a href="<?=Helper::getUrl("selecionaAplicacao", "login");?>" class="btn btn-default btn-flat">Selecionar Aplicaçao</a>
-            </div>
-            <div class="pull-right">
-                <a href="<?=Helper::getUrl("logout", "login");?>" class="btn btn-default btn-flat">Sair</a>
-            </div>
-        </li>
-    </ul>
-</li>
-</ul>
-</div>
-</nav>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Músicas
+                    </a>
+                </li>
+                <!-- Notifications: style can be found in dropdown.less -->
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Vídeos
+                    </a>
+                </li>
+                <!-- Tasks: style can be found in dropdown.less -->
+                <li class="dropdown tasks-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Imagens
+                    </a>
+                </li>
+                <!-- User Account: style can be found in dropdown.less -->
+                <?
+                if(isset($HUser) && !empty($HUser)) {
+                    ?>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span><?= Helper::Abreviar($HUser->Usuario->Pessoa->Nome); ?> <i class="caret"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img src="<?= $HUser->Usuario->Avatar; ?>" class="img-circle" alt="User Image"/>
+
+                                <p>
+                                    <?= Helper::Abreviar($HUser->Usuario->Pessoa->Nome); ?> - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Sales</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="<?= Helper::getUrl("selecionaAplicacao", "login"); ?>"
+                                       class="btn btn-default btn-flat">Selecionar Aplicaçao</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="<?= Helper::getUrl("logout", "login"); ?>" class="btn btn-default btn-flat">Sair</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                <?
+                }
+                ?>
+            </ul>
+        </div>
+    </nav>
 </header>
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->

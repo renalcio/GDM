@@ -66,13 +66,15 @@ $appsess = new \Libs\SessionHelper("GDMAuth"); #Session
 
 $appid = $appsess->Ver("AplicacaoId");
 if(!empty($appid)){
-    define('APPID', $appid); #AplicacaoId
-    define('APP_ID', $appid); #AplicacaoId
+    define('APPID', 3); #AplicacaoId
+    define('APP_ID', 3); #AplicacaoId
+}else {
+    define('APPID', 3); #AplicacaoId
+    define('APP_ID', 3); #AplicacaoId
 }
-
 $pasta = $appsess->Ver("Pasta");
 if(!empty($pasta)) {
     define('PASTA', $pasta . DIRECTORY_SEPARATOR); #Pasta da Aplicacao
 }else{
-    define('PASTA', ''); #Pasta da Aplicacao
+    define('PASTA', 'MediaSpot' . DIRECTORY_SEPARATOR); #Pasta da Aplicacao
 }

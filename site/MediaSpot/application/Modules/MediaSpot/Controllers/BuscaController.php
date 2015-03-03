@@ -16,19 +16,34 @@ use Libs\ModelState;
 class BuscaController extends Controller
 {
 
-    public function index($model = "")
+    public function index($termo = "")
     {
         $this->loadBLL();
         $Model = new Busca();
-        if(!empty($model))
-            $Model = $this->bll->Index($model);
+
+        if(empty($termo)){
+            $termo = (isset($_REQUEST["q"]) && !empty($_REQUEST["q"])) ? $_REQUEST["q"] : "";
+        }
+
+        if(is_array($termo))
+            $termo = $termo["q"];
+
+        if(is_object($termo))
+            $termo = $termo->q;
+
+
+        //var_dump($termo);
+        if(!empty($termo))
+            $Model = $this->bll->Index($termo);
+
+
         if($Model->ListArtista->Count() == 1){
             $this->Redirect("", "Player", $Model->ListArtista->First()->ArtistaId);
-        }else if($Model->ListMusica->Count() == 1){
-            $this->Redirect("", "Player", Array($Model->ListArtista->First()->ArtistaId, $Model->ListMusica->First()
-                ->MusicaId));
         }else {
             $this->ModelView($Model);
         }
+        //var_dump($Model);
+
+
     }
 }

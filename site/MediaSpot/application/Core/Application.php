@@ -31,7 +31,7 @@ class Application
         //Verifica se tem pasta personalizada
         $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . PASTA . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
 
-        //echo $urlController;
+        //echo "PATH". $urlController."<br>";
         if(!file_exists($urlController)){
             //Verifica se tem pasta generica
             $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
@@ -50,41 +50,41 @@ class Application
             //require_once APP . 'controllers/home.php';
 
             $session = new SessionHelper("GDMAuth");
-            if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
-                if(APPID > 0) {
+            //if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
+                //if(APPID > 0) {
                     $page = new \Controllers\HomeController();
                     $page->index();
-                }else{
+                /*}else{
                     $page = new \Controllers\LoginController();
                     $page->SelecionaAplicacao();
                 }
             }else{
                 $page = new \Controllers\LoginController();
                 $page->index();
-            }
+            }*/
 
         } elseif (file_exists($urlController)) {
             require_once $urlController;
             //echo APP_ID;
             //print_r($_SESSION);if(defined('VAR_NAME')){
-            $session = new SessionHelper("GDMAuth");
+            //$session = new SessionHelper("GDMAuth");
             //echo $session->Ver("AplicacaoId");
-            if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || strtolower($this->url_controller) == "logincontroller")
-            {
+            //if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) || strtolower($this->url_controller) == "logincontroller")
+            //{
 
                 // here we did check for controller: does such a controller exist ?
 
                 // if so, then load this file and create this controller
                 // example: if controller would be "car", then this line would translate into: $this->car = new car();
                 //require_once APP . 'controllers/' . $this->url_controller . '.php';
-                if((defined('APP_ID') && APP_ID > 0) || strtolower($this->url_controller) == "logincontroller") {
+                //if((defined('APP_ID') && APP_ID > 0) || strtolower($this->url_controller) == "logincontroller") {
                     $this->url_controller = "\\Controllers\\" . str_replace("/","\\", $this->url_controller);
                     //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
                     $this->url_controller = new $this->url_controller();
-                }else if(defined('APP_ID') && APP_ID <= 0){
+                /*}else if(defined('APP_ID') && APP_ID <= 0){
                     $page = new LoginController();
                     $page->SelecionaAplicacao();
-                }
+                }*/
 
                 // check for method: does such a method exist in the controller ?
 
@@ -125,17 +125,18 @@ class Application
                         $page->index();
                     }
                 }
-            }
-            else
-            {
-                $page = new \Controllers\LoginController();
-                $page->index();
-            }
+            /* }
+             else
+             {
+                 $page = new \Controllers\LoginController();
+                 $page->index();
+             }*/
 
-        } else {
-            $page = new \Controllers\ErrorController();
-            $page->index();
-        }
+         } else {
+            echo $urlController;
+             $page = new \Controllers\ErrorController();
+             $page->index();
+         }
     }
 
     /**

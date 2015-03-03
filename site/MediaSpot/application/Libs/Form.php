@@ -66,12 +66,12 @@ class Form
 
     public static function Checkbox($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("checkbox", $Nome, $Valor, $htmlAttr);
+        echo self::Input("checkbox", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Text($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("text", $Nome, $Valor, $htmlAttr);
+        echo self::Input("text", $Nome, $Valor, $htmlAttr);
     }
 
     public static function DatePicker($Nome="", $Valor="", $htmlAttr = Array())
@@ -88,7 +88,7 @@ class Form
         </script>
         ';
 
-        echo Self::Mask("99/99/9999", $Nome, $Valor, $htmlAttr);
+        echo self::Mask("99/99/9999", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Mask($Mascara, $Nome="", $Valor="", $htmlAttr = Array())
@@ -117,13 +117,13 @@ class Form
         ';
         }
 
-        echo Self::Input("text", $Nome, $Valor, $htmlAttr);
+        echo self::Input("text", $Nome, $Valor, $htmlAttr);
     }
 
 
     public static function TextArea($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("textarea", $Nome, $Valor, $htmlAttr);
+        echo self::Input("textarea", $Nome, $Valor, $htmlAttr);
     }
 
     public static function DropDown($Nome="", $Valor="", $Opcoes = "", $htmlAttr = Array())
@@ -187,7 +187,7 @@ class Form
                 });
              </script>';
 
-        Self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
+        self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
     }
 
     public static function Select2Tag($Nome="", $Valor="", $Opcoes = "", $htmlAttr = Array())
@@ -217,38 +217,38 @@ class Form
              </script>';
         }
 
-        Self::Hidden($Nome, $Valor, $htmlAttr);
+        self::Hidden($Nome, $Valor, $htmlAttr);
     }
 
 
     public static function Password($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("password", $Nome, $Valor, $htmlAttr);
+        echo self::Input("password", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Email($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("email", $Nome, $Valor, $htmlAttr);
+        echo self::Input("email", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Range($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("range", $Nome, $Valor, $htmlAttr);
+        echo self::Input("range", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Number($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("number", $Nome, $Valor, $htmlAttr);
+        echo self::Input("number", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Hidden($Nome="", $Valor="", $htmlAttr = Array())
     {
-        echo Self::Input("hidden", $Nome, $Valor, $htmlAttr);
+        echo self::Input("hidden", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Wysiwyg($Nome="", $Valor="", $htmlAttr = Array())
     {
-        Self::Hidden($Nome, $Valor);
+        self::Hidden($Nome, $Valor);
         echo "
                 <script type='text/javascript'>
                     jQuery(function($){

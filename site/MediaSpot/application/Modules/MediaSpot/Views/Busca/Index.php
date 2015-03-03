@@ -18,7 +18,7 @@
                             $Model->ListArtista->For_Each(function ($item) {
                                 //var_dump($item);
                                 ?>
-                                <a href="<?=\Libs\Helper::getUrl("","Player", $item->ArtistaId);?>" class="list-group-item"><?= $item->Titulo;?></a>
+                                <a href="<?=\Libs\Helper::getUrl("","Player", @$item->ArtistaId);?>" class="list-group-item"><?=@$item->Titulo;?></a>
                             <?
                             });
                         }else{
@@ -38,7 +38,7 @@
                             $Model->ListMusica->For_Each(function ($item) {
                                 //var_dump($item);
                                 ?>
-                                <a href="#" class="list-group-item"><?= $item->Titulo ?></a>
+                                <a href="<?=\Libs\Helper::getUrl("","Player", @$item->ArtistaId);?>" class="list-group-item"><?=@$item->Titulo;?></a>
                             <?
                             });
                         }else{
