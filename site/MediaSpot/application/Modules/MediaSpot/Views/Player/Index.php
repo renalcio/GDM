@@ -57,8 +57,6 @@ if(isset($Model)&& !empty($Model)){
                     <h3 class="box-title">Músicas</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-
-                    <div class="table-responsive">
                     <table id="listagem" class="table table-bordered table-hover">
                         <thead style="display:none">
                         <tr>
@@ -72,13 +70,13 @@ if(isset($Model)&& !empty($Model)){
                             $Model->ListMusica->For_Each(function ($Item) {
                                 //$Item = new \DAL\Musica();
                                 //var_dump($Item);
-                               /*
-                                <tr>
-                                    <td></td>
-                                    <td align="center">
-                                    </td>
-                                </tr>
-                            */
+                                /*
+                                 <tr>
+                                     <td></td>
+                                     <td align="center">
+                                     </td>
+                                 </tr>
+                             */
                             });
                         }else
                         {
@@ -87,7 +85,6 @@ if(isset($Model)&& !empty($Model)){
                         ?>
                         </tbody>
                     </table>
-                        </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
@@ -317,9 +314,9 @@ if(isset($Model)&& !empty($Model)){
                 togglePlayer();
             });
             /*$("#player_timeline").change(function(){
-                var Segundos = $(this).val();
-                seekTo(Segundos, false);
-            });*/
+             var Segundos = $(this).val();
+             seekTo(Segundos, false);
+             });*/
 
             $("#player_volume").change(function(){
                 var Volume = $(this).val();
@@ -328,25 +325,25 @@ if(isset($Model)&& !empty($Model)){
 
         });
     </script>
-    <div class="row" style="min-height: 200px; display: none;" id="player_row">
+    <div class="row" style="min-height: 200px;" id="player_row">
         <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0; z-index: 999">
             <div class="box-body bg-primary">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <div class="row">
-                            <div class="col-md-12">
-                            <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
-                            <button onclick="playPrev()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
-                            <button id="player_play" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-                            <button onclick="playNext()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
-                        </div>
+                            <div class="col-xs-12">
+                                <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
+                                    <button onclick="playPrev()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
+                                    <button id="player_play" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+                                    <button onclick="playNext()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-8">
                         <input id="player_timeline" type="text" name="player_timeline" value="" />
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-md-4 col-sm-3 col-xs-4">
                         <input id="player_volume" type="text" name="player_volume" value="" />
                     </div>
                 </div>

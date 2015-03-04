@@ -7,15 +7,21 @@
  * @version	1.0
  */
 function lastfm_autoload($name){
+    $name = explode("\\", $name);
+    $name = $name[1];
+    //var_dump($name);
 	if(stripos($name, 'Cache') !== false){
 		$filename = realpath(sprintf("%s/cache/%s.php", dirname(__FILE__), $name));
 	}
-	else if(stripos($name, 'Caller') !== false){
+	else if(stripos($name, "Caller") !== false){
 		$filename = realpath(sprintf("%s/caller/%s.php", dirname(__FILE__), $name));
 	}
 	else{
-		$filename = realpath(sprintf("%s/%s.php", dirname(__FILE__), $name));
+		$filename = realpath(sprintf("%s/%s.php", APP . "Libs\\lastfm\\", $name));
 	}
+
+   // echo sprintf("%s\\caller\\%s.php", dirname(__FILE__), $name);//realpath(APP . "Libs/lastfm/caller/%s.php" . $name);
+
 
 	if(file_exists($filename) && is_file($filename)){
 		require_once $filename;
