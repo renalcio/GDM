@@ -281,7 +281,7 @@ class UnitofWork {
     public function Insert(&$objeto){
         $this->Initialize($objeto);
 
-        $this->lista->For_Each(function($key,$item){
+        $this->lista->For_Each(function($item, $key){
             print_r($item);
             $item = $this->ClearClass($item);
             $pk = $this->pk;

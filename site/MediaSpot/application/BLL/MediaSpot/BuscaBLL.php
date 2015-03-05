@@ -42,14 +42,14 @@ class BuscaBLL extends BLL
         $Model = new Busca();
         $Model->Termo = $termo;
         //var_dump($termo);
-        //$Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
-        // $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
+        $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
+        $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
 
         if($Model->ListArtista->Count() == 0 && $Model->ListMusica->Count() == 0){
-            $Artistas = new ListHelper();
 
-            $Artistas = $this->BuscaArtistaLFM($termo);
-
+            $this->BuscaArtistaLFM($termo);
+            $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
+            $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
         }
 
         return $Model;
@@ -64,21 +64,22 @@ class BuscaBLL extends BLL
 
         $retorno = Array();
         foreach($musicas as $key => $musica) {
-
             //Adiciona ao banco de dados
 
             $mAdd = new Musica();
+
+            $mAdd->AplicacaoId = APPID;
 
             $mAdd->ArtistaId = $Artista->ArtistaId;
 
             $mAdd->Titulo = $this->FormataTexto($musica->getName());
 
-            //$mAdd->MusicaId = $this->unitofwork->Insert($mAdd);
+            $this->unitofwork->Insert($mAdd);
             $retorno[] = $mAdd;
         }
-        var_dump($retorno);
+        //var_dump($retorno);
 
-        return $retorno;
+        //return $retorno;
     }
 
 
@@ -89,11 +90,8 @@ class BuscaBLL extends BLL
         # --------------- Busca por Artista ------------------ #
 
         #Passo 2: Buscar no WebService
-
         /*$WsUrl = LastFM::getUrl($q, 'artist.search', 'artist');
-
         echo $WsUrl."<br><Br>";*/
-
         // set api key
 
         $retorno = Array();
@@ -102,7 +100,7 @@ class BuscaBLL extends BLL
 
         $results = \Artist::search($termo, $limit);
 
-        var_dump($results);
+        //var_dump($results);
 
         while ($artist = $results->current()) {
 
@@ -118,19 +116,21 @@ class BuscaBLL extends BLL
 
             $biografia = $biografia[0];
 
-            $artista->Descricao = $this->FormataTexto($biografia);
-
-            //Popula objeto Artista
-
             $artista->Titulo =  $this->FormataTexto($artist->getName());
 
-            $artista->mbid =  $artist->getMbid();
+            $artista->Descricao = $this->FormataTexto($biografia);
 
             $artista->Imagem = $artist->getImage();
 
             $artista->Ativo = 1;
 
             $artista->md5 = md5(strtolower($artista->Titulo));
+
+            $artista->mbid =  $artist->getMbid();
+
+            $artista->AplicacaoId = APPID;
+
+            $artista->Visitas = 0;
 
             $retorno[] = $artista;
 
@@ -147,47 +147,64 @@ class BuscaBLL extends BLL
 
         }
 
-
-
         $retorno = new ListHelper();
-
-
 
         foreach($retornoFiltrado as $itemAdd){
 
+            if(isset($itemAdd) && !empty($itemAdd)) {
 
+                $itemAdd->Relacionados = $this->BuscaRelacionadosLFM($itemAdd);
 
-            //Salvar Objeto Artista
+                $this->unitofwork->Insert($itemAdd);
 
-            //$bdQuery = $pdof->select("SELECT * FROM Artista WHERE md5 = '".$itemAdd->md5."'");
-
-
-
-            /*if(count($bdQuery)==0){
-
-                $itemAdd->ArtistaId = $pdof->insert("Artista", (Array)$itemAdd);
-
-            }else{
-
-                $itemAdd->ArtistaId = $bdQuery[0]->ArtistaId;
-
-            }*/
-
-            $itemAdd->Musicas = $this->GetMusicasLFM($itemAdd);
-
-            //$itemAdd->Similar = BuscaRelacionados($itemAdd);
-
-
-
-            $retorno->Add($itemAdd);
+                $this->GetMusicasLFM($itemAdd);
+            }
+            //$retorno->Add($itemAdd);
 
         }
 
-        var_dump($retorno);
+        //var_dump($retorno);
+
+        //return $retorno;
+
+    }
+
+    public function BuscaRelacionadosLFM($Artista){
+
+        \CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
+        //Musicas
+        $array = Array();
+        $retorno = "";
+
+        $relacionados = \Artist::getInfo($Artista->Titulo, $Artista->mbid, "pt")->getSimilarArtists();
+
+        $i = 0;
+
+        foreach($relacionados as $key => $relacionado) {
+            if($i < 5){
+                $array[] = $relacionado->getName();
+            }
+            $i++;
+        }
+
+        foreach($array as $element){
+
+            $hash = $element;
+
+            $retornoFiltrado[$hash] = $element;
+
+        }
+
+        $array = Array();
+
+        $array = $retornoFiltrado;
 
 
-
-
+        $n = 1;
+        foreach($array as $itemadd){
+            $retorno .= $itemadd . (($n < count($array)) ? "," : "");
+            $n++;
+        }
 
         return $retorno;
 
