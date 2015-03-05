@@ -7,8 +7,8 @@
  * @version	1.0
  */
 function lastfm_autoload($name){
-    $name = explode("\\", $name);
-    $name = $name[1];
+    //$name = explode("\\", $name);
+    //$name = $name[1];
     //var_dump($name);
 	if(stripos($name, 'Cache') !== false){
 		$filename = realpath(sprintf("%s/cache/%s.php", dirname(__FILE__), $name));

@@ -58,10 +58,11 @@ class BuscaBLL extends BLL
     public function GetMusicasLFM(Artista $Artista, $pagina = 1, $limite = 30){
 
 
-        CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
+        \CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
 
-        $musicas = Artist::getTopTracks($Artista->Titulo, $Artista->mbid, $limite, $pagina);
+        $musicas = \Artist::getTopTracks($Artista->Titulo, $Artista->mbid, $limite, $pagina);
 
+        $retorno = Array();
         foreach($musicas as $key => $musica) {
 
             //Adiciona ao banco de dados
@@ -70,17 +71,20 @@ class BuscaBLL extends BLL
 
             $mAdd->ArtistaId = $Artista->ArtistaId;
 
-            $mAdd->Titulo = MusicaNome($musica->getName());
+            $mAdd->Titulo = $this->FormataTexto($musica->getName());
 
             //$mAdd->MusicaId = $this->unitofwork->Insert($mAdd);
+            $retorno[] = $mAdd;
         }
-        //print_r($musicas);
+        var_dump($retorno);
+
+        return $retorno;
     }
 
 
     public function BuscaArtistaLFM($termo){
 
-        CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
+        \CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
 
         # --------------- Busca por Artista ------------------ #
 
@@ -96,9 +100,9 @@ class BuscaBLL extends BLL
 
         $limit = 2;
 
-        $results = Artist::search($termo, $limit);
+        $results = \Artist::search($termo, $limit);
 
-        print_r($results);
+        var_dump($results);
 
         while ($artist = $results->current()) {
 
@@ -106,7 +110,7 @@ class BuscaBLL extends BLL
 
             //Busca Biografia
 
-            $lfArtist = Artist::getInfo($artist->getName(), $artist->getMbid(), "pt");
+            $lfArtist = \Artist::getInfo($artist->getName(), $artist->getMbid(), "pt");
 
             $biografia = preg_replace("/<(.*)>(.*)<\/a>/i", "$2", $lfArtist->getBiography());
 
@@ -114,11 +118,11 @@ class BuscaBLL extends BLL
 
             $biografia = $biografia[0];
 
-            $artista->Descricao = FormataTexto($biografia);
+            $artista->Descricao = $this->FormataTexto($biografia);
 
             //Popula objeto Artista
 
-            $artista->Titulo =  FormataTexto($artist->getName());
+            $artista->Titulo =  $this->FormataTexto($artist->getName());
 
             $artista->mbid =  $artist->getMbid();
 
@@ -179,7 +183,7 @@ class BuscaBLL extends BLL
 
         }
 
-        print_r($retorno);
+        var_dump($retorno);
 
 
 
@@ -189,7 +193,7 @@ class BuscaBLL extends BLL
 
     }
 
-    function MusicaNome($texto){
+    public function FormataTexto($texto=""){
         $este = Array("´");
         $por = Array("'");
         return str_replace( $este, $por, $texto);
