@@ -6,6 +6,7 @@
  * Data: 24/02/2015
  */
 namespace BLL\MediaSpot;
+use BLL\BLL;
 use DAL\MediaSpot\Artista;
 use DAL\MediaSpot\Busca;
 use DAL\MediaSpot\Musica;
@@ -98,7 +99,7 @@ class BuscaBLL extends BLL
 
         $retorno = Array();
 
-        $limit = 2;
+        $limit = 3;
 
         $results = \Artist::search($termo, $limit);
 
@@ -157,9 +158,12 @@ class BuscaBLL extends BLL
 
                 $itemAdd->Relacionados = $this->BuscaRelacionadosLFM($itemAdd);
 
-                $this->unitofwork->Insert($itemAdd);
+                $check = $this->unitofwork->Select(new Artista(), "LOWER(Titulo) LIKE '%" . strtolower($itemAdd->Titular) . "%'")->ToList();
 
-                $this->GetMusicasLFM($itemAdd);
+                if($check->Count() == 0) {
+                    $this->unitofwork->Insert($itemAdd);
+                    $this->GetMusicasLFM($itemAdd);
+                }
             }
             //$retorno->Add($itemAdd);
 

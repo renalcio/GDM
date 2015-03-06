@@ -72,7 +72,10 @@ class Controller
 
         
         // create new "model" (and pass the database connection)
-        $this->bll = "BLL\\".$bll."BLL";
+        $this->bll = "BLL". DIRECTORY_SEPARATOR . PASTA . $bll."BLL";
+        if(!class_exists($this->bll))
+            $this->bll = "BLL\\".$bll."BLL";
+
         $this->bll = new $this->bll($this->db);
     }
     
