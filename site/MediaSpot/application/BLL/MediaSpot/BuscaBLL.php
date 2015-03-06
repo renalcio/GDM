@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 24/02/2015
  */
-namespace BLL;
+namespace BLL\MediaSpot;
 use DAL\MediaSpot\Artista;
 use DAL\MediaSpot\Busca;
 use DAL\MediaSpot\Musica;
@@ -26,12 +26,14 @@ class BuscaBLL extends BLL
     /**
      * @param object $db A PDO database connection
      */
-    function __construct($db)
+    function __construct($db = null)
     {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
+        if(!empty($db)) {
+            try {
+                $this->db = $db;
+            } catch (PDOException $e) {
+                exit('Database connection could not be established.');
+            }
         }
         parent::__construct();
     }

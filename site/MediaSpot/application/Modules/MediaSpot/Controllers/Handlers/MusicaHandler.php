@@ -6,6 +6,7 @@
  * Data: 28/01/2015
  */
 namespace Controllers\Handlers;
+use BLL\MediaSpot\BuscaBLL;
 use Core\Controller;
 use DAL\MediaSpot\Artista;
 use DAL\Musica;
@@ -44,6 +45,7 @@ class MusicaHandler extends Controller
         $retorno = "";
         $query = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
         //var_dump($query);
+
         foreach($query as $item){
             $retorno .= '<tr>
                            <td>'.$item->Titulo.'</td>
@@ -162,12 +164,14 @@ class MusicaHandler extends Controller
 
         header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
-
+        //print_r($_REQUEST);
         $inicio = $_REQUEST["start"];
         $total = $_REQUEST["length"];
         $pinicio = $inicio * $total;
         $titulo = strtolower($_REQUEST["search"]["value"]);
-
+        $pagina = ($inicio > 0) ? ($inicio / $total) + 1 : 1;
+        //echo "<br>";
+        //echo $pagina;
         $orderby = "";
         $orders = isset($_REQUEST["order"]) ? $_REQUEST["order"] : "";
         if(!empty($orders)) {
@@ -207,7 +211,40 @@ class MusicaHandler extends Controller
 
         $retorno = $retorno->ToArray();
 
-        if($retorno != null) {
+        if(empty($retorno) || count($retorno) == 0){
+            $bll = new BuscaBLL();
+            $Artista = new Artista();
+            $Artista = $this->unitofwork->GetById(new Artista(), $ArtistaId);
+            $bll->GetMusicasLFM($Artista, $pagina, $total);
+        }
+
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
+
+        if($ArtistaId > 0) {
+            $retorno = $retorno->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
+        }else{
+            $retorno = $retorno->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = ''");
+        }
+
+        if(!empty($orderby))
+            $retorno = $retorno->OrderBy($orderby)->Select("m.*");
+        else
+            $retorno = $retorno->Select("m.*");
+
+
+
+        //$retorno->BuildQuery();
+        //echo $retorno->query;
+
+        $retornoTotal = $retorno->ToArray();
+
+        $array = Array();
+
+        $retorno = $retorno->Skip($inicio)->Take($total);
+
+        $retorno = $retorno->ToArray();
+
+        if(!empty($retorno)) {
             for ($i = 0; $i < count($retorno); $i++) {
                 $retorno[$i]->OptionsMenu = '<div class="btn-group">
                                                 <i class= "fa fa-play" class="dropdown-toggle"
