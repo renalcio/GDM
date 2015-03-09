@@ -5,7 +5,8 @@
  * Autor: renalcio.freitas
  * Data: 24/02/2015
  */
-namespace BLL;
+namespace BLL\MediaSpot;
+use BLL\BLL;
 use DAL\MediaSpot\Player;
 use Libs\Database;
 use Libs\Helper;
