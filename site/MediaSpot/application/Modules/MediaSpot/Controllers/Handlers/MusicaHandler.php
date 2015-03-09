@@ -217,7 +217,6 @@ class MusicaHandler extends Controller
             $Artista = $this->unitofwork->GetById(new Artista(), $ArtistaId);
             $bll->GetMusicasLFM($Artista, $pagina, $total);
         }
-
         $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
 
         if($ArtistaId > 0) {
@@ -264,7 +263,8 @@ class MusicaHandler extends Controller
                                                 </ul>
                                             </div>';
 
-                $retorno[$i]->a = $this->unitofwork->GetById(new Artista(), $retorno[$i]->ArtistaId);
+                $retorno[$i]->a = new \stdClass();
+                $retorno[$i]->a->Titulo = $this->unitofwork->GetById(new Artista(), $retorno[$i]->ArtistaId)->Titulo;
 
                 $retorno[$i]->PlayButtom = '<button onclick="BuscaMusica('.$i.', \''.addslashes($retorno[$i]->a->Titulo).' - '.addslashes($retorno[$i]->Titulo).'\')" class="btn btn-default btnPlay"><i class= "fa fa-play" class="dropdown-toggle" data-toggle="dropdown"></i></button>';
 
@@ -274,11 +274,8 @@ class MusicaHandler extends Controller
         }
 
         $array["data"] = $retorno;
-        //print_r($array);
         $array["draw"] = $_REQUEST["draw"];
 
-        //$array["recordsTotal"] = count($retornoTotal);
-        //$array["recordsFiltered"] = count($retornoTotal);
 
         echo json_encode($array);
 

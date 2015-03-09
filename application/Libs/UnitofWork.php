@@ -282,7 +282,7 @@ class UnitofWork {
         $this->Initialize($objeto);
 
         $this->lista->For_Each(function($key,$item){
-            print_r($item);
+            //print_r($item);
             $item = $this->ClearClass($item);
             $pk = $this->pk;
             $this->objeto->$pk = $this->pdo->Insert($this->from, $item);

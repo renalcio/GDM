@@ -40,9 +40,11 @@
       <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="1020" max-vertical-offset="6086">
-              <caret line="60" column="42" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="42" />
-              <folding />
+            <state vertical-scroll-proportion="-29.423077" vertical-offset="2856" max-vertical-offset="6290">
+              <caret line="213" column="40" selection-start-line="213" selection-start-column="40" selection-end-line="213" selection-end-column="40" />
+              <folding>
+                <element signature="e#2289#2309#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,15 +59,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuscaBLL.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BuscaBLL.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4927711" vertical-offset="2362" max-vertical-offset="3927">
-              <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.0" vertical-offset="737" max-vertical-offset="3536">
+              <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
               <folding>
                 <element signature="e#6#90#0#PHP" expanded="true" />
-                <element signature="e#116#128#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnitofWork.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Libs/UnitofWork.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.769231" vertical-offset="4489" max-vertical-offset="8534">
+              <caret line="284" column="14" selection-start-line="284" selection-start-column="14" selection-end-line="284" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,53 +94,41 @@
       <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2040">
-              <caret line="63" column="62" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
+            <state vertical-scroll-proportion="-0.0" vertical-offset="1071" max-vertical-offset="2040">
+              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuscaController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="799">
-              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-              <folding>
-                <element signature="e#132#152#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MusicaHandler.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MusicaHandler.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="4777">
-              <caret line="240" column="25" selection-start-line="240" selection-start-column="25" selection-end-line="240" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.2579365" vertical-offset="3542" max-vertical-offset="4947">
+              <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
               <folding>
-                <marker date="1425648353404" expanded="true" signature="1582:2791" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="1746:2760" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="1802:2726" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="1998:2687" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="2043:2332" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="2155:2286" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="2377:2645" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="2464:2599" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="4759:5953" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="4855:4930" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="5028:5902" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="5085:5464" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="5251:5406" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="5521:5848" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="5631:5790" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="9685:10879" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="9781:9856" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="9954:10828" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="10011:10390" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="10177:10332" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="10447:10774" placeholder="..." />
-                <marker date="1425648353404" expanded="true" signature="10557:10716" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="1582:2791" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="1746:2760" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="1802:2726" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="1998:2687" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="2043:2332" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="2155:2286" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="2377:2645" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="2464:2599" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="4759:5953" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="4855:4930" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="5028:5902" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="5085:5464" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="5251:5406" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="5521:5848" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="5631:5790" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="9684:10878" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="9780:9855" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="9953:10827" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="10010:10389" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="10176:10331" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="10446:10773" placeholder="..." />
+                <marker date="1425944860603" expanded="true" signature="10556:10715" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -193,22 +192,22 @@
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Config/ConfigProd.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Core/Application.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Config/Config.php" />
-        <option value="$PROJECT_DIR$/application/Libs/UnitofWork.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Libs/ArrayHelper.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Busca/Index.php" />
-        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/old/.htaccess" />
         <option value="$PROJECT_DIR$/site/MediaSpot/.htaccess" />
         <option value="$PROJECT_DIR$/site/MediaSpot/old/inc/class/lastfm/lastfm.api.php" />
-        <option value="$PROJECT_DIR$/site/MediaSpot/application/Libs/UnitofWork.php" />
-        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Libs/lastfm/lastfm.api.php" />
         <option value="db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/PlayerBLL.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Libs/UnitofWork.php" />
+        <option value="$PROJECT_DIR$/application/Libs/UnitofWork.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php" />
       </list>
     </option>
   </component>
@@ -221,10 +220,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1288" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1040" />
+    <option name="width" value="1378" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -268,6 +267,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -457,6 +457,44 @@
               <option name="myItemId" value="Modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Handlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -568,7 +606,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -613,20 +650,17 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -636,6 +670,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -837,7 +874,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1288" y="-8" width="1296" height="1040" extended-state="6" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -847,7 +884,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26375404" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26783004" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -883,9 +920,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30825242" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -944,13 +981,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Artista.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1674699" vertical-offset="0" max-vertical-offset="1513">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Musica/Index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="2159">
@@ -1119,13 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Libs/UnitofWork.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="4624" max-vertical-offset="8619">
-          <caret line="288" column="12" selection-start-line="288" selection-start-column="12" selection-end-line="290" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10240964" vertical-offset="1173" max-vertical-offset="5321">
@@ -1189,13 +1212,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/UnitofWork.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35343036" vertical-offset="4590" max-vertical-offset="8619">
-          <caret line="283" column="51" selection-start-line="283" selection-start-column="51" selection-end-line="283" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/ArrayHelper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2993762" vertical-offset="412" max-vertical-offset="1241">
@@ -1217,67 +1233,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="6086">
-          <caret line="60" column="42" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="4777">
-          <caret line="240" column="25" selection-start-line="240" selection-start-column="25" selection-end-line="240" selection-end-column="25" />
-          <folding>
-            <marker date="1425648353404" expanded="true" signature="1582:2791" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="1746:2760" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="1802:2726" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="1998:2687" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="2043:2332" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="2155:2286" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="2377:2645" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="2464:2599" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="4759:5953" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="4855:4930" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="5028:5902" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="5085:5464" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="5251:5406" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="5521:5848" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="5631:5790" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="9685:10879" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="9781:9856" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="9954:10828" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="10011:10390" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="10177:10332" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="10447:10774" placeholder="..." />
-            <marker date="1425648353404" expanded="true" signature="10557:10716" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="799">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-          <folding>
-            <element signature="e#132#152#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/lastfm/lastfm.api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2253012" vertical-offset="0" max-vertical-offset="830">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2040">
-          <caret line="63" column="62" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1290,26 +1249,102 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/MediaSpot..Artista">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/MediaSpot..Musica">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/PlayerBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69638556" vertical-offset="0" max-vertical-offset="830">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.041162226" vertical-offset="0" max-vertical-offset="826">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Views/Player/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-29.423077" vertical-offset="2856" max-vertical-offset="6290">
+          <caret line="213" column="40" selection-start-line="213" selection-start-column="40" selection-end-line="213" selection-end-column="40" />
+          <folding>
+            <element signature="e#2289#2309#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/BuscaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.072727" vertical-offset="295" max-vertical-offset="799">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="18" />
+          <folding>
+            <element signature="e#132#152#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/BLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25515947" vertical-offset="0" max-vertical-offset="533">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/UnitofWork.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18949343" vertical-offset="4642" max-vertical-offset="8534">
+          <caret line="284" column="14" selection-start-line="284" selection-start-column="14" selection-end-line="284" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.0" vertical-offset="737" max-vertical-offset="3536">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Libs/UnitofWork.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.769231" vertical-offset="4489" max-vertical-offset="8534">
+          <caret line="284" column="14" selection-start-line="284" selection-start-column="14" selection-end-line="284" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2040">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1321,31 +1356,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/PlayerBLL.php">
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69638556" vertical-offset="0" max-vertical-offset="830">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2579365" vertical-offset="3542" max-vertical-offset="4947">
+          <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
           <folding>
-            <element signature="e#117#129#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041162226" vertical-offset="0" max-vertical-offset="826">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/BLL/MediaSpot/BuscaBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4927711" vertical-offset="2362" max-vertical-offset="3927">
-          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
-            <element signature="e#116#128#0#PHP" expanded="true" />
+            <marker date="1425944860603" expanded="true" signature="1582:2791" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="1746:2760" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="1802:2726" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="1998:2687" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="2043:2332" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="2155:2286" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="2377:2645" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="2464:2599" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="4759:5953" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="4855:4930" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="5028:5902" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="5085:5464" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="5251:5406" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="5521:5848" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="5631:5790" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="9684:10878" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="9780:9855" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="9953:10827" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="10010:10389" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="10176:10331" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="10446:10773" placeholder="..." />
+            <marker date="1425944860603" expanded="true" signature="10556:10715" placeholder="..." />
           </folding>
         </state>
       </provider>

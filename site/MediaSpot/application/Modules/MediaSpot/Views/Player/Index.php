@@ -142,9 +142,12 @@ if(isset($Model)&& !empty($Model)){
                 playing = true;
                 $("#player_play>span").attr("class", "glyphicon glyphicon-pause");
                 $("#yt_content").removeClass("invisible");
+                var btn = $(".btnPlay:eq("+playIndex+")");
+                btn.find("i").attr("class", "fa fa-pause");
             }else{
                 playing = false;
                 $("#player_play>span").attr("class", "glyphicon glyphicon-play");
+                $(".btnPlay i").attr("class", "fa fa-play");
             }
         }
         function stopVideo() {
@@ -206,6 +209,10 @@ if(isset($Model)&& !empty($Model)){
                     max: TempoTotal,
                     from: TempoCorrido
                 });
+
+                if(TempoCorrido >= TempoTotal){
+                    playAt(playIndex+1);
+                }
             }
         }
 

@@ -44,7 +44,6 @@ class BuscaBLL extends BLL
         $termo = strtolower($termo);
         $Model = new Busca();
         $Model->Termo = $termo;
-        //var_dump($termo);
         $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
         $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
 
@@ -80,9 +79,6 @@ class BuscaBLL extends BLL
             $this->unitofwork->Insert($mAdd);
             $retorno[] = $mAdd;
         }
-        //var_dump($retorno);
-
-        //return $retorno;
     }
 
 
@@ -103,7 +99,6 @@ class BuscaBLL extends BLL
 
         $results = \Artist::search($termo, $limit);
 
-        //var_dump($results);
 
         while ($artist = $results->current()) {
 
@@ -165,13 +160,8 @@ class BuscaBLL extends BLL
                     $this->GetMusicasLFM($itemAdd);
                 }
             }
-            //$retorno->Add($itemAdd);
 
         }
-
-        //var_dump($retorno);
-
-        //return $retorno;
 
     }
 
