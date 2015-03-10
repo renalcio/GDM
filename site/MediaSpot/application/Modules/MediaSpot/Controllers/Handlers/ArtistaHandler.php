@@ -26,4 +26,30 @@ class ArtistaHandler extends Controller
 
         echo $retorno;
     }
+
+    function Consulta(){
+        header('Content-Type: application/json; Charset=UTF-8');
+        $query = $_REQUEST["query"];
+        $resultados = $this->unitofwork->Get(new \DAL\MediaSpot\Artista(), "LOWER(Titulo) LIKE '%".strtolower($query)
+            ."%'")->ToArray();
+
+        //var_dump($resultados);
+
+        $retorno = Array();
+
+        $obj = new \stdClass();
+
+        foreach($resultados as $item){
+            $obj = new \stdClass();
+
+            $obj->id = $item->ArtistaId;
+            $obj->name = $item->Titulo;
+            //echo $obj->name;
+            $retorno[] = $obj;
+            //var_dump($retorno);
+        };
+        //var_dump($retorno);
+
+        echo json_encode($retorno);
+    }
 }

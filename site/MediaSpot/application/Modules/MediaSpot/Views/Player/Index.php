@@ -210,8 +210,9 @@ if(isset($Model)&& !empty($Model)){
                     from: TempoCorrido
                 });
 
-                if(TempoCorrido >= TempoTotal){
-                    playAt(playIndex+1);
+                if((TempoCorrido+1) >= TempoTotal){
+                    var next = playIndex+1;
+                    playAt(next);
                 }
             }
         }

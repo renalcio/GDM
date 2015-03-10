@@ -58,7 +58,9 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "bootstrap-tagsinput.css",
         //IonSlide
         "ionslider/ion.rangeSlider.css",
-        "ionslider/ion.rangeSlider.skinNice.css"
+        "ionslider/ion.rangeSlider.skinNice.css",
+        //TYPEAHEAD
+        "typeahead.js-bootstrap.css"
     ));
     echo "<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", Array(
@@ -104,6 +106,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //ISONSLIDE
         "plugins/moment.js",
         "plugins/ionslider/ion.rangeSlider.js",
+        //TYPEAHEAD
+        "plugins/bootstrap-typeahead.min.js",
 
         //HELPER
         "helper.js",
@@ -181,6 +185,32 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
 		}
              */
         }
+        $(function() {
+
+            $('#BuscaQ').typeahead({
+
+                menu: '<ul class="typeahead dropdown-menu qMenu"></ul>',
+
+                timeout: 1000,
+
+                ajax: {
+
+                    url: "<?=URL?>handler/artista/Consulta/",
+
+                    triggerLength: 1
+
+                },
+                autoSelect: false,
+                onSelect: function (item) {
+                    console.log(item);
+                    //$("#buscaQ").val(item.value);
+
+                    //$("#formBusca").submit();
+
+                }
+
+            });
+        });
     </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -281,7 +311,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                 <div class="col-lg-offset-1 col-lg-10">
                     <form class="search-form" method="post" action="<?=\Libs\Helper::getUrl("Index","Busca");?>">
                         <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Pesquisar">
+                            <input autocomplete="off" id="BuscaQ" type="text" name="q" class="form-control"
+                                   placeholder="Pesquisar" />
                             <div class="input-group-btn">
                                 <button type="submit" name="submit" class="btn btn-primary"><i class="fa
                                 fa-search"></i></button>

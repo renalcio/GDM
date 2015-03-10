@@ -95,7 +95,7 @@ class BuscaBLL extends BLL
 
         $retorno = Array();
 
-        $limit = 5;
+        $limit = 8;
 
         $results = \Artist::search($termo, $limit);
 
@@ -153,7 +153,7 @@ class BuscaBLL extends BLL
 
                 $itemAdd->Relacionados = $this->BuscaRelacionadosLFM($itemAdd);
 
-                $check = $this->unitofwork->Select(new Artista(), "LOWER(Titulo) = '" . strtolower($itemAdd->Titular) . "'")->ToList();
+                $check = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) = '" . strtolower($itemAdd->Titulo) . "'")->ToList();
 
                 if($check->Count() == 0) {
                     $this->unitofwork->Insert($itemAdd);
