@@ -44,6 +44,7 @@ class ArtistaHandler extends Controller
 
             $obj->id = $item->ArtistaId;
             $obj->name = $item->Titulo;
+            $obj->value = $item->ArtistaId;
             //echo $obj->name;
             $retorno[] = $obj;
             //var_dump($retorno);

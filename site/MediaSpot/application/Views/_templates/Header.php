@@ -107,7 +107,9 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "plugins/moment.js",
         "plugins/ionslider/ion.rangeSlider.js",
         //TYPEAHEAD
-        "plugins/bootstrap-typeahead.min.js",
+        //"plugins/bootstrap-typeahead.min.js",
+        "plugins/handlebars.js",
+        "plugins/typeahead.bundle.js",
 
         //HELPER
         "helper.js",
@@ -187,29 +189,70 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         }
         $(function() {
 
-            $('#BuscaQ').typeahead({
-
+            /*$('#BuscaQ').typeahead({
                 menu: '<ul class="typeahead dropdown-menu qMenu"></ul>',
-
+                //hint: true,
+                //highlight: true,
                 timeout: 1000,
-
                 ajax: {
-
                     url: "<?=URL?>handler/artista/Consulta/",
-
                     triggerLength: 1
-
                 },
                 autoSelect: false,
                 onSelect: function (item) {
                     console.log(item);
                     //$("#buscaQ").val(item.value);
-
                     //$("#formBusca").submit();
-
                 }
-
             });
+             url: '<?=URL?>handler/artista/Consulta/?query=%QUERY'
+
+             http://twitter.github.io/typeahead.js/data/films/post_1960.json
+             http://twitter.github.io/typeahead.js/examples/#remote
+             https://github.com/twitter/typeahead.js
+             https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#tokens
+             http://stackoverflow.com/questions/14034950/bootstrap-typeahead-remove-forced-selection-of-first-item
+             remote: {
+             url: '<?=URL?>handler/artista/Consulta/',
+             ajax: {
+             data: {query : "%QUERY"},
+             method: "POST"
+             }
+             }
+            */
+
+            var Resultados = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: '<?=URL?>handler/artista/Consulta/',
+                remote: '<?=URL?>handler/artista/Consulta/?query=%QUERY'
+            });
+
+            Resultados.initialize();
+
+            $('#BuscaQ').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            }, {
+                name: 'busca-q',
+                displayKey: 'value',
+                source: Resultados.ttAdapter(),
+                templates: {
+                    empty: [
+                        '<p style="padding: 0 12px;">',
+                        'Nenhum artista encontrado, pressione enter para uma pesquisa personalizada',
+                        '</p>'
+                    ].join('\n'),
+                    suggestion: Handlebars.compile('<p>{{name}}</p>')
+                }
+            });
+            $('#BuscaQ').on(['typeahead:selected'].join(' '), function(item){
+                var id = $(this).val();
+                $(this).val("");
+                location.href = "<?=URL?>Player/Index/"+id;
+            });
+
         });
     </script>
 
@@ -310,14 +353,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
             <div class="row">
                 <div class="col-lg-offset-1 col-lg-10">
                     <form class="search-form" method="post" action="<?=\Libs\Helper::getUrl("Index","Busca");?>">
-                        <div class="input-group">
-                            <input autocomplete="off" id="BuscaQ" type="text" name="q" class="form-control"
-                                   placeholder="Pesquisar" />
-                            <div class="input-group-btn">
-                                <button type="submit" name="submit" class="btn btn-primary"><i class="fa
-                                fa-search"></i></button>
-                            </div>
-                        </div><!-- /.input-group -->
+                            <input autocomplete="off" id="BuscaQ" type="text" name="q" class="typeahead"
+                                   placeholder="Buscar Artistas ou Músicas" />
                     </form>
                 </div>
             </div>

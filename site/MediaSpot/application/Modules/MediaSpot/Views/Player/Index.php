@@ -52,9 +52,13 @@ if(isset($Model)&& !empty($Model)){
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-solid">
+            <div class="box ">
                 <div class="box-header">
                     <h3 class="box-title">Músicas</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Letra da Música Atual" data-original-title="Collapse"><i class="fa fa-file-text-o"></i></button>
+                        <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Repetir" data-original-title="Remove"><i class="fa fa-refresh"></i></button>
+                    </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="listagem" class="table table-bordered table-hover">
