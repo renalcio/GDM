@@ -253,6 +253,14 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                 location.href = "<?=URL?>Player/Index/"+id;
             });
 
+            $('#BuscaQ').keyup(function(e) {
+                if (e.keyCode == 13) {
+                    setTimeout(function(){
+                        $("#buscaForm").submit();
+                    }, 800);
+                }
+            });
+
         });
     </script>
 
@@ -352,7 +360,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         <section class="content-header">
             <div class="row">
                 <div class="col-lg-offset-1 col-lg-10">
-                    <form class="search-form" method="post" action="<?=\Libs\Helper::getUrl("Index","Busca");?>">
+                    <form id="buscaForm" class="search-form" method="post" action="<?=\Libs\Helper::getUrl("Index",
+                        "Busca");?>">
                             <input autocomplete="off" id="BuscaQ" type="text" name="q" class="typeahead"
                                    placeholder="Buscar Artistas ou Músicas" />
                     </form>

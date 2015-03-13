@@ -30,6 +30,7 @@ class Application
 
         //Verifica se tem pasta personalizada
         $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . PASTA . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+        //echo $urlController;
 
         //echo "PATH". $urlController."<br>";
         if(!file_exists($urlController)){
@@ -133,7 +134,7 @@ class Application
              }*/
 
          } else {
-            echo $urlController;
+            //echo $urlController;
              $page = new \Controllers\ErrorController();
              $page->index();
          }
