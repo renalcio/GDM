@@ -42,12 +42,36 @@ if(isset($Model)&& !empty($Model)){
         <div class="col-md-9">
             <div class="box box-solid">
                 <div class="box-header">
-                    <h3 class="box-title"><?=$Model->Artista->Titulo;?></h3>
+                    <h3 class="box-title" id="hArtista"><?=$Model->Artista->Titulo;?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <?=$Model->Artista->Descricao;?>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+            <?
+            if(isset($Model->Artista->Relacionados) && !empty($Model->Artista->Relacionados)) {
+                ?>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <?
+                        $rels = explode(",", $Model->Artista->Relacionados);
+                        $rels = new \Libs\ArrayHelper($rels);
+                        if($rels->Count() > 0){
+                            $rels->For_Each(function($item){
+                                ?>
+                                <button type="button" class="btn btn-default"><?=$item?></button>
+                            <?
+                            });
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?
+            }
+            ?>
+
         </div>
     </div>
     <div class="row">
@@ -56,8 +80,8 @@ if(isset($Model)&& !empty($Model)){
                 <div class="box-header">
                     <h3 class="box-title">Músicas</h3>
                     <div class="box-tools pull-right">
-                        <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Letra da Música Atual" data-original-title="Collapse"><i class="fa fa-file-text-o"></i></button>
-                        <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Repetir" data-original-title="Remove"><i class="fa fa-refresh"></i></button>
+                        <button class="btn btn-default btn-sm" onclick="getLetra()" data-toggle="tooltip" title="Letra da Música Atual" data-original-title="Collapse"><i class="fa fa-file-text-o"></i></button>
+                        <button id="btnRepetir" onclick="replay()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Repetir" data-original-title="Repetir"><i class="fa fa-refresh"></i></button>
                     </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -207,16 +231,21 @@ if(isset($Model)&& !empty($Model)){
             if(playing == true) {
                 var TempoCorrido = player.getCurrentTime(),
                     TempoTotal = player.getDuration();
-                //console.log(TempoCorrido);
+                //console.log(TempoCorrido.toString().toInt() + " de " + TempoTotal.toString().toInt());
                 var slider = $("#player_timeline").data("ionRangeSlider");
                 slider.update({
                     max: TempoTotal,
                     from: TempoCorrido
                 });
 
-                if((TempoCorrido+1) >= TempoTotal){
-                    var next = playIndex+1;
-                    playAt(next);
+                if(TempoCorrido.toString().toInt() == TempoTotal.toString().toInt()){
+                    setTimeout(function(){
+                        var replay = $.cookie("replay");
+                        if(replay == null || replay != "true")
+                            playNext();
+                        else
+                            seekTo(0, true);
+                    }, 1000);
                 }
             }
         }
@@ -290,6 +319,73 @@ if(isset($Model)&& !empty($Model)){
             playIndex = playIndex > 0 ? playIndex-1 : 0;
             playAt(playIndex);
         }
+
+        function replay(){
+            var cookie = $.cookie("replay");
+            if(cookie && cookie != null && cookie == "true"){
+                $.cookie("replay", null);
+            }else{
+                $.cookie("replay", "true");
+            }
+
+            toogleReplayBtn();
+        }
+
+        function toogleReplayBtn(){
+            var cookie = $.cookie("replay");
+            if(cookie && cookie != null && cookie == "true"){
+                $("#btnRepetir").attr("class", "btn btn-primary btn-sm");
+            }else{
+                $("#btnRepetir").attr("class", "btn btn-default btn-sm");
+            }
+        }
+
+
+        function getLetra(){
+            var btn = $(".btnPlay:eq("+playIndex+")"),
+                artista = $("#hArtista").html(),
+                musica = btn.attr("musica");
+
+            console.log(artista);
+            console.log(musica);
+
+            jQuery.getJSON(
+                "http://api.vagalume.com.br/search.php"
+                + "?art=" + artista
+                + "&mus=" + musica,
+                function (data) {
+                    // Letra da m�sica
+                    console.log(data);
+                    //console.log(data.mus[0].text);
+                    if(data.type != "song_notfound"){
+                        if(Boolean(data.mus[0].text)){
+                            var strLetra = data.mus[0].text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                            $("#letraOriginal p").html(strLetra);
+                            $("#letraTitulo").html(artista+" - "+musica);
+                            $(".liTraducao").addClass("disabled");
+                            $(".liTraducao a").attr("href", "javascript:void()").attr("data-toggle", "");
+
+                            if(Boolean(data.mus[0].translate)){
+                                strLetra = data.mus[0].translate[0].text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                                $("#letraTraducao p").html(strLetra);
+                                $(".liTraducao").removeClass("disabled");
+                                $(".liTraducao a").attr("href", "#letraTraducao").attr("data-toggle", "tab");
+                            }
+                        }
+                    }else{
+                        $("#letraOriginal p").html("M&uacute;sica n&atilde;o encontrada.");
+                        $("#letraTraducao p").html("M&uacute;sica n&atilde;o encontrada.");
+                        $("#letraTitulo").html("Ops...");
+                        $(".liTraducao").addClass("disabled");
+                        $(".liTraducao a").attr("href", "javascript:void()").attr("data-toggle", "");
+                    }
+
+                    $('#tabLetras a:first').tab('show');
+
+                    $('#letraModal').modal('show');
+                }
+            );
+        }
     </script>
 
     <script type="text/javascript">
@@ -337,6 +433,59 @@ if(isset($Model)&& !empty($Model)){
 
         });
     </script>
+    <!-- LETRA -->
+
+    <div class="modal fade" id="letraModal" tabindex="-1" role="dialog" aria-labelledby="letraTitulo" aria-hidden="true">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+
+                    <h4 class="modal-title" id="letraTitulo" style="text-transform:capitalize">Letra da Musica</h4>
+
+                </div>
+
+                <div class="modal-body" id="tabLetras" >
+
+                    <ul class="nav nav-tabs">
+
+                        <li class="active"><a href="#letraOriginal" data-toggle="tab">Original</a></li>
+
+                        <li class="liTraducao" ><a href="#letraTraducao" data-toggle="tab">Tradu&ccedil;&atilde;o</a></li>
+
+                    </ul>
+
+                    <div id="myTabContent" class="tab-content">
+
+                        <div class="tab-pane fade active in" id="letraOriginal">
+
+                            <p></p>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="letraTraducao">
+
+                            <p></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER -->
     <div class="row" style="min-height: 200px;" id="player_row">
         <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0; z-index: 999">
             <div class="box-body bg-primary">

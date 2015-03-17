@@ -66,6 +66,10 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
     \Libs\Helper::LoadMedia("js", Array(
         //JQUERY
         "jquery.js",
+
+        //COOKIE
+        "plugins/jquery.cookie.js",
+
         //BOOTSTRAP
         "bootstrap.min.js",
         //TEMA
@@ -110,6 +114,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //"plugins/bootstrap-typeahead.min.js",
         "plugins/handlebars.js",
         "plugins/typeahead.bundle.js",
+
 
         //HELPER
         "helper.js",

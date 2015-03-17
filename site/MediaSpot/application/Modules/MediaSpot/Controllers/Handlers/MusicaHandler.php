@@ -266,7 +266,7 @@ class MusicaHandler extends Controller
                 $retorno[$i]->a = new \stdClass();
                 $retorno[$i]->a->Titulo = $this->unitofwork->GetById(new Artista(), $retorno[$i]->ArtistaId)->Titulo;
 
-                $retorno[$i]->PlayButtom = '<button onclick="BuscaMusica('.$i.', \''.addslashes($retorno[$i]->a->Titulo).' - '.addslashes($retorno[$i]->Titulo).'\')" class="btn btn-default btnPlay"><i class= "fa fa-play" class="dropdown-toggle" data-toggle="dropdown"></i></button>';
+                $retorno[$i]->PlayButtom = '<button onclick="BuscaMusica('.$i.', \''.addslashes($retorno[$i]->a->Titulo).' - '.addslashes($retorno[$i]->Titulo).'\')" musica="'.addslashes($retorno[$i]->Titulo).'" class="btn btn-default btnPlay"><i class= "fa fa-play" class="dropdown-toggle" data-toggle="dropdown"></i></button>';
 
             }
         }else{
