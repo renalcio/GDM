@@ -112,7 +112,7 @@ class ClassGenerator
         $retorno->parametros = "";
         $retorno->conteudo =
             "\n".'
-            $pdo = new Database();'.
+            $unitofwork = new UnitofWork();'.
             "\n".'
             if(!empty($'.$this->fields[1][0].')){
             ';

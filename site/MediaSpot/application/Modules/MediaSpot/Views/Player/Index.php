@@ -23,6 +23,8 @@ if(isset($Model)&& !empty($Model)){
                 ]
                 //"aoColumns": [ null, null, {"bSortable": false} ]
             });
+
+            toogleBtns();
         });
     </script>
     <style>
@@ -82,6 +84,7 @@ if(isset($Model)&& !empty($Model)){
                     <div class="box-tools pull-right">
                         <button class="btn btn-default btn-sm" onclick="getLetra()" data-toggle="tooltip" title="Letra da Música Atual" data-original-title="Collapse"><i class="fa fa-file-text-o"></i></button>
                         <button id="btnRepetir" onclick="replay()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Repetir" data-original-title="Repetir"><i class="fa fa-refresh"></i></button>
+                        <button id="btntoggleVideo" onclick="toggleVideo()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Ocultar / Exibir Vídeo" data-original-title="Ocultar / Exibir Vídeo"><i class="fa fa-eye-slash"></i></button>
                     </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -328,15 +331,35 @@ if(isset($Model)&& !empty($Model)){
                 $.cookie("replay", "true");
             }
 
-            toogleReplayBtn();
+            toogleBtns();
         }
 
-        function toogleReplayBtn(){
-            var cookie = $.cookie("replay");
+        function toggleVideo(){
+            var cookie = $.cookie("hideVideo");
             if(cookie && cookie != null && cookie == "true"){
+                $.cookie("hideVideo", null);
+            }else{
+                $.cookie("hideVideo", "true");
+            }
+
+            toogleBtns();
+        }
+
+        function toogleBtns(){
+            var replay = $.cookie("replay");
+            if(replay && replay != null && replay == "true"){
                 $("#btnRepetir").attr("class", "btn btn-primary btn-sm");
             }else{
                 $("#btnRepetir").attr("class", "btn btn-default btn-sm");
+            }
+
+            var hideVideo = $.cookie("hideVideo");
+            if(hideVideo && hideVideo != null && hideVideo == "true"){
+                $("#btntoggleVideo").attr("class", "btn btn-primary btn-sm");
+                $("#yt_content").css("opacity", "0");
+            }else{
+                $("#btntoggleVideo").attr("class", "btn btn-default btn-sm");
+                $("#yt_content").css("opacity", "1");
             }
         }
 

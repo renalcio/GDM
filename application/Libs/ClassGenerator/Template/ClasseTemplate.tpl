@@ -8,7 +8,7 @@
 
 namespace ${NameSpace};
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class ${C}
 {

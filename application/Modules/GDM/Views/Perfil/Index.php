@@ -63,7 +63,7 @@ if(is_array($Model) && count($Model) > 0)
                             <td align="center"><?=$item->Nivel;?></td>
                             <td>
 
-                                <input type="checkbox" ref="<?=@$item->PerfilId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não" />
+                                <input type="checkbox" value="1" ref="<?=@$item->Nivel;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não" />
                             </td>
                             <td align="center">
 

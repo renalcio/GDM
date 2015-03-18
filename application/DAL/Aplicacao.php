@@ -1,6 +1,5 @@
 <?php
 namespace DAL;
-use Libs\Database;
 use Libs\UnitofWork;
 
 class Aplicacao

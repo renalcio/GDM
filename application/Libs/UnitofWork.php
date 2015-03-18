@@ -257,7 +257,7 @@ class UnitofWork {
 
     public function Update(&$objeto){
         $this->Initialize($objeto);
-       // print_r($this->lista);
+        // print_r($this->lista);
         $this->lista->For_Each(function($item) {
             //print_r($item);
             if(is_object($item))
@@ -281,7 +281,7 @@ class UnitofWork {
     public function Insert(&$objeto){
         $this->Initialize($objeto);
 
-        $this->lista->For_Each(function($key,$item){
+        $this->lista->For_Each(function($item, $key){
             //print_r($item);
             $item = $this->ClearClass($item);
             $pk = $this->pk;

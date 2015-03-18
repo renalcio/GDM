@@ -20,6 +20,7 @@ class HomeBLL extends BLL
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
+        parent::__construct();
     }
 
     public function Generator($AplicacaoId = APPID){
