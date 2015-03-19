@@ -3,12 +3,12 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 18/03/2015 16:18:49
+* @date: 19/03/2015 20:42:52
 */
 
 namespace DAL;
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class Acesso
 {
@@ -45,7 +45,7 @@ class Acesso
     function __construct($AcessoId = "",$AplicacaoId = "",$PerfilId = "",$MenuId = ""){
         
 
-            $pdo = new Database();
+            $unitofwork = new UnitofWork();
 
             if(!empty($AplicacaoId)){
             

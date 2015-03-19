@@ -3,12 +3,12 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 18/03/2015 16:18:50
+* @date: 19/03/2015 20:42:53
 */
 
 namespace DAL;
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class PessoaAplicacao
 {
@@ -45,7 +45,7 @@ class PessoaAplicacao
     function __construct($PessoaAplicacaoId = "",$PessoaId = "",$AplicacaoId = "",$Apagado = ""){
         
 
-            $pdo = new Database();
+            $unitofwork = new UnitofWork();
 
             if(!empty($PessoaId)){
             

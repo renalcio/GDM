@@ -3,12 +3,12 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 18/03/2015 16:18:49
+* @date: 19/03/2015 20:42:52
 */
 
 namespace DAL;
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class Action
 {
@@ -21,25 +21,11 @@ class Action
  var $ActionId = 0;
 
 /**
-                 * @Name: ModuloId
-                 * @DisplayName: ModuloId
-                 * @Type: int(11)
-                 */
- var $ModuloId = 0;
-
-/**
                  * @Name: Titulo
                  * @DisplayName: Titulo
                  * @Type: varchar(255)
                  */
  var $Titulo;
-
-/**
-                 * @Name: Publico
-                 * @DisplayName: Publico
-                 * @Type: tinyint(4)
-                 */
- var $Publico = 0;
 
 /**
                  * @Name: Descricao
@@ -48,19 +34,25 @@ class Action
                  */
  var $Descricao;
 
+/**
+                 * @Name: Handler
+                 * @DisplayName: Handler
+                 * @Type: tinyint(1)
+                 */
+ var $Handler = 0;
 
-    function __construct($ActionId = "",$ModuloId = "",$Titulo = "",$Publico = "",$Descricao = ""){
+
+    function __construct($ActionId = "",$Titulo = "",$Descricao = "",$Handler = ""){
         
 
-            $pdo = new Database();
+            $unitofwork = new UnitofWork();
 
-            if(!empty($ModuloId)){
+            if(!empty($Titulo)){
             
   $this->ActionId = $ActionId;
-  $this->ModuloId = $ModuloId;
   $this->Titulo = $Titulo;
-  $this->Publico = $Publico;
   $this->Descricao = $Descricao;
+  $this->Handler = $Handler;
 
         }
         

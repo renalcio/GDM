@@ -3,12 +3,12 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 18/03/2015 16:18:51
+* @date: 19/03/2015 20:42:54
 */
 
 namespace DAL;
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class UsuarioPerfil
 {
@@ -38,7 +38,7 @@ class UsuarioPerfil
     function __construct($UsuarioPerfilId = "",$PerfilId = "",$UsuarioId = ""){
         
 
-            $pdo = new Database();
+            $unitofwork = new UnitofWork();
 
             if(!empty($PerfilId)){
             

@@ -41,6 +41,6 @@ class HomeController extends Controller
         //echo $model['AplicacaoId'];
         $model = $this->bll->Generator($model['AplicacaoId']);
         $this->View("generator");
-        var_dump($model);
+        //var_dump($model);
     }
 }

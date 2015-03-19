@@ -87,7 +87,7 @@ class Controller
         if(empty($controller)) $controller = Helper::getController();
         // load views
 		
-        require APP . 'Views/_templates/' . ucfirst($header) . '.php';
+        require APP . 'Templates/' . ucfirst($header) . '.php';
 		
 		
         /*if(empty($controller))
@@ -98,7 +98,7 @@ class Controller
         Helper::LoadModelView($Model, $view, $controller);
         
 		
-        require APP . 'Views/_templates/' . ucfirst($footer) . '.php';
+        require APP . 'Templates/' . ucfirst($footer) . '.php';
     }
     
     public function Redirect($view, $controller = ""){

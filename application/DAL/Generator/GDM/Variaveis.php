@@ -3,12 +3,12 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 18/03/2015 16:18:51
+* @date: 19/03/2015 20:42:54
 */
 
 namespace DAL;
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class Variaveis
 {
@@ -45,7 +45,7 @@ class Variaveis
     function __construct($VariavelId = "",$AplicacaoId = "",$Titulo = "",$Valor = ""){
         
 
-            $pdo = new Database();
+            $unitofwork = new UnitofWork();
 
             if(!empty($AplicacaoId)){
             

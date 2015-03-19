@@ -3,12 +3,12 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 18/03/2015 16:18:50
+* @date: 19/03/2015 20:42:52
 */
 
 namespace DAL;
 
-use Libs\Database;
+use Libs\UnitofWork;
 
 class Modulo
 {
@@ -19,13 +19,6 @@ class Modulo
                      * @Type: int(11)
                      */
  var $ModuloId = 0;
-
-/**
-                 * @Name: AplicacaoId
-                 * @DisplayName: AplicacaoId
-                 * @Type: int(11)
-                 */
- var $AplicacaoId = 0;
 
 /**
                  * @Name: Titulo
@@ -41,26 +34,17 @@ class Modulo
                  */
  var $Descricao;
 
-/**
-                 * @Name: Url
-                 * @DisplayName: Url
-                 * @Type: varchar(255)
-                 */
- var $Url;
 
-
-    function __construct($ModuloId = "",$AplicacaoId = "",$Titulo = "",$Descricao = "",$Url = ""){
+    function __construct($ModuloId = "",$Titulo = "",$Descricao = ""){
         
 
-            $pdo = new Database();
+            $unitofwork = new UnitofWork();
 
-            if(!empty($AplicacaoId)){
+            if(!empty($Titulo)){
             
   $this->ModuloId = $ModuloId;
-  $this->AplicacaoId = $AplicacaoId;
   $this->Titulo = $Titulo;
   $this->Descricao = $Descricao;
-  $this->Url = $Url;
 
         }
         

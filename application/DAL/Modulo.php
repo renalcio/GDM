@@ -35,22 +35,10 @@ class Modulo
      * @Type: varchar(255)
      */
     var $Descricao;
+    
 
-    /**
-     * @Name: Handler
-     * @DisplayName: Handler
-     * @Type: tinyint(1)
-     */
-    var $Handler;
 
-    /** NOTMAPED */
-
-    /**
-     * @NotMapped
-     */
-    var $ListAction;
-
-    function __construct($ModuloId = 0,$Titulo = "",$Descricao = "",$Handler = 0){
+    function __construct($ModuloId = 0,$Titulo = "",$Descricao = ""){
 
 
         $unitofwork = new UnitofWork();
@@ -60,11 +48,7 @@ class Modulo
             $this->ModuloId = $ModuloId;
             $this->Titulo = $Titulo;
             $this->Descricao = $Descricao;
-            $this->Handler = $Handler;
 
-        }else{
-            $this->Handler = 0;
-            $this->ListAction = new ListHelper();
         }
 
         if(!empty($this->ModuloId)){

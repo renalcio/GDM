@@ -49,10 +49,6 @@ class Action
      */
     var $Descricao;
 
-    /**
-     * @NotMapped
-     */
-    var $Modulo;
 
 
     function __construct($ActionId = "",$ModuloId = "",$Titulo = "",$Publico = "",$Descricao = ""){
@@ -73,9 +69,6 @@ class Action
         if(!empty($this->ActionId)){
 
             //Virtuais e Referencias
-
-            if(!empty($this->ModuloId))
-                $this->Modulo = $unitofwork->GetById(new Modulo(), $this->ModuloId);
 
         }
 

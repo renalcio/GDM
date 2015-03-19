@@ -10,22 +10,15 @@ namespace DAL;
 
 use Libs\UnitofWork;
 
-class Permissao
+class ModuloAplicacao
 {
     /**
                      * @PrimaryKey
-                     * @Name: PermissaoId
-                     * @DisplayName: PermissaoId
+                     * @Name: ModuloAplicacaoId
+                     * @DisplayName: ModuloAplicacaoId
                      * @Type: int(11)
                      */
- var $PermissaoId = 0;
-
-/**
-                 * @Name: MenuId
-                 * @DisplayName: MenuId
-                 * @Type: int(11)
-                 */
- var $MenuId = 0;
+ var $ModuloAplicacaoId = 0;
 
 /**
                  * @Name: AplicacaoId
@@ -35,28 +28,27 @@ class Permissao
  var $AplicacaoId = 0;
 
 /**
-                 * @Name: PerfilId
-                 * @DisplayName: PerfilId
+                 * @Name: ModuloId
+                 * @DisplayName: ModuloId
                  * @Type: int(11)
                  */
- var $PerfilId = 0;
+ var $ModuloId = 0;
 
 
-    function __construct($PermissaoId = "",$MenuId = "",$AplicacaoId = "",$PerfilId = ""){
+    function __construct($ModuloAplicacaoId = "",$AplicacaoId = "",$ModuloId = ""){
         
 
             $unitofwork = new UnitofWork();
 
-            if(!empty($MenuId)){
+            if(!empty($AplicacaoId)){
             
-  $this->PermissaoId = $PermissaoId;
-  $this->MenuId = $MenuId;
+  $this->ModuloAplicacaoId = $ModuloAplicacaoId;
   $this->AplicacaoId = $AplicacaoId;
-  $this->PerfilId = $PerfilId;
+  $this->ModuloId = $ModuloId;
 
         }
         
- if(!empty($this->PermissaoId)){
+ if(!empty($this->ModuloAplicacaoId)){
         
       //Virtuais e Referencias
         
