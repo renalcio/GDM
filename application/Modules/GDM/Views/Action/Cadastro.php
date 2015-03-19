@@ -1,18 +1,25 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Modulo();
+$Model = new \DAL\Action();
 ?>
-<h3 class="page-header">Cadastro de Módulo</h3>
+<h3 class="page-header">Cadastro de Actions</h3>
 <form method="post">
-    <?Form::Hidden("ModuloId", @$Model->ModuloId);?>
+    <?Form::Hidden("ModuloId", @$Model->ActionId);?>
 
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">
-                Informações do Módulo
+                Informações da Action
             </h3>
         </div>
         <div class="box-body">
+            <div class="form-group" for="ModuloId">
+                <label>
+                    <?=\Libs\ModelState::DisplayName($Model, "ModuloId");?>
+                </label>
+                <? Form::Select2("ModuloId", @$Model->ModuloId, "", Array("class" => "form-control AplicacaoSelect",
+                    "DataUrl" => URL."handler/Modulo/Select2" ))?>
+            </div>
             <div class="form-group" for="Titulo">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
@@ -27,11 +34,11 @@ use Libs\Form;
                 <? Form::Wysiwyg("Descricao", @$Model->Descricao, Array("class" => "form-control"))?>
             </div>
 
-            <div class="form-group" for="Handler">
+            <div class="form-group" for="Publico">
                 <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Handler");?>
+                    <?=\Libs\ModelState::DisplayName($Model, "Publico");?>
                 </label><br>
-                <input type="checkbox" ref="<?=@$Model->Handler;?>" name="Handler" class="switch" <? if($Model->Handler == 1) echo "checked";?> data-off-color="default" data-on-text="Sim" data-off-text="Não" />
+                <input type="checkbox" ref="<?=@$Model->Publico;?>" name="Publico" class="switch" <? if($Model->Publico == 1) echo "checked";?> data-off-color="default" data-on-text="Sim" data-off-text="Não" />
             </div>
         </div>
 

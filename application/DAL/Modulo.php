@@ -50,12 +50,12 @@ class Modulo
      */
     var $ListAction;
 
-    function __construct($ModuloId = "",$Titulo = "",$Descricao = "",$Handler = 0){
+    function __construct($ModuloId = 0,$Titulo = "",$Descricao = "",$Handler = 0){
 
 
         $unitofwork = new UnitofWork();
 
-        if(!empty($AplicacaoId)){
+        if(!empty($Titulo)){
 
             $this->ModuloId = $ModuloId;
             $this->Titulo = $Titulo;
@@ -70,7 +70,7 @@ class Modulo
         if(!empty($this->ModuloId)){
 
             //Virtuais e Referencias
-            $this->ListAction = $unitofwork->Get(new Action(), "ModuloId = '".$this->ModuloId."'")->ToList();
+           // $this->ListAction = $unitofwork->Get(new Action(), "ModuloId = ".$this->ModuloId)->ToList();
 
 
         }

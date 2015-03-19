@@ -12,7 +12,7 @@ if($Model->Lista->Count() > 0)
         function Excluir(Id){
             bootbox.confirm('Deseja realmente excluir este item?', function(result){
                 if(result)
-                    location.href="<?=URL;?>Modulo/deletar/"+Id;
+                    location.href="<?=URL;?>Action/deletar/"+Id;
 
             });
         }
@@ -21,10 +21,10 @@ if($Model->Lista->Count() > 0)
 
 <div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-title">Módulos</h3>
+        <h3 class="box-title">Actions</h3>
         <div class="box-tools pull-right">
             <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
-                    fa-plus"></i> Novo Módulo</a>
+                    fa-plus"></i> Nova Action</a>
         </div>
     </div>
     <div class="box-body">
@@ -32,8 +32,8 @@ if($Model->Lista->Count() > 0)
             <thead>
             <tr>
                 <th>Título</th>
+                <th>Módulo</th>
                 <th>Publico</th>
-                <th>Handler</th>
                 <th style="width:18px" align="center"></th>
             </tr>
             </thead>
@@ -47,8 +47,8 @@ if($Model->Lista->Count() > 0)
                     ?>
                     <tr>
                         <td><?=$Item->Titulo;?></td>
+                        <td><?=(empty($Item->Modulo->Titulo) ? "Não" : "Sim");?></td>
                         <td><?=(empty($Item->Publico) ? "Não" : "Sim");?></td>
-                        <td><?=(empty($Item->Handler) ? "Não" : "Sim");?></td>
                         <td align="center">
 
                             <div class="btn-group">
