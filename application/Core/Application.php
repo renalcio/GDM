@@ -1,6 +1,7 @@
 <?php
 namespace Core;
 use Controllers\Error;
+use Controllers\HomeController;
 use Controllers\LoginController;
 use DAL\Action;
 use DAL\ActionModulo;
@@ -54,7 +55,7 @@ class Application
             }
         }
 
-
+        //echo $urlController;
 
 
         if (empty($this->url_controller)) {
@@ -64,7 +65,7 @@ class Application
             $session = new SessionHelper("GDMAuth");
             if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
                 if(APPID > 0) {
-                    $page = new \Controllers\HomeController();
+                    $page = new HomeController();
                     $page->index();
                 }else{
                     $page = new \Controllers\LoginController();
@@ -133,6 +134,7 @@ class Application
                         $this->url_controller->index();
                     }
                     else {
+
                         // defined action not existent: show the error page
                         $page = new \Controllers\ErrorController();
                         $page->index();
@@ -151,12 +153,20 @@ class Application
         }
     }
 
+    private function LoadController(){
+        /** TODO */
+    }
+
     /**
      * Get and split the URL
      */
     private function splitUrl()
     {
         $unitofwork = new UnitofWork();
+
+        if(!isset($_GET['url']) || empty($_GET['url']))
+            $_GET['url'] = "Home";
+
         if (isset($_GET['url'])) {
 
             // split URL
@@ -167,6 +177,7 @@ class Application
             $this->Modulo = new Modulo();
             $this->Action = new Action();
             $this->ActionModulo = new ActionModulo();
+
 
             if(isset($url[0]) && $url[0] == "handler"){
                 $this->url_controller = isset($url[1])  ? ucfirst($url[0])."s".DIRECTORY_SEPARATOR.ucfirst($url[1])."Handler" : ucfirst($url[0]);
@@ -182,13 +193,14 @@ class Application
 
 
             }else{
-
-                $this->url_controller = isset($url[0]) ? ucfirst($url[0])."Controller" : null;
+                $this->url_controller = isset($url[0]) ? ucfirst($url[0])."Controller" : "HomeController";
                 $this->url_action = isset($url[1]) ? $url[1] : "index";
                 $this->url_postAction = isset($url[1]) ? $url[1]."_post" : "index_post";
 
                 $this->Modulo = $unitofwork->Get(new Modulo(), "LOWER(Titulo) = '".strtolower($url[0])."'")
                     ->FirstOrDefault();
+
+                //var_dump($this->url_controller);
 
                 // Remove controller and action from the split URL
                 unset($url[0], $url[1]);
@@ -199,7 +211,7 @@ class Application
                     ->Join($unitofwork->Get(new ActionModulo()), "a.ActionId", "am.ActionId")->Where("am.ModuloId =
                     '".$this->Modulo->ModuloId."'")->Select("a", new Action())->FirstOrDefault();
 
-            if($this->Modulo->ModuloId > 0 && $this->Action->ActionId > 0)
+            if($this->Modulo->ModuloId > 0 && !empty($this->Action) && $this->Action->ActionId > 0)
                 $this->ActionModulo = $unitofwork->Get(new ActionModulo(), "ActionId = '".$this->Action->ActionId."' AND ModuloId = '".$this->Modulo->ModuloId."'")->FirstOrDefault();
 
 
