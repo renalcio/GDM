@@ -30,6 +30,8 @@ class Application
 
     private $ActionModulo = null;
 
+    private $pathController = null;
+
     /**
      * "Start" the application:
      * Analyze the URL elements and calls the according controller/method or the fallback
@@ -38,24 +40,6 @@ class Application
     {
         // create array with URL parts in $url
         $this->splitUrl();
-
-        // check for controller: no controller given ? then load start-page
-
-        //Verifica se tem pasta personalizada
-        $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . PASTA . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
-
-        //echo $urlController;
-        if(!file_exists($urlController)){
-            //Verifica se tem pasta generica
-            $urlController = APP . 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
-
-            if(!file_exists($urlController)){
-                //Verifica se tem na pasta do sistema
-                $urlController = APP . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
-            }
-        }
-
-        //echo $urlController;
 
 
         if (empty($this->url_controller)) {
@@ -76,85 +60,102 @@ class Application
                 $page->index();
             }
 
-        } elseif (file_exists($urlController) && $this->ActionModulo->ActionModuloId > 0) {
-            require_once $urlController;
-            //echo APP_ID;
-            //print_r($_SESSION);if(defined('VAR_NAME')){
-            $session = new SessionHelper("GDMAuth");
-            //echo $session->Ver("AplicacaoId");
-            if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) ||
-                $this->ActionModulo->Publico == 1)
-            {
+        } else{
+            $this->LoadController();
+            if (file_exists($this->pathController) && $this->ActionModulo->ActionModuloId > 0) {
 
-                // here we did check for controller: does such a controller exist ?
+                $session = new SessionHelper("GDMAuth");
+                if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) ||
+                    $this->ActionModulo->Publico == 1)
+                {
 
-                // if so, then load this file and create this controller
-                // example: if controller would be "car", then this line would translate into: $this->car = new car();
-                //require_once APP . 'controllers/' . $this->url_controller . '.php';
-                if((defined('APP_ID') && APP_ID > 0) || $this->ActionModulo->Publico == 1) {
-                    $this->url_controller = "\\Controllers\\" . str_replace("/","\\", $this->url_controller);
-                    //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
-                    $this->url_controller = new $this->url_controller();
-                }else if(defined('APP_ID') && APP_ID <= 0){
-                    $page = new LoginController();
-                    $page->SelecionaAplicacao();
-                }
+                    if((defined('APP_ID') && APP_ID > 0) || $this->ActionModulo->Publico == 1) {
+                        $this->url_controller = "\\Controllers\\" . str_replace("/","\\", $this->url_controller);
+                        //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
+                        $this->url_controller = new $this->url_controller();
+                    }else if(defined('APP_ID') && APP_ID <= 0){
+                        $this->url_controller = "LoginController";
+                        $this->LoadController();
 
-                // check for method: does such a method exist in the controller ?
-
-                //Verifica se exite post
-                if(isset($_POST) && count($_POST) > 0){
-
-                    $Model = Helper::CastPost();
-
-                    //Verifica se o metodo de post existe
-                    if(method_exists($this->url_controller, $this->url_postAction)) {
-                        $this->url_params = array_merge(array("model" => $Model),$this->url_params);
-                        call_user_func_array(array($this->url_controller, $this->url_postAction), $this->url_params);
-                    }else{
-                        $this->url_params["model"] = $Model;
-                        //var_dump($this->url_postAction);
-                        call_user_func_array(array($this->url_controller, $this->url_action),
-                            $this->url_params);
+                        $page = new LoginController();
+                        $page->SelecionaAplicacao();
                     }
 
-                }else if (method_exists($this->url_controller, $this->url_action)) {
+                    // check for method: does such a method exist in the controller ?
 
-                    if(!empty($this->url_params)) {
-                        // Call the method and pass arguments to it
-                        call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
+                    //Verifica se exite post
+                    if(isset($_POST) && count($_POST) > 0){
+
+                        $Model = Helper::CastPost();
+
+                        //Verifica se o metodo de post existe
+                        if(method_exists($this->url_controller, $this->url_postAction)) {
+                            $this->url_params = array_merge(array("model" => $Model),$this->url_params);
+                            call_user_func_array(array($this->url_controller, $this->url_postAction), $this->url_params);
+                        }else{
+                            $this->url_params["model"] = $Model;
+                            //var_dump($this->url_postAction);
+                            call_user_func_array(array($this->url_controller, $this->url_action),
+                                $this->url_params);
+                        }
+
+                    }else if (method_exists($this->url_controller, $this->url_action)) {
+
+                        if(!empty($this->url_params)) {
+                            // Call the method and pass arguments to it
+                            call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
+                        } else {
+                            // If no parameters are given, just call the method without parameters, like $this->home->method();
+                            $this->url_controller->{$this->url_action}();
+                        }
+
                     } else {
-                        // If no parameters are given, just call the method without parameters, like $this->home->method();
-                        $this->url_controller->{$this->url_action}();
-                    }
+                        if(strlen($this->url_action) == 0) {
+                            // no action defined: call the default index() method of a selected controller
+                            $this->url_controller->index();
+                        }
+                        else {
 
-                } else {
-                    if(strlen($this->url_action) == 0) {
-                        // no action defined: call the default index() method of a selected controller
-                        $this->url_controller->index();
-                    }
-                    else {
-
-                        // defined action not existent: show the error page
-                        $page = new \Controllers\ErrorController();
-                        $page->index();
+                            // defined action not existent: show the error page
+                            $page = new \Controllers\ErrorController();
+                            $page->index();
+                        }
                     }
                 }
-            }
-            else
-            {
-                $page = new \Controllers\LoginController();
-                $page->index();
-            }
+                else
+                {
+                    $this->url_controller = "LoginController";
+                    $this->LoadController();
 
-        } else {
-            $page = new \Controllers\ErrorController();
-            $page->index();
+                    $page = new LoginController();
+                    $page->index();
+                }
+
+            }
         }
     }
 
     private function LoadController(){
-        /** TODO */
+        //Verifica se tem pasta personalizada
+        $this->pathController = APP . 'Modules' . DIRECTORY_SEPARATOR . PASTA . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+
+        //echo $urlController;
+        if(!file_exists($this->pathController)){
+            //Verifica se tem pasta generica
+            $this->pathController = APP . 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+
+            if(!file_exists($this->pathController)){
+                //Verifica se tem na pasta do sistema
+                $this->pathController = APP . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+
+                if(!file_exists($this->pathController)){
+                    $this->url_controller = "ErrorController";
+                    $this->pathController = APP . 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+                }
+            }
+        }
+
+        require_once $this->pathController;
     }
 
     /**
