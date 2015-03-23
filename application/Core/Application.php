@@ -49,17 +49,22 @@ class Application
             $session = new SessionHelper("GDMAuth");
             if($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')){
                 if(APPID > 0) {
+                    $this->url_controller =  "HomeController";
+                    $this->LoadController();
                     $page = new HomeController();
                     $page->index();
                 }else{
+                    $this->url_controller = "LoginController";
+                    $this->LoadController();
                     $page = new \Controllers\LoginController();
                     $page->SelecionaAplicacao();
                 }
             }else{
-                $page = new \Controllers\LoginController();
-                $page->index();
+               $this->GetLogin();
             }
 
+        }else if(empty($this->Modulo)){
+            $this->GetError();
         } else{
             $this->LoadController();
             if (file_exists($this->pathController) && $this->ActionModulo->ActionModuloId > 0) {
@@ -74,9 +79,9 @@ class Application
                         //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
                         $this->url_controller = new $this->url_controller();
                     }else if(defined('APP_ID') && APP_ID <= 0){
+
                         $this->url_controller = "LoginController";
                         $this->LoadController();
-
                         $page = new LoginController();
                         $page->SelecionaAplicacao();
                     }
@@ -116,19 +121,13 @@ class Application
                         }
                         else {
 
-                            // defined action not existent: show the error page
-                            $page = new \Controllers\ErrorController();
-                            $page->index();
+                            $this->GetError();
                         }
                     }
                 }
                 else
                 {
-                    $this->url_controller = "LoginController";
-                    $this->LoadController();
-
-                    $page = new LoginController();
-                    $page->index();
+                    $this->GetLogin();
                 }
 
             }
@@ -150,12 +149,26 @@ class Application
 
                 if(!file_exists($this->pathController)){
                     $this->url_controller = "ErrorController";
-                    $this->pathController = APP . 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller . '.php';
+                    $this->LoadController();
                 }
             }
         }
 
         require_once $this->pathController;
+    }
+
+    public function GetError(){
+        $this->url_controller = "ErrorController";
+        $this->LoadController();
+        $page = new \Controllers\ErrorController();
+        $page->index();
+    }
+
+    public function GetLogin(){
+        $this->url_controller = "LoginController";
+        $this->LoadController();
+        $page = new LoginController();
+        $page->index();
     }
 
     /**
@@ -207,12 +220,15 @@ class Application
                 unset($url[0], $url[1]);
             }
 
-            if($this->Modulo->ModuloId > 0)
+            //var_dump($this->Modulo);
+
+            if(!empty($this->Modulo) && $this->Modulo->ModuloId > 0)
                 $this->Action = $unitofwork->Get(new Action(), "LOWER(Titulo) = '".strtolower($this->url_action)."'")
                     ->Join($unitofwork->Get(new ActionModulo()), "a.ActionId", "am.ActionId")->Where("am.ModuloId =
                     '".$this->Modulo->ModuloId."'")->Select("a", new Action())->FirstOrDefault();
 
-            if($this->Modulo->ModuloId > 0 && !empty($this->Action) && $this->Action->ActionId > 0)
+
+            if(!empty($this->Modulo) && $this->Modulo->ModuloId > 0 && !empty($this->Action) && $this->Action->ActionId > 0)
                 $this->ActionModulo = $unitofwork->Get(new ActionModulo(), "ActionId = '".$this->Action->ActionId."' AND ModuloId = '".$this->Modulo->ModuloId."'")->FirstOrDefault();
 
 

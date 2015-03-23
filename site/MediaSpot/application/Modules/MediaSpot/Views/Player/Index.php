@@ -248,6 +248,7 @@ if(isset($Model)&& !empty($Model)){
                             playNext();
                         else
                             seekTo(0, true);
+                            playVideo();
                     }, 1000);
                 }
             }
