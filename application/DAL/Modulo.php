@@ -66,7 +66,8 @@ class Modulo
             //Virtuais e Referencias
            // $this->ListAction = $unitofwork->Get(new Action(), "ModuloId = ".$this->ModuloId)->ToList();
 
-            $this->ListActionModulo = $unitofwork->Get(new ActionModulo(), "ModuloId = ".$this->ModuloId)->ToList();
+            //$this->ListActionModulo = $unitofwork->Get(new ActionModulo(), "ModuloId = ".$this->ModuloId)->ToList();
+
 
         }
 

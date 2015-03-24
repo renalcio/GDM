@@ -27,12 +27,27 @@ use Libs\Form;
                 <? Form::Wysiwyg("Descricao", @$Model->Descricao, Array("class" => "form-control"))?>
             </div>
 
-            <div class="form-group" for="Handler">
+            <!--<div class="form-group" for="Handler">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Handler");?>
                 </label><br>
                 <input type="checkbox" ref="<?=@$Model->Handler;?>" name="Handler" class="switch" <? if($Model->Handler == 1) echo "checked";?> data-off-color="default" data-on-text="Sim" data-off-text="Não" />
-            </div>
+            </div>-->
+
+            <?
+            //var_dump($Model->ListActionModulo);
+            if(!empty($Model->ListAction)){
+                $Model->ListAction->For_Each(function($item) use ($Model){
+                   var_dump($item);
+                    $teste = $Model->ListActionModulo->Where(function($x) use ($item){
+                        return ($x->ActionId == $item->ActionId);
+                    });
+                    if($teste->Count() > 0)
+                        var_dump($teste);
+                });
+            }
+            ?>
+
         </div>
 
     </div>

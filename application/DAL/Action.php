@@ -22,13 +22,6 @@ class Action
     var $ActionId = 0;
 
     /**
-     * @Name: ModuloId
-     * @DisplayName: Módulo
-     * @Type: int(11)
-     */
-    var $ModuloId = 0;
-
-    /**
      * @Name: Titulo
      * @DisplayName: Título
      * @Type: varchar(255)
@@ -36,11 +29,11 @@ class Action
     var $Titulo;
 
     /**
-     * @Name: Publico
-     * @DisplayName: Público
+     * @Name: Action
+     * @DisplayName: Action
      * @Type: tinyint(4)
      */
-    var $Publico = 0;
+    var $Handler = 0;
 
     /**
      * @Name: Descricao
@@ -51,7 +44,7 @@ class Action
 
 
 
-    function __construct($ActionId = "",$ModuloId = "",$Titulo = "",$Publico = "",$Descricao = ""){
+    function __construct($ActionId = "",$ModuloId = "",$Titulo = "",$Handler = 0,$Descricao = ""){
 
 
         $unitofwork = new UnitofWork();
@@ -61,7 +54,7 @@ class Action
             $this->ActionId = $ActionId;
             $this->ModuloId = $ModuloId;
             $this->Titulo = $Titulo;
-            $this->Publico = $Publico;
+            $this->Handler = $Handler;
             $this->Descricao = $Descricao;
 
         }

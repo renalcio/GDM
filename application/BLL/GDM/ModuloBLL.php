@@ -6,6 +6,8 @@
  * Data: 18/03/2015
  */
 namespace BLL;
+use DAL\Action;
+use DAL\ActionModulo;
 use DAL\Modulo;
 use Libs\Database;
 use Libs\Helper;
@@ -35,6 +37,10 @@ class ModuloBLL extends BLL
         }else{
             $model = new Modulo();
         }
+
+        $model->ListAction = $this->unitofwork->Get(new Action())->ToList();
+
+        $model->ListActionModulo = $this->unitofwork->Get(new ActionModulo(), "ModuloId = ".$model->ModuloId)->ToList();
 
 
         return $model;
