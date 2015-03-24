@@ -47,6 +47,11 @@ class Modulo
      */
     var $ListActionModulo;
 
+    /**
+     * @NotMapped
+     */
+    var $Actions;
+
 
     function __construct($ModuloId = 0,$Titulo = "",$Descricao = ""){
 

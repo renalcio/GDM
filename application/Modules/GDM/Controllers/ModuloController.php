@@ -40,7 +40,16 @@ class ModuloController extends Controller
         if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, new Modulo());
+            if(!empty($model->Actions) && is_array($model->Actions)){
+                foreach($model->Actions as $i=>$item){
+                    Helper::cast($model->Actions[$i], new \stdClass());
+                    $model->Actions[$i]->Publico = (isset($model->Actions[$i]->Publico) && $model->Actions[$i]->Publico == "on") ? 1 : 0;
+                }
+            }
+
             $this->loadBLL();
+
+            //var_dump($model);
 
             //Valida Model via ModelState
             ModelState::ValidateModel($model);
@@ -50,7 +59,6 @@ class ModuloController extends Controller
                 $this->bll->Validar($model);
 
                 if(ModelState::isValid()) {
-                    $model->Handler = $model->Handler == "on" ? 1 : 0;
                     //var_dump($model);
                     $this->bll->Save($model); // Salva
                     $this->Redirect("Index"); // Redireciona pra index do controller
@@ -58,9 +66,10 @@ class ModuloController extends Controller
             }
         }else{
             $model = new \stdClass();
+
         }
 
-        //$this->ModelView($model);
+        $this->ModelView($model);
     }
 
     public function deletar($id){

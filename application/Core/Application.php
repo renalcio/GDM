@@ -63,11 +63,17 @@ class Application
                $this->GetLogin();
             }
 
-        }else if(empty($this->Modulo)){
-            $this->GetError();
-        } else{
+        }/*else if($this->url_controller == "LoginController"){
+            $this->url_controller = "LoginController";
             $this->LoadController();
-            if (file_exists($this->pathController) && $this->ActionModulo->ActionModuloId > 0) {
+            $page = new LoginController();
+            $page->{$this->url_action}();
+        }*/else if(empty($this->Modulo)){
+            $this->GetError();
+        }else{
+
+            $this->LoadController();
+            if (file_exists($this->pathController) && ($this->ActionModulo->ActionModuloId > 0 || $this->url_controller == "LoginController")) {
 
                 $session = new SessionHelper("GDMAuth");
                 if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) ||
@@ -130,6 +136,8 @@ class Application
                     $this->GetLogin();
                 }
 
+            }else{
+                $this->GetError();
             }
         }
     }
