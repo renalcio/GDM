@@ -35,7 +35,17 @@ class Modulo
      * @Type: varchar(255)
      */
     var $Descricao;
-    
+
+
+    /**
+     * @NotMapped
+     */
+    var $ListAction;
+
+    /**
+     * @NotMapped
+     */
+    var $ListActionModulo;
 
 
     function __construct($ModuloId = 0,$Titulo = "",$Descricao = ""){
@@ -56,6 +66,7 @@ class Modulo
             //Virtuais e Referencias
            // $this->ListAction = $unitofwork->Get(new Action(), "ModuloId = ".$this->ModuloId)->ToList();
 
+            $this->ListActionModulo = $unitofwork->Get(new ActionModulo(), "ModuloId = ".$this->ModuloId)->ToList();
 
         }
 
