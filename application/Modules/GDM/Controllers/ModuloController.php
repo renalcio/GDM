@@ -7,7 +7,7 @@
  * Data: 18/03/2015
  *
  */
-namespace Controllers;
+namespace Modules\GDM\Controllers;
 use Core\Controller;
 use DAL\Modulo;
 use Libs\Helper;

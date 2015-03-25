@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 28/01/2015
  */
-namespace Controllers\Handlers;
+namespace Modules\MediaSpot\Controllers\Handlers;
 use Core\Controller;
 use DAL\MediaSpot\Artista;
 use DAL\Musica;

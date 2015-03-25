@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Modules\Generic\Controllers;
 use Core\Controller;
 use Libs\Database;
 class Handler extends Controller

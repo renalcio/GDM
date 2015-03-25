@@ -1,14 +1,14 @@
 <?php
 namespace Core;
-use Controllers\Error;
-use Controllers\HomeController;
-use Controllers\LoginController;
 use DAL\Action;
 use DAL\ActionModulo;
 use DAL\Modulo;
+use Libs\ModelState;
 use Libs\SessionHelper;
 use Libs\Helper;
 use Libs\UnitofWork;
+use Modules\Generic\Controllers\LoginController;
+use Modules\Generic\Controllers\HomeController;
 
 class Application
 {
@@ -23,12 +23,6 @@ class Application
 
     /** @var array URL parameters */
     private $url_params = array();
-
-    private $Modulo = null;
-
-    private $Action = null;
-
-    private $ActionModulo = null;
 
     private $pathController = null;
 
@@ -56,32 +50,28 @@ class Application
                 }else{
                     $this->url_controller = "LoginController";
                     $this->LoadController();
-                    $page = new \Controllers\LoginController();
+                    $page = new LoginController();
                     $page->SelecionaAplicacao();
                 }
             }else{
                $this->GetLogin();
             }
 
-        }/*else if($this->url_controller == "LoginController"){
-            $this->url_controller = "LoginController";
-            $this->LoadController();
-            $page = new LoginController();
-            $page->{$this->url_action}();
-        }*/else if(empty($this->Modulo)){
-            $this->GetError();
-        }else{
 
+        }else{
             $this->LoadController();
-            if (file_exists($this->pathController) && ($this->ActionModulo->ActionModuloId > 0 || $this->url_controller == "LoginController")) {
+            //echo $this->url_controller;
+            if (file_exists($this->pathController)  || $this->url_controller == "LoginController") {
 
                 $session = new SessionHelper("GDMAuth");
                 if(($session->Verifica("UsuarioId") == true && $session->Ver("UsuarioId") > 0 && defined('APP_ID')) ||
-                    $this->ActionModulo->Publico == 1)
+                    ModelState::isPublicMethod(new $this->url_controller(), $this->url_action))
                 {
 
-                    if((defined('APP_ID') && APP_ID > 0) || $this->ActionModulo->Publico == 1) {
-                        $this->url_controller = "\\Controllers\\" . str_replace("/","\\", $this->url_controller);
+
+                    if((defined('APP_ID') && APP_ID > 0) || ModelState::isGenericMethod(new $this->url_controller(), $this->url_action)) {
+                        //echo $this->url_controller;
+                        $this->url_controller = str_replace("/","\\", $this->url_controller);
                         //echo "Controller: ".$this->url_controller. " URl: ".$urlController;
                         $this->url_controller = new $this->url_controller();
                     }else if(defined('APP_ID') && APP_ID <= 0){
@@ -90,6 +80,8 @@ class Application
                         $this->LoadController();
                         $page = new LoginController();
                         $page->SelecionaAplicacao();
+                    }else{
+                        $this->GetLogin();
                     }
 
                     // check for method: does such a method exist in the controller ?
@@ -159,7 +151,11 @@ class Application
                     $this->url_controller = "ErrorController";
                     $this->LoadController();
                 }
+            }else{
+                $this->url_controller = 'Modules' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller;
             }
+        }else{
+            $this->url_controller = 'Modules' . DIRECTORY_SEPARATOR . PASTA . 'Controllers' . DIRECTORY_SEPARATOR . $this->url_controller;
         }
 
         require_once $this->pathController;
@@ -196,10 +192,10 @@ class Application
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
 
-            $this->Modulo = new Modulo();
+           /* $this->Modulo = new Modulo();
             $this->Action = new Action();
             $this->ActionModulo = new ActionModulo();
-
+*/
 
             if(isset($url[0]) && $url[0] == "handler"){
                 $this->url_controller = isset($url[1])  ? ucfirst($url[0])."s".DIRECTORY_SEPARATOR.ucfirst($url[1])."Handler" : ucfirst($url[0]);
@@ -207,7 +203,7 @@ class Application
                 $this->url_postAction = isset($url[2]) ? $url[2]."_post" : "index_post";
 
 
-                $this->Modulo = $unitofwork->Get(new Modulo(), "LOWER(Titulo) = '".strtolower($url[1])."'")->FirstOrDefault();
+                //$this->Modulo = $unitofwork->Get(new Modulo(), "LOWER(Titulo) = '".strtolower($url[1])."'")->FirstOrDefault();
 
                 // Remove controller and action from the split URL
                 unset($url[0], $url[1], $url[2]);
@@ -219,25 +215,13 @@ class Application
                 $this->url_action = isset($url[1]) ? $url[1] : "index";
                 $this->url_postAction = isset($url[1]) ? $url[1]."_post" : "index_post";
 
-                $this->Modulo = $unitofwork->Get(new Modulo(), "LOWER(Titulo) = '".strtolower($url[0])."'")
-                    ->FirstOrDefault();
+                //$this->Modulo = $unitofwork->Get(new Modulo(), "LOWER(Titulo) = '".strtolower($url[0])."'")->FirstOrDefault();
 
                 //var_dump($this->url_controller);
 
                 // Remove controller and action from the split URL
                 unset($url[0], $url[1]);
             }
-
-            //var_dump($this->Modulo);
-
-            if(!empty($this->Modulo) && $this->Modulo->ModuloId > 0)
-                $this->Action = $unitofwork->Get(new Action(), "LOWER(Titulo) = '".strtolower($this->url_action)."'")
-                    ->Join($unitofwork->Get(new ActionModulo()), "a.ActionId", "am.ActionId")->Where("am.ModuloId =
-                    '".$this->Modulo->ModuloId."'")->Select("a", new Action())->FirstOrDefault();
-
-
-            if(!empty($this->Modulo) && $this->Modulo->ModuloId > 0 && !empty($this->Action) && $this->Action->ActionId > 0)
-                $this->ActionModulo = $unitofwork->Get(new ActionModulo(), "ActionId = '".$this->Action->ActionId."' AND ModuloId = '".$this->Modulo->ModuloId."'")->FirstOrDefault();
 
 
 

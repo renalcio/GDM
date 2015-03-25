@@ -8,7 +8,7 @@
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
  *
  */
-namespace Controllers;
+namespace Modules\Generic\Controllers;
 use Core\Controller;
 class HomeController extends Controller
 {
@@ -27,6 +27,10 @@ class HomeController extends Controller
         var_dump($model);
     }
 
+    /**
+     * @Public
+     * @Generic
+     */
     public function generator()
     {
         // load views

@@ -1,5 +1,5 @@
 <?php
-namespace Controllers\Handlers;
+namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
 use DAL\Perfil;
 use Libs\Database;

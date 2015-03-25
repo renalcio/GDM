@@ -7,7 +7,7 @@
  * Data: 26/01/2015
  *
  */
-namespace Controllers;
+namespace Modules\MediaSpot\Controllers;
 use Core\Controller;
 use DAL\MediaSpot\Artista;
 use Libs\Helper;

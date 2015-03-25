@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 30/01/2015
  */
-namespace Controllers\Handlers;
+namespace Modules\MediaSpot\Controllers\Handlers;
 use Core\Controller;
 use DAL\Artista;
 use Libs\Database;

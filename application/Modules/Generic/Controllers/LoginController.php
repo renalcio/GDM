@@ -8,7 +8,7 @@
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
  *
  */
-namespace Controllers;
+namespace Modules\Generic\Controllers;
 use Core\Controller;
 use \Libs\CookieHelper;
 use \Libs\SessionHelper;
@@ -17,8 +17,8 @@ use Libs\UsuarioHelper;
 class LoginController extends Controller
 {
     /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * @Public
+     * @Generic
      */
     public function index()
     {
@@ -26,9 +26,8 @@ class LoginController extends Controller
     }
 
     /**
-     * PAGE: exampleone
-     * This method handles what happens when you move to http://yourproject/home/exampleone
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
+     * @Public
+     * @Generic
      */
     public function auth()
     {
@@ -54,6 +53,10 @@ class LoginController extends Controller
             echo json_encode($retorno);
     }
 
+    /**
+     * @Public
+     * @Generic
+     */
     public function Logout(){
         \Libs\SessionHelper::Deletar("GDMAuth");
         \Libs\CookieHelper::Deletar("GDMAuth");
@@ -63,6 +66,10 @@ class LoginController extends Controller
         $this->Redirect("index");
     }
 
+    /**
+     * @Public
+     * @Generic
+     */
     public function SelecionaAplicacao($id = ""){
         if(empty($id)) {
             $model = UsuarioHelper::getAplicacoes();

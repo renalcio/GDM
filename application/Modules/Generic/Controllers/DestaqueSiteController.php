@@ -7,7 +7,7 @@
  * Data: 30/01/2015
  *
  */
-namespace Controllers;
+namespace Modules\Generic\Controllers;
 use Core\Controller;
 use DAL\DestaqueSite;
 use Libs\Helper;

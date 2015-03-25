@@ -48,6 +48,51 @@ class ModelState {
         endforeach;
     }
 
+    public static function CheckAnnotation($model, $ann){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations(true);
+
+        $retorno = Array();
+        //var_dump($get);
+        //var_dump($ann);
+        foreach ($get as $campo=>$data):
+            if (array_key_exists($ann, $data))
+                $retorno[] = $campo;
+        endforeach;
+
+        return $retorno;
+    }
+
+    public static function isPublicMethod($model, $metodo){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations(true);
+
+        $retorno = Array();
+        //var_dump($get);
+        //var_dump($ann);
+        foreach ($get as $campo=>$data):
+            if (array_key_exists("Public", $data))
+                $retorno[] = strtolower($campo);
+        endforeach;
+
+        return in_array(strtolower($metodo), $retorno);
+    }
+
+    public static function isGenericMethod($model, $metodo){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations(true);
+
+        $retorno = Array();
+        //var_dump($get);
+        //var_dump($ann);
+        foreach ($get as $campo=>$data):
+            if (array_key_exists("Generic", $data))
+                $retorno[] = strtolower($campo);
+        endforeach;
+
+        return in_array(strtolower($metodo), $retorno);
+    }
+
     public static function GetPrimaryKey($model){
         $annotation = new Annotation($model);
         $get = $annotation->getAnnotations();

@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 20/01/2015
  */
-namespace Controllers\Handlers;
+namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
 use DAL\Perfil;
 use DAL\Permissao;

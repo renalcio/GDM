@@ -1,5 +1,5 @@
 <?php
-namespace Controllers\Handlers;
+namespace Modules\Generic\Controllers\Handlers;
 use Core\Controller;
 use DAL\Pessoa;
 use DAL\PessoaFisica;

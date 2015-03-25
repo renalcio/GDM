@@ -18,20 +18,10 @@ use DAL\Site;
     $time = microtime(1);
     $mem = memory_get_usage();
 
-    $uow = new \Libs\UnitofWork();
+    $ctrl = new \Modules\Generic\Controllers\HomeController();
 
-    $retorno = $uow->Get(new \DAL\Usuario())->Join($uow->Get(new \DAL\Pessoa()), "u.PessoaId", "p.PessoaId")->LeftJoin($uow->Get(new \DAL\PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($uow->Get(new \DAL\PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId
-= pf
-.PessoaId AND pf.CPF = '') OR
- (p.PessoaId = pj.PessoaId AND pj.CNPJ = '')")->Select("u.*", new \DAL\Usuario());
-
-    $retorno->BuildQuery();
-    echo $retorno->query;
-
-    echo '<br>Tempo: ', (microtime(1) - $time), "s\n";
-    echo '<br>Memória: ', (memory_get_usage() - $mem) / (1024 * 1024) . " Mb";
-
-    var_dump($artistas);
+    $notes = \Libs\ModelState::CheckAnnotation($ctrl, "Public");
+    var_dump($notes);
 
     /**
     SELECT p.*
