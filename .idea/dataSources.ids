@@ -5,7 +5,7 @@
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="GDM"/>
     <schema name="" catalog="MediaSpot"/>
     <table name="Acesso" schema="" catalog="GDM" type="TABLE">
@@ -14,20 +14,6 @@
       <column name="PerfilId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="MenuId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="AcessoId"/>
-    </table>
-    <table name="Action" schema="" catalog="GDM" type="TABLE">
-      <column name="ActionId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Descricao" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Handler" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
-      <primary-key name="PRIMARY" columns="ActionId"/>
-    </table>
-    <table name="ActionModulo" schema="" catalog="GDM" type="TABLE">
-      <column name="ActionModuloId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="ActionId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="ModuloId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="Publico" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <primary-key name="PRIMARY" columns="ActionModuloId"/>
     </table>
     <table name="Aplicacao" schema="" catalog="GDM" type="TABLE">
       <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -43,6 +29,31 @@
       <column name="DbBanco" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="AplicacaoId"/>
     </table>
+    <table name="Asset" schema="" catalog="GDM" type="TABLE">
+      <column name="AssetId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Descricao" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="AssetId"/>
+    </table>
+    <table name="AssetDependencia" schema="" catalog="GDM" type="TABLE">
+      <column name="AssetDependenciaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="AssetId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AssetPaiId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="AssetDependenciaId"/>
+    </table>
+    <table name="AssetFile" schema="" catalog="GDM" type="TABLE">
+      <column name="AssetFileId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="AssetId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AssetTipoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="AssetFileId"/>
+    </table>
+    <table name="AssetTipo" schema="" catalog="GDM" type="TABLE">
+      <column name="AssetTipoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="AssetTipoId"/>
+    </table>
     <table name="Menu" schema="" catalog="GDM" type="TABLE">
       <column name="MenuId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -52,18 +63,6 @@
       <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Posicao" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="MenuId"/>
-    </table>
-    <table name="Modulo" schema="" catalog="GDM" type="TABLE">
-      <column name="ModuloId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Descricao" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ModuloId"/>
-    </table>
-    <table name="ModuloAplicacao" schema="" catalog="GDM" type="TABLE">
-      <column name="ModuloAplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="ModuloId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="ModuloAplicacaoId"/>
     </table>
     <table name="Nicho" schema="" catalog="GDM" type="TABLE">
       <column name="NichoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
