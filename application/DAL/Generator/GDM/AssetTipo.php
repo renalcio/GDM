@@ -10,15 +10,15 @@ namespace DAL;
 
 use Libs\UnitofWork;
 
-class Nicho
+class AssetTipo
 {
     /**
                      * @PrimaryKey
-                     * @Name: NichoId
-                     * @DisplayName: NichoId
+                     * @Name: AssetTipoId
+                     * @DisplayName: AssetTipoId
                      * @Type: int(11)
                      */
- var $NichoId = 0;
+ var $AssetTipoId = 0;
 
 /**
                  * @Name: Titulo
@@ -28,19 +28,19 @@ class Nicho
  var $Titulo;
 
 
-    function __construct($NichoId = "",$Titulo = ""){
+    function __construct($AssetTipoId = "",$Titulo = ""){
         
 
             $unitofwork = new UnitofWork();
 
             if(!empty($Titulo)){
             
-  $this->NichoId = $NichoId;
+  $this->AssetTipoId = $AssetTipoId;
   $this->Titulo = $Titulo;
 
         }
         
- if(!empty($this->NichoId)){
+ if(!empty($this->AssetTipoId)){
         
       //Virtuais e Referencias
         

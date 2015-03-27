@@ -3,22 +3,22 @@
 /**
 * DAL
 * @author: Gerador de Classe
-* @date: 27/03/2015 15:44:10
+* @date: 27/03/2015 15:44:09
 */
 
 namespace DAL;
 
 use Libs\UnitofWork;
 
-class Nicho
+class Asset
 {
     /**
                      * @PrimaryKey
-                     * @Name: NichoId
-                     * @DisplayName: NichoId
+                     * @Name: AssetId
+                     * @DisplayName: AssetId
                      * @Type: int(11)
                      */
- var $NichoId = 0;
+ var $AssetId = 0;
 
 /**
                  * @Name: Titulo
@@ -27,20 +27,28 @@ class Nicho
                  */
  var $Titulo;
 
+/**
+                 * @Name: Descricao
+                 * @DisplayName: Descricao
+                 * @Type: varchar(255)
+                 */
+ var $Descricao;
 
-    function __construct($NichoId = "",$Titulo = ""){
+
+    function __construct($AssetId = "",$Titulo = "",$Descricao = ""){
         
 
             $unitofwork = new UnitofWork();
 
             if(!empty($Titulo)){
             
-  $this->NichoId = $NichoId;
+  $this->AssetId = $AssetId;
   $this->Titulo = $Titulo;
+  $this->Descricao = $Descricao;
 
         }
         
- if(!empty($this->NichoId)){
+ if(!empty($this->AssetId)){
         
       //Virtuais e Referencias
         

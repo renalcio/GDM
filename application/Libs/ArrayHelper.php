@@ -65,4 +65,12 @@ class ArrayHelper {
             $for($element,$key);
         return $this;
     }
+
+    public function Join(Array $add){
+        $this->array = $this->array + $add;
+    }
+
+    public function Merge(Array $array){
+        $this->array = array_merge($this->array, $array);
+    }
 }

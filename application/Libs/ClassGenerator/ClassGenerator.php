@@ -189,7 +189,7 @@ class ClassGenerator
         endforeach;
 
         $construct = $this->generateConstruct();
-        var_dump($construct);
+        //var_dump($construct);
 
         $namespace = "DAL";
         if(!empty($this->pasta) && $this->pasta != "GDM"){

@@ -17,12 +17,42 @@ use DAL\Site;
 
     $time = microtime(1);
     $mem = memory_get_usage();
+    echo URL.'assets.json';
+    $str = file_get_contents(URL.'assets.json');
+    $json = json_decode($str, true);
+    //var_dump($json);
 
-    $ctrl = new \Modules\Generic\Controllers\HomeController();
+    $assetsJSON = $json;
+    $assets = Array(
+        "css" => Array(),
+        "js" => Array(
+            "header" => Array(),
+            "footer" => Array()
+        )
+    );
 
-    $notes = \Libs\ModelState::CheckAnnotation($ctrl, "Public");
-    var_dump($notes);
-
+    foreach($assetsJSON as $i=>$assetJ){
+        var_dump($assetJ);
+        if(isset($assetJ["css"])) {
+            //var_dump($asset["css"]);
+            foreach($assetJ["css"] as $css){
+                $assets["css"][] = $css;
+            }
+        }
+        if(isset($assetJ["js"]["header"])) {
+            //var_dump($asset["css"]);
+            foreach($assetJ["js"]["header"] as $js){
+                $assets["js"]["header"][] = $js;
+            }
+        }
+        if(isset($assetJ["js"]["footer"])) {
+            //var_dump($asset["css"]);
+            foreach($assetJ["js"]["footer"] as $js){
+                $assets["js"]["footer"][] = $js;
+            }
+        }
+    }
+    var_dump($assets);
     /**
     SELECT p.*
     FROM
@@ -53,7 +83,7 @@ use DAL\Site;
     a do WHERE do ArrayHelper
     Ex:
     Select(function($x){$x->Join1; })->....
-    */
+     */
     ?>
     </p>
 </div>
