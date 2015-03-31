@@ -2,7 +2,7 @@
 use Libs\ArrayHelper;
 use DAL\Site;
 ?>
-<div class="container">
+
     <h2>You are in the View: application/views/home/index.php (everything in the box comes from this file)</h2>
     <p>
     <form method="post">
@@ -86,4 +86,3 @@ use DAL\Site;
      */
     ?>
     </p>
-</div>
