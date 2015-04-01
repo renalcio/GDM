@@ -18,7 +18,12 @@ class Controller
 
     public $unitofwork = null;
     public $pdo = null;
-    
+
+    public $jsonAssets = null;
+
+    private $assetCss = null;
+
+    private $assetJs = null;
 
     /**
      * Whenever a controller is created, open a database connection too and load "the model".
@@ -29,6 +34,9 @@ class Controller
         $this->pdo = new Database();
         $this->unitofwork = new UnitofWork();
         //$this->loadModel();
+        $str = file_get_contents(URL.'assets.json');
+        $json = json_decode($str, true);
+        $this->jsonAssets = $json;
     }
 
     /**
@@ -99,6 +107,8 @@ class Controller
         
 		
         require APP . 'Templates/' . ucfirst($footer) . '.php';
+
+        $this->PrintAssets();
     }
     
     public function Redirect($view, $controller = ""){
@@ -106,8 +116,34 @@ class Controller
 
             header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '');
     }
-    
-    public function Autenticar(){
-        
+
+
+    public function Asset($asset){
+        if(is_array($asset)){
+            foreach($asset as $as){
+                $this->Asset($as);
+            }
+        }else{
+            $assetItem = $this->jsonAssets[$asset];
+
+            if(isset($assetItem) && !empty($assetItem)){
+                if(isset($assetItem["css"]) && !empty($assetItem["css"])) {
+                    foreach($assetItem["css"] as $k => $item){
+                        $this->assetCss += "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
+                    }
+                }
+
+                if(isset($assetItem["js"]) && !empty($assetItem["js"])) {
+                    foreach($assetItem["js"] as $k => $item){
+                        $this->assetJs += "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
+                    }
+                }
+            }
+        }
+    }
+
+    private function PrintAssets(){
+        echo $this->assetCss;
+        echo $this->assetJs;
     }
 }

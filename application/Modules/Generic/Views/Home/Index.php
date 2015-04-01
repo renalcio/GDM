@@ -12,12 +12,49 @@ use DAL\Site;
         <input type="text" id="Grupo__1_Titulo" name="Grupo[1]_Titulo">
         <button type="submit">Vai</button>
     </form>
-
+<pre>
     <?
 
     $time = microtime(1);
     $mem = memory_get_usage();
-    echo URL.'assets.json';
+
+    function dirToArray($dir, $sub = false) {
+
+        $result = array();
+
+        $cdir = scandir($dir);
+        foreach ($cdir as $key => $value)
+        {
+            if (!in_array($value,array(".","..")))
+            {
+                if (is_dir($dir . DIRECTORY_SEPARATOR . $value))
+                {
+                    if($sub == false)
+                        $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value, true);
+                }
+                else
+                {
+                    $filetype = pathinfo($dir . DIRECTORY_SEPARATOR . $value, PATHINFO_EXTENSION);
+                    $result[$filetype][] = $value;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    $path    = ROOT.'public\\plugins';
+    $arr = dirToArray($path);
+    print_r($arr);
+
+    $jsonFile = ROOT."public\\assets.json";
+    $fh = fopen($jsonFile, 'w');
+
+    $json = json_encode($arr);
+
+    fwrite($fh, $json);
+
+    /*echo URL.'assets.json';
     $str = file_get_contents(URL.'assets.json');
     $json = json_decode($str, true);
     //var_dump($json);
@@ -52,7 +89,7 @@ use DAL\Site;
             }
         }
     }
-    var_dump($assets);
+    var_dump($assets);*/
     /**
     SELECT p.*
     FROM
@@ -85,4 +122,5 @@ use DAL\Site;
     Select(function($x){$x->Join1; })->....
      */
     ?>
+    </pre>
     </p>

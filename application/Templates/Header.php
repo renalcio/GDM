@@ -37,7 +37,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "dist/css/AdminLTE.css",
         "dist/css/skins/_all-skins.css",
         //DATEPICKER
-        "plugins/daterangepicker/daterangepicker-bs3.css",
+        /*"plugins/daterangepicker/daterangepicker-bs3.css",
         "plugins/timepicker/bootstrap-timepicker.min.css",
         "plugins/datepicker/datepicker3.css",
         //iCheck
@@ -57,7 +57,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //SWITCH
         "plugins/bootstrap-switch/bootstrap-switch.css",
         //Tagsinput
-        "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css",
+        "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css",*/
     ));
     echo "<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", Array(
@@ -70,7 +70,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //TEMA
         "dist/js/app.js",
         //SparkLine
-        "plugins/sparkline/jquery.sparkline.min.js",
+        /*"plugins/sparkline/jquery.sparkline.min.js",
         //Jvectormap
         "plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
         "plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
@@ -108,7 +108,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //Notofy
         "plugins/jquery.gritter/jquery.gritter.js",
         //Tagsinput
-        "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js",
+        "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js",*/
 
         //DASHBOARD
         "dist/js/pages/dashboard2.js",
