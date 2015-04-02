@@ -27,6 +27,7 @@ class AplicacaoController extends Controller
 
     public function cadastro($id = 0)
     {
+        $this->Asset(["bootstrap-markdown"]);
         $model = new \stdClass;
         $model->AplicacaoId = $id;
         $this->loadBLL();

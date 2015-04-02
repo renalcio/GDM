@@ -25,7 +25,7 @@ if(is_array($Model->ListApps) && count($Model->ListApps) > 0)
 					Aplicações
 				</h3>
                 <div class="box-tools pull-right">
-                    <a href="<?=URL?>app/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
+                    <a href="<?=URL?>Aplicacao/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
                     fa-plus"></i> Nova
                         Aplicação</a>
                 </div>

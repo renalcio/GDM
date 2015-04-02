@@ -1,10 +1,10 @@
 .form-control .select2-choice {
     border: 0;
-    border-radius: 2px;
+    /*border-radius: 2px;*/
 }
 
 .form-control .select2-choice .select2-arrow {
-    border-radius: 0 2px 2px 0;   
+    /*border-radius: 0 2px 2px 0; */
 }
 
 .form-control.select2-container {

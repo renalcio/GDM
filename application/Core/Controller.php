@@ -118,10 +118,10 @@ class Controller
     }
 
 
-    public function Asset($asset){
+    public function AddAsset($asset){
         if(is_array($asset)){
             foreach($asset as $as){
-                $this->Asset($as);
+                $this->AddAsset($as);
             }
         }else{
             $assetItem = $this->jsonAssets[$asset];
@@ -129,21 +129,26 @@ class Controller
             if(isset($assetItem) && !empty($assetItem)){
                 if(isset($assetItem["css"]) && !empty($assetItem["css"])) {
                     foreach($assetItem["css"] as $k => $item){
-                        $this->assetCss += "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
+                        $this->assetCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
                     }
                 }
 
                 if(isset($assetItem["js"]) && !empty($assetItem["js"])) {
                     foreach($assetItem["js"] as $k => $item){
-                        $this->assetJs += "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
+                        $this->assetJs .= "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
                     }
                 }
             }
         }
     }
 
+    public function Asset($asset){
+        $this->AddAsset($asset);
+    }
     private function PrintAssets(){
+        echo "\n<!--CSS-->\n";
         echo $this->assetCss;
+        echo "\n<!--JAVASCRIPT-->\n";
         echo $this->assetJs;
     }
 }

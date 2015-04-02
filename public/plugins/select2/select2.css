@@ -32,13 +32,13 @@ Version: 3.5.2 Timestamp: Sat Nov  1 14:43:36 EDT 2014
     overflow: hidden;
     position: relative;
 
-    border: 1px solid #aaa;
+    /*border: 1px solid #aaa;*/
     white-space: nowrap;
     line-height: 32px;
     color: #444;
     text-decoration: none;
 
-    border-radius: 4px;
+    /*border-radius: 4px;*/
 
     background-clip: padding-box;
 
@@ -63,7 +63,7 @@ html[dir="rtl"] .select2-container .select2-choice {
 .select2-container.select2-drop-above .select2-choice {
     border-bottom-color: #aaa;
 
-    border-radius: 0 0 4px 4px;
+    /*border-radius: 0 0 4px 4px;*/
 
    /* background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(0.9, #fff));
     background-image: -webkit-linear-gradient(center bottom, #eee 0%, #fff 90%);
@@ -193,7 +193,7 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
     top: 0;
 
     border-left: 1px solid #aaa;
-    border-radius: 0 4px 4px 0;
+    /*border-radius: 0 4px 4px 0;*/
 
     background-clip: padding-box;
 

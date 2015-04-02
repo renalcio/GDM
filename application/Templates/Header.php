@@ -111,17 +111,28 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js",*/
 
         //DASHBOARD
-        "dist/js/pages/dashboard2.js",
+        //"dist/js/pages/dashboard2.js",
 
         //DEMO
-        "dist/js/demo.js",
+        "dist/js/demo.js"
 
+    ));
+
+    echo "\n<!--ASSETS-->\n";
+    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker"]);
+    $this->PrintAssets();
+
+    echo "\n<!--/ASSETS-->\n";
+
+    echo "\n<!--JAVASCRIPT-->\n";
+    \Libs\Helper::LoadMedia("js", Array(
         //HELPER
-        "build/js/helper.js",
-        "build/js/pessoa.js",
-        "build/js/avatar.js",
-        "build/js/functions.js"
-    ));?>
+        "dist/js/helper.js",
+        "dist/js/pessoa.js",
+        "dist/js/avatar.js",
+        "dist/js/functions.js"
+    ));
+    ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
