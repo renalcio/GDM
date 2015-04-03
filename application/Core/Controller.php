@@ -66,22 +66,25 @@ class Controller
         $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . PASTA . $bll . 'BLL.php';
 
 
-        if(file_exists($urlfinal))
-            require_once $urlfinal;
-        else {
+        if(file_exists($urlfinal)) {
+            $this->bll = 'BLL' . DIRECTORY_SEPARATOR . PASTA . $bll."BLL";
+            $this->bll = new $this->bll($this->db);
+           // require_once $urlfinal;
+        }else {
             $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . $bll . 'BLL.php';
-            //echo "\n\nBLL: ".$urlfinal;
+           // echo "\n\nBLL: ".$urlfinal;
 
-            if(file_exists($urlfinal))
-                require_once $urlfinal;
-            else
-                require_once APP . '/BLL/' . ucfirst($bll) . 'BLL.php';
+            if(file_exists($urlfinal)) {
+                //require_once $urlfinal;
+                $this->bll =  'BLL' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . $bll."BLL";
+                $this->bll = new $this->bll($this->db);
+            }else{
+                    //require_once APP . '/BLL/' . ucfirst($bll) . 'BLL.php';
+                $this->bll =  '/BLL/' . ucfirst($bll)."BLL";
+                $this->bll = new $this->bll($this->db);
+            }
         }
 
-        
-        // create new "model" (and pass the database connection)
-        $this->bll = "BLL\\".$bll."BLL";
-        $this->bll = new $this->bll($this->db);
     }
     
     public function View($view = "", $controller = "", $header = "", $footer=""){

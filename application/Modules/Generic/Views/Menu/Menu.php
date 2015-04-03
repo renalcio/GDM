@@ -61,7 +61,7 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                                             <? if (!empty($SubItem->Icone)) { ?>
                                                 <i class="fa <?= $SubItem->Icone; ?>"></i>
                                             <? } else { ?>
-                                                <i class="fa fa-angle-double-right"></i>
+                                                <i class="fa fa-circle-o"></i>
                                             <? } ?>
                                             <span><?= $SubItem->Titulo; ?></span>
                                             <? if (!empty($classSubmenu)) { ?>
@@ -78,7 +78,7 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                                                         ?>
                                                         <li>
                                                             <a href="<?= URL . $SubSubItem->Url; ?>">
-                                                                <i class="fa fa-angle-double-right"></i><?= $SubSubItem->Titulo; ?>
+                                                                <i class="fa fa-circle-o"></i><?= $SubSubItem->Titulo; ?>
                                                             </a>
                                                         </li>
                                                     <?php

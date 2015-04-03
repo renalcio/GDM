@@ -1,21 +1,11 @@
 <?php
-namespace BLL;
+namespace BLL\GDM;
+use BLL\BLL;
 use Libs\Database;
 use DAL\Perfil;
 use Libs\Helper;
 class PerfilBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (\PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-    }
 
     public function GetToEdit($Model)
     {

@@ -18,7 +18,7 @@ use DAL\Site;
     $time = microtime(1);
     $mem = memory_get_usage();
 
-    function dirToArray($dir, $sub = false) {
+    /*function dirToArray($dir, $sub = false) {
 
         $result = array();
 
@@ -52,7 +52,7 @@ use DAL\Site;
 
     $json = json_encode($arr);
 
-    fwrite($fh, $json);
+    fwrite($fh, $json);*/
 
     /*echo URL.'assets.json';
     $str = file_get_contents(URL.'assets.json');

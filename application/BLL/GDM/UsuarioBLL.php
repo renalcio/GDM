@@ -1,5 +1,7 @@
 <?php
-namespace BLL;
+namespace BLL\GDM;
+use BLL\BLL;
+use BLL\Generic\PessoaBLL;
 use DAL\Usuario;
 use DAL\UsuarioPerfil;
 use Libs\Database;
@@ -14,19 +16,6 @@ use DAL\Pessoa;
 use Libs\Debug;
 class UsuarioBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        $this->pdo = new Database;
-        $this->unitofwork = new UnitofWork();
-    }
 
     public function GetToEdit(\DAL\Usuario $model)
     {
@@ -55,7 +44,7 @@ class UsuarioBLL extends BLL
             $NivelItem = UsuarioHelper::GetNivel($model->ListUsuario[$i]->UsuarioId);
             $NivelUser = UsuarioHelper::GetNivel();
 
-            if($NivelItem < $NivelUser && $model->ListUsuario[$i]->AplicacaoId == APPID){
+            if($NivelItem < $NivelUser){
                 unset($model->ListUsuario[$i]);
             }
         }

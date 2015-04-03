@@ -36,6 +36,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "dist/css/style.css",
         "dist/css/AdminLTE.css",
         "dist/css/skins/_all-skins.css",
+        "dist/css/avatar.css",
         //DATEPICKER
         /*"plugins/daterangepicker/daterangepicker-bs3.css",
         "plugins/timepicker/bootstrap-timepicker.min.css",
@@ -50,7 +51,6 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //DATATABLE
         "plugins/datatables/dataTables.bootstrap.css",
         //CROP
-        "dist/css/avatar.css",
         "plugins/jquery.cropper/cropper.css",
         //Notofy
         "plugins/jquery.gritter/jquery.gritter.css",
@@ -119,7 +119,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
     ));
 
     echo "\n<!--ASSETS-->\n";
-    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker"]);
+    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter"]);
     $this->PrintAssets();
 
     echo "\n<!--/ASSETS-->\n";
@@ -224,7 +224,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b><?=$HUser->Aplicacao->Titulo;?></b></a>
+        <a href="<?=URL?>home/" class="logo"><b><?=$HUser->Aplicacao->Titulo;?></b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -425,7 +425,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                            <img src="<?=$HUser->Usuario->Avatar;?>" class="user-image" alt="User Image"/>
                             <span class="hidden-xs"><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?></span>
                         </a>
                         <ul class="dropdown-menu">

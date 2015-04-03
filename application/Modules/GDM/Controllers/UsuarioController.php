@@ -38,6 +38,7 @@ class UsuarioController extends Controller
      */
     public function cadastro($id = 0)
     {
+        $this->Asset(["jquery.cropper"]);
         // load views
         $this->loadBLL();
         $Model = new Usuario();

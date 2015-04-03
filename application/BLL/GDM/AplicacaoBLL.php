@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\GDM;
+use BLL\BLL;
 use BLL\Generic\PessoaBLL;
 use DAL\Aplicacao;
 use Libs\Database;

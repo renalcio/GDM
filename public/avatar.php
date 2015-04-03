@@ -20,9 +20,9 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
         private $dst;
         private $type;
         private $extension;
-        private $srcDir = 'public/img/upload';
-        private $dstDir = 'public/img/avatar';
-        private $urlBase = 'img/avatar';
+        private $srcDir = 'public/dist/img/upload';
+        private $dstDir = 'public/dist/img/avatar';
+        private $urlBase = 'dist/img/avatar';
         private $urlImg;
         private $msg;
 
