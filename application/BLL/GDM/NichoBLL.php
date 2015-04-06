@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\GDM;
+use BLL\BLL;
 use DAL\Nicho;
 use Libs\Database;
 use Libs\Helper;
@@ -7,19 +8,6 @@ use Libs\UnitofWork;
 
 class NichoBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (\PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        parent::__construct();
-    }
-
     public function GetToEdit($Model)
     {
         if($Model->NichoId > 0)

@@ -5,7 +5,8 @@
  * Autor: renalcio.freitas
  * Data: 22/01/2015
  */
-namespace BLL;
+namespace BLL\GDM;
+use BLL\BLL;
 use Libs\Database;
 use DAL\Site;
 use Libs\Helper;
@@ -17,17 +18,6 @@ use Libs\Debug;
 
 class SiteBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-    }
 
     public function GetToEdit(Site $model)
     {

@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\GDM;
+use BLL\BLL;
 use DAL\UsuarioPerfil;
 use Libs\Database;
 use DAL\UsuarioAplicacao;
@@ -13,18 +14,6 @@ use Libs\Debug;
 use Libs\ArrayHelper;
 class UsuarioAplicacaoBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-    }
-
     public function GetToEdit(UsuarioAplicacao $model)
     {
         if($model->UsuarioAplicacaoId > 0)

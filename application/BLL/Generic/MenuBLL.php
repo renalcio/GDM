@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\Generic;
+use BLL\BLL;
 use DAL\Menu;
 use DAL\Permissao;
 use Libs\Database;
@@ -8,20 +9,6 @@ use Libs\CookieHelper;
 use Libs\SessionHelper;
 class MenuBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        parent::__construct();
-    }
-
-    
     public function GetMenu($Pai = 0, $AplicacaoId = APPID){
         $retorno = $this->unitofwork->Get(new Menu(), "AplicacaoId='".$AplicacaoId."' AND Pai = '".$Pai."'")->OrderBy("Posicao")->ToArray();
         

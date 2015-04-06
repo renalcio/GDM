@@ -13,19 +13,6 @@ use Libs\UnitofWork;
 class AplicacaoBLL extends BLL
 {
 
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        parent::__construct();
-    }
-
     public function GetToEdit($Model)
     {
         if($Model->AplicacaoId > 0)

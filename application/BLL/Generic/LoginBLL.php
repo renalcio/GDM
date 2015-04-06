@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\Generic;
+use BLL\BLL;
 use DAL\Aplicacao;
 use DAL\Pessoa;
 use DAL\Usuario;
@@ -12,18 +13,6 @@ use Libs\UnitofWork;
 
 class LoginBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-    }
-
     /**
      * Get all songs from database
      */

@@ -1,5 +1,6 @@
 <?php
-namespace BLL;
+namespace BLL\Generic;
+use BLL\BLL;
 use DAL\Aplicacao;
 use DAL\MediaSpot\Artista;
 use Libs\Database;
@@ -10,19 +11,6 @@ use Libs\UnitofWork;
 
 class HomeBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        parent::__construct();
-    }
-
     public function Generator($AplicacaoId = APPID){
         $Aplicacao = new Aplicacao();
         $Aplicacao = $this->unitofwork->GetById(new Aplicacao(), $AplicacaoId);

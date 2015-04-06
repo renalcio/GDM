@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 02/02/2015
  */
-namespace BLL;
+namespace BLL\MediaSpot;
 use DAL\MediaSpot\Artista;
 use DAL\Site;
 use Libs\Database;
