@@ -21,6 +21,7 @@ class PerfilHandler extends Controller
                 $status = 0;
 
             $Perfil = new Perfil();
+            $Perfil = $this->unitofwork->GetById(new Perfil(), $id);
             $Perfil->Ativo = $status;
             $Perfil->PerfilId = $id;
 

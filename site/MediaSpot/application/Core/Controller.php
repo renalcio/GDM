@@ -18,7 +18,12 @@ class Controller
 
     public $unitofwork = null;
     public $pdo = null;
-    
+
+    public $jsonAssets = null;
+
+    private $assetCss = null;
+
+    private $assetJs = null;
 
     /**
      * Whenever a controller is created, open a database connection too and load "the model".
@@ -29,6 +34,9 @@ class Controller
         $this->pdo = new Database();
         $this->unitofwork = new UnitofWork();
         //$this->loadModel();
+        $str = file_get_contents(ROOT_URL.'assets.json');
+        $json = json_decode($str, true);
+        $this->jsonAssets = $json;
     }
 
     /**
@@ -55,62 +63,80 @@ class Controller
     {
         if(empty($bll)) $bll = Helper::getController();
 
-        $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . PASTA . $bll . 'BLL.php';
+        $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . ucfirst($bll) . 'BLL.php';
 
+        //echo $urlfinal;
 
-        if(file_exists($urlfinal))
-            require_once $urlfinal;
-        else {
-            $urlfinal = APP . 'BLL' . DIRECTORY_SEPARATOR . 'Generic' . DIRECTORY_SEPARATOR . $bll . 'BLL.php';
-            //echo "\n\nBLL: ".$urlfinal;
-
-            if(file_exists($urlfinal))
-                require_once $urlfinal;
-            else
-                require_once APP . '/BLL/' . ucfirst($bll) . 'BLL.php';
+        if(file_exists($urlfinal)) {
+            $this->bll = 'BLL' . DIRECTORY_SEPARATOR . ucfirst($bll) ."BLL";
+            $this->bll = new $this->bll($this->db);
+            // require_once $urlfinal;
         }
-
-        
-        // create new "model" (and pass the database connection)
-        $this->bll = "BLL". DIRECTORY_SEPARATOR . PASTA . $bll."BLL";
-        if(!class_exists($this->bll))
-            $this->bll = "BLL\\".$bll."BLL";
-
-        $this->bll = new $this->bll($this->db);
     }
-    
+
     public function View($view = "", $controller = "", $header = "", $footer=""){
         $this->ModelView(null, $view, $controller, $header, $footer);
     }
-    
+
     public function ModelView($Model = "", $view = "", $controller = "", $header = "", $footer = ""){
         if(empty($view)) $view = Helper::getAction();
         if(empty($header))  $header = "Header";
         if(empty($footer))  $footer = "Footer";
         if(empty($controller)) $controller = Helper::getController();
         // load views
-		
+
         require APP . 'Views/_templates/' . ucfirst($header) . '.php';
-		
-		
-        /*if(empty($controller))
-            require APP . 'views/' . $view . '.php';
+
+
+        if(empty($controller))
+            require APP . 'Views/' . ucfirst($view) . '.php';
         else
-            require APP . 'views/' . $controller . '/' . $view . '.php';
-        */
-        Helper::LoadModelView($Model, $view, $controller);
-        
-		
+            require APP . 'Views/' . ucfirst($controller) . '/' . $view . '.php';
+
+
         require APP . 'Views/_templates/' . ucfirst($footer) . '.php';
+
+        $this->PrintAssets();
     }
-    
-    public function Redirect($view, $controller = "", $parametros = ""){
+
+    public function Redirect($view, $controller = ""){
         if(empty($controller)) $controller = Helper::getController();
 
-            header('location: ' . Helper::getUrl($view, $controller, $parametros) . '');
+        header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '');
     }
-    
-    public function Autenticar(){
-        
+
+
+    public function AddAsset($asset){
+        if(is_array($asset)){
+            foreach($asset as $as){
+                $this->AddAsset($as);
+            }
+        }else{
+            $assetItem = $this->jsonAssets[$asset];
+
+            if(isset($assetItem) && !empty($assetItem)){
+                if(isset($assetItem["css"]) && !empty($assetItem["css"])) {
+                    foreach($assetItem["css"] as $k => $item){
+                        $this->assetCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
+                    }
+                }
+
+                if(isset($assetItem["js"]) && !empty($assetItem["js"])) {
+                    foreach($assetItem["js"] as $k => $item){
+                        $this->assetJs .= "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
+                    }
+                }
+            }
+        }
+    }
+
+    public function Asset($asset){
+        $this->AddAsset($asset);
+    }
+    private function PrintAssets(){
+        echo "\n<!--CSS-->\n";
+        echo $this->assetCss;
+        echo "\n<!--JAVASCRIPT-->\n";
+        echo $this->assetJs;
     }
 }
