@@ -47,6 +47,7 @@ function alerta(params){
  */
 $(function(){
     $("input.switch").bootstrapSwitch();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 /**
  IMAGE UPLOAD AND CROP

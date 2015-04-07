@@ -9,17 +9,19 @@ if(isset($Model)&& !empty($Model)){
             $("#player_timeline").ionRangeSlider({
                 min: 0,
                 max: 198,
+                hide_from_to: true,
+                hide_min_max: true,
                 prettify: function (num) {
                     var minutos = parseInt(num / 60);
                     var segundos = parseInt(num - (minutos * 60));
                     if(segundos < 10) segundos = "0"+segundos;
                     if(minutos < 10) minutos = "0"+minutos;
-                    return minutos + ":" + segundos;
+                    //return minutos + ":" + segundos;
                     //return moment().set({'minute': minutos, 'second': segundos}).format("mm:ss");
                 },
                 onChange: function (data) {
                     var Segundos = data.from;
-                    console.log(Segundos);
+                    //console.log(Segundos);
                     seekTo(Segundos, true);
                 }
             });
@@ -28,8 +30,9 @@ if(isset($Model)&& !empty($Model)){
                 max: 100,
                 from: 0,
                 hide_min_max: true,
+                hide_from_to: true,
                 prettify: function (num) {
-                    return num;
+                    //return num;
                 }
             });
 
@@ -300,16 +303,17 @@ if(isset($Model)&& !empty($Model)){
                     from: TempoCorrido
                 });
 
-                if(TempoCorrido.toString().toInt() == TempoTotal.toString().toInt()){
-                    /*setTimeout(function(){
-                        var replay = $.cookie("replay");
-                        if(replay == null || replay != "true")
-                            playNext();
-                        else
-                            seekTo(0, true);
-                            playVideo();
-                    }, 1000);*/
-                }
+                var minutosNow = parseInt(TempoCorrido / 60);
+                var segundosNow = parseInt(TempoCorrido - (minutosNow * 60));
+                if(segundosNow < 10) segundosNow = "0"+segundosNow;
+                if(minutosNow < 10) minutosNow = "0"+minutosNow;
+                $("#player-timeNow").html(minutosNow+":"+segundosNow);
+
+                var minutosTotal = parseInt(TempoTotal / 60);
+                var segundosTotal = parseInt(TempoTotal - (minutosTotal * 60));
+                if(segundosTotal < 10) segundosTotal = "0"+segundosTotal;
+                if(minutosTotal < 10) minutosTotal = "0"+minutosTotal;
+                $("#player-timeTotal").html(minutosTotal+":"+segundosTotal);
             }
         }
 
@@ -531,19 +535,31 @@ if(isset($Model)&& !empty($Model)){
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div class="btn-group btn-group-lg center-block" role="group" aria-label="...">
-                                    <button onclick="playPrev()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
-                                    <button id="player_play" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-                                    <button onclick="playNext()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+                            <div class="col-xs-4 text-center">
+                                    <a onclick="playPrev()" style="color:#fff;font-size: 18px; "><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a>
                                 </div>
+                            <div class="col-xs-4 text-center">
+                                    <a id="player_play" style="color:#fff;font-size: 18px;"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                    <a onclick="playNext()" style="color:#fff;font-size: 18px;"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-8">
+                        <div class="row">
+                            <div class="col-xs-1 text-center">
+                                <span id="player-timeNow" style="font-size: 16px;"></span>
+                            </div>
+                            <div class="col-xs-10 text-center">
                         <input id="player_timeline" type="text" name="player_timeline" value="" />
+                                </div>
+                            <div class="col-xs-1 text-center">
+                                <span id="player-timeTotal" style="font-size: 16px;"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-3 col-xs-4">
+                    <div class="col-lg-2 col-md-4 col-sm-3 col-xs-4" data-toggle="tooltip" data-placement="top" title="Volume">
                         <input id="player_volume" type="text" name="player_volume" value="" />
                     </div>
                 </div>
