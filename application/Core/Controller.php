@@ -111,7 +111,7 @@ class Controller
 		
         require APP . 'Templates/' . ucfirst($footer) . '.php';
 
-        $this->PrintAssets();
+        //$this->PrintAssets();
     }
     
     public function Redirect($view, $controller = ""){
