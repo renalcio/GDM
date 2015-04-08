@@ -1,152 +1,72 @@
-<?
-use Libs\SessionHelper;
-use Libs\Helper;
-$db = new Libs\UnitofWork();
-$sessao = new SessionHelper("GDMAuth");
 
-?>
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>MediaSpot</title>
-    <meta name="description" content="Ouvir Musica Online, Videos e Imagens.">
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Ionicons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!--CSS-->
-    <script>
-        var SiteURL = "<?=URL?>";
-    </script>
-    <? \Libs\Helper::LoadMedia("css",[
-        "bootstrap/css/bootstrap.min.css",
-        "dist/css/style.css",
-        "dist/css/AdminLTE.css",
-        "dist/css/skins/_all-skins.css",
-        "dist/css/avatar.css"
-    ]);
-    echo "<!--JAVASCRIPT-->\n";
-    \Libs\Helper::LoadMedia("js", [
-        //JQUERY
-        "dist/js/jquery.js",
-        //BOOTSTRAP
-        "bootstrap/js/bootstrap.min.js",
-        //TEMA
-        "dist/js/app.js",
-        //"dist/js/demo.js"
+    <title>Renalcio Carlos</title>
+
+    <?
+    \Libs\Helper::LoadMedia("css",[
+        "css/bootstrap.min.css",
+        "css/freelancer.css",
+        "font-awesome/css/font-awesome.min.css"
     ]);
 
-    echo "\n<!--ASSETS-->\n";
-    $this->AddAsset(["fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter","moment", "ionslider", "bootstrap-typeahead", "jquery.cookie"]);
-    $this->PrintAssets();
 
-    echo "\n<!--/ASSETS-->\n";
-
-    echo "\n<!--JAVASCRIPT-->\n";
-    \Libs\Helper::LoadMedia("js", [
-        //HELPER
-        "dist/js/helper.js",
-        "dist/js/pessoa.js",
-        "dist/js/avatar.js",
-        "dist/js/functions.js"
-    ]);
     ?>
-    <script>
-        $(function(){
-            var Resultados = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: '<?=URL?>handler/artista/Consulta/',
-                remote: '<?=URL?>handler/artista/Consulta/?query=%QUERY'
-            });
-
-            Resultados.initialize();
-
-            $('#navbar-search-input').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
-                name: 'busca-q',
-                displayKey: 'value',
-                source: Resultados.ttAdapter(),
-                templates: {
-                    empty: [
-                        '<p style="padding: 0 12px;">',
-                        'Nenhum artista encontrado, pressione enter para uma pesquisa personalizada',
-                        '</p>'
-                    ].join('\n'),
-                    suggestion: Handlebars.compile('<p>{{name}}</p>')
-                }
-            });
-            $('#navbar-search-input').on(['typeahead:selected'].join(' '), function(item){
-                var id = $(this).val();
-                $(this).val("");
-                //console.log(id);
-                location.href = "<?=URL?>Player/Index/"+id;
-            });
-
-            $('#navbar-search-input').keyup(function(e) {
-                if (e.keyCode == 13) {
-                    setTimeout(function(){
-                        $("#buscaForm").submit();
-                    }, 800);
-                }
-            });
-        });
-    </script>
-
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
-<body class="skin-blue layout-top-nav">
-<div class="wrapper">
 
-    <header class="main-header">
-        <nav class="navbar navbar-static-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="<?=Helper::getUrl("Index","Home");?>" class="navbar-brand"><b>Media</b>Spot</a>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </div>
+<body id="page-top" class="index">
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?=Helper::getUrl("Index","Home");?>">Músicas <span class="sr-only">(current)</span></a></li>
-                        <li><a href="<?=Helper::getUrl("Index","Video");?>">Vídeos</a></li>
-                        <li><a href="<?=Helper::getUrl("Index","Imagem");?>">Imagens</a></li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search" id="buscaForm" method="post" action="<?=\Libs\Helper::getUrl("Index",
-                        "Busca");?>">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Buscar Artistas ou Músicas" autocomplete="off" name="q">
-                        </div>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Entrar</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olá, Renalcio <span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </header>
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Alternar Navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#page-top">Renalcio Carlos</a>
+        </div>
 
-    <!-- Full Width Column -->
-    <div class="content-wrapper">
-            <section class="content">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#portfolio">Portfolio</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#about">Sobre</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#contact">Contato</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
