@@ -119,7 +119,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
     ));
 
     echo "\n<!--ASSETS-->\n";
-    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter"]);
+    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter", "bootbox"]);
     $this->PrintAssets();
 
     echo "\n<!--/ASSETS-->\n";

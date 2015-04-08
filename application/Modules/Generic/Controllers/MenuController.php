@@ -19,6 +19,7 @@ class MenuController extends Controller
     
     public function cadastro($App = 0)
     {
+        $this->AddAsset(["jquery.nestable"]);
         if($App == 0) $App = APP_ID;
             $menu = new \stdClass;
             //Editar

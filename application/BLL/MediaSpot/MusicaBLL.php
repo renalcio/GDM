@@ -17,18 +17,6 @@ use Libs\UsuarioHelper;
 
 class MusicaBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        //$this->pdo = new Database;
-    }
 
     public function GetToEdit(Musica $model)
     {

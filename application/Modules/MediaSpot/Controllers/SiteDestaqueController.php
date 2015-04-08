@@ -20,6 +20,7 @@ class SiteDestaqueController extends Controller
 
     public function index()
     {
+        $this->AddAsset(["jquery.nestable"]);
         $this->loadBLL();
         $Model = new \stdClass();
         $Model = $this->bll->GetToIndex($Model);

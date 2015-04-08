@@ -21,19 +21,6 @@ use Libs\Debug;
 
 class ArtistaBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        $this->unitofwork = new UnitofWork();
-    }
-
     public function GetToEdit(Artista $model)
     {
         if($model->ArtistaId > 0)

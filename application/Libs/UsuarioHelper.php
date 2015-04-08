@@ -16,7 +16,7 @@ class UsuarioHelper
     public static function GetSite($UsuarioId = 0, $AplicacaoId = APPID)
     {
         $pdo = new Database();
-        $uow = new Database();
+        $uow = new UnitofWork();
         $sessao = new SessionHelper("GDMAuth");
         $UsuarioId = empty($UsuarioId) ?  $sessao->Ver("UsuarioId") : $UsuarioId;
 

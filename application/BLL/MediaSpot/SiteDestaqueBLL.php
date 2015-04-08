@@ -6,6 +6,7 @@
  * Data: 02/02/2015
  */
 namespace BLL\MediaSpot;
+use BLL\BLL;
 use DAL\MediaSpot\Artista;
 use DAL\Site;
 use Libs\Database;
@@ -21,18 +22,6 @@ use Libs\UsuarioHelper;
 
 class SiteDestaqueBLL extends BLL
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-        $this->pdo = new Database;
-    }
 
     public function GetToEdit(SiteDestaque $model)
     {
