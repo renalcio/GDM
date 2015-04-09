@@ -43,7 +43,7 @@ class UsuarioHandler extends Controller
 .PessoaId AND pf.CPF = '$doc') OR
  (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "DAL\\Usuario");*/
 
-            $retorno = $uow->Get(new Usuario)->Join($uow->Get(new Pessoa()), "u.PessoaId", "p.PessoaId")->LeftJoin($uow->Get(new PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($uow->Get(new PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId = pf.PessoaId AND pf.CPF = '') OR (p.PessoaId = pj.PessoaId AND pj.CNPJ = '')")->Select("u.*", new Usuario())->First();
+            $retorno = $uow->Get(new Usuario)->Join($uow->Get(new Pessoa()), "u.PessoaId", "p.PessoaId")->LeftJoin($uow->Get(new PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($uow->Get(new PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId = pf.PessoaId AND pf.CPF = '".$doc."') OR (p.PessoaId = pj.PessoaId AND pj.CNPJ = '".$doc."')")->Select("u.*", new Usuario())->First();
         }
         $retorno = json_encode($retorno);
 

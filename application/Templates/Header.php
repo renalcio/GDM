@@ -66,7 +66,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         //BOOTSTRAP
         "bootstrap/js/bootstrap.min.js",
         //FastClick
-        "plugins/fastclick/fastclick.min.js",
+        "plugins/fastclick/fastclick.js",
         //TEMA
         "dist/js/app.js",
         //SparkLine

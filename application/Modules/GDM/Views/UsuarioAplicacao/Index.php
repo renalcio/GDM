@@ -55,7 +55,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                             <? if(APPID == ROOTAPP) {
                                 ?><td><?=$item->Aplicacao->Titulo;?></td><?
                             } ?>
-                            <td><?=\Libs\UsuarioHelper::GetNivel($item->UsuarioId);?></td>
+                            <td><?=\Libs\UsuarioHelper::GetNivel($item->UsuarioId, $item->Aplicacao->AplicacaoId);?></td>
 
                             <td align="center">
 

@@ -10,6 +10,8 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
+use DAL\Aplicacao;
+
 class AplicacaoController extends Controller
 {
     /**
@@ -28,7 +30,7 @@ class AplicacaoController extends Controller
     public function cadastro($id = 0)
     {
         $this->Asset(["bootstrap-markdown"]);
-        $model = new \stdClass;
+        $model = new Aplicacao();
         $model->AplicacaoId = $id;
         $this->loadBLL();
 

@@ -1,6 +1,7 @@
 <?php
 namespace BLL\GDM;
 use BLL\BLL;
+use BLL\Generic\MenuBLL;
 use Libs\Database;
 use DAL\Perfil;
 use Libs\Helper;
@@ -45,7 +46,7 @@ class PerfilBLL extends BLL
             $model = $this->unitofwork->GetById(new Perfil(), $model->PerfilId);
 
             //Menu
-            $menumodel = new MenuModel($this->db);
+            $menumodel = new MenuBLL();
 
             $model->Menu = $menumodel->GetMenu(0, $model->AplicacaoId);
         }

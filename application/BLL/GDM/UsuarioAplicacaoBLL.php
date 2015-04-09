@@ -60,7 +60,7 @@ class UsuarioAplicacaoBLL extends BLL
 
 
                 foreach ($listaPerfil as $PerfilId) {
-                    $check = $this->unitofwork->Get(new UsuarioPerfil(), "WHERE PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId)->ToArray();
+                    $check = $this->unitofwork->Get(new UsuarioPerfil(), " PerfilId = " . $PerfilId . " AND UsuarioId = " . $model->UsuarioId)->ToArray();
                     if (empty($check)) {
                         $objAdd = new UsuarioPerfil();
                         $objAdd->PerfilId = $PerfilId;

@@ -82,6 +82,7 @@ class UnitofWork {
                 }
             }
 
+            //var_dump($comparacoes);
             if(!empty($comparacoes))
                 $this->Where($comparacoes);
             else
@@ -127,7 +128,7 @@ class UnitofWork {
 
         $this->join .= $strJoin;
 
-        $this->where = $join->where;
+        $this->Where($join->where);
 
         //echo "<br>This Where: ".$this->where;
         //echo "<br>Join Where: ".$join->where;

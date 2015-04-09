@@ -7,6 +7,7 @@
  */
 namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
+use DAL\Acesso;
 use DAL\Perfil;
 use DAL\Permissao;
 use Libs\Database;
@@ -24,7 +25,7 @@ class permissaoHandler extends Controller
             else
                 $status = 0;
 
-            $check = $uow->Get(new Perfil(), "PerfilId='".$PerfilId."' AND MenuId = '".$MenuId."' AND AplicacaoId = '".$AplicacaoId."'")->ToArray();
+            $check = $uow->Get(new Acesso(), "PerfilId='".$PerfilId."' AND MenuId = '".$MenuId."' AND AplicacaoId = '".$AplicacaoId."'")->ToArray();
 
             if($Acesso == "true"){
                 //Permitir

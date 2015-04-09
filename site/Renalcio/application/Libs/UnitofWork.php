@@ -81,7 +81,6 @@ class UnitofWork {
 
                 }
             }
-
             if(!empty($comparacoes))
                 $this->Where($comparacoes);
             else
