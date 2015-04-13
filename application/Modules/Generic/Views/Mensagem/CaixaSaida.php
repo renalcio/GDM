@@ -44,14 +44,10 @@ if($Model->Lista->Count() > 0)
 
                 $Model->Lista->For_Each(function($Item)
                 {
-                    $dataArr = explode("/", $Item->Data);
-
                     ?>
                     <tr>
                         <td><?=$Item->Conteudo;?></td>
-                        <td data-order="<?=(!empty($dataArr) ? $dataArr[2].$dataArr[1].$dataArr[0] : 0)?>
-                        "><?=$Item->Data;
-                        ?></td>
+                        <td><?=$Item->Data;?></td>
                         <td align="center"><i class="fa <?=$Item->Icone;?> <?=$Item->Classe;?>"></i></td>
                         <td align="center">
                             <div class="btn-group">

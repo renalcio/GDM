@@ -2,8 +2,11 @@
 namespace Modules\Generic\Controllers\Handlers;
 use Core\Controller;
 use DAL\Pessoa;
+use DAL\PessoaAplicacao;
 use DAL\PessoaFisica;
 use DAL\PessoaJuridica;
+use DAL\Usuario;
+use DAL\UsuarioAplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;
@@ -40,6 +43,24 @@ class PessoaHandler extends Controller
         $retorno = json_encode($retorno);
 
         echo $retorno;
+    }
+
+    function Select2Tag()
+    {
+        header('Content-Type: application/json; Charset=UTF-8');
+        $retorno = Array();
+        $uow = new UnitofWork();
+        $sql = $uow->Get(new UsuarioAplicacao(), "AplicacaoId = '" . APPID . "'")->Join($uow->Get(new Usuario()), "ua.UsuarioId", "u.UsuarioId")->Join($uow->Get(new Pessoa()), "u.PessoaId", "p.PessoaId")->Select("DISTINCT(p.PessoaId), p.Nome")->ToArray();
+        if (count($sql) > 0) {
+            foreach ($sql as $item) {
+                $add = new \stdClass();
+                $add->id = $item->PessoaId;
+                $add->text = $item->Nome;
+                $retorno[] = $add;
+            }
+        }
+
+        echo json_encode($retorno);
     }
 }
 ?>

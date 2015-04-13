@@ -35,30 +35,22 @@
       <column name="DbBanco" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="AplicacaoId"/>
     </table>
-    <table name="Asset" schema="" catalog="GDM" type="TABLE">
-      <column name="AssetId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Descricao" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="AssetId"/>
+    <table name="Mensagem" schema="" catalog="GDM" type="TABLE">
+      <column name="MensagemId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Assunto" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Conteudo" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="DataEnvio" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="Apagada" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="MensagemId"/>
     </table>
-    <table name="AssetDependencia" schema="" catalog="GDM" type="TABLE">
-      <column name="AssetDependenciaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="AssetId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="AssetPaiId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="AssetDependenciaId"/>
-    </table>
-    <table name="AssetFile" schema="" catalog="GDM" type="TABLE">
-      <column name="AssetFileId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="AssetId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="AssetTipoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="AssetFileId"/>
-    </table>
-    <table name="AssetTipo" schema="" catalog="GDM" type="TABLE">
-      <column name="AssetTipoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="AssetTipoId"/>
+    <table name="MensagemPessoa" schema="" catalog="GDM" type="TABLE">
+      <column name="MensagemPessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="MensagemId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PessoaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DataLeitura" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="Copia" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="MensagemPessoaId"/>
     </table>
     <table name="Menu" schema="" catalog="GDM" type="TABLE">
       <column name="MenuId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
