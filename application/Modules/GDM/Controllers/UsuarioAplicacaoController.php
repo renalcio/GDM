@@ -15,11 +15,17 @@ use DAL\UsuarioAplicacao;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class UsuarioAplicacaoController
+ * @package Modules\GDM\Controllers
+ * @Title: Usuários de Aplicações
+ */
 class UsuarioAplicacaoController extends Controller
 {
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * @Title: Listagem
      */
     public function index()
     {
@@ -35,6 +41,7 @@ class UsuarioAplicacaoController extends Controller
      * PAGE: exampletwo
      * This method handles what happens when you move to http://yourproject/home/exampletwo
      * The camelCase writing is just for better readability. The method name is case-insensitive.
+     * @Title: Cadastro
      */
     public function cadastro($id = 0)
     {

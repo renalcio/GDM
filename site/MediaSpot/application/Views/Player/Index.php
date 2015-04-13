@@ -136,7 +136,7 @@ if(isset($Model)&& !empty($Model)){
                     </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <table id="listagem" class="table table-bordered table-hover">
+                    <table id="listagem" class="table table-bordered table-hover" style="width: 100%">
                         <thead style="display:none">
                         <tr>
                             <th></th>

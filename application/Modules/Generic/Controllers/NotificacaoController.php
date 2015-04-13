@@ -13,9 +13,17 @@ use DAL\Notificacao;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class NotificacaoController
+ * @package Modules\Generic\Controllers
+ * @Title: Notificações
+ */
 class NotificacaoController extends Controller
 {
 
+    /**
+     * @Title: Listagem
+     */
     public function index()
     {
         $this->loadBLL();
@@ -24,8 +32,13 @@ class NotificacaoController extends Controller
         $this->ModelView($Model);
     }
 
+    /**
+     * @param int $id
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
+        $this->AddAsset(["datepicker"]);
         // load views
         $this->loadBLL();
         $Model = new Notificacao();

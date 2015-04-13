@@ -1,8 +1,8 @@
 <?
 use Libs\Form;
-$Model = new \DAL\Notificacao();
+//$Model = new \DAL\Notificacao();
+
 ?>
-<h3 class="page-header">Cadastro de Actions</h3>
 <form method="post">
     <?Form::Hidden("NotificacaoId", @$Model->NotificacaoId);?>
 
@@ -13,44 +13,50 @@ $Model = new \DAL\Notificacao();
             </h3>
         </div>
         <div class="box-body">
-            <? if(APPID == ROOTAPP){ ?>
-            <div class="form-group" for="AplicacaoId">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "AplicacaoId");?>
-                </label>
-                <? Form::Select2("ModuloId", @$Model->AplicacaoId, "", Array("class" => "form-control AplicacaoSelect",
-                    "DataUrl" => URL."handler/Aplicacao/Select2" ))?>
-            </div>
-        <? }else{
-                Form::Hidden("AplicacaoId", APPID);
-            }
-            ?>
+            <? Form::Hidden("AplicacaoId", APPID);?>
             <div class="form-group" for="Conteudo">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Conteudo");?>
                 </label>
-                <? Form::Text("Titulo", @$Model->Conteudo, Array("class" => "form-control"))?>
+                <? Form::TextArea("Conteudo", @$Model->Conteudo, Array("class" => "form-control"))?>
             </div>
 
-            <div class="form-group" for="Icone">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Icone");?>
-                </label>
-                <? Form::Text("Icone", @$Model->Icone, Array("class" => "form-control"))?>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        <?=\Libs\ModelState::DisplayName($Model, "Icone");?>
+                    </label>
+                    <div class="input-group" for="Icone">
+                        <span class="input-group-addon" id="icon-span"><i class="fa <?=@$Model->Icone?>"></i></span>
+                        <? Form::Text("Icone", @$Model->Icone, ["class" => "form-control"])?>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#iconeModal">Selecionar Icone</button>
+                        </div><!-- /btn-group -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" for="Classe">
+                        <label>
+                            <?=\Libs\ModelState::DisplayName($Model, "Classe");?>
+                        </label>
+                        <? Form::DropDown("Classe", @$Model->Classe,[
+                            "" => "Padrão",
+                            "text-aqua" => "Azul",
+                            "text-yellow" => "Amarelo",
+                            "text-green" => "Verde",
+                            "text-red" => "Vermelho"
+                        ], ["class" => "form-control"])?>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group" for="Classe">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Classe");?>
-                </label>
-                <? Form::Text("Classe", @$Model->Classe, Array("class" => "form-control"))?>
-            </div>
 
             <div class="form-group" for="Data">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Data");?>
                 </label>
-                <? Form::Text("Data", @$Model->Data, Array("class" => "form-control"))?>
+                <? Form::DatePicker("Data", @$Model->Data, Array("class" => "form-control"))?>
             </div>
         </div>
 
@@ -62,3 +68,69 @@ $Model = new \DAL\Notificacao();
             <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
     </div>
 </form>
+<script>
+    function GetCorIcone(){
+        var cor = $("#Classe").val();
+        var icone = $("#Icone").val();
+        $("#icon-span i").attr("class", "fa "+icone+" "+cor);
+    }
+    $(function(){
+
+        GetCorIcone();
+
+        $("#Classe, #Icone").on("keypress keyup change",function(){
+            GetCorIcone();
+        });
+
+        $("#BuscaIcone").on("keypress keyup change",function(){
+            var termo = $(this).val();
+            if(termo.length > 0) {
+                $("#iconeModal .fontawesome-icon-list div").hide();
+                $("#iconeModal .fontawesome-icon-list div:contains('" + termo + "')").show();
+            }else{
+                $("#iconeModal .fontawesome-icon-list div").show();
+            }
+        });
+
+        $("#iconeModal .fontawesome-icon-list div").click(function(){
+            var $ico = $(this).find("i");
+            $ico.removeClass("fa");
+            $ico.removeClass("fa-fw");
+            var classe = $ico.attr("class");
+            $ico.addClass("fa");
+            $ico.addClass("fa-fw");
+            $("#Icone").val(classe).change();
+            $('#iconeModal').modal('hide');
+        });
+    });
+</script>
+<style>
+    #iconeModal .fontawesome-icon-list div {
+        padding: 10px;
+    }
+    #iconeModal .fontawesome-icon-list div:hover {
+        background: #cecece;
+    }
+</style>
+<!-- Modal icone -->
+<div class="modal fade" id="iconeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Selecione um Icone</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4">
+                        <input type="text" id="BuscaIcone" class="pull-right form-control" placeholder="Pesquisar" />
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <?  \Libs\Helper::LoadModelView($Model, "icones", "notificacao");?>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,12 @@
  */
 namespace Modules\Generic\Controllers;
 use Core\Controller;
+
+/**
+ * Class HomeController
+ * @package Modules\Generic\Controllers
+ * @Title: Início
+ */
 class HomeController extends Controller
 {
     /**

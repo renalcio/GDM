@@ -73,4 +73,27 @@ class ArrayHelper {
     public function Merge(Array $array){
         $this->array = array_merge($this->array, $array);
     }
+
+    public function Skip($x){
+        $arr = Array();
+        for($i = $x; $i <= count($this->array); $i++){
+            $id = ($i -1);
+            $arr[] = $this->array[$id];
+        }
+
+        $retorno = clone $this;
+        $retorno->array = $arr;
+        return $retorno;
+    }
+
+    public function Take($x){
+        $arr = Array();
+        for ($i = 0; $i < count($this->array) && $i < $x; $i++) {
+            $arr[] = $this->array[$i];
+        }
+
+        $retorno = clone $this;
+        $retorno->array = $arr;
+        return $retorno;
+    }
 }

@@ -78,5 +78,29 @@ class ListHelper {
             $for($element,$key);
         return $this;
     }
+    public function Skip($x){
+        $arr = Array();
+        for($i = $x; $i <= count($this->list); $i++){
+            $id = ($i -1);
+            $arr[] = $this->list[$id];
+        }
+
+        $retorno = clone $this;
+        $retorno->list = $arr;
+        return $retorno;
+    }
+
+    public function Take($x){
+        $arr = Array();
+        if($x <= count($this->list)) {
+            for ($i = 0; $i < count($this->list); $i++) {
+                $arr[] = $this->list[$i];
+            }
+        }
+
+        $retorno = clone $this;
+        $retorno->list = $arr;
+        return $retorno;
+    }
 
 }

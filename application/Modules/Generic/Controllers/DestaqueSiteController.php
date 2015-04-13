@@ -13,9 +13,17 @@ use DAL\DestaqueSite;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class DestaqueSiteController
+ * @package Modules\Generic\Controllers
+ * @Title: Destaques do Site
+ */
 class DestaqueSiteController extends Controller
 {
 
+    /**
+     * @Title: Listagem
+     */
     public function index()
     {
         $this->loadModel();
@@ -24,6 +32,9 @@ class DestaqueSiteController extends Controller
         $this->ModelView($Model);
     }
 
+    /**
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
         // load views

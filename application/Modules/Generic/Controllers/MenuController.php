@@ -1,11 +1,18 @@
 <?php
 namespace Modules\Generic\Controllers;
 use Core\Controller;
+
+/**
+ * Class MenuController
+ * @package Modules\Generic\Controllers
+ * @Title: Menu
+ */
 class MenuController extends Controller
 {
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * @Title: Listagem
      */
     public function index()
     {
@@ -16,7 +23,11 @@ class MenuController extends Controller
 
         $this->ModelView($model);
     }
-    
+
+    /**
+     * @param int $App
+     * @Title: Cadastro
+     */
     public function cadastro($App = 0)
     {
         $this->AddAsset(["jquery.nestable"]);

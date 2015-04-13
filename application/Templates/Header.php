@@ -119,7 +119,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
     ));
 
     echo "\n<!--ASSETS-->\n";
-    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter", "bootbox"]);
+    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter", "bootbox", "slimScroll"]);
     $this->PrintAssets();
 
     echo "\n<!--/ASSETS-->\n";
@@ -208,6 +208,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
 		}
              */
         }
+
+
     </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -311,47 +313,75 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                         </ul>
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
+                    <?
+                    $notificacoes = $db->Get(new \DAL\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
+                    ?>
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-warning"><?=$notificacoes->Count();?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            <li class="header">Você tem <?=$notificacoes->Count();?> notificações</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
 
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
+                                <ul class="menu">
+                                    <?
+                                    $notificacoes->Take(10)->For_Each(function($item){
+                                       ?>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa <?=$item->Icone;?> <?=$item->Classe;?>"></i>
+                                                <?=$item->Conteudo;?>
+                                            </a>
+                                        </li>
+                                    <?
+                                    });
+                                    ?>
+
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">View all</a></li>
+                            <li class="footer"><a href="#" data-toggle="modal" data-target="#notifyModal">Ver tudo</a></li>
                         </ul>
                     </li>
+
+                    <!-- Modal icone -->
+                    <div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Notificações</h4>
+                                </div>
+                                <div class="modal-body no-padding table-responsive">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <?
+                                        $notificacoes->For_Each(function($item){
+                                            ?>
+                                            <tr>
+                                                <td width="12px" align="center"></td>
+                                                <td width="24px" align="center"> <i class="fa <?=$item->Icone;?>
+                                                <?=$item->Classe;
+                                                ?>"></i></td>
+                                                <td><?=$item->Conteudo;?></td>
+                                            </tr>
+                                        <?
+                                        });
+                                        ?>
+
+                                        </tbody></table>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Tasks: style can be found in dropdown.less -->
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -499,18 +529,24 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1 style="text-transform: capitalize;">
-                <?=\Libs\Helper::getController();?>
+
                 <?
-                $act = \Libs\Helper::getAction();
-                if(strtolower($act) != "index"){ ?>
-                    <small><?=\Libs\Helper::getAction();?></small>
-                <? } ?>
+                $Tctrl = $this->GetControllerTitle();
+                echo $Tctrl;
+                ?>
+
+                <?
+                $Tact = $this->GetActionTitle();
+                //var_dump($Tact);
+                //if(strtolower($Tact) != strtolower($Tctrl)){ ?>
+                    <small><?=$Tact;?></small>
+                <? //} ?>
             </h1>
             <ol class="breadcrumb" style="text-transform: capitalize;">
                 <li><a href="<?=URL;?>home/"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active"><a href="<?=URL . \Libs\Helper::getController();?>"><?=\Libs\Helper::getController();?></a></li>
-                <? if(strtolower($act) != "index"){ ?>
-                    <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=\Libs\Helper::getAction();?></a></li>
+                <li class="active"><a href="<?=URL . \Libs\Helper::getController();?>"><?=$Tctrl;?></a></li>
+                <? if(strtolower($Tact) != ""){ ?>
+                    <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=$Tact;?></a></li>
                 <? } ?>
             </ol>
         </section>

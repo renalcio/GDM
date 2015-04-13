@@ -26,6 +26,7 @@ class Application
 
     private $pathController = null;
 
+
     /**
      * "Start" the application:
      * Analyze the URL elements and calls the according controller/method or the fallback

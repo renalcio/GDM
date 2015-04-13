@@ -14,11 +14,17 @@ use Dal\Pessoa;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class PessoaController
+ * @package Modules\Generic\Controllers
+ * @Title: Pessoas
+ */
 class PessoaController extends Controller
 {
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * @Title: Listagem
      */
     public function index()
     {
@@ -32,8 +38,7 @@ class PessoaController extends Controller
 
     /**
      * PAGE: exampletwo
-     * This method handles what happens when you move to http://yourproject/home/exampletwo
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
+     * @Title: Cadastro
      */
     public function cadastro($id = 0)
     {

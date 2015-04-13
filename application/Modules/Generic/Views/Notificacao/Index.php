@@ -5,7 +5,7 @@ if($Model->Lista->Count() > 0)
     <script type="text/javascript">
         $(function() {
             $("#listagem").dataTable({
-                "aoColumns": [ null, {"bSortable": false} ]
+                "aoColumns": [  null, null, {"bSortable": false}, {"bSortable": false} ]
             });
         });
 
@@ -31,7 +31,9 @@ if($Model->Lista->Count() > 0)
         <table id="listagem" class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>Conteudo</th>
+                <th>Conteúdo</th>
+                <th>Data</th>
+                <th width="24px">Icone</th>
                 <th style="width:18px" align="center"></th>
             </tr>
             </thead>
@@ -45,6 +47,8 @@ if($Model->Lista->Count() > 0)
                     ?>
                     <tr>
                         <td><?=$Item->Conteudo;?></td>
+                        <td><?=$Item->Data;?></td>
+                        <td align="center"><i class="fa <?=$Item->Icone;?> <?=$Item->Classe;?>"></i></td>
                         <td align="center">
                             <div class="btn-group">
                                 <i class="fa fa-bars" class="dropdown-toggle"
@@ -69,5 +73,5 @@ if($Model->Lista->Count() > 0)
         </table>
     </div>
 </div>
-</div>
+
 

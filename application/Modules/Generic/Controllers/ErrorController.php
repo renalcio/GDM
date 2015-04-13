@@ -10,10 +10,17 @@
  */
 namespace Modules\Generic\Controllers;
 use Core\Controller;
+
+/**
+ * Class ErrorController
+ * @package Modules\Generic\Controllers
+ * @Title: Erro
+ */
 class ErrorController extends Controller
 {
     /**
      * PAGE: index
+     * This method handles the error page that will be shown when a page is not found
      * This method handles the error page that will be shown when a page is not found
      */
     public function index()

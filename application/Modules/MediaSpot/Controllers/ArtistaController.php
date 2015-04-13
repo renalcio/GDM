@@ -13,9 +13,17 @@ use DAL\MediaSpot\Artista;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class ArtistaController
+ * @package Modules\MediaSpot\Controllers
+ * @Title: Artistas
+ */
 class ArtistaController extends Controller
 {
 
+    /**
+     * @Title: Listagem
+     */
     public function index()
     {
         $this->loadBLL();
@@ -24,6 +32,10 @@ class ArtistaController extends Controller
         $this->ModelView($Model);
     }
 
+    /**
+     * @param int $id
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
         // load views

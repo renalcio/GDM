@@ -78,6 +78,50 @@ class ModelState {
         return in_array(strtolower($metodo), $retorno);
     }
 
+    public static function GetMethodTitle($model, $metodo){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations(true);
+
+        $retorno = Array();
+        //var_dump($metodo);
+        //var_dump($get['index']);
+        if(isset($get[$metodo])) {
+            //var_dump($get[$metodo]);
+            if (array_key_exists("Title", $get[$metodo]))
+                return $get[$metodo]["Title"];
+            else if (array_key_exists("DisplayName", $get[$metodo]))
+                return $get[$metodo]["DisplayName"];
+            else
+                return "";
+        }else if(isset($get[strtolower($metodo)])){
+            $metodo = strtolower($metodo);
+            //var_dump($get[$metodo]);
+            if (array_key_exists("Title", $get[$metodo]))
+                return $get[$metodo]["Title"];
+            else if (array_key_exists("DisplayName", $get[$metodo]))
+                return $get[$metodo]["DisplayName"];
+            else
+                return "";
+        }
+        else
+            return "";
+    }
+
+    public static function GetClassTitle($model){
+        $annotation = new Annotation($model);
+        $get = $annotation->getAnnotations(true);
+
+        $retorno = Array();
+        //var_dump($annotation);
+        //var_dump($ann);
+        if (array_key_exists("Title", $get["classe"]))
+            return $get["classe"]["Title"];
+        else if (array_key_exists("DisplayName", $get["classe"]))
+            return $get["classe"]["DisplayName"];
+        else
+            return "";
+    }
+
     public static function isGenericMethod($model, $metodo){
         $annotation = new Annotation($model);
         $get = $annotation->getAnnotations(true);
@@ -136,12 +180,12 @@ class ModelState {
         $get = $annotation->getAnnotations();
 
 
-       if(property_exists($model, $campo)){
-           if(array_key_exists("DisplayName", $get[$campo]))
-               return $get[$campo]["DisplayName"];
+        if(property_exists($model, $campo)){
+            if(array_key_exists("DisplayName", $get[$campo]))
+                return $get[$campo]["DisplayName"];
 
-           return $campo;
-       }
+            return $campo;
+        }
 
     }
 

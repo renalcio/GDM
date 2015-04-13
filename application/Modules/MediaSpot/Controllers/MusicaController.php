@@ -13,9 +13,17 @@ use DAL\Musica;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class musicaController
+ * @package Modules\MediaSpot\Controllers
+ * @Title: Músicas
+ */
 class musicaController extends Controller
 {
 
+    /**
+     * @Title: Listagem
+     */
     public function index()
     {
         $this->loadBLL();
@@ -24,6 +32,10 @@ class musicaController extends Controller
         $this->ModelView($Model);
     }
 
+    /**
+     * @param int $id
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
         // load views

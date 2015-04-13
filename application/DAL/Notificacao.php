@@ -75,6 +75,8 @@ class Notificacao
             $this->Classe = $Classe;
             $this->Data = $Data;
 
+        }else{
+            $this->Data = \Libs\Datetime::Hoje("d/m/Y");
         }
 
         if(!empty($this->NotificacaoId)){

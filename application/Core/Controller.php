@@ -2,6 +2,7 @@
 namespace Core;
 use Libs\Database;
 use Libs\Helper;
+use Libs\ModelState;
 use Libs\UnitofWork;
 
 class Controller
@@ -24,6 +25,10 @@ class Controller
     private $assetCss = null;
 
     private $assetJs = null;
+
+    public $ControllerTitle = null;
+
+    public $ActonTitle = null;
 
     /**
      * Whenever a controller is created, open a database connection too and load "the model".
@@ -148,10 +153,22 @@ class Controller
     public function Asset($asset){
         $this->AddAsset($asset);
     }
+
     private function PrintAssets(){
         echo "\n<!--CSS-->\n";
         echo $this->assetCss;
         echo "\n<!--JAVASCRIPT-->\n";
         echo $this->assetJs;
     }
+
+    public function GetControllerTitle(){
+       return ModelState::GetClassTitle($this);
+    }
+
+    public function GetActionTitle()
+    {
+        $action = \Libs\Helper::getAction();
+        return ModelState::GetMethodTitle($this, $action);
+    }
+
 }

@@ -12,11 +12,17 @@ namespace Modules\GDM\Controllers;
 use Core\Controller;
 use DAL\Aplicacao;
 
+/**
+ * Class AplicacaoController
+ * @package Modules\GDM\Controllers
+ * @Title: Aplicações
+ */
 class AplicacaoController extends Controller
 {
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * @Title: Listagem
      */
     public function index()
     {
@@ -27,6 +33,10 @@ class AplicacaoController extends Controller
         $this->ModelView($model);
     }
 
+    /**
+     * @param int $id
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
         $this->Asset(["bootstrap-markdown"]);

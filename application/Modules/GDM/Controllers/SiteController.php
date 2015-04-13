@@ -13,9 +13,17 @@ use DAL\Site;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class siteController
+ * @package Modules\GDM\Controllers
+ * @Title: Sites
+ */
 class siteController extends Controller
 {
 
+    /**
+     * @Title: Listagem
+     */
     public function index()
     {
         $this->loadBLL();
@@ -24,6 +32,10 @@ class siteController extends Controller
         $this->ModelView($Model);
     }
 
+    /**
+     * @param int $id
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
         // load views

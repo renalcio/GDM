@@ -49,7 +49,8 @@ class Annotation {
         "DisplayName" => Array(),
         "PrimaryKey" => Array(),
         "Public" => Array(),
-        "Generic" => Array()
+        "Generic" => Array(),
+        "Title" => Array()
     );
 
     /**
@@ -75,7 +76,7 @@ class Annotation {
         $itens = Array();
 
         //f($methods==true)
-            $itens = array_merge($properties, $metodos);
+            //$itens = array_merge($properties, $metodos);
         //else
             //$itens = $properties;
 
@@ -89,6 +90,24 @@ class Annotation {
             if($l->name != "__construct")
                 $this->getAnnotationByMethod($l->name);
         }
+
+        $this->getAnnotationByClass();
+    }
+
+    private function getAnnotationByClass(){
+        $method = new \ReflectionClass($this->_class);
+
+        preg_match_all($this->_regex, $method->getDocComment(),$out, PREG_SET_ORDER);
+        #var_dump($out);
+        if(is_array($out)) :
+            $count = count($out);
+
+            $this->_annotations["classe"] = array();
+
+            for ($i = 0; $i < $count; ++$i):
+                $this->setAnnotation($out[$i], "classe");
+            endfor;
+        endif;
     }
 
     /**

@@ -13,13 +13,22 @@ use DAL\Aplicacao;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class GeneratorController
+ * @package Modules\GDM\Controllers
+ * @Title: Gerador
+ */
 class GeneratorController extends Controller
 {
 
+    /**
+     * @Title: DAL
+     */
     public function DAL()
     {
         $this->View();
     }
+
 
     public function DAL_post($model=null)
     {
@@ -35,6 +44,9 @@ class GeneratorController extends Controller
         //var_dump($model);
     }
 
+    /**
+     * @Title: Assets
+     */
     public function Assets(){
         $this->View();
     }

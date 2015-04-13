@@ -15,9 +15,17 @@ use Libs\Database;
 use Libs\Helper;
 use Libs\ModelState;
 
+/**
+ * Class SiteDestaqueController
+ * @package Modules\MediaSpot\Controllers
+ * @Title: Destaques do Site
+ */
 class SiteDestaqueController extends Controller
 {
 
+    /**
+     * @Title: Listagem
+     */
     public function index()
     {
         $this->AddAsset(["jquery.nestable"]);
@@ -26,6 +34,7 @@ class SiteDestaqueController extends Controller
         $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
+
 
     public function salvar()
     {
@@ -54,6 +63,9 @@ class SiteDestaqueController extends Controller
         }
     }
 
+    /**
+     * @Title: Cadastro
+     */
     public function cadastro($id = 0)
     {
         // load views

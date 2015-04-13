@@ -27,4 +27,8 @@ class Datetime
         return $retorno;
     }
 
+    static public function Hoje($formato){
+        return date($formato, time());
+    }
+
 }
