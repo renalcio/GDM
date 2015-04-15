@@ -48,13 +48,6 @@ class Mensagem
     var $DataEnvio;
 
     /**
-     * @Name: Apagada
-     * @DisplayName: Apagada
-     * @Type: tinyint(4)
-     */
-    var $Apagada = 0;
-
-    /**
      * @NotMapped
      */
     var $Pessoa;
@@ -63,6 +56,27 @@ class Mensagem
      * @NotMapped
      */
     var $ListPara;
+
+    /**
+     * @NotMapped
+     */
+    var $Para;
+
+    /**
+     * @NotMapped
+     */
+    var $Copia;
+
+    /**
+     * @NotMapped
+     */
+    var $Encaminhamento;
+
+    /**
+     * @NotMapped
+     */
+    var $RespostaId;
+
 
 
     function __construct($MensagemId = "",$PessoaId = "",$Assunto = "",$Conteudo = "",$DataEnvio = "",$Apagada = ""){
@@ -88,7 +102,7 @@ class Mensagem
                 $this->Pessoa = $unitofwork->GetById(new Pessoa(), $this->PessoaId);
             }
 
-            $this->ListPara = $unitofwork->Get(new MensagemPessoa(), "MensagemId = '".$this->MensagemId."'")->ToList();
+            //$this->ListPara = $unitofwork->Get(new MensagemPessoa(), "MensagemId = '".$this->MensagemId."'")->ToList();
 
         }
 

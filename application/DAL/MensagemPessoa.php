@@ -48,6 +48,25 @@ class MensagemPessoa
     var $Copia = 0;
 
     /**
+     * @Name: Encaminhamento
+     * @DisplayName: Tipo de Envio
+     */
+    var $Encaminhamento = 0;
+
+    /**
+     * @Name: RespostaId
+     * @DisplayName: Resposta a Mensagem
+     */
+    var $RespostaId = 0;
+
+    /**
+     * @Name: Apagada
+     * @DisplayName: Apagada
+     * @Type: tinyint(4)
+     */
+    var $Apagada = 0;
+
+    /**
      * @NotMapped
      */
     var $Pessoa;
@@ -56,6 +75,16 @@ class MensagemPessoa
      * @NotMapped
      */
     var $Apagado;
+
+    /**
+     * @NotMapped
+     */
+    var $Mensagem;
+
+    /**
+     * @NotMapped
+     */
+    var $MensagemResposta;
 
     function __construct($MensagemPessoaId = "",$MensagemId = "",$PessoaId = "",$DataLeitura = "",$Copia = ""){
 
@@ -77,6 +106,14 @@ class MensagemPessoa
             //Virtuais e Referencias
             if(!empty($this->PessoaId)){
                 $this->Pessoa = $unitofwork->GetById(new Pessoa(), $this->PessoaId);
+            }
+
+            if(!empty($this->MensagemId)){
+                $this->Mensagem = $unitofwork->GetById(new Mensagem(), $this->MensagemId);
+            }
+
+            if(!empty($this->RespostaId)){
+                $this->MensagemResposta = $unitofwork->GetById(new MensagemPessoa(), $this->RespostaId);
             }
 
         }

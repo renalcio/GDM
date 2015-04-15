@@ -100,6 +100,22 @@ class UsuarioHelper
 
     }
 
+    public static function GetUsuarioPessoaId(){
+            $unitofwork = new UnitofWork();
+            $sessao = new SessionHelper("GDMAuth");
+            $UsuarioId = $sessao->Ver("PessoaId");
+
+        return $UsuarioId;
+    }
+
+    public static function GetUsuarioId(){
+        $unitofwork = new UnitofWork();
+        $sessao = new SessionHelper("GDMAuth");
+        $UsuarioId = $sessao->Ver("UsuarioId");
+
+        return $UsuarioId;
+    }
+
     public static function getAplicacoes($UsuarioId = '0'){
         $unitofwork = new UnitofWork();
 

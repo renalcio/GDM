@@ -102,7 +102,7 @@ $sessao = new SessionHelper("GDMAuth");
 
 
 </head>
-<body class="skin-blue layout-top-nav">
+<body class="skin-blue layout-top-nav fixed">
 <div class="wrapper">
 
     <header class="main-header">

@@ -1,9 +1,11 @@
 <?
 use Libs\Form;
-$Model = new \DAL\Mensagem();
+//$Model = new \DAL\Mensagem();
 
 ?>
 <form method="post">
+    <? Form::Hidden("Encaminhamento", @$Model->Encaminhamento)?>
+    <? Form::Hidden("RespostaId", @$Model->RespostaId)?>
     <div class="row">
         <div class="col-md-3">
             <a href="mailbox.html" class="btn btn-primary btn-block margin-bottom">Voltar a Entrada</a>
@@ -27,11 +29,19 @@ $Model = new \DAL\Mensagem();
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <? Form::Select2Tag("ListPerfil", @$Model->ListPerfil, "", [
+                        <? Form::Select2Tag("Para", @$Model->Para, "", [
                             "class" => "form-control PerfilSelect",
-                            "placeholder" => "Para:",
+                            "placeholder" => "Para: ",
                             "DataUrl" => URL."handler/pessoa/Select2Tag/"])?>
                     </div>
+
+                    <div class="form-group">
+                        <? Form::Select2Tag("Copia", @$Model->Copia, "", [
+                            "class" => "form-control PerfilSelect",
+                            "placeholder" => "Copias: ",
+                            "DataUrl" => URL."handler/pessoa/Select2Tag/"])?>
+                    </div>
+
                     <div class="form-group">
                         <? Form::Text("Assunto", @$Model->Assunto, ["class" => "form-control", "placeholder" => "Assunto:"])?>
                     </div>
