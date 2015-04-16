@@ -114,6 +114,7 @@ class MensagemController extends Controller
         $Model = new MensagemPessoa();
         $Model->MensagemPessoaId = $id;
         $Model = $this->bll->GetToEdit($Model);
+        $this->Layout("", "");
         $this->ModelView($Model);
 
     }

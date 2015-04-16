@@ -30,6 +30,9 @@ class Controller
 
     public $ActonTitle = null;
 
+    public $HeaderLayout = null;
+    public $FooterLayout = null;
+
     /**
      * Whenever a controller is created, open a database connection too and load "the model".
      */
@@ -42,6 +45,8 @@ class Controller
         $str = file_get_contents(URL.'assets.json');
         $json = json_decode($str, true);
         $this->jsonAssets = $json;
+        $this->HeaderLayout = "Header";
+        $this->FooterLayout = "Footer";
     }
 
     /**
@@ -95,15 +100,19 @@ class Controller
     public function View($view = "", $controller = "", $header = "", $footer=""){
         $this->ModelView(null, $view, $controller, $header, $footer);
     }
+
+    public function Layout($header="", $footer=""){
+        $this->HeaderLayout = ucfirst($header);
+        $this->FooterLayout = ucfirst($footer);
+    }
     
-    public function ModelView($Model = "", $view = "", $controller = "", $header = "", $footer = ""){
+    public function ModelView($Model = "", $view = "", $controller = ""){
         if(empty($view)) $view = Helper::getAction();
-        if(empty($header))  $header = "Header";
-        if(empty($footer))  $footer = "Footer";
         if(empty($controller)) $controller = Helper::getController();
         // load views
-		
-        require APP . 'Templates/' . ucfirst($header) . '.php';
+
+        if(!empty($this->HeaderLayout))
+        require APP . 'Templates/' . ucfirst($this->HeaderLayout) . '.php';
 		
 		
         /*if(empty($controller))
@@ -112,9 +121,9 @@ class Controller
             require APP . 'views/' . $controller . '/' . $view . '.php';
         */
         Helper::LoadModelView($Model, $view, $controller);
-        
-		
-        require APP . 'Templates/' . ucfirst($footer) . '.php';
+
+        if(!empty($this->FooterLayout))
+        require APP . 'Templates/' . ucfirst($this->FooterLayout) . '.php';
 
         //$this->PrintAssets();
     }

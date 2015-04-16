@@ -22,6 +22,7 @@
             lixeira = $("#BuscaLixeira").val();
         $("#tbMailBox tbody").html("");
 
+        $("#MensagemMain .overlay").show();
         $.get("<?=URL?>handler/mensagem/GetTable/"+pagina+"/"+saida+"/"+lixeira+"/"+termo, function(data){
             $("#tbMailBox tbody").html(data);
             iChecks();
@@ -35,6 +36,20 @@
             {
                 $(".pagNumbers").html("");
             }
+            $("#MensagensCaixa").show();
+            $("#MensagensLer").hide();
+            $("#MensagemMain .overlay").hide();
+        });
+    }
+
+    function Ler(id){
+        $("#MensagemMain .overlay").show();
+        $.get("<?=URL?>mensagem/ler/"+id, function(data){
+            $("#MensagensLer").html(data);
+
+            $("#MensagensCaixa").hide();
+            $("#MensagensLer").show();
+            $("#MensagemMain .overlay").hide();
         });
     }
 
@@ -59,6 +74,9 @@
         $("#BuscaLixeira").val(0);
         $("#PagTitulo").html("Caixa de Entrada");
         GetMensagens();
+        $("#MenuMensagem li").removeClass("active");
+        $("#MenuMensagem li:eq(0)").addClass("active");
+        $(".trDe").html("De");
     }
 
     function CaixaSaida(){
@@ -68,6 +86,9 @@
         $("#BuscaLixeira").val(0);
         $("#PagTitulo").html("Caixa de Saida");
         GetMensagens();
+        $("#MenuMensagem li").removeClass("active");
+        $("#MenuMensagem li:eq(1)").addClass("active");
+        $(".trDe").html("Para");
     }
 
     function Lixeira(){
@@ -77,6 +98,9 @@
         $("#BuscaLixeira").val(1);
         $("#PagTitulo").html("Lixeira");
         GetMensagens();
+        $("#MenuMensagem li").removeClass("active");
+        $("#MenuMensagem li:eq(2)").addClass("active");
+        $(".trDe").html("De");
     }
 
     $(function(){
@@ -97,7 +121,7 @@
                 <h3 class="box-title">Pastas</h3>
             </div>
             <div class="box-body no-padding">
-                <ul class="nav nav-pills nav-stacked">
+                <ul class="nav nav-pills nav-stacked" id="MenuMensagem">
                     <li class="active"><a href="#" onclick="CaixaEntrada()"><i class="fa fa-inbox"></i> Entrada <span class="label label-primary pull-right">12</span></a></li>
                     <li><a href="#" onclick="CaixaSaida()"><i class="fa fa-envelope-o"></i> Saida</a></li>
                     <li><a href="#" onclick="Lixeira()"><i class="fa fa-trash-o"></i> Lixeira</a></li>
@@ -105,89 +129,99 @@
             </div><!-- /.box-body -->
         </div><!-- /. box -->
     </div><!-- /.col -->
-    <div class="col-md-9">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title" id="PagTitulo">Caixa de Entrada</h3>
-                <div class="box-tools pull-right" style="width: 40%;">
-                    <div class="has-feedback">
-                        <form id="BuscaForm">
-                            <input type="text" id="BuscaTermo" class="form-control input-sm" placeholder="Digite e pressione enter..."/>
-                            <input type="hidden" id="BuscaPagina" value="1"/>
-                            <input type="hidden" id="BuscaSaida" value="0"/>
-                            <input type="hidden" id="BuscaLixeira"  value="0"/>
-                        </form>
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                </div><!-- /.box-tools -->
-            </div><!-- /.box-header -->
-            <form method="post" action="<?=\Libs\Helper::getUrl("deletar");?>">
-                <div class="box-body no-padding">
+    <div class="col-md-9" id="MensagemMain">
+        <div class="row">
+            <!-- Loading (remove the following to stop the loading)-->
+            <div class="overlay text-center">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+            <!-- end loading -->
+            <div class="col-md-12" id="MensagensCaixa">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="PagTitulo">Caixa de Entrada</h3>
+                        <div class="box-tools pull-right" style="width: 40%;">
+                            <div class="has-feedback">
+                                <form id="BuscaForm">
+                                    <input type="text" id="BuscaTermo" class="form-control input-sm" placeholder="Digite e pressione enter..."/>
+                                    <input type="hidden" id="BuscaPagina" value="1"/>
+                                    <input type="hidden" id="BuscaSaida" value="0"/>
+                                    <input type="hidden" id="BuscaLixeira"  value="0"/>
+                                </form>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
+                    <form method="post" action="<?=\Libs\Helper::getUrl("deletar");?>">
+                        <div class="box-body no-padding">
 
-                    <div class="mailbox-controls">
-                        <!-- Check all button -->
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-trash-o"></i></button>
-                            <button type="button" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-reply"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                        </div><!-- /.btn-group -->
-                        <button type="button" class="btn btn-default btn-sm" onclick="GetMensagens()"><i class="fa fa-refresh"></i></button>
-                        <div class="pull-right">
-                            <span class="pagNumbers"></span>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm" onclick="AntPag()"><i class="fa
+                            <div class="mailbox-controls">
+                                <!-- Check all button -->
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-reply"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                                </div><!-- /.btn-group -->
+                                <button type="button" class="btn btn-default btn-sm" onclick="GetMensagens()"><i class="fa fa-refresh"></i></button>
+                                <div class="pull-right">
+                                    <span class="pagNumbers"></span>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm" onclick="AntPag()"><i class="fa
                             fa-chevron-left"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" onclick="ProxPag()"><i class="fa fa-chevron-right"></i></button>
-                            </div><!-- /.btn-group -->
-                        </div><!-- /.pull-right -->
-                    </div>
-                    <div class="table-responsive mailbox-messages">
-                        <table class="table table-hover table-striped" id="tbMailBox">
-                            <thead>
-                            <tr>
-                                <th class="EntradaItens"><input type="checkbox" class="chkDeleteAll chkDelete minimal"
-                                        /></th>
-                                <th></th>
-                                <th width="50%">Assunto</th>
-                                <th>De</th>
-                                <th>Data</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                                        <button type="button" class="btn btn-default btn-sm" onclick="ProxPag()"><i class="fa fa-chevron-right"></i></button>
+                                    </div><!-- /.btn-group -->
+                                </div><!-- /.pull-right -->
+                            </div>
+                            <div class="table-responsive mailbox-messages">
+                                <table class="table table-hover table-striped" id="tbMailBox">
+                                    <thead>
+                                    <tr>
+                                        <th class="EntradaItens"><input type="checkbox" class="chkDeleteAll chkDelete minimal"
+                                                /></th>
+                                        <th></th>
+                                        <th width="50%">Assunto</th>
+                                        <th class="trDe">De</th>
+                                        <th>Data</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th class="EntradaItens"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
-                                <th></th>
-                                <th>Assunto</th>
-                                <th>De</th>
-                                <th>Data</th>
-                            </tr>
-                            </tfoot>
-                        </table><!-- /.table -->
-                    </div><!-- /.mail-box-messages -->
-                </div><!-- /.box-body -->
-                <div class="box-footer no-padding">
-                    <div class="mailbox-controls">
-                        <!-- Check all button -->
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th class="EntradaItens"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
+                                        <th></th>
+                                        <th>Assunto</th>
+                                        <th class="trDe">De</th>
+                                        <th>Data</th>
+                                    </tr>
+                                    </tfoot>
+                                </table><!-- /.table -->
+                            </div><!-- /.mail-box-messages -->
+                        </div><!-- /.box-body -->
+                        <div class="box-footer no-padding">
+                            <div class="mailbox-controls">
+                                <!-- Check all button -->
 
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-trash-o"></i></button>
-                            <button type="button" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-reply"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                        </div><!-- /.btn-group -->
-                        <button type="button" class="btn btn-default btn-sm" onclick="GetMensagens()"><i class="fa fa-refresh"></i></button>
-                        <div class="pull-right">
-                            <span class="pagNumbers"></span>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm" onclick="AntPag()"><i class="fa fa-chevron-left"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" onclick="ProxPag()"><i class="fa fa-chevron-right"></i></button>
-                            </div><!-- /.btn-group -->
-                        </div><!-- /.pull-right -->
-                    </div>
-                </div>
-            </form>
-        </div><!-- /. box -->
-    </div><!-- /.col -->
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm EntradaItens"><i class="fa fa-reply"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                                </div><!-- /.btn-group -->
+                                <button type="button" class="btn btn-default btn-sm" onclick="GetMensagens()"><i class="fa fa-refresh"></i></button>
+                                <div class="pull-right">
+                                    <span class="pagNumbers"></span>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm" onclick="AntPag()"><i class="fa fa-chevron-left"></i></button>
+                                        <button type="button" class="btn btn-default btn-sm" onclick="ProxPag()"><i class="fa fa-chevron-right"></i></button>
+                                    </div><!-- /.btn-group -->
+                                </div><!-- /.pull-right -->
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /. box -->
+            </div><!-- /.col -->
+            <div class="col-md-12" id="MensagensLer" style="display:none;"></div>
+        </div>
+    </div>
 </div><!-- /.row -->

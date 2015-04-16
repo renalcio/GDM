@@ -7,22 +7,7 @@ use Libs\Form;
     <? Form::Hidden("Encaminhamento", @$Model->Encaminhamento)?>
     <? Form::Hidden("RespostaId", @$Model->RespostaId)?>
     <div class="row">
-        <div class="col-md-3">
-            <a href="mailbox.html" class="btn btn-primary btn-block margin-bottom">Voltar a Entrada</a>
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Pastas</h3>
-                </div>
-                <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Entrada <span class="label label-primary pull-right">12</span></a></li>
-                        <li><a href="#"><i class="fa fa-envelope-o"></i> Saída</a></li>
-                        <li><a href="#"><i class="fa fa-trash-o"></i> Lixeira</a></li>
-                    </ul>
-                </div><!-- /.box-body -->
-            </div><!-- /. box -->
-        </div><!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Escrever Nova Mensagem</h3>
@@ -53,7 +38,7 @@ use Libs\Form;
                     <div class="pull-right">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar</button>
                     </div>
-                    <button class="btn btn-default"><i class="fa fa-times"></i> Cancelar</button>
+                    <a href="<?=\Libs\Helper::getUrl("index");?>" class="btn btn-default"><i class="fa fa-times"></i> Cancelar</a>
                 </div><!-- /.box-footer -->
             </div><!-- /. box -->
         </div><!-- /.col -->
