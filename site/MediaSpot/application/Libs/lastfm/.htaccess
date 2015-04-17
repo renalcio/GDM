@@ -1,0 +1,4 @@
+<Files lastfm>
+	order allow,deny
+	deny from all
+</Files>

@@ -20,7 +20,7 @@ use Libs\UnitofWork;
 use Libs\Usuario;
 use Libs\Debug;
 
-include_once (APP . "Libs/lastfm/lastfm.api.php");
+include_once (APP . "Libs/lastfm/lastfmapi.php");
 
 class BuscaBLL extends BLL
 {
@@ -47,9 +47,11 @@ class BuscaBLL extends BLL
         $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
         $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
 
-        if($Model->ListArtista->Count() == 0 && $Model->ListMusica->Count() == 0){
+        $this->BuscaLastFM($termo);
 
-            $this->BuscaArtistaLFM($termo);
+        if($Model->ListArtista->Count() == 0 || $Model->ListMusica->Count() == 0){
+
+            $this->BuscaLastFM($termo);
             $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
             $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
         }
@@ -57,153 +59,61 @@ class BuscaBLL extends BLL
         return $Model;
     }
 
-    public function GetMusicasLFM(Artista $Artista, $pagina = 1, $limite = 30){
+    public function BuscaLastFM($termo, $pagina = 1, $limite = 30){
+        // Setup the variables
+        $methodVars = array(
+            'track' => $termo,
+            'page' => $pagina,
+            'limit' => $limite
+        );
 
+        $trackClass = StartLFM();
+        $artistClass = StartLFM('artist');
 
-        \CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
-
-        $musicas = \Artist::getTopTracks($Artista->Titulo, $Artista->mbid, $limite, $pagina);
-
-        $retorno = Array();
-        foreach($musicas as $key => $musica) {
-            //Adiciona ao banco de dados
-
-            $mAdd = new Musica();
-
-            $mAdd->AplicacaoId = APPID;
-
-            $mAdd->ArtistaId = $Artista->ArtistaId;
-
-            $mAdd->Titulo = $this->FormataTexto($musica->getName());
-
-            $this->unitofwork->Insert($mAdd);
-            $retorno[] = $mAdd;
+        if ( $results = $trackClass->search($methodVars) ) {
+           if(isset($results["results"])){
+               foreach($results["results"] as $i=>$item){
+                   $clsArtista = new Artista();
+                   $clsMusica = new Musica();
+                   $clsArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) = LOWER('".$item["artist"]."')
+                   ")->First();
+                   if($clsArtista->ArtistaId <= 0){
+                       $clsArtista = new Artista();
+                       $artistVars = array(
+                           'artist' => $item['artist']
+                       );
+                       if ( $artist = $artistClass->getInfo($artistVars) ) {
+                           $clsArtista->Titulo = @$artist['name'];
+                           $clsArtista->Descricao = @$artist['content'];
+                           $clsArtista->Imagem = @$artist['image']['large'];
+                           $clsArtista->Ativo = 1;
+                           $clsArtista->md5 = md5(strtolower($clsArtista->Titulo));
+                           $clsArtista->mbid = @$artist['mbid'];
+                           $clsArtista->AplicacaoId = APPID;
+                           $clsArtista->Relacionados = '';
+                           if(isset($artist['similar']) && count($artist['similar']) > 0){
+                               foreach($artist['similar'] as $r=>$rel){
+                                   $clsArtista->Relacionados .= $rel['name'].(($i < count($artist['similar'])) ? ","
+                                           : "");
+                               }
+                           }
+                           $this->unitofwork->Insert($clsArtista);
+                       }
+                   }
+                   $clsMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) = LOWER('".$item["name"]."') AND
+                   ArtistaId = '".$clsArtista->ArtistaId."'")->First();
+                   if($clsMusica->MusicaId <= 0){
+                       $clsMusica = new Musica();
+                       $clsMusica->Titulo = $item["name"];
+                       $clsMusica->AplicacaoId = APPID;
+                       $this->unitofwork->Insert($clsMusica);
+                   }
+               }
+           }
         }
-    }
-
-
-    public function BuscaArtistaLFM($termo){
-
-        \CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
-
-        # --------------- Busca por Artista ------------------ #
-
-        #Passo 2: Buscar no WebService
-        /*$WsUrl = LastFM::getUrl($q, 'artist.search', 'artist');
-        echo $WsUrl."<br><Br>";*/
-        // set api key
-
-        $retorno = Array();
-
-        $limit = 8;
-
-        $results = \Artist::search($termo, $limit);
-
-
-        while ($artist = $results->current()) {
-
-            $artista = new Artista();
-
-            //Busca Biografia
-
-            $lfArtist = \Artist::getInfo($artist->getName(), $artist->getMbid(), "pt");
-
-            $biografia = preg_replace("/<(.*)>(.*)<\/a>/i", "$2", $lfArtist->getBiography());
-
-            $biografia = explode("Read more about", $biografia);
-
-            $biografia = $biografia[0];
-
-            $artista->Titulo =  $this->FormataTexto($artist->getName());
-
-            $artista->Descricao = $this->FormataTexto($biografia);
-
-            $artista->Imagem = $artist->getImage();
-
-            $artista->Ativo = 1;
-
-            $artista->md5 = md5(strtolower($artista->Titulo));
-
-            $artista->mbid =  $artist->getMbid();
-
-            $artista->AplicacaoId = APPID;
-
-            $artista->Visitas = 0;
-
-            $retorno[] = $artista;
-
-            $artist = $results->next();
+        else {
+            die('<b>Error '.$trackClass->error['code'].' - </b><i>'.$trackClass->error['desc'].'</i>');
         }
-
-
-
-        foreach($retorno as $element){
-
-            $hash = $element->Titulo;
-
-            $retornoFiltrado[$hash] = $element;
-
-        }
-
-        $retorno = new ListHelper();
-
-        foreach($retornoFiltrado as $itemAdd){
-
-            if(isset($itemAdd) && !empty($itemAdd)) {
-
-                $itemAdd->Relacionados = $this->BuscaRelacionadosLFM($itemAdd);
-
-                $check = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) = '" . strtolower($itemAdd->Titulo) . "'")->ToList();
-
-                if($check->Count() == 0) {
-                    $this->unitofwork->Insert($itemAdd);
-                    $this->GetMusicasLFM($itemAdd);
-                }
-            }
-
-        }
-
-    }
-
-    public function BuscaRelacionadosLFM($Artista){
-
-        \CallerFactory::getDefaultCaller()->setApiKey("53b09495de54c998614b6d350a5c2d3e");
-        //Musicas
-        $array = Array();
-        $retorno = "";
-
-        $relacionados = \Artist::getInfo($Artista->Titulo, $Artista->mbid, "pt")->getSimilarArtists();
-
-        $i = 0;
-
-        foreach($relacionados as $key => $relacionado) {
-            if($i < 5){
-                $array[] = $relacionado->getName();
-            }
-            $i++;
-        }
-
-        foreach($array as $element){
-
-            $hash = $element;
-
-            $retornoFiltrado[$hash] = $element;
-
-        }
-
-        $array = Array();
-
-        $array = $retornoFiltrado;
-
-
-        $n = 1;
-        foreach($array as $itemadd){
-            $retorno .= $itemadd . (($n < count($array)) ? "," : "");
-            $n++;
-        }
-
-        return $retorno;
-
     }
 
     public function FormataTexto($texto=""){
