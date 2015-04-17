@@ -14,7 +14,12 @@
         var url = "<?php echo URL; ?>";
     </script>
 
-    <!-- our JavaScript -->
-    <script src="<?=URL;?>dist/js/application.js"></script>
+<?
+echo "\n<!--JAVASCRIPT-->\n";
+\Libs\Helper::LoadMedia("js", [
+    "dist/js/pages/header.js",
+    "dist/js/application.js"
+]);
+?>
 </body>
 </html>

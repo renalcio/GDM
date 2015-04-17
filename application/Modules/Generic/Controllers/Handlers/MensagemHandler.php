@@ -100,4 +100,34 @@ class MensagemHandler extends Controller
 
         echo json_encode($retorno);
     }
+
+    public function GetIndex(){
+        header('Content-Type: application/json; Charset=UTF-8');
+        $usuarioid = UsuarioHelper::GetUsuarioPessoaId();
+        $retorno = new \stdClass();
+        $entrada = $this->unitofwork->Get(new MensagemPessoa(), "PessoaId = '".$usuarioid."' AND Lida = '0' AND
+        Apagada = '0'")->ToList();
+
+        $retorno->Count = $entrada->Count();
+        $retorno->Html = "";
+        if($entrada->Count() > 0) {
+            $entrada->For_Each(function ($item, $i) use($retorno) {
+                $retorno->Html .= '<li><!-- start message -->
+                    <a href="#">
+                        <h4>
+                            '.Helper::Abreviar($item->Mensagem->Pessoa->Nome).'
+                            <small><i
+                                    class="fa fa-clock-o"></i>  '. date("d/m/Y - H:i:s", $item->Mensagem->DataEnvio).'
+                            </small>
+                        </h4>
+                        <p>'. $item->Mensagem->Pessoa->Nome.'</p>
+                    </a>
+                </li><!-- end message -->';
+            });
+        }else{
+            $retorno->Html = '<li><a href="#"><p>Nenhuma Mensagem</p></a></li>';
+        }
+
+        echo json_encode($retorno);
+    }
 }

@@ -37,6 +37,7 @@ class MensagemBLL extends BLL
             $model = $this->unitofwork->GetById(new MensagemPessoa(), $model->MensagemPessoaId);
             if($model->MensagemPessoaId > 0){
                 $model->Lida = 1;
+                $model->DataLeitura = time();
                 $this->unitofwork->Update($model);
             }
             $model = $this->unitofwork->GetById(new MensagemPessoa(), $model->MensagemPessoaId);

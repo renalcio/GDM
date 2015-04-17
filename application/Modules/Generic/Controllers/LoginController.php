@@ -22,7 +22,8 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $this->View("index", "login", "Header.Login", "Footer.Login");
+        $this->Layout("Header.Login", "Footer.Login");
+        $this->View("index", "login");
     }
 
     /**
@@ -71,10 +72,11 @@ class LoginController extends Controller
      * @Generic
      */
     public function SelecionaAplicacao($id = ""){
+        $this->Layout("Header.Login", "Footer.Login");
         if(empty($id)) {
             $model = UsuarioHelper::getAplicacoes();
             if (count($model) > 0)
-                $this->ModelView($model, "selecionaAplicacao", "login", "Header.Login", "Footer.Login");
+                $this->ModelView($model, "selecionaAplicacao", "login");
             else
                 $this->Redirect("logout");
 

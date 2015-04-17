@@ -194,8 +194,7 @@
                                 <table class="table table-hover table-striped" id="tbMailBox">
                                     <thead>
                                     <tr>
-                                        <th class="EntradaItens"><input type="checkbox" class="chkDeleteAll chkDelete minimal"
-                                                /></th>
+                                        <th class="EntradaItens"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
                                         <th></th>
                                         <th width="50%">Assunto</th>
                                         <th class="trDe">De</th>

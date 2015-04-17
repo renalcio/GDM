@@ -26,6 +26,7 @@ class musicaController extends Controller
      */
     public function index()
     {
+        $this->AddAsset(["iCheck"]);
         $this->loadBLL();
         $Model = new \stdClass();
         $Model = $this->bll->GetToIndex($Model);
@@ -73,12 +74,15 @@ class musicaController extends Controller
         $this->ModelView($model);
     }
 
-    public function deletar($id){
-        if($id > 0){
-            $this->loadBLL();
+    public function deletar($id = 0){
+        $this->loadBLL();
+        if(isset($_POST["DeleteItems"]) && !empty($_POST["DeleteItems"]) && is_array($_POST["DeleteItems"])) {
+            foreach($_POST["DeleteItems"] as $item){
+                $this->bll->Deletar($item);
+            }
+        }else if(!empty($id)){
             $this->bll->Deletar($id);
         }
-
         $this->Redirect("Index");
     }
 }

@@ -1,7 +1,4 @@
-﻿<?
-
-    ?>
-<style>
+﻿<style>
     .tdMenu{
         text-align: center;
     }
@@ -11,22 +8,48 @@
             $("#listagem").dataTable({
                 "processing": true,
                 "serverSide": true,
+                //"aaSorting": [[ 1, "asc" ]],
+                "order": [[ 1, "asc" ]],
                 "ajax": {
                     "url": "<?=URL?>handler/musica/DataTable/",
                     "type": "POST"
+                    //"success": iChecks
                 },
                 "columns": [
+                    {   "data": "CheckBox",
+                        "orderable":      false,
+                        "searchable": false,
+                        "name": ""
+                    },
                     {"data": "Titulo" },
                     {"data": "a.Titulo" },
                     {   "data": "OptionsMenu",
                         "orderable":      false,
                         "className": "tdMenu"
                     }
-                ]
+                ],
+                "fnDrawCallback": function(){
+                    iChecks();
+                }
                 //"aoColumns": [ null, null, {"bSortable": false} ]
             });
         });
 
+        function iChecks(){
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck('destroy');
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+
+            $(".chkDeleteAll").on('ifChecked', function(event){
+                $(".chkDelete").iCheck('check');
+            });
+
+            $(".chkDeleteAll").on('ifUnchecked', function(event){
+                $(".chkDelete").iCheck('uncheck');
+            });
+        }
         ///"aoColumns": [ null, null, {"bSortable": false} ]
         function Excluir(Id){
             bootbox.confirm('Deseja realmente excluir este item?', function(result){
@@ -63,7 +86,7 @@
         });
     </script>
 <?  ?>
-
+<form method="post" action="<?=\Libs\Helper::getUrl("deletar");?>">
 <div class="box box-primary">
     <div class="box-header">
         <h3 class="box-title">Musicas</h3>
@@ -76,6 +99,7 @@
         <table id="listagem" class="table table-bordered table-hover">
             <thead>
             <tr>
+                <th style="width:18px"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
                 <th>Nome</th>
                 <th>Artista</th>
                 <th style="width:18px" align="center"></th>
@@ -117,5 +141,9 @@
             </tbody>
         </table>
 </div>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-default"><i class="fa fa-trash-o"></i> Apagar</button>
+    </div>
 </div>
+</form>
 

@@ -31,4 +31,8 @@ class Datetime
         return date($formato, time());
     }
 
+    static public function Agora($formato){
+        return date($formato, time());
+    }
+
 }

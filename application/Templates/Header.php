@@ -130,7 +130,8 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
         "dist/js/helper.js",
         "dist/js/pessoa.js",
         "dist/js/avatar.js",
-        "dist/js/functions.js"
+        "dist/js/functions.js",
+        "dist/js/pages/header.js"
     ));
     ?>
 
@@ -237,109 +238,36 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <li class="dropdown messages-menu" id="topMenuMensagens">
+                        <a href="#" onclick="LoadHeaderDrops()" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
+                            <span class="label label-success" id="topMensagensTotal">4</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
+                            <li class="header"></li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li><!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
+                            <li class="footer"><a href="<?=Helper::getUrl("index", "mensagem");?>">Ver todas</a></li>
                         </ul>
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
                     <?
                     $notificacoes = $db->Get(new \DAL\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
                     ?>
-                    <li class="dropdown notifications-menu">
+                    <li class="dropdown notifications-menu" id="topMenuNotify">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning"><?=$notificacoes->Count();?></span>
+                            <span class="label label-warning">4</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">Você tem <?=$notificacoes->Count();?> notificações</li>
+                            <li class="header">Você tem x notificações</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
 
                                 <ul class="menu">
-                                    <?
-                                    $notificacoes->Take(10)->For_Each(function($item){
-                                       ?>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa <?=$item->Icone;?> <?=$item->Classe;?>"></i>
-                                                <?=$item->Conteudo;?>
-                                            </a>
-                                        </li>
-                                    <?
-                                    });
-                                    ?>
-
                                 </ul>
                             </li>
                             <li class="footer"><a href="#" data-toggle="modal" data-target="#notifyModal">Ver tudo</a></li>
@@ -358,25 +286,9 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                                 <div class="modal-body no-padding table-responsive">
                                     <table class="table table-hover">
                                         <tbody>
-                                        <?
-                                        $notificacoes->For_Each(function($item){
-                                            ?>
-                                            <tr>
-                                                <td width="12px" align="center"></td>
-                                                <td width="24px" align="center"> <i class="fa <?=$item->Icone;?>
-                                                <?=$item->Classe;
-                                                ?>"></i></td>
-                                                <td><?=$item->Conteudo;?></td>
-                                            </tr>
-                                        <?
-                                        });
-                                        ?>
 
-                                        </tbody></table>
-
-
-
-
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

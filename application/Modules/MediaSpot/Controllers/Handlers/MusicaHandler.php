@@ -110,6 +110,7 @@ class MusicaHandler extends Controller
 
         if($retorno != null) {
             for ($i = 0; $i < count($retorno); $i++) {
+                $retorno[$i]->CheckBox = '<td><input type="checkbox" class="chkDelete minimal" name="DeleteItems['.$i.']" value="'. $retorno[$i]->MusicaId .'"/></td>';
                 $retorno[$i]->OptionsMenu = '<div class="btn-group">
                                                 <i class= "fa fa-bars" class="dropdown-toggle"
                                                 data-toggle="dropdown"></i>
