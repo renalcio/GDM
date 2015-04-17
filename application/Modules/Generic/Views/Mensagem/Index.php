@@ -39,6 +39,7 @@
             $("#MensagensCaixa").show();
             $("#MensagensLer").hide();
             $("#MensagemMain .overlay").hide();
+            Count();
         });
     }
 
@@ -50,6 +51,22 @@
             $("#MensagensCaixa").hide();
             $("#MensagensLer").show();
             $("#MensagemMain .overlay").hide();
+            Count();
+        });
+    }
+
+    function Count(){
+        console.log("<?=URL?>handler/mensagem/Count/");
+          $.get("<?=URL?>handler/mensagem/Count/", function(data){
+          $("#linkEntrada").html('<i class="fa fa-inbox"></i> Entrada');
+            $("#linkLixeira").html('<i class="fa fa-trash-o"></i> Lixeira');
+
+            if(data.Entrada > 0){
+                $("#linkEntrada").append(' <span class="label label-primary pull-right">'+data.Entrada+'</span>');
+            }
+           if(data.Lixeira.toInt() > 0){
+                $("#linkLixeira").append(' <span class="label label-primary pull-right">'+data.Lixeira+'</span>');
+            }
         });
     }
 
@@ -122,9 +139,10 @@
             </div>
             <div class="box-body no-padding">
                 <ul class="nav nav-pills nav-stacked" id="MenuMensagem">
-                    <li class="active"><a href="#" onclick="CaixaEntrada()"><i class="fa fa-inbox"></i> Entrada <span class="label label-primary pull-right">12</span></a></li>
+                    <li class="active"><a href="#" onclick="CaixaEntrada()" id="linkEntrada"><i class="fa
+                    fa-inbox"></i> Entrada</a></li>
                     <li><a href="#" onclick="CaixaSaida()"><i class="fa fa-envelope-o"></i> Saida</a></li>
-                    <li><a href="#" onclick="Lixeira()"><i class="fa fa-trash-o"></i> Lixeira</a></li>
+                    <li><a href="#" onclick="Lixeira()" id="linkLixeira"><i class="fa fa-trash-o"></i> Lixeira</a></li>
                 </ul>
             </div><!-- /.box-body -->
         </div><!-- /. box -->

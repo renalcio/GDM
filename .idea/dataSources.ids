@@ -5,7 +5,7 @@
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <schema name="" catalog="GDM"/>
     <schema name="" catalog="MediaSpot"/>
     <schema name="" catalog="SID"/>
@@ -52,6 +52,7 @@
       <column name="Encaminhamento" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="RespostaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Apagada" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="Lida" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <primary-key name="PRIMARY" columns="MensagemPessoaId"/>
     </table>
     <table name="Menu" schema="" catalog="GDM" type="TABLE">

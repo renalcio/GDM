@@ -35,6 +35,11 @@ class MensagemBLL extends BLL
         if($model->MensagemPessoaId > 0)
         {
             $model = $this->unitofwork->GetById(new MensagemPessoa(), $model->MensagemPessoaId);
+            if($model->MensagemPessoaId > 0){
+                $model->Lida = 1;
+                $this->unitofwork->Update($model);
+            }
+            $model = $this->unitofwork->GetById(new MensagemPessoa(), $model->MensagemPessoaId);
         }else{
             $model = new MensagemPessoa();
         }

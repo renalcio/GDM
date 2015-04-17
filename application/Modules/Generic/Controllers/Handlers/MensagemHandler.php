@@ -39,6 +39,7 @@ class MensagemHandler extends Controller
                                    value="<?= $msg->MensagemPessoaId ?>"/></td>
                     <? } ?>
                     <td class="mailbox-star">
+                        <?=(($msg->Lida <= 0 && $saida <= 0) ? "<b>":"");?>
                         <?
                         if(!empty($msg->RespostaId)){
                             echo '<i class="fa fa-reply"></i>';
@@ -49,10 +50,16 @@ class MensagemHandler extends Controller
                             echo '<i class="fa fa-share"></i>';
                         }
                         ?>
+                        <?=(($msg->Lida <= 0 && $saida <= 0) ? "</b>":"");?>
                     </td>
-                    <td class="mailbox-subject"><a href="#"onclick="Ler(<?=$msg->MensagemPessoaId ;?>)"><?= $msg->Mensagem->Assunto; ?></a>
+                    <td class="mailbox-subject"><a href="#"onclick="Ler(<?=$msg->MensagemPessoaId ;?>)">
+                            <?=(($msg->Lida <= 0 && $saida <= 0) ? "<b>":"");?>
+                            <?= $msg->Mensagem->Assunto; ?>
+                            <?=(($msg->Lida <= 0 && $saida <= 0) ? "</b>":"");?>
+                        </a>
                     </td>
                     <td class="mailbox-name">
+                        <?=(($msg->Lida <= 0 && $saida <= 0) ? "<b>":"");?>
                         <?
                         if($saida <= 0) {
                             echo Helper::Abreviar($msg->Mensagem->Pessoa->Nome);
@@ -60,8 +67,13 @@ class MensagemHandler extends Controller
                             echo Helper::Abreviar($msg->Pessoa->Nome);
                         }
                         ?>
+                        <?=(($msg->Lida <= 0 && $saida <= 0) ? "</b>":"");?>
                     </td>
-                    <td class="mailbox-date"><?= date("d/m/Y - H:i:s", $msg->Mensagem->DataEnvio); ?></td>
+                    <td class="mailbox-date">
+                        <?=(($msg->Lida <= 0 && $saida <= 0) ? "<b>":"");?>
+                        <?= date("d/m/Y - H:i:s", $msg->Mensagem->DataEnvio); ?>
+                        <?=(($msg->Lida <= 0 && $saida <= 0) ? "</b>":"");?>
+                    </td>
                 </tr>
             <?
             });
@@ -72,5 +84,20 @@ class MensagemHandler extends Controller
             </tr>
         <?
         }
+    }
+
+    public function Count(){
+        header('Content-Type: application/json; Charset=UTF-8');
+        $usuarioid = UsuarioHelper::GetUsuarioPessoaId();
+        $entrada = $this->unitofwork->Get(new MensagemPessoa(), "PessoaId = '".$usuarioid."' AND Lida = '0' AND
+        Apagada = '0'")->ToList();
+        $lixeira = $this->unitofwork->Get(new MensagemPessoa(), "PessoaId = '".$usuarioid."' AND Lida = '0' AND
+        Apagada = '1'")->ToList();
+
+        $retorno = new \stdClass();
+        $retorno->Entrada = $entrada->Count();
+        $retorno->Lixeira = $lixeira->Count();
+
+        echo json_encode($retorno);
     }
 }

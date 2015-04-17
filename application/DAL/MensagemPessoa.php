@@ -67,6 +67,13 @@ class MensagemPessoa
     var $Apagada = 0;
 
     /**
+     * @Name: Lida
+     * @DisplayName: Lida
+     * @Type: tinyint(4)
+     */
+    var $Lida = 0;
+
+    /**
      * @NotMapped
      */
     var $Pessoa;
