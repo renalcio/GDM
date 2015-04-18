@@ -38,9 +38,9 @@ class BuscaController extends Controller
 
 
         if($Model->ListArtista->Count() == 1){
-            //$this->Redirect("", "Player", $Model->ListArtista->First()->ArtistaId);
+            $this->Redirect("", "Player", $Model->ListArtista->First()->ArtistaId);
         }else {
-            //$this->ModelView($Model);
+            $this->ModelView($Model);
         }
         //var_dump($Model);
 

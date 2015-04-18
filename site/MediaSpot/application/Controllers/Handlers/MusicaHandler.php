@@ -6,7 +6,7 @@
  * Data: 28/01/2015
  */
 namespace Controllers\Handlers;
-use BLL\MediaSpot\BuscaBLL;
+use BLL\BuscaBLL;
 use Core\Controller;
 use DAL\MediaSpot\Artista;
 use DAL\Musica;
@@ -185,13 +185,7 @@ class MusicaHandler extends Controller
         }
 
         //echo $orderby;
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
-
-        if($ArtistaId > 0) {
-            $retorno = $retorno->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
-        }else{
-            $retorno = $retorno->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = ''");
-        }
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
 
         if(!empty($orderby))
             $retorno = $retorno->OrderBy($orderby)->Select("m.*");
@@ -215,7 +209,7 @@ class MusicaHandler extends Controller
             $bll = new BuscaBLL();
             $Artista = new Artista();
             $Artista = $this->unitofwork->GetById(new Artista(), $ArtistaId);
-            $bll->GetMusicasLFM($Artista, $pagina, $total);
+            $bll->BuscaLastFM($Artista->Titulo, $pagina, $total);
         }
         $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
 

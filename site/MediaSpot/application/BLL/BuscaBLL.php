@@ -47,9 +47,8 @@ class BuscaBLL extends BLL
         $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
         $Model->ListMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
 
-        $this->BuscaLastFM($termo);
-
         if($Model->ListArtista->Count() == 0 || $Model->ListMusica->Count() == 0){
+
 
             $this->BuscaLastFM($termo);
             $Model->ListArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) LIKE '%".$termo."%'")->ToList();
@@ -77,7 +76,7 @@ class BuscaBLL extends BLL
                    $clsMusica = new Musica();
                    $clsArtista = $this->unitofwork->Get(new Artista(), "LOWER(Titulo) = LOWER('".$item["artist"]."')
                    ")->First();
-                   if($clsArtista->ArtistaId <= 0){
+                   if(empty($clsArtista) || $clsArtista->ArtistaId <= 0){
                        $clsArtista = new Artista();
                        $artistVars = array(
                            'artist' => $item['artist']
@@ -89,6 +88,7 @@ class BuscaBLL extends BLL
                            $clsArtista->Ativo = 1;
                            $clsArtista->md5 = md5(strtolower($clsArtista->Titulo));
                            $clsArtista->mbid = @$artist['mbid'];
+                           $clsArtista->Visitas = 0;
                            $clsArtista->AplicacaoId = APPID;
                            $clsArtista->Relacionados = '';
                            if(isset($artist['similar']) && count($artist['similar']) > 0){
@@ -100,9 +100,10 @@ class BuscaBLL extends BLL
                            $this->unitofwork->Insert($clsArtista);
                        }
                    }
+                   //var_dump($clsArtista);
                    $clsMusica = $this->unitofwork->Get(new Musica(), "LOWER(Titulo) = LOWER('".$item["name"]."') AND
                    ArtistaId = '".$clsArtista->ArtistaId."'")->First();
-                   if($clsMusica->MusicaId <= 0){
+                   if(empty($clsMusica) || $clsMusica->MusicaId <= 0){
                        $clsMusica = new Musica();
                        $clsMusica->Titulo = $item["name"];
                        $clsMusica->AplicacaoId = APPID;
