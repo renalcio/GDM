@@ -4,6 +4,8 @@
     <data-source name="GDM" uuid="5adab088-8d3e-4d59-b461-28132d325358">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
+      <schema-pattern>ClassHub.* GDM.* MediaSpot.*</schema-pattern>
+      <default-schemas>ClassHub.* GDM.* MediaSpot.*</default-schemas>
     </data-source>
   </component>
 </project>

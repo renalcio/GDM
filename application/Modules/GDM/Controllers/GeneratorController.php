@@ -41,7 +41,7 @@ class GeneratorController extends Controller
         }
 
         $this->View();
-        //var_dump($model);
+        //var_dump($Aplicacao);
     }
 
     /**

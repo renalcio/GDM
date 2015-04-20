@@ -53,7 +53,7 @@ class ClassGenerator
 
     private function getFields($table)
     {
-        $fields = $this->db->Select("SHOW COLUMNS FROM " . $table, '', true);
+        $fields = $this->db->Select("SHOW COLUMNS FROM " . $this->pasta.".". $table, '', true);
 
         $this->fields = array();
         $this->verify = array();
@@ -140,7 +140,7 @@ class ClassGenerator
 
             if (count($l) == 2) {
                 //pegaTipo
-                $consulta = "SHOW FIELDS FROM " . $l[1] . " where Field ='" . $l[0] . "'";
+                $consulta = "SHOW FIELDS FROM " . $this->pasta . "." . $l[1] . " where Field ='" . $l[0] . "'";
                 $busca = $this->db->Select($consulta);
                 $type = $busca->Type;
 
@@ -160,7 +160,7 @@ class ClassGenerator
             } else {
                 if ($l[2] == "PRIMARY") {
 
-                    $consulta = "SHOW FIELDS FROM " . $l[1] . " where Field ='" . $l[0] . "'";
+                    $consulta = "SHOW FIELDS FROM " . $this->pasta . "." . $l[1] . " where Field ='" . $l[0] . "'";
                     $busca = $this->db->Select($consulta);
                     $type = $busca->Type;
 
