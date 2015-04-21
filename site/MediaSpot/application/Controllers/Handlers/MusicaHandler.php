@@ -97,23 +97,13 @@ class MusicaHandler extends Controller
         }
 
         //echo $orderby;
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
-
-        if($ArtistaId > 0) {
-            $retorno = $retorno->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
-        }else{
-            $retorno = $retorno->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = ''");
-        }
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
 
         if(!empty($orderby))
             $retorno = $retorno->OrderBy($orderby)->Select("m.*");
         else
             $retorno = $retorno->Select("m.*");
 
-
-
-        //$retorno->BuildQuery();
-        //echo $retorno->query;
 
         $retornoTotal = $retorno->ToArray();
 
@@ -161,7 +151,6 @@ class MusicaHandler extends Controller
 
     public function Consulta($ArtistaId = 0){
         //print_r($ArtistaId);
-
         header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
         //print_r($_REQUEST);
@@ -180,62 +169,41 @@ class MusicaHandler extends Controller
             $nomeColuna = $colunas[$iColuna]["data"];
             $direcao = $orders[0]["dir"];
 
-            //print_r($colunas[$iColuna]["data"]);
             $orderby = $nomeColuna . " " . strtoupper($direcao);
         }
 
-        //echo $orderby;
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "ArtistaId = '" . $ArtistaId . "'");
 
         if(!empty($orderby))
-            $retorno = $retorno->OrderBy($orderby)->Select("m.*");
-        else
-            $retorno = $retorno->Select("m.*");
-
-
-
-        //$retorno->BuildQuery();
-        //echo $retorno->query;
+            $retorno = $retorno->OrderBy($orderby);
 
         $retornoTotal = $retorno->ToArray();
-
-        $array = Array();
 
         $retorno = $retorno->Skip($inicio)->Take($total);
 
         $retorno = $retorno->ToArray();
 
-        if(empty($retorno) || count($retorno) == 0){
+        if(empty($retorno) || count($retorno) == 0) {
             $bll = new BuscaBLL();
             $Artista = new Artista();
             $Artista = $this->unitofwork->GetById(new Artista(), $ArtistaId);
-            $bll->BuscaLastFM($Artista->Titulo, $pagina, $total);
+            $bll->BuscaMusicasPorArtistaLFM($Artista->ArtistaId, $pagina, $total);
+
+            $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "ArtistaId = '" . $ArtistaId . "'");
+
+            if(!empty($orderby))
+                $retorno = $retorno->OrderBy($orderby)->Select("m.*");
+
+
+            $retornoTotal = $retorno->ToArray();
+
+            $retorno = $retorno->Skip($inicio)->Take($total);
+
+            $retorno = $retorno->ToArray();
         }
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId");
 
-        if($ArtistaId > 0) {
-            $retorno = $retorno->Where(" m.ArtistaId = '" . $ArtistaId . "' AND ((LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = '')");
-        }else{
-            $retorno = $retorno->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'" . $titulo . "' = ''");
-        }
-
-        if(!empty($orderby))
-            $retorno = $retorno->OrderBy($orderby)->Select("m.*");
-        else
-            $retorno = $retorno->Select("m.*");
-
-
-
-        //$retorno->BuildQuery();
-        //echo $retorno->query;
-
-        $retornoTotal = $retorno->ToArray();
 
         $array = Array();
-
-        $retorno = $retorno->Skip($inicio)->Take($total);
-
-        $retorno = $retorno->ToArray();
 
         if(!empty($retorno)) {
             for ($i = 0; $i < count($retorno); $i++) {

@@ -178,7 +178,7 @@ class lastfmApiArtist extends lastfmApi {
 			$info['url'] = (string) $call->artist->url;
 			$info['image']['small'] = (string) $call->artist->image;
 			$info['image']['medium'] = (string) $call->artist->image[1];
-			$info['image']['large'] = (string) $call->artist->image[2];
+			$info['image']['large'] = (string) $call->artist->image[4];
 			$info['streamable'] = (string) $call->artist->streamable;
 			$info['stats']['listeners'] = (string) $call->artist->stats->listeners;
 			$info['stats']['playcount'] = (string) $call->artist->stats->playcount;
@@ -188,7 +188,7 @@ class lastfmApiArtist extends lastfmApi {
 				$info['similar'][$i]['url'] = (string) $artist->url;
 				$info['similar'][$i]['image']['small'] = (string) $artist->image;
 				$info['similar'][$i]['image']['medium'] = (string) $artist->image[1];
-				$info['similar'][$i]['image']['large'] = (string) $artist->image[2];
+				$info['similar'][$i]['image']['large'] = (string) $artist->image[4];
 				$i++;
 			}
 			if ( count($call->artist->tags->tag) > 0 ) {

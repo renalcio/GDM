@@ -178,10 +178,13 @@ class Application
 
             // split URL
             $url = trim($_GET['url'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
+            //$url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
 
+           // var_dump($url);
+
             if(isset($url[0]) && $url[0] == "handler"){
+
                 $this->url_controller = isset($url[1])  ? ucfirst($url[0])."s".DIRECTORY_SEPARATOR.ucfirst($url[1])."Handler" : ucfirst($url[0]);
                 $this->url_action = isset($url[2]) ? $url[2] : "index";
                 $this->url_postAction = isset($url[2]) ? $url[2]."_post" : "index_post";

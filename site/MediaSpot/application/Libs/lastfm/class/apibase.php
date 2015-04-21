@@ -106,9 +106,11 @@ class lastfmApi {
 		}
 		catch (Exception $e) {
 			// Crap! We got errors!!!
-			$errors = libxml_get_errors();
-			$error = $errors[0];
-			$this->handleError(95, 'SimpleXMLElement error: '.$e->getMessage().': '.$error->message);
+            if(isset($errors[0])) {
+                $errors = libxml_get_errors();
+                $error = $errors[0];
+                $this->handleError(95, 'SimpleXMLElement error: ' . $e->getMessage() . ': ' . $error->message);
+            }
 		}
 
 		if ( !isset($e) ) {

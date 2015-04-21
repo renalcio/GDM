@@ -3,6 +3,7 @@
 //$Model = new \DAL\MediaSpot\Player();
 if(isset($Model)&& !empty($Model)){
     ?>
+    <script src="https://apis.google.com/js/search.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
             /* ION SLIDER */
@@ -101,23 +102,26 @@ if(isset($Model)&& !empty($Model)){
             <?
             if(isset($Model->Artista->Relacionados) && !empty($Model->Artista->Relacionados)) {
                 ?>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="btn-group" role="group" aria-label="...">
-                        <?
-                        $rels = explode(",", $Model->Artista->Relacionados);
-                        $rels = new \Libs\ArrayHelper($rels);
-                        if($rels->Count() > 0){
-                            $rels->For_Each(function($item){
-                                ?>
-                                <button type="button" class="btn btn-default"><?=$item?></button>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="btn-group" role="group" aria-label="...">
                             <?
-                            });
-                        }
-                        ?>
+                            $rels = explode(",", $Model->Artista->Relacionados);
+                            $rels = new \Libs\ArrayHelper($rels);
+                            if($rels->Count() > 0){
+                                $rels->For_Each(function($item){
+                                    if(!empty($item)) {
+                                        ?>
+                                        <a href="<?=\Libs\Helper::getUrl("index","busca", $item); ?>" class="btn
+    btn-default"><?= $item ?></a>
+                                    <?
+                                    }
+                                });
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?
             }
             ?>
@@ -323,18 +327,33 @@ if(isset($Model)&& !empty($Model)){
             }
         }
 
+        // Search for a specified string.
+        function search() {
+            var q = $('#query').val();
+            var request = gapi.client.youtube.search.list({
+                q: q,
+                part: 'snippet'
+            });
+
+            request.execute(function(response) {
+                var str = JSON.stringify(response.result);
+                $('#search-container').html('<pre>' + str + '</pre>');
+            });
+        }
+
 
         function BuscaMusica(index, termo){
             if(index == playIndex && playTermo == termo){
                 togglePlayer();
             }else{
+
                 var search_input = termo;
                 var keyword= encodeURIComponent(search_input);
                 console.clear();
                 console.log(search_input);
                 console.log(keyword);
                 // Youtube API
-                var yt_url='http://gdata.youtube.com/feeds/api/videos?q='+keyword+'&format=5&max-results=1&v=2&alt=jsonc&start-index=1';
+                var yt_url='https://www.googleapis.com/youtube/v3/search?part=snippet&q='+keyword+'&key=AIzaSyDi6NQcwJYfQFHQDeFKcLA7bq-1iBjnBKo';
 
                 $.ajax
                 ({
@@ -343,19 +362,18 @@ if(isset($Model)&& !empty($Model)){
                     dataType:"jsonp",
                     success: function(response)
                     {
-                        if(response.data.items)
+                        console.log(response);
+                        if(response.items.length > 0)
                         {
-                            $.each(response.data.items, function(i,data)
-                            {
-                                var video_id=data.id;
-                                var video_title=data.title;
-                                var video_viewCount=data.viewCount;
-                                var video_urlFinal = "http://www.youtube.com/embed/"+video_id+"?enablejsapi=1";
-                                LoadVideobyId(video_id);
-                                //Notificar
-                                //notificar({mensagem:search_input.replace("- ", "\n").Capitalize(), tempo: 5000, imagem: $("#imgCapa").attr("src")});
+                            //$.each(response.items, function(i,data)
+                            //{
+                            var data = response.items[0];
+                            var video_id=data.id.videoId;
+                            LoadVideobyId(video_id);
+                            //Notificar
+                            //notificar({mensagem:search_input.replace("- ", "\n").Capitalize(), tempo: 5000, imagem: $("#imgCapa").attr("src")});
 
-                            });
+                            //});
                         }
                     }
                 });
@@ -536,13 +554,13 @@ if(isset($Model)&& !empty($Model)){
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <div class="row">
                             <div class="col-xs-4 text-center">
-                                    <a onclick="playPrev()" style="color:#fff;font-size: 18px; "><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a>
-                                </div>
-                            <div class="col-xs-4 text-center">
-                                    <a id="player_play" style="color:#fff;font-size: 18px;"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+                                <a onclick="playPrev()" style="color:#fff;font-size: 18px; "><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                    <a onclick="playNext()" style="color:#fff;font-size: 18px;"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></a>
+                                <a id="player_play" style="color:#fff;font-size: 18px;"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a onclick="playNext()" style="color:#fff;font-size: 18px;"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></a>
                             </div>
                         </div>
                     </div>
@@ -552,8 +570,8 @@ if(isset($Model)&& !empty($Model)){
                                 <span id="player-timeNow" style="font-size: 16px;"></span>
                             </div>
                             <div class="col-xs-10 text-center">
-                        <input id="player_timeline" type="text" name="player_timeline" value="" />
-                                </div>
+                                <input id="player_timeline" type="text" name="player_timeline" value="" />
+                            </div>
                             <div class="col-xs-1 text-center">
                                 <span id="player-timeTotal" style="font-size: 16px;"></span>
                             </div>
