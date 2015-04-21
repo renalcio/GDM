@@ -100,7 +100,14 @@ $sessao = new SessionHelper("GDMAuth");
         });
     </script>
 
-
+<style>
+    * {
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+</style>
 </head>
 <body class="skin-blue layout-top-nav fixed">
 <div class="wrapper">

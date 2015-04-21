@@ -151,34 +151,19 @@ class MusicaHandler extends Controller
 
     public function Consulta($ArtistaId = 0){
         //print_r($ArtistaId);
-        header('Content-Type: application/json; Charset=UTF-8');
+        //header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
         //print_r($_REQUEST);
-        $inicio = $_REQUEST["start"];
-        $total = $_REQUEST["length"];
-        $pinicio = $inicio * $total;
-        $titulo = strtolower($_REQUEST["search"]["value"]);
-        $pagina = ($inicio > 0) ? ($inicio / $total) + 1 : 1;
-        //echo "<br>";
-        //echo $pagina;
-        $orderby = "";
-        $orders = isset($_REQUEST["order"]) ? $_REQUEST["order"] : "";
-        if(!empty($orders)) {
-            $colunas = $_REQUEST{"columns"};
-            $iColuna = $orders[0]["column"];
-            $nomeColuna = $colunas[$iColuna]["data"];
-            $direcao = $orders[0]["dir"];
+        $pagina = $_REQUEST["pagina"];
+        $total = 15;
+        $inicio = $total * ($pagina - 1);
+        $titulo = strtolower($_REQUEST["termo"]);
 
-            $orderby = $nomeColuna . " " . strtoupper($direcao);
-        }
+        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "ArtistaId = '" . $ArtistaId . "' AND LOWER
+        (Titulo) LIKE '%".$titulo."%'");
 
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "ArtistaId = '" . $ArtistaId . "'");
-
-        if(!empty($orderby))
-            $retorno = $retorno->OrderBy($orderby);
 
         $retornoTotal = $retorno->ToArray();
-
         $retorno = $retorno->Skip($inicio)->Take($total);
 
         $retorno = $retorno->ToArray();
@@ -189,11 +174,8 @@ class MusicaHandler extends Controller
             $Artista = $this->unitofwork->GetById(new Artista(), $ArtistaId);
             $bll->BuscaMusicasPorArtistaLFM($Artista->ArtistaId, $pagina, $total);
 
-            $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "ArtistaId = '" . $ArtistaId . "'");
-
-            if(!empty($orderby))
-                $retorno = $retorno->OrderBy($orderby)->Select("m.*");
-
+            $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "ArtistaId = '" . $ArtistaId . "'AND
+           LOWER (Titulo) LIKE '%".$titulo."%'");
 
             $retornoTotal = $retorno->ToArray();
 
@@ -207,6 +189,14 @@ class MusicaHandler extends Controller
 
         if(!empty($retorno)) {
             for ($i = 0; $i < count($retorno); $i++) {
+                ?>
+                <tr>
+                    <td style="vertical-align: middle; text-transform: capitalize;"><?=mb_strtolower
+                        ($retorno[$i]->Titulo, "UTF-8");?></td>
+                    <td width="45px"><a onclick="BuscaMusica(<?=$i;?>, '<?=addslashes($retorno[$i]->Artista->Titulo)
+                        .' - '.addslashes($retorno[$i]->Titulo);?>')" musica="<?=addslashes($retorno[$i]->Titulo);?>" class="btnPlay"><i class="fa fa-play" class="dropdown-toggle" data-toggle="dropdown"></i></a></td>
+                </tr>
+                <?
                 $retorno[$i]->OptionsMenu = '<div class="btn-group">
                                                 <i class= "fa fa-play" class="dropdown-toggle"
                                                 data-toggle="dropdown"></i>
@@ -236,10 +226,9 @@ class MusicaHandler extends Controller
         }
 
         $array["data"] = $retorno;
-        $array["draw"] = $_REQUEST["draw"];
 
 
-        echo json_encode($array);
+        //echo json_encode($array);
 
     }
 }

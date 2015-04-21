@@ -105,26 +105,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Views/Player/Index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7586207" vertical-offset="1632" max-vertical-offset="10115">
-              <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
+            <state vertical-scroll-proportion="-35.307693" vertical-offset="7905" max-vertical-offset="9520">
+              <caret line="566" column="62" selection-start-line="566" selection-start-column="62" selection-end-line="566" selection-end-column="62" />
               <folding>
-                <element signature="e#5915#5934#0#HTML" expanded="true" />
-                <element signature="e#5967#5987#0#HTML" expanded="true" />
-                <element signature="e#19313#19346#0#HTML" expanded="true" />
-                <element signature="e#20254#20280#0#HTML" expanded="true" />
-                <element signature="e#20333#20399#0#HTML" expanded="true" />
-                <element signature="e#20713#20749#0#HTML" expanded="true" />
-                <element signature="e#20974#21009#0#HTML" expanded="true" />
-                <element signature="e#21234#21269#0#HTML" expanded="true" />
-                <element signature="e#21669#21693#0#HTML" expanded="true" />
-                <element signature="e#22066#22090#0#HTML" expanded="true" />
-                <marker date="1429574329841" expanded="true" signature="6016:6122" placeholder="..." />
-                <marker date="1429574329841" expanded="true" signature="6187:6632" placeholder="..." />
-                <marker date="1429574329841" expanded="true" signature="6537:6632" placeholder="..." />
-                <marker date="1429574329841" expanded="true" signature="7159:7304" placeholder="..." />
+                <element signature="e#201#1864#0#HTML" expanded="false" />
+                <element signature="e#254#1848#0#HTML" expanded="false" />
+                <element signature="e#3294#3485#0#HTML" expanded="true" />
+                <element signature="e#6921#6940#0#HTML" expanded="true" />
+                <element signature="e#20215#20248#0#HTML" expanded="true" />
+                <element signature="e#21208#21275#0#HTML" expanded="true" />
+                <element signature="e#21589#21625#0#HTML" expanded="true" />
+                <element signature="e#21850#21885#0#HTML" expanded="true" />
+                <element signature="e#22110#22145#0#HTML" expanded="true" />
+                <element signature="e#22545#22569#0#HTML" expanded="true" />
+                <element signature="e#22942#22966#0#HTML" expanded="true" />
+                <marker date="1429580489160" expanded="true" signature="7001:7114" placeholder="..." />
+                <marker date="1429580489160" expanded="true" signature="8508:8653" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MusicaHandler.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Controllers/Handlers/MusicaHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20689656" vertical-offset="391" max-vertical-offset="1751">
+              <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+              <folding>
+                <element signature="e#287#937#0#PHP" expanded="false" />
+                <element signature="e#943#2824#0#PHP" expanded="false" />
+                <element signature="e#2830#6070#0#PHP" expanded="false" />
+                <element signature="e#7531#7590#0#HTML" expanded="true" />
+                <marker date="1429580710415" expanded="true" signature="1572:2781" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="1736:2750" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="1792:2716" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="1988:2677" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="2033:2322" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="2145:2276" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="2367:2635" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="2454:2589" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="4437:5631" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="4533:4608" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="4706:5580" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="4763:5142" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="4929:5084" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="5199:5526" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="5309:5468" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8114:9308" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8210:8285" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8383:9257" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8440:8819" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8606:8761" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8876:9203" placeholder="..." />
+                <marker date="1429580710415" expanded="true" signature="8986:9145" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -136,52 +172,6 @@
             <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="748">
               <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Application.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Application.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="2737" max-vertical-offset="3485">
-              <caret line="183" column="13" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MusicaHandler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Controllers/Handlers/MusicaHandler.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="612" max-vertical-offset="1921">
-              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-              <folding>
-                <element signature="e#287#937#0#PHP" expanded="false" />
-                <element signature="e#943#2824#0#PHP" expanded="false" />
-                <element signature="e#2830#6070#0#PHP" expanded="false" />
-                <marker date="1429572966896" expanded="true" signature="1572:2781" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="1736:2750" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="1792:2716" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="1988:2677" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="2033:2322" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="2145:2276" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="2367:2635" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="2454:2589" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="4437:5631" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="4533:4608" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="4706:5580" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="4763:5142" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="4929:5084" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="5199:5526" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="5309:5468" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="8138:9332" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="8234:8309" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="8407:9281" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="8464:8843" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="8630:8785" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="8900:9227" placeholder="..." />
-                <marker date="1429572966896" expanded="true" signature="9010:9169" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -209,8 +199,8 @@
       <file leaf-file-name="GDM" pinned="false" current-in-tab="false">
         <entry file="dbDummy://db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="204">
-              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="204">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -243,7 +233,6 @@
         <option value="$PROJECT_DIR$/application/Modules/Generic/Views/Notificacao/Index.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/Controllers/Handlers/PessoaHandler.php" />
         <option value="$PROJECT_DIR$/application/Libs/UsuarioHelper.php" />
-        <option value="$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php" />
         <option value="$PROJECT_DIR$/application/DAL/Mensagem.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/Controllers/MensagemController.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/Views/Mensagem/Ler.php" />
@@ -284,12 +273,13 @@
         <option value="$PROJECT_DIR$/application/DAL/ClassHub/Aluno.php" />
         <option value="$PROJECT_DIR$/application/BLL/ClassHub/AlunoBLL.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Libs/lastfm/api/artist.php" />
-        <option value="$PROJECT_DIR$/site/MediaSpot/application/Controllers/Handlers/MusicaHandler.php" />
         <option value="db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/BLL/BuscaBLL.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Core/Application.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Controllers/BuscaController.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php" />
         <option value="$PROJECT_DIR$/site/MediaSpot/application/Views/Player/Index.php" />
+        <option value="$PROJECT_DIR$/site/MediaSpot/application/Controllers/Handlers/MusicaHandler.php" />
       </list>
     </option>
   </component>
@@ -420,6 +410,62 @@
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -478,12 +524,26 @@
               <option name="myItemId" value="Modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Generic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -505,99 +565,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MediaSpot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Artista" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaSpot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
+              <option name="myItemId" value="Generic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -623,103 +591,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ClassHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aluno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassHub" />
+              <option name="myItemId" value="Generic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BLL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BLL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BLL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassHub" />
+              <option name="myItemId" value="Handlers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1006,7 +886,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2669903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22547974" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2260128" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1107,20 +987,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9758">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5915#5934#0#HTML" expanded="true" />
-            <element signature="e#5967#5987#0#HTML" expanded="true" />
-            <element signature="e#19313#19346#0#HTML" expanded="true" />
-            <element signature="e#20254#20280#0#HTML" expanded="true" />
-            <element signature="e#20333#20399#0#HTML" expanded="true" />
-            <element signature="e#20713#20749#0#HTML" expanded="true" />
-            <element signature="e#20974#21009#0#HTML" expanded="true" />
-            <element signature="e#21234#21269#0#HTML" expanded="true" />
-            <element signature="e#21669#21693#0#HTML" expanded="true" />
-            <element signature="e#22066#22090#0#HTML" expanded="true" />
-            <marker date="1429574329841" expanded="true" signature="6016:6122" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="6187:6632" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="6537:6632" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="7159:7304" placeholder="..." />
+            <element signature="e#201#1864#0#HTML" expanded="false" />
+            <element signature="e#254#1848#0#HTML" expanded="false" />
+            <element signature="e#3294#3485#0#HTML" expanded="true" />
+            <element signature="e#6921#6940#0#HTML" expanded="true" />
+            <element signature="e#20215#20248#0#HTML" expanded="true" />
+            <element signature="e#21208#21275#0#HTML" expanded="true" />
+            <element signature="e#21589#21625#0#HTML" expanded="true" />
+            <element signature="e#21850#21885#0#HTML" expanded="true" />
+            <element signature="e#22110#22145#0#HTML" expanded="true" />
+            <element signature="e#22545#22569#0#HTML" expanded="true" />
+            <element signature="e#22942#22966#0#HTML" expanded="true" />
+            <marker date="1429580489160" expanded="true" signature="7001:7114" placeholder="..." />
+            <marker date="1429580489160" expanded="true" signature="8508:8653" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1160,28 +1039,29 @@
             <element signature="e#287#937#0#PHP" expanded="false" />
             <element signature="e#943#2824#0#PHP" expanded="false" />
             <element signature="e#2830#6070#0#PHP" expanded="false" />
-            <marker date="1429572966896" expanded="true" signature="1572:2781" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="1736:2750" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="1792:2716" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="1988:2677" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2033:2322" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2145:2276" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2367:2635" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2454:2589" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4437:5631" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4533:4608" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4706:5580" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4763:5142" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4929:5084" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="5199:5526" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="5309:5468" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8138:9332" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8234:8309" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8407:9281" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8464:8843" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8630:8785" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8900:9227" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="9010:9169" placeholder="..." />
+            <element signature="e#7531#7590#0#HTML" expanded="true" />
+            <marker date="1429580710415" expanded="true" signature="1572:2781" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="1736:2750" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="1792:2716" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="1988:2677" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2033:2322" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2145:2276" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2367:2635" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2454:2589" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4437:5631" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4533:4608" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4706:5580" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4763:5142" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4929:5084" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="5199:5526" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="5309:5468" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8114:9308" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8210:8285" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8383:9257" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8440:8819" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8606:8761" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8876:9203" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8986:9145" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1191,20 +1071,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9758">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5915#5934#0#HTML" expanded="true" />
-            <element signature="e#5967#5987#0#HTML" expanded="true" />
-            <element signature="e#19313#19346#0#HTML" expanded="true" />
-            <element signature="e#20254#20280#0#HTML" expanded="true" />
-            <element signature="e#20333#20399#0#HTML" expanded="true" />
-            <element signature="e#20713#20749#0#HTML" expanded="true" />
-            <element signature="e#20974#21009#0#HTML" expanded="true" />
-            <element signature="e#21234#21269#0#HTML" expanded="true" />
-            <element signature="e#21669#21693#0#HTML" expanded="true" />
-            <element signature="e#22066#22090#0#HTML" expanded="true" />
-            <marker date="1429574329841" expanded="true" signature="6016:6122" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="6187:6632" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="6537:6632" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="7159:7304" placeholder="..." />
+            <element signature="e#201#1864#0#HTML" expanded="false" />
+            <element signature="e#254#1848#0#HTML" expanded="false" />
+            <element signature="e#3294#3485#0#HTML" expanded="true" />
+            <element signature="e#6921#6940#0#HTML" expanded="true" />
+            <element signature="e#20215#20248#0#HTML" expanded="true" />
+            <element signature="e#21208#21275#0#HTML" expanded="true" />
+            <element signature="e#21589#21625#0#HTML" expanded="true" />
+            <element signature="e#21850#21885#0#HTML" expanded="true" />
+            <element signature="e#22110#22145#0#HTML" expanded="true" />
+            <element signature="e#22545#22569#0#HTML" expanded="true" />
+            <element signature="e#22942#22966#0#HTML" expanded="true" />
+            <marker date="1429580489160" expanded="true" signature="7001:7114" placeholder="..." />
+            <marker date="1429580489160" expanded="true" signature="8508:8653" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1255,13 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52369666" vertical-offset="1836" max-vertical-offset="3145">
           <caret line="137" column="37" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Controllers/Handlers/PaisHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1469,22 +1341,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/lastfm/api/artist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-76.5" vertical-offset="1020" max-vertical-offset="11934">
-          <caret line="180" column="69" selection-start-line="180" selection-start-column="69" selection-end-line="180" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="204">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2652">
@@ -1493,37 +1349,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Controllers/Handlers/MusicaHandler.php">
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231" vertical-offset="612" max-vertical-offset="1921">
-          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="2737" max-vertical-offset="3485">
+          <caret line="183" column="13" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Views/_templates/Header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538" vertical-offset="1530" max-vertical-offset="2788">
+          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
           <folding>
-            <element signature="e#287#937#0#PHP" expanded="false" />
-            <element signature="e#943#2824#0#PHP" expanded="false" />
-            <element signature="e#2830#6070#0#PHP" expanded="false" />
-            <marker date="1429572966896" expanded="true" signature="1572:2781" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="1736:2750" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="1792:2716" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="1988:2677" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2033:2322" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2145:2276" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2367:2635" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="2454:2589" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4437:5631" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4533:4608" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4706:5580" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4763:5142" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="4929:5084" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="5199:5526" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="5309:5468" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8138:9332" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8234:8309" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8407:9281" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8464:8843" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8630:8785" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="8900:9227" placeholder="..." />
-            <marker date="1429572966896" expanded="true" signature="9010:9169" placeholder="..." />
+            <marker date="1429579060753" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Controllers/Handlers/PaisHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="306" max-vertical-offset="833">
+          <caret line="35" column="68" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,33 +1391,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Core/Application.php">
+    <entry file="dbDummy://db-console:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="2737" max-vertical-offset="3485">
-          <caret line="183" column="13" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="489">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Libs/lastfm/api/artist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-76.5" vertical-offset="1020" max-vertical-offset="11934">
+          <caret line="180" column="69" selection-start-line="180" selection-start-column="69" selection-end-line="180" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Views/Player/Index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7586207" vertical-offset="1632" max-vertical-offset="10115">
-          <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
+        <state vertical-scroll-proportion="-35.307693" vertical-offset="7905" max-vertical-offset="9520">
+          <caret line="566" column="62" selection-start-line="566" selection-start-column="62" selection-end-line="566" selection-end-column="62" />
           <folding>
-            <element signature="e#5915#5934#0#HTML" expanded="true" />
-            <element signature="e#5967#5987#0#HTML" expanded="true" />
-            <element signature="e#19313#19346#0#HTML" expanded="true" />
-            <element signature="e#20254#20280#0#HTML" expanded="true" />
-            <element signature="e#20333#20399#0#HTML" expanded="true" />
-            <element signature="e#20713#20749#0#HTML" expanded="true" />
-            <element signature="e#20974#21009#0#HTML" expanded="true" />
-            <element signature="e#21234#21269#0#HTML" expanded="true" />
-            <element signature="e#21669#21693#0#HTML" expanded="true" />
-            <element signature="e#22066#22090#0#HTML" expanded="true" />
-            <marker date="1429574329841" expanded="true" signature="6016:6122" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="6187:6632" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="6537:6632" placeholder="..." />
-            <marker date="1429574329841" expanded="true" signature="7159:7304" placeholder="..." />
+            <element signature="e#201#1864#0#HTML" expanded="false" />
+            <element signature="e#254#1848#0#HTML" expanded="false" />
+            <element signature="e#3294#3485#0#HTML" expanded="true" />
+            <element signature="e#6921#6940#0#HTML" expanded="true" />
+            <element signature="e#20215#20248#0#HTML" expanded="true" />
+            <element signature="e#21208#21275#0#HTML" expanded="true" />
+            <element signature="e#21589#21625#0#HTML" expanded="true" />
+            <element signature="e#21850#21885#0#HTML" expanded="true" />
+            <element signature="e#22110#22145#0#HTML" expanded="true" />
+            <element signature="e#22545#22569#0#HTML" expanded="true" />
+            <element signature="e#22942#22966#0#HTML" expanded="true" />
+            <marker date="1429580489160" expanded="true" signature="7001:7114" placeholder="..." />
+            <marker date="1429580489160" expanded="true" signature="8508:8653" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/Controllers/Handlers/MusicaHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20689656" vertical-offset="391" max-vertical-offset="1751">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding>
+            <element signature="e#287#937#0#PHP" expanded="false" />
+            <element signature="e#943#2824#0#PHP" expanded="false" />
+            <element signature="e#2830#6070#0#PHP" expanded="false" />
+            <element signature="e#7531#7590#0#HTML" expanded="true" />
+            <marker date="1429580710415" expanded="true" signature="1572:2781" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="1736:2750" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="1792:2716" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="1988:2677" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2033:2322" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2145:2276" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2367:2635" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="2454:2589" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4437:5631" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4533:4608" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4706:5580" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4763:5142" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="4929:5084" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="5199:5526" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="5309:5468" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8114:9308" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8210:8285" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8383:9257" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8440:8819" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8606:8761" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8876:9203" placeholder="..." />
+            <marker date="1429580710415" expanded="true" signature="8986:9145" placeholder="..." />
           </folding>
         </state>
       </provider>

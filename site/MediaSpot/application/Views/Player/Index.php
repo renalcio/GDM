@@ -53,26 +53,40 @@ if(isset($Model)&& !empty($Model)){
         });
     </script>
     <script type="text/javascript">
-        $(function(){
-            $("#listagem").dataTable({
-                "processing": true,
-                "serverSide": true,
-                "ordering":  false,
-                "info": false,
-                "ajax": {
-                    "url": "<?=URL?>handler/musica/Consulta/<?=$Model->Artista->ArtistaId;?>",
-                    "type": "POST"
-                },
-                "columns": [
-                    {"data": "Titulo" },
-                    {   "data": "PlayButtom",
-                        "orderable":      false,
-                        "className": "tdMenu"
-                    }
-                ]
-                //"aoColumns": [ null, null, {"bSortable": false} ]
+        function CarregaPagina(pag){
+            $(".overlay").show();
+            var BuscaTermo = $("#txBuscaMusica").val();
+            $.post("<?=URL;?>handler/musica/Consulta/<?=$Model->ArtistaId;?>", {
+                pagina : pag,
+                termo : BuscaTermo
+            }, function(data){
+                $("#listagem tbody").html(data);
+                $("#listagem tbody tr").dblclick(function(){
+                    $(".btnPlay", this).click();
+                });
+                $("#pagAtual").html(pag);
+                $(".overlay").hide();
             });
+        }
 
+        function ProxPagina(){
+            var pag = $("#pagAtual").html().toInt() + 1;
+            CarregaPagina(pag);
+        }
+        function PagAnterior(){
+            var pag = $("#pagAtual").html().toInt() - 1;
+            if(pag > 0) {
+                CarregaPagina(pag);
+            }
+        }
+
+        $(function(){
+
+            CarregaPagina(1);
+            $("#txBuscaMusica").on("keyup change", function(){
+                var pag = $("#pagAtual").html().toInt();
+                CarregaPagina(pag);
+            });
             toogleBtns();
         });
     </script>
@@ -134,41 +148,53 @@ if(isset($Model)&& !empty($Model)){
                 <div class="box-header">
                     <h3 class="box-title">Músicas</h3>
                     <div class="box-tools pull-right">
-                        <button class="btn btn-default btn-sm" onclick="getLetra()" data-toggle="tooltip" title="Letra da Música Atual" data-original-title="Collapse"><i class="fa fa-file-text-o"></i></button>
-                        <button id="btnRepetir" onclick="replay()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Repetir" data-original-title="Repetir"><i class="fa fa-refresh"></i></button>
-                        <button id="btntoggleVideo" onclick="toggleVideo()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Ocultar / Exibir Vídeo" data-original-title="Ocultar / Exibir Vídeo"><i class="fa fa-eye-slash"></i></button>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="btn-group pull-right" role="group" aria-label="...">
+                                    <button class="btn btn-default btn-sm" onclick="getLetra()" data-toggle="tooltip" title="Letra da Música Atual" data-original-title="Collapse"><i class="fa fa-file-text-o"></i></button>
+                                    <button id="btnRepetir" onclick="replay()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Repetir" data-original-title="Repetir"><i class="fa fa-refresh"></i></button>
+                                    <button id="btntoggleVideo" onclick="toggleVideo()" class="btn btn-default btn-sm" data-toggle="tooltip" title="Ocultar / Exibir Vídeo" data-original-title="Ocultar / Exibir Vídeo"><i class="fa fa-eye-slash"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" id="txBuscaMusica" class="form-control input-sm"
+                                       placeholder="Pesquisar" />
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-                    <table id="listagem" class="table table-bordered table-hover" style="width: 100%">
-                        <thead style="display:none">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        </thead>
+                <div class="box-body table-responsive no-padding">
+                    <table id="listagem" class="table table-hover" style="width: 100%">
                         <tbody>
-                        <?
-                        if($Model->ListMusica->Count() > 0) {
-                            $Model->ListMusica->For_Each(function ($Item) {
-                                //$Item = new \DAL\Musica();
-                                //var_dump($Item);
-                                /*
-                                 <tr>
-                                     <td></td>
-                                     <td align="center">
-                                     </td>
-                                 </tr>
-                             */
-                            });
-                        }else
-                        {
-                            // echo "<tr><td colspan='2'>Nenhum Registro</td></tr>";
-                        }
-                        ?>
+                        <tr>
+                            <td align="center"><i class="fa fa-redo fa-spin" </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6">
+                            <div class="btn-group pull-right" role="group" aria-label="...">
+                                <button onclick="PagAnterior()" class="btn btn-default" data-toggle="tooltip"
+                                        title="Página
+                                Anterior"><i
+                                        class="fa fa-angle-left"></i></button>
+                                <button id="pagAtual" class="btn btn-default" data-toggle="tooltip" title="Página
+                                Atual">1</button>
+                                <button onclick="ProxPagina()" class="btn btn-default" data-toggle="tooltip"
+                                        title="Próxima Pagina"><i
+                                        class="fa fa-angle-right"></i></button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="overlay">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
             </div><!-- /.box -->
         </div>
     </div>
@@ -326,21 +352,6 @@ if(isset($Model)&& !empty($Model)){
                 $("#player_row").slideDown();
             }
         }
-
-        // Search for a specified string.
-        function search() {
-            var q = $('#query').val();
-            var request = gapi.client.youtube.search.list({
-                q: q,
-                part: 'snippet'
-            });
-
-            request.execute(function(response) {
-                var str = JSON.stringify(response.result);
-                $('#search-container').html('<pre>' + str + '</pre>');
-            });
-        }
-
 
         function BuscaMusica(index, termo){
             if(index == playIndex && playTermo == termo){
@@ -547,8 +558,8 @@ if(isset($Model)&& !empty($Model)){
     </div>
 
     <!-- PLAYER -->
-    <div class="row" style="min-height: 200px;" id="player_row">
-        <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0; z-index: 999">
+    <div class="row" id="player_row">
+        <div class="box box-solid" style="margin-bottom: 0; position: fixed; bottom: 0; z-index: 9999">
             <div class="box-body bg-primary">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
