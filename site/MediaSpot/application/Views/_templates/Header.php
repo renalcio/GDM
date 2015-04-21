@@ -2,7 +2,10 @@
 use Libs\SessionHelper;
 use Libs\Helper;
 $db = new Libs\UnitofWork();
-$sessao = new SessionHelper("GDMAuth");
+$clsUser = new \DAL\Pessoa();
+$clsUser->PessoaId = \Libs\UsuarioHelper::GetUsuarioPessoaId();
+if($clsUser->PessoaId > 0)
+    $clsUser = $db->GetById(new \DAL\Pessoa(), $clsUser->PessoaId);
 
 ?>
 <!DOCTYPE html>
@@ -110,8 +113,38 @@ $sessao = new SessionHelper("GDMAuth");
 </style>
 </head>
 <body class="skin-blue layout-top-nav fixed">
-<div class="wrapper">
 
+<!-- Login -->
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginTitulo" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+
+                <h4 class="modal-title" id="loginTitulo" style="text-transform:capitalize">Entrar</h4>
+
+            </div>
+
+            <div class="modal-body">
+
+               <? Helper::LoadView("index", "login");?>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="wrapper">
     <header class="main-header">
         <nav class="navbar navbar-static-top">
             <div class="container-fluid">
@@ -136,18 +169,20 @@ $sessao = new SessionHelper("GDMAuth");
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Entrar</a></li>
+                        <? if($clsUser->PessoaId <= 0){ ?>
+                        <li><a href="#" data-toggle="modal" data-target="#loginModal">Entrar</a></li>
+                        <? }else{ ?>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olá, Renalcio <span
-                                    class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olá, <?=Helper::Abreviar($clsUser->Nome, 1);?>
+                                <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Meu Perfil</a></li>
+                                <li><a href="#">Minhas Playlists</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="<?=Helper::getUrl("logout", "login");?>">Sair</a></li>
                             </ul>
                         </li>
+                        <? } ?>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

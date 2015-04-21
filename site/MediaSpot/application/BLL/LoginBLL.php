@@ -54,15 +54,11 @@ class LoginBLL extends BLL
         $this->unitofwork = new UnitofWork();
         $query = $this->unitofwork->Get(new Usuario(), "u.Senha = '".$md5Senha."'")->Join($this->unitofwork->Get(new Pessoa(), "p.Email = '$Login' OR u.Login = '$Login'"),"u.PessoaId","p.PessoaId")->Select("p.Email, u.*")->First();
         if($query != null) {
-            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '" . $query->UsuarioId."'")->ToArray();
+            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '" . $query->UsuarioId."' AND AplicacaoId = '".APPID."'")->ToArray();
 
             if (count($aplicacoes) > 0) {
-                if (count($aplicacoes) > 1) {
-                    //Mais de uma
-                    $query->AplicacaoId = 0;
-                } else {
+
                     $query->AplicacaoId = $aplicacoes[0]->AplicacaoId;
-                }
             }else{
                 $query = null;
             }
@@ -76,17 +72,13 @@ class LoginBLL extends BLL
         $Pasta = "";
         if(!empty($Usuario)){
 
-            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '".$Usuario->UsuarioId."'")->ToArray();
+            $aplicacoes = $this->unitofwork->Get(new UsuarioAplicacao(), "Ativo = '1' AND UsuarioId = '"
+                .$Usuario->UsuarioId."' AND AplicacaoId = '".APPID."'")->ToArray();
 
             if(count($aplicacoes) > 0){
-                if(count($aplicacoes) > 1){
-                    //Mais de uma
-                    $Usuario->AplicacaoId = 0;
-                }else{
-                    $Usuario->AplicacaoId = $aplicacoes[0]->AplicacaoId;
+                    $Usuario->AplicacaoId = APPID;
                     $Aplicacao = $this->unitofwork->GetById(new Aplicacao(), $Usuario->AplicacaoId);
                     $Pasta = $Aplicacao->Pasta;
-                }
                 //Set Session e Cookies
                 $session = new SessionHelper("GDMAuth", Array(
                         "UsuarioId" => $Usuario->UsuarioId,

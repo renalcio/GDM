@@ -16,7 +16,7 @@ class UsuarioHelper
     public static function GetSite($UsuarioId = 0, $AplicacaoId = APPID)
     {
         $pdo = new Database();
-        $uow = new Database();
+        $uow = new UnitofWork();
         $sessao = new SessionHelper("GDMAuth");
         $UsuarioId = empty($UsuarioId) ?  $sessao->Ver("UsuarioId") : $UsuarioId;
 
@@ -68,11 +68,10 @@ class UsuarioHelper
                                 ORDER BY p.Nivel DESC LIMIT 1
                                 ", "DAL\\Perfil");*/
 
-        $Perfil = $uow->Get(new Perfil(), "p.AplicacaoId = '".$AplicacaoId."'")->Join($uow->Get(new UsuarioPerfil(), "up.UsuarioId = '".$Usuario->UsuarioId."'"), "p.PerfilId", "up.PerfilId")->OrderByDescending("p.Nivel")->Select("p", new Perfil())->First();
+        $Perfil = $uow->Get(new Perfil(), "p.AplicacaoId = '".$AplicacaoId."'")->Join($uow->Get(new UsuarioPerfil(), "up.UsuarioId = '".$Usuario->UsuarioId."'"), "p.PerfilId", "up.PerfilId")->OrderBy("p.Nivel")->Select("p", new Perfil())->First();
 
         if($Perfil == null || empty($Perfil))
             return 0;
-
 
         return $Perfil->Nivel;
     }
@@ -99,6 +98,22 @@ class UsuarioHelper
 
         return $retorno;
 
+    }
+
+    public static function GetUsuarioPessoaId(){
+            $unitofwork = new UnitofWork();
+            $sessao = new SessionHelper("GDMAuth");
+            $UsuarioId = $sessao->Ver("PessoaId");
+
+        return $UsuarioId;
+    }
+
+    public static function GetUsuarioId(){
+        $unitofwork = new UnitofWork();
+        $sessao = new SessionHelper("GDMAuth");
+        $UsuarioId = $sessao->Ver("UsuarioId");
+
+        return $UsuarioId;
     }
 
     public static function getAplicacoes($UsuarioId = '0'){
