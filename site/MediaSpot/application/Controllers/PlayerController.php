@@ -16,6 +16,9 @@ use Libs\ModelState;
 class PlayerController extends Controller
 {
 
+    /**
+     * @Public
+     */
     public function Index($ArtistaId = 0, $MusicaId = 0)
     {
         $this->loadBLL();

@@ -13,8 +13,7 @@ use Core\Controller;
 class HomeController extends Controller
 {
     /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * @Public
      */
     public function index()
     {
@@ -24,22 +23,6 @@ class HomeController extends Controller
 
 
     public function index_post($model = null){
-        var_dump($model);
-    }
-
-    public function generator()
-    {
-        // load views
-        $this->View("generator");
-    }
-
-    public function generator_post($model = null)
-    {
-        // load views
-        $this->View("generator");
-        $this->loadBLL();
-        //echo $model['AplicacaoId'];
-        $model = $this->bll->Generator($model['AplicacaoId']);
         var_dump($model);
     }
 }

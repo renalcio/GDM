@@ -76,3 +76,10 @@ if(!empty($pasta)) {
 }else{
     define('PASTA', ''); #Pasta da Aplicacao
 }
+
+$escola = $appsess->Ver("EscolaId");
+if(!empty($escola)) {
+    define('ESCOLA', $escola); #Pasta da Aplicacao
+}else{
+    define('ESCOLA', '0'); #Pasta da Aplicacao
+}

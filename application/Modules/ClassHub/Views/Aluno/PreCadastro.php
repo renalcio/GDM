@@ -1,123 +1,74 @@
 <?
 use Libs\Form;
-$Model = new \DAL\Aluno();
+$Model = new \DAL\ClassHub\Aluno();
 ?>
-<h3 class="page-header">Cadastro de Aluno</h3>
 <script>
     $(function(){
-        //DropZone("drop-avatar", "drop-avatar-btn", "mouse-over");
-        $('#avatar-modal').on('shown.bs.modal', function (e) {
-            DropZone("drop-avatar", "drop-avatar-btn", "mouse-over");
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
         });
     });
 </script>
-
-<div class="row" id="crop-avatar">
-
-    <!-- Current avatar -->
-    <div class="avatar-view" title="Clique para alterar">
-        <img src="<?=@$Model->Imagem;?>" alt="Avatar">
-    </div>
-
-    <!-- Cropping modal -->
-    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form class="avatar-form" action="<?=URL?>/avatar.php" enctype="multipart/form-data"
-                      method="post">
-                    <div class="modal-header">
-                        <button class="close" data-dismiss="modal" type="button">&times;</button>
-                        <h4 class="modal-title" id="avatar-modal-label">Mudar Avatar</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="avatar-body">
-
-                            <!-- Upload image and data -->
-                            <div class="avatar-upload">
-                                <input class="avatar-src" name="avatar_src" type="hidden">
-                                <input class="avatar-data" name="avatar_data" type="hidden">
-                                <!--
-                                <label for="avatarInput">Arquivo</label>
-                                <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
-                                -->
-                                <div id="drop-avatar" class="dropZone">
-                                    Arraste e solte uma imagem aqui...<br />
-                                    <div id="drop-avatar-btn" class="btn btn-sm btn-primary">
-                                        ou clique para escolher...
-                                        <input class="avatar-input" type="file" name="avatar_file" id="avatarInput" />
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Crop and preview -->
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <div class="avatar-wrapper"></div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="avatar-preview preview-lg"></div>
-                                    <div class="avatar-preview preview-md"></div>
-                                    <div class="avatar-preview preview-sm"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
-                        <button class="btn btn-primary avatar-save" type="submit">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
-</div>
-<br>
+<h3 class="page-header">Pre Cadastro de Aluno</h3>
 <form method="post">
     <?
     Form::ValidationSummary();
-    Form::Hidden("ArtistaId", @$Model->ArtistaId);
-    Form::Hidden("AplicacaoId", (!empty($Model->AplicacaoId) ? @$Model->AplicacaoId : APPID));
-    Form::Hidden("Visitas", @$Model->Visitas);
-    Form::Hidden("Ativo", @$Model->Ativo);
-    Form::Hidden("Imagem", @$Model->Imagem, Array("class" => "hiddenImgArea"));
     ?>
 
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">
-                Dados do Artista
+                Dados Básicos
             </h3>
         </div>
         <div class="box-body">
-            <div class="form-group" for="Titulo">
+            <div class="form-group" for="ChaveRegistro">
                 <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
+                    Nome
                 </label>
-                <? Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"))?>
+                <? Form::Text("Pessoa.Nome", @$Model->Pessoa->Nome, Array("class" => "form-control"))?>
+            </div>
+            <?
+            if(!empty(ESCOLA)){
+                ?>
+                <div class="form-group">
+                    <label>
+                        Escola
+                    </label>
+                    <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control", "DataUrl" => URL."handler/escola/Select2" ));?>
+                </div>
+                <div class="form-group" for="TurmaId">
+                    <label>
+                        <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
+                    </label>
+                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control", "DataUrl" => URL."handler/turma/Select2" ));?>
+                </div>
+            <?
+            }else{
+                ?>
+                <div class="form-group" for="TurmaId">
+                    <label>
+                        <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
+                    </label>
+                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control", "DataUrl" => URL."handler/turma/Select2".ESCOLA ));?>
+                </div>
+            <?
+            }
+            ?>
+
+            <div class="form-group" for="ChaveRegistro">
+                <label>
+                    <?=\Libs\ModelState::DisplayName($Model, "ChaveRegistro");?>
+                </label>
+                <? Form::Text("ChaveRegistro", @$Model->ChaveRegistro, Array("class" => "form-control"))?>
             </div>
 
-            <div class="form-group" for="Descricao">
+            <div class="form-group" for="Representante">
+                <? Form::Checkbox("Representante", @$Model->Representante,["class" => "minimal"]); ?>
                 <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Descricao");?>
+                    <?=\Libs\ModelState::DisplayName($Model, "Representante");?>
                 </label>
-                <? Form::Wysiwyg("Descricao", @$Model->Descricao, Array("class" => "form-control"))?>
-            </div>
-
-            <div class="form-group" for="mbid">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "mbid");?>
-                </label>
-                <? Form::Text("mbid", @$Model->mbid, Array("class" => "form-control"))?>
-            </div>
-
-            <div class="form-group" for="Relacionados">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Relacionados");?>
-                </label>
-                <? Form::Text("Relacionados", @$Model->Relacionados, Array("class" => "form-control", "data-role" => "tagsinput", "style" => "width: 100%"))?>
             </div>
         </div>
 

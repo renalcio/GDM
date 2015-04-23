@@ -16,6 +16,9 @@ use Libs\ModelState;
 class BuscaController extends Controller
 {
 
+    /**
+     * @Public
+     */
     public function index($termo = "")
     {
         $this->loadBLL();

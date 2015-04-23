@@ -3,25 +3,25 @@
  * Controller
  *
  * Autor: renalcio.freitas
- * Data: 20/04/2015
+ * Data: 23/04/2015
  *
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Aluno;
+use DAL\ClassHub\Turma;
 use Libs\Helper;
 use Libs\ModelState;
 
 /**
  *
- * @Title: Alunos
+ * @Title: Turmas
  *
  */
-class AlunoController extends Controller
+class TurmaController extends Controller
 {
 	/**
 	 *
-	 * @Title: Listagem de Alunos
+	 * @Title: Listagem
 	 *
 	 */
     public function index()
@@ -35,26 +35,25 @@ class AlunoController extends Controller
 
 	/**
 	 *
-	 * @Title: Pré Cadastro de Alunos
+	 * @Title: Cadastro
 	 *
 	 */
-    public function precadastro($id = 0)
+    public function cadastro($id = 0)
     {
-        $this->AddAsset(["iCheck"]);
         // load views
         $this->loadBLL();
-        $Model = new Aluno();
-        $Model->AlunoId = $id;
+        $Model = new Turma();
+        $Model->TurmaId = $id;
         $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
 
     }
 
-    public function precadastro_post($model = null){
+    public function cadastro_post($model = null){
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, new Aluno);
+            Helper::cast($model, new Turma);
             $this->loadBLL();
 
             //Valida Model via ModelState

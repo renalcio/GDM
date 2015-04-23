@@ -30,28 +30,28 @@ class Aluno
 
     /**
      * @Name: TurmaId
-     * @DisplayName: TurmaId
+     * @DisplayName: Turma
      * @Type: int(11)
      */
     var $TurmaId = 0;
 
     /**
      * @Name: ChaveRegistro
-     * @DisplayName: ChaveRegistro
+     * @DisplayName: Chave de Registro
      * @Type: varchar(255)
      */
     var $ChaveRegistro;
 
     /**
      * @Name: Registrado
-     * @DisplayName: Registrado
+     * @DisplayName: Usuário Registrado?
      * @Type: tinyint(4)
      */
     var $Registrado = 0;
 
     /**
      * @Name: Representante
-     * @DisplayName: Representante
+     * @DisplayName: Representante de sala
      * @Type: tinyint(4)
      */
     var $Representante = 0;

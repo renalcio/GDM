@@ -47,7 +47,10 @@ class Annotation {
         "Email" => array(),
         "Int" => array(),
         "DisplayName" => Array(),
-        "PrimaryKey" => Array()
+        "PrimaryKey" => Array(),
+        "Public" => Array(),
+        "Generic" => Array(),
+        "Title" => Array()
     );
 
     /**
@@ -69,9 +72,42 @@ class Annotation {
      */
     private function getAllAnnotations(){
         $properties = $this->_reflection->getProperties();
+        $metodos = $this->_reflection->getMethods();
+        $itens = Array();
+
+        //f($methods==true)
+            //$itens = array_merge($properties, $metodos);
+        //else
+            //$itens = $properties;
+
+        //var_dump($itens);
+
         foreach ($properties as $l) {
-            $this->getAnnotationByAttribute($l->name);
+                $this->getAnnotationByAttribute($l->name);
         }
+
+        foreach ($metodos as $l) {
+            if($l->name != "__construct")
+                $this->getAnnotationByMethod($l->name);
+        }
+
+        $this->getAnnotationByClass();
+    }
+
+    private function getAnnotationByClass(){
+        $method = new \ReflectionClass($this->_class);
+
+        preg_match_all($this->_regex, $method->getDocComment(),$out, PREG_SET_ORDER);
+        #var_dump($out);
+        if(is_array($out)) :
+            $count = count($out);
+
+            $this->_annotations["classe"] = array();
+
+            for ($i = 0; $i < $count; ++$i):
+                $this->setAnnotation($out[$i], "classe");
+            endfor;
+        endif;
     }
 
     /**
@@ -93,6 +129,27 @@ class Annotation {
             endfor;
         endif;
     }
+
+    /**
+     * @param: $attr Attribute for read
+     * @description: handle attribute of the comment block passes the parameter is the instantiated class in the constructor
+     */
+    private function getAnnotationByMethod($attr){
+        $method = new \ReflectionMethod($this->_class, $attr);
+
+        preg_match_all($this->_regex, $method->getDocComment(),$out, PREG_SET_ORDER);
+        #var_dump($out);
+        if(is_array($out)) :
+            $count = count($out);
+
+            $this->_annotations[$attr] = array();
+
+            for ($i = 0; $i < $count; ++$i):
+                $this->setAnnotation($out[$i], $attr);
+            endfor;
+        endif;
+    }
+
 
     private function setAnnotation($array, $attr){
         if($array[1] == '')
