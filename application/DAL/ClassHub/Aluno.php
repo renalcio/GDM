@@ -29,6 +29,13 @@ class Aluno
     var $PessoaId = 0;
 
     /**
+     * @Name: PessoaId
+     * @DisplayName: PessoaId
+     * @Type: int(11)
+     */
+    var $EscolaId = 0;
+
+    /**
      * @Name: TurmaId
      * @DisplayName: Turma
      * @Type: int(11)

@@ -30,11 +30,17 @@ $Model = new \DAL\ClassHub\Aluno();
             </h3>
         </div>
         <div class="box-body">
-            <div class="form-group" for="ChaveRegistro">
+            <div class="form-group" for="Pessoa_Nome">
                 <label>
                     Nome
                 </label>
                 <? Form::Text("Pessoa_Nome", @$Model->Pessoa->Nome, Array("class" => "form-control"))?>
+            </div>
+            <div class="form-group" for="Pessoa_Email">
+                <label>
+                    Email
+                </label>
+                <? Form::Text("Pessoa_Email", @$Model->Pessoa->Email, Array("class" => "form-control"))?>
             </div>
             <?
            // var_dump(ESCOLA);
@@ -55,6 +61,7 @@ $Model = new \DAL\ClassHub\Aluno();
             <?
             }else{
                 ?>
+                <? Form::Hidden("EscolaId", @$Model->EscolaId, Array("class" => "form-control"))?>
                 <div class="form-group" for="TurmaId">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>

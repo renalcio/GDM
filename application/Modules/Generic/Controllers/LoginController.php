@@ -30,6 +30,16 @@ class LoginController extends Controller
      * @Public
      * @Generic
      */
+    public function ClassHub()
+    {
+        $this->Layout("ClassHub/Header.Login", "ClassHub/Footer.Login");
+        $this->View();
+    }
+
+    /**
+     * @Public
+     * @Generic
+     */
     public function auth()
     {
         header('Content-Type: application/json; Charset=UTF-8');

@@ -52,17 +52,23 @@ class AlunoBLL extends BLL
         if($model!=null) {
             $clsPessoa = new Pessoa();
             $clsPessoa->Nome = $model->Pessoa["Nome"];
-            $this->unitofwork->Insert($clsPessoa);
+            $clsPessoa->Email = strtolower($model->Pessoa["Email"]);
+            $clsPessoaCheck = $this->unitofwork->Get(new Pessoa(), "LOWER(Email) = '".$clsPessoa->Email."'")->ToList();
+            if($clsPessoaCheck->Count() > 0) {
+                $clsPessoa = $clsPessoaCheck->First();
+                $clsPessoa->Nome = $model->Pessoa["Nome"];
+            }else{
+                $this->unitofwork->Insert($clsPessoa);
+            }
             $model->PessoaId = $clsPessoa->PessoaId;
             if($model->Representante != 0)
                 $model->Representante = 1;
 
-
-                if ($model->AlunoId > 0){
-                    $this->unitofwork->Update($model);
-                } else {
-                    $this->unitofwork->Insert($model);
-                }
+            if ($model->AlunoId > 0){
+                $this->unitofwork->Update($model);
+            } else {
+                $this->unitofwork->Insert($model);
+            }
         }
         return $model;
     }
