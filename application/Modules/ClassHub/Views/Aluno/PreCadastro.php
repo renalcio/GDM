@@ -8,6 +8,13 @@ $Model = new \DAL\ClassHub\Aluno();
             checkboxClass: 'icheckbox_minimal-blue',
             radioClass: 'iradio_minimal-blue'
         });
+        $("#EscolaId").change(function(){
+            var EscolaId = $(this).val();
+            $.get("<?=URL;?>handler/turma/Select2/"+EscolaId, function(data){
+                $("select.TurmaSelec2").html(data);
+                $("select.TurmaSelec2").val("").change();
+            });
+        });
     });
 </script>
 <h3 class="page-header">Pre Cadastro de Aluno</h3>
@@ -27,22 +34,23 @@ $Model = new \DAL\ClassHub\Aluno();
                 <label>
                     Nome
                 </label>
-                <? Form::Text("Pessoa.Nome", @$Model->Pessoa->Nome, Array("class" => "form-control"))?>
+                <? Form::Text("Pessoa_Nome", @$Model->Pessoa->Nome, Array("class" => "form-control"))?>
             </div>
             <?
-            if(!empty(ESCOLA)){
+           // var_dump(ESCOLA);
+            if(empty(ESCOLA)){
                 ?>
                 <div class="form-group">
                     <label>
                         Escola
                     </label>
-                    <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control", "DataUrl" => URL."handler/escola/Select2" ));?>
+                    <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control EscolaSelect2", "DataUrl" => URL."handler/escola/Select2" ));?>
                 </div>
                 <div class="form-group" for="TurmaId">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
                     </label>
-                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control", "DataUrl" => URL."handler/turma/Select2" ));?>
+                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control TurmaSelec2", "DataUrl" => URL."handler/turma/Select2" ));?>
                 </div>
             <?
             }else{
@@ -65,7 +73,10 @@ $Model = new \DAL\ClassHub\Aluno();
             </div>
 
             <div class="form-group" for="Representante">
-                <? Form::Checkbox("Representante", @$Model->Representante,["class" => "minimal"]); ?>
+                <? Form::Checkbox("Representante", @$Model->Representante,[
+                    "class" => "minimal",
+                    ((!empty($Model->Representante)) ? "checked" : "") => ((!empty($Model->Representante)) ? "checked" : "")
+                ]); ?>
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Representante");?>
                 </label>

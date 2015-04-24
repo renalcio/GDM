@@ -51,6 +51,7 @@ class AlunoController extends Controller
     }
 
     public function precadastro_post($model = null){
+        //var_dump($model);
 
         if($model!=null) {
             $model = (object)$model;

@@ -94,15 +94,14 @@ class Aluno
             else
                 $this->Pessoa = new Pessoa();
 
-            if(!empty($this->EscolaId))
-                $this->Escola = $unitofwork->GetById(new Escola(), $this->EscolaId);
-            else
-                $this->Escola = new Escola();
-
-            if(!empty($this->TurmaId))
+            if(!empty($this->TurmaId)) {
                 $this->Turma = $unitofwork->GetById(new Turma(), $this->TurmaId);
-            else
+                $this->Escola = $unitofwork->GetById(new Escola(), $this->Turma->Curso->EscolaId);
+            }
+            else {
                 $this->Turma = new Turma();
+                $this->Escola = new Escola();
+            }
 
         }
 

@@ -1,5 +1,5 @@
 ﻿<?
-if(is_array($Model->Lista) && count($Model->Lista) > 0)
+if($Model->Lista->Count() > 0)
 {
     ?>
     <script type="text/javascript">
@@ -60,36 +60,35 @@ if(is_array($Model->Lista) && count($Model->Lista) > 0)
             </thead>
             <tbody>
             <?
-            if(is_array($Model->Lista) && count($Model->Lista) > 0)
+            if($Model->Lista->Count() > 0)
             {
-                $i = 0;
-                foreach($Model->Lista as $Item)
-                {
+                $Model->Lista->For_Each(function($Item, $i){
                     ?>
                     <tr>
                         <td><input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]"
                                    value="<?= $Item->AlunoId ?>"/></td>
                         <td><?=$Item->Pessoa->Nome;?></td>
                         <td><?=$Item->Escola->Nome;?></td>
-                        <td><?=$Item->Turma->Titulo;?></td>
-                        <th style="width:32px">Ativo</th>
+                        <td><?=$Item->Turma->Semestre."S ".$Item->Turma->Ano." - ".$Item->Turma->Turno." - ".$Item->Turma->Curso->Titulo;
+                            ?></td>
+                        <th style="width:32px"><?=($Item->Registrado > 0 ? "Sim": "Não");?></th>
                         <td align="center">
 
                             <div class="btn-group">
                                 <i class="fa fa-bars" class="dropdown-toggle"
                                    data-toggle="dropdown"></i>
                                 <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->ArtistaId)?>"><i
+                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AlunoId)?>"><i
                                                 class="fa fa-edit"></i>
                                             Editar</a></li>
-                                    <li><a onclick="Excluir(<?=@$Item->ArtistaId;?>)"><i class="fa fa-trash-o"></i> Excluir</a></li></ul>
+                                    <li><a onclick="Excluir(<?=@$Item->AlunoId;?>)"><i class="fa fa-trash-o"></i> Excluir</a></li></ul>
                             </div>
 
                         </td>
                     </tr>
                 <?
-                    $i++;
-                }
+
+                });
             }else
             {
                 echo "<tr><td colspan='6'>Nenhum Registro</td></tr>";

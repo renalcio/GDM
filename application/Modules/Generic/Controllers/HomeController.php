@@ -31,6 +31,7 @@ class HomeController extends Controller
 
     public function index_post($model = null){
         var_dump($model);
+        var_dump($_REQUEST["Grupo"]);
     }
 
     /**

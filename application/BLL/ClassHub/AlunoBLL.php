@@ -8,6 +8,7 @@
 namespace BLL\ClassHub;
 use BLL\BLL;
 use DAL\ClassHub\Aluno;
+use DAL\Pessoa;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -48,11 +49,16 @@ class AlunoBLL extends BLL
     }
 
     public function Save(Aluno $model){
-
         if($model!=null) {
+            $clsPessoa = new Pessoa();
+            $clsPessoa->Nome = $model->Pessoa["Nome"];
+            $this->unitofwork->Insert($clsPessoa);
+            $model->PessoaId = $clsPessoa->PessoaId;
+            if($model->Representante != 0)
+                $model->Representante = 1;
+
 
                 if ($model->AlunoId > 0){
-
                     $this->unitofwork->Update($model);
                 } else {
                     $this->unitofwork->Insert($model);
