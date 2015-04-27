@@ -1,13 +1,13 @@
 <?php
 /**
  * Model
- * Titulo: Cursos
+ * Titulo: Notificações
  * Autor: renalcio.freitas
- * Data: 23/04/2015
+ * Data: 09/04/2015
  */
-namespace BLL\ClassHub;
-use BLL\BLL;
-use DAL\ClassHub\Curso;
+namespace Modules\Generic\BLL;
+use Core\BLL;
+use DAL\Notificacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -16,7 +16,7 @@ use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
 
-class CursoBLL extends BLL
+class NotificacaoBLL extends BLL
 {
     function __construct($db)
     {
@@ -28,13 +28,13 @@ class CursoBLL extends BLL
         parent::__construct();
     }
 
-    public function GetToEdit(Curso $model)
+    public function GetToEdit(Notificacao $model)
     {
-        if($model->CursoId > 0)
+        if($model->NotificacaoId > 0)
         {
-            $model = $this->unitofwork->GetById(new Curso(), $model->CursoId);
+            $model = $this->unitofwork->GetById(new Notificacao(), $model->NotificacaoId);
         }else{
-            $model = new Curso();
+            $model = new Notificacao();
         }
         return $model;
     }
@@ -42,16 +42,16 @@ class CursoBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Curso())->ToList();
+        $model->Lista = $this->unitofwork->Get(new Notificacao())->ToList();
 
         return $model;
     }
 
-    public function Save(Curso $model){
+    public function Save(Notificacao $model){
 
         if($model!=null) {
 
-                if ($model->CursoId > 0){
+                if ($model->NotificacaoId > 0){
 
                     $this->unitofwork->Update($model);
                 } else {
@@ -63,11 +63,11 @@ class CursoBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Curso(), $id);
+            $this->unitofwork->Delete(new Notificacao(), $id);
         }
     }
 
-    public function Validar(Curso $model)
+    public function Validar(Notificacao $model)
     {
 
     }

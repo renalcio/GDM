@@ -1,6 +1,6 @@
 <?php
 namespace BLL\GDM;
-use BLL\BLL;
+use Core\BLL;
 use BLL\Generic\MenuBLL;
 use Libs\Database;
 use DAL\Perfil;

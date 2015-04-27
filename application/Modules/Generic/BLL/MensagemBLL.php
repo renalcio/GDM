@@ -5,8 +5,8 @@
  * Autor: renalcio.freitas
  * Data: 13/04/2015
  */
-namespace BLL\Generic;
-use BLL\BLL;
+namespace Modules\Generic\BLL;
+use Core\BLL;
 use DAL\Mensagem;
 use DAL\MensagemPessoa;
 use Libs\Database;

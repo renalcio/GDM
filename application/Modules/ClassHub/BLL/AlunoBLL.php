@@ -5,8 +5,8 @@
  * Autor: renalcio.freitas
  * Data: 20/04/2015
  */
-namespace BLL\ClassHub;
-use BLL\BLL;
+namespace Modules\ClassHub\BLL;
+use Core\BLL;
 use DAL\ClassHub\Aluno;
 use DAL\Pessoa;
 use Libs\Database;

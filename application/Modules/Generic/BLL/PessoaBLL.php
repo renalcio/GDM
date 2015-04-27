@@ -1,6 +1,6 @@
 <?php
-namespace BLL\Generic;
-use BLL\BLL;
+namespace Modules\Generic\BLL;
+use Core\BLL;
 use DAL\PessoaAplicacao;
 use DAL\PessoaFisica;
 use DAL\PessoaJuridica;

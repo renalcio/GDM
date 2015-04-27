@@ -1,6 +1,6 @@
 <?php
-namespace BLL\Generic;
-use BLL\BLL;
+namespace Modules\Generic\BLL;
+use Core\BLL;
 use DAL\Menu;
 use DAL\Permissao;
 use Libs\Database;

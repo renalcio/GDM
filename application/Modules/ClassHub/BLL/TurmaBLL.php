@@ -1,13 +1,13 @@
 <?php
 /**
  * Model
- * Titulo: Notificações
+ * Titulo: Turmas
  * Autor: renalcio.freitas
- * Data: 09/04/2015
+ * Data: 23/04/2015
  */
-namespace BLL\Generic;
-use BLL\BLL;
-use DAL\Notificacao;
+namespace Modules\ClassHub\BLL;
+use Core\BLL;
+use DAL\ClassHub\Turma;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -16,7 +16,7 @@ use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
 
-class NotificacaoBLL extends BLL
+class TurmaBLL extends BLL
 {
     function __construct($db)
     {
@@ -28,13 +28,13 @@ class NotificacaoBLL extends BLL
         parent::__construct();
     }
 
-    public function GetToEdit(Notificacao $model)
+    public function GetToEdit(Turma $model)
     {
-        if($model->NotificacaoId > 0)
+        if($model->TurmaId > 0)
         {
-            $model = $this->unitofwork->GetById(new Notificacao(), $model->NotificacaoId);
+            $model = $this->unitofwork->GetById(new Turma(), $model->TurmaId);
         }else{
-            $model = new Notificacao();
+            $model = new Turma();
         }
         return $model;
     }
@@ -42,16 +42,16 @@ class NotificacaoBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Notificacao())->ToList();
+        $model->Lista = $this->unitofwork->Get(new Turma())->ToList();
 
         return $model;
     }
 
-    public function Save(Notificacao $model){
+    public function Save(Turma $model){
 
         if($model!=null) {
 
-                if ($model->NotificacaoId > 0){
+                if ($model->TurmaId > 0){
 
                     $this->unitofwork->Update($model);
                 } else {
@@ -63,11 +63,11 @@ class NotificacaoBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Notificacao(), $id);
+            $this->unitofwork->Delete(new Turma(), $id);
         }
     }
 
-    public function Validar(Notificacao $model)
+    public function Validar(Turma $model)
     {
 
     }

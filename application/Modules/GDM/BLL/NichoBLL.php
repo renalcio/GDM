@@ -1,6 +1,6 @@
 <?php
 namespace BLL\GDM;
-use BLL\BLL;
+use Core\BLL;
 use DAL\Nicho;
 use Libs\Database;
 use Libs\Helper;

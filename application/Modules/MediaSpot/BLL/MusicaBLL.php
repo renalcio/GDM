@@ -1,47 +1,46 @@
 <?php
 /**
  * Model
- * Titulo: Site de Aplicação
+ * Titulo: Musica
  * Autor: renalcio.freitas
- * Data: 22/01/2015
+ * Data: 26/01/2015
  */
-namespace BLL\GDM;
-use BLL\BLL;
+namespace BLL\MediaSpot;
+use Core\BLL;
 use Libs\Database;
-use DAL\Site;
+use DAL\MediaSpot\Musica;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;
 use Libs\SessionHelper;
 use Libs\UsuarioHelper;
-use Libs\Debug;
 
-class SiteBLL extends BLL
+class MusicaBLL extends BLL
 {
 
-    public function GetToEdit(Site $model)
+    public function GetToEdit(Musica $model)
     {
-        if($model->SiteId > 0)
+        if($model->MusicaId > 0)
         {
-            $model = $this->unitofwork->GetById(new Site(), $model->SiteId);
+            $model = $this->unitofwork->GetById(new Musica(), $model->MusicaId);
         }else{
-            $model = new Site();
+            $model = new Musica();
         }
         return $model;
     }
 
     public function GetToIndex($model)
     {
+        $model->Lista = array();
 
-        $model->Lista = $this->unitofwork->Get(new Site())->ToArray();
         return $model;
     }
 
-    public function Save(Site $model){
+    public function Save(Musica $model){
 
         if($model!=null) {
-            
-                if ($model->SiteId > 0){
+
+                if ($model->MusicaId > 0){
                     $this->unitofwork->Update($model);
                 } else {
                     $this->unitofwork->Insert($model);
@@ -52,11 +51,11 @@ class SiteBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Site(), $id);
+            $this->unitofwork->Delete(new Musica(), "MusicaId = '".$id."'");
         }
     }
 
-    public function Validar(Site $model)
+    public function Validar(Musica $model)
     {
 
     }

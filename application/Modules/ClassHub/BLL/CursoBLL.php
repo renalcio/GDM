@@ -1,13 +1,13 @@
 <?php
 /**
  * Model
- * Titulo: Turmas
+ * Titulo: Cursos
  * Autor: renalcio.freitas
  * Data: 23/04/2015
  */
-namespace BLL\ClassHub;
-use BLL\BLL;
-use DAL\ClassHub\Turma;
+namespace Modules\ClassHub\BLL;
+use Core\BLL;
+use DAL\ClassHub\Curso;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -16,7 +16,7 @@ use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
 
-class TurmaBLL extends BLL
+class CursoBLL extends BLL
 {
     function __construct($db)
     {
@@ -28,13 +28,13 @@ class TurmaBLL extends BLL
         parent::__construct();
     }
 
-    public function GetToEdit(Turma $model)
+    public function GetToEdit(Curso $model)
     {
-        if($model->TurmaId > 0)
+        if($model->CursoId > 0)
         {
-            $model = $this->unitofwork->GetById(new Turma(), $model->TurmaId);
+            $model = $this->unitofwork->GetById(new Curso(), $model->CursoId);
         }else{
-            $model = new Turma();
+            $model = new Curso();
         }
         return $model;
     }
@@ -42,16 +42,16 @@ class TurmaBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Turma())->ToList();
+        $model->Lista = $this->unitofwork->Get(new Curso())->ToList();
 
         return $model;
     }
 
-    public function Save(Turma $model){
+    public function Save(Curso $model){
 
         if($model!=null) {
 
-                if ($model->TurmaId > 0){
+                if ($model->CursoId > 0){
 
                     $this->unitofwork->Update($model);
                 } else {
@@ -63,11 +63,11 @@ class TurmaBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Turma(), $id);
+            $this->unitofwork->Delete(new Curso(), $id);
         }
     }
 
-    public function Validar(Turma $model)
+    public function Validar(Curso $model)
     {
 
     }

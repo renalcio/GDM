@@ -6,7 +6,7 @@
  * Data: 26/01/2015
  */
 namespace BLL\MediaSpot;
-use BLL\BLL;
+use Core\BLL;
 use DAL\MediaSpot\Musica;
 use Libs\ArrayHelper;
 use Libs\Database;

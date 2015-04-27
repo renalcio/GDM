@@ -6,7 +6,7 @@
  * Time: 14:53
  */
 
-namespace BLL;
+namespace Core;
 
 
 use Libs\Database;
