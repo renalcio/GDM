@@ -7,3 +7,5 @@ if(!empty($escola)) {
 }else{
     define('ESCOLA', 0); #Pasta da Aplicacao
 }
+
+define('LoginUrl', "ClassHub");

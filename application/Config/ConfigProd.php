@@ -76,3 +76,5 @@ if(!empty($pasta)) {
 }else{
     define('PASTA', ''); #Pasta da Aplicacao
 }
+
+define('DefaultApp', 'Generic' . DIRECTORY_SEPARATOR);

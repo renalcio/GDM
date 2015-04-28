@@ -47,21 +47,9 @@ class Controller
         $this->jsonAssets = $json;
         $this->HeaderLayout = "Header";
         $this->FooterLayout = "Footer";
-        $this->LoadConfig();
     }
 
-    public function LoadConfig($modulo = null){
-        if(empty($modulo))
-            $modulo = PASTA;
-        else
-            $modulo .= DIRECTORY_SEPARATOR;
 
-        $pathConfig = APP . MODULES . $modulo . 'Config' . DIRECTORY_SEPARATOR . 'Config.php';
-
-        if(file_exists($pathConfig)){
-            require_once $pathConfig;
-        }
-    }
 
     /**
      * Open the database connection with the credentials from application/config/config.php

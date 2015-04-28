@@ -33,6 +33,7 @@ class Application
      */
     public function __construct()
     {
+        $this->LoadConfig();
         // create array with URL parts in $url
         $this->splitUrl();
 
@@ -126,12 +127,25 @@ class Application
                 }
                 else
                 {
-                    $this->GetLogin();
+                   $this->GetLogin();
                 }
 
             }else{
                 $this->GetError();
             }
+        }
+    }
+
+    public function LoadConfig($modulo = null){
+        if(empty($modulo))
+            $modulo = DefaultApp;
+        else
+            $modulo .= DIRECTORY_SEPARATOR;
+
+        $pathConfig = APP . MODULES . $modulo . 'Config' . DIRECTORY_SEPARATOR . 'Config.php';
+
+        if(file_exists($pathConfig)){
+            require_once $pathConfig;
         }
     }
 
@@ -237,4 +251,6 @@ class Application
         }
         //var_dump($this);
     }
+
+
 }

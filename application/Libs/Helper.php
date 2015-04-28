@@ -263,4 +263,10 @@ class Helper
         }
     }
 
+    static function Redirect($view, $controller = ""){
+        if(empty($controller)) $controller = Helper::getController();
+
+        header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '');
+    }
+
 }
