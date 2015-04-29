@@ -94,7 +94,7 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="Aluno" />
+        <option name="myItemId" value="Materia" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -105,120 +105,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Config/Config.php">
+      <file leaf-file-name="PreCadastro.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/PreCadastro.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1547">
+              <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/Core/Application.php">
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Core/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2173913" vertical-offset="566" max-vertical-offset="2108">
-              <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-              <folding>
-                <element signature="e#675#808#0#PHP" expanded="false" />
-                <element signature="e#3246#5063#0#PHP" expanded="false" />
-                <element signature="e#3427#4054#0#PHP" expanded="false" />
-                <element signature="e#3745#4054#0#PHP" expanded="false" />
-                <element signature="e#3907#4027#0#PHP" expanded="false" />
-                <element signature="e#4082#5063#0#PHP" expanded="false" />
-                <element signature="e#4170#4652#0#PHP" expanded="false" />
-                <element signature="e#4418#4652#0#PHP" expanded="false" />
-                <element signature="e#4676#5063#0#PHP" expanded="false" />
-                <element signature="e#4707#5041#0#PHP" expanded="false" />
-                <element signature="e#4961#5041#0#PHP" expanded="false" />
-                <element signature="e#5191#5245#0#PHP" expanded="false" />
-                <element signature="e#5623#6984#0#PHP" expanded="false" />
-                <element signature="e#5894#6933#0#PHP" expanded="false" />
-                <element signature="e#6173#6769#0#PHP" expanded="false" />
-                <element signature="e#6401#6567#0#PHP" expanded="false" />
-                <element signature="e#6581#6769#0#PHP" expanded="false" />
-                <element signature="e#6779#6933#0#PHP" expanded="false" />
-                <element signature="e#6990#7183#0#PHP" expanded="false" />
-                <element signature="e#7189#7369#0#PHP" expanded="false" />
-                <element signature="e#7375#7415#0#PHP" expanded="false" />
-                <element signature="e#7420#9584#0#PHP" expanded="false" />
-                <element signature="e#7595#9551#0#PHP" expanded="false" />
-                <element signature="e#7801#7932#0#PHP" expanded="false" />
-                <element signature="e#7946#9140#0#PHP" expanded="false" />
-                <element signature="e#8562#9140#0#PHP" expanded="false" />
-                <element signature="e#9268#9334#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Helper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Libs/Helper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="816">
-              <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
-              <folding>
-                <element signature="e#42#407#0#PHP" expanded="false" />
-                <element signature="e#164#376#0#PHP" expanded="false" />
-                <element signature="e#210#366#0#PHP" expanded="false" />
-                <element signature="e#413#549#0#PHP" expanded="false" />
-                <element signature="e#554#598#0#PHP" expanded="false" />
-                <element signature="e#603#866#0#PHP" expanded="false" />
-                <element signature="e#707#836#0#PHP" expanded="false" />
-                <element signature="e#872#2557#0#PHP" expanded="false" />
-                <element signature="e#928#2526#0#PHP" expanded="false" />
-                <element signature="e#1039#2296#0#PHP" expanded="false" />
-                <element signature="e#1134#2282#0#PHP" expanded="false" />
-                <element signature="e#1527#1781#0#PHP" expanded="false" />
-                <element signature="e#1568#1759#0#PHP" expanded="false" />
-                <element signature="e#1852#2194#0#PHP" expanded="false" />
-                <element signature="e#2041#2194#0#PHP" expanded="false" />
-                <element signature="e#2213#2282#0#PHP" expanded="false" />
-                <element signature="e#2310#2513#0#PHP" expanded="false" />
-                <element signature="e#2359#2499#0#PHP" expanded="false" />
-                <element signature="e#2562#2699#0#PHP" expanded="false" />
-                <element signature="e#2704#2951#0#PHP" expanded="false" />
-                <element signature="e#2957#3285#0#PHP" expanded="false" />
-                <element signature="e#3121#3278#0#PHP" expanded="false" />
-                <element signature="e#3133#3277#1#PHP" expanded="false" />
-                <element signature="e#3291#3633#0#PHP" expanded="false" />
-                <element signature="e#3453#3626#0#PHP" expanded="false" />
-                <element signature="e#3465#3625#1#PHP" expanded="false" />
-                <element signature="e#3639#4077#0#PHP" expanded="false" />
-                <element signature="e#4082#4940#0#PHP" expanded="false" />
-                <element signature="e#4205#4836#0#PHP" expanded="false" />
-                <element signature="e#4351#4487#0#PHP" expanded="false" />
-                <element signature="e#4432#4487#0#PHP" expanded="false" />
-                <element signature="e#4559#4826#0#PHP" expanded="false" />
-                <element signature="e#4650#4745#0#PHP" expanded="false" />
-                <element signature="e#4746#4826#0#PHP" expanded="false" />
-                <element signature="e#4946#5464#0#PHP" expanded="false" />
-                <element signature="e#5202#5398#0#PHP" expanded="false" />
-                <element signature="e#5241#5338#0#PHP" expanded="false" />
-                <element signature="e#5470#5829#0#PHP" expanded="false" />
-                <element signature="e#5528#5798#0#PHP" expanded="false" />
-                <element signature="e#5835#6209#0#PHP" expanded="false" />
-                <element signature="e#5897#6168#0#PHP" expanded="false" />
-                <element signature="e#6215#6325#0#PHP" expanded="false" />
-                <element signature="e#6331#6447#0#PHP" expanded="false" />
-                <element signature="e#6453#7822#0#PHP" expanded="false" />
-                <element signature="e#7121#7815#0#PHP" expanded="false" />
-                <element signature="e#7581#7805#0#PHP" expanded="false" />
-                <element signature="e#7828#8276#0#PHP" expanded="false" />
-                <element signature="e#7889#8270#0#PHP" expanded="false" />
-                <element signature="e#7947#8260#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Config/Config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="547" max-vertical-offset="1377">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state vertical-scroll-proportion="-16.346153" vertical-offset="969" max-vertical-offset="3162">
+              <caret line="85" column="121" selection-start-line="85" selection-start-column="121" selection-end-line="85" selection-end-column="121" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/MateriaController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.423077" vertical-offset="37" max-vertical-offset="1598">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding>
+                <element signature="e#6#80#0#PHP" expanded="true" />
+                <element signature="e#121#141#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Materia/Index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.52019584" vertical-offset="969" max-vertical-offset="1819">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaBLL.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/MateriaBLL.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-30.615385" vertical-offset="462" max-vertical-offset="1360">
+              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <folding>
+                <element signature="e#6#89#0#PHP" expanded="true" />
+                <element signature="e#122#134#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -246,13 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/DAL/ClassHub/Curso.php" />
-        <option value="$PROJECT_DIR$/application/BLL/ClassHub/CursoBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Curso/Cadastro.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Curso/Index.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/CursoController.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/Handlers/CursoHandler.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/Handlers/EscolaHandler.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/TurmaController.php" />
         <option value="$PROJECT_DIR$/application/DAL/ClassHub/Turma.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Turma/Index.php" />
@@ -264,20 +195,10 @@
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/Index.php" />
         <option value="$PROJECT_DIR$/application/BLL/ClassHub/AlunoBLL.php" />
         <option value="$PROJECT_DIR$/application/DAL/ClassHub/Aluno.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/PreCadastro.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Login/Index.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/Controllers/LoginController.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/Views/Login/ClassHub.php" />
         <option value="$PROJECT_DIR$/application/Core/BLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/AplicacaoBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/NichoBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/PerfilBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/SiteBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioAplicacaoBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/BLL/ArtistaBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/BLL/MusicaBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/BLL/SiteDestaqueBLL.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/LoginController.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/AlunoBLL.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/CursoBLL.php" />
@@ -289,14 +210,31 @@
         <option value="$PROJECT_DIR$/application/Modules/Generic/BLL/MenuBLL.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/BLL/NotificacaoBLL.php" />
         <option value="$PROJECT_DIR$/application/Modules/Generic/BLL/PessoaBLL.php" />
-        <option value="$PROJECT_DIR$/application/Core/Controller.php" />
         <option value="$PROJECT_DIR$/application/Config/ConfigProd.php" />
-        <option value="$PROJECT_DIR$/application/Config/Config.php" />
         <option value="$PROJECT_DIR$/application/Libs/Helper.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Config/Config.php" />
-        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/Config/Config.php" />
-        <option value="$PROJECT_DIR$/application/Modules/GDM/Config/Config.php" />
+        <option value="$PROJECT_DIR$/application/Config/Config.php" />
+        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/BLL/MusicaBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/BLL/ArtistaBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/BLL/SiteDestaqueBLL.php" />
+        <option value="$PROJECT_DIR$/application/Templates/Header.php" />
         <option value="$PROJECT_DIR$/application/Core/Application.php" />
+        <option value="$PROJECT_DIR$/application/Modules/Generic/Config/Config.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/Config/Config.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Config/Config.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/PreCadastro.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/MateriaController.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/MateriaBLL.php" />
+        <option value="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
+        <option value="$PROJECT_DIR$/application/Core/Controller.php" />
+        <option value="$PROJECT_DIR$/application/Modules/MediaSpot/Config/Config.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioAplicacaoBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/SiteBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/PerfilBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/NichoBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/AplicacaoBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioBLL.php" />
+        <option value="$PROJECT_DIR$/application/DAL/ClassHub/Materia.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Materia/Index.php" />
       </list>
     </option>
   </component>
@@ -356,7 +294,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -372,6 +309,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="composer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -420,8 +389,30 @@
               <option name="myItemId" value="Modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -443,33 +434,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MediaSpot" />
+              <option name="myItemId" value="ClassHub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
+              <option name="myItemId" value="Views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Generic" />
+              <option name="myItemId" value="Materia" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -491,55 +464,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Generic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
+              <option name="myItemId" value="ClassHub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -565,32 +490,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ClassHub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -617,7 +516,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Config" />
+              <option name="myItemId" value="BLL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -635,7 +534,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Libs" />
+              <option name="myItemId" value="DAL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -653,30 +552,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gdm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GDM" />
+              <option name="myItemId" value="DAL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Config" />
+              <option name="myItemId" value="ClassHub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -700,11 +586,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\GDM\application\Modules\ClassHub\Views" />
+      <recent name="C:\wamp\www\GDM\application\Modules\Generic\Config" />
+      <recent name="C:\wamp\www\GDM\application\Modules\GDM\Config" />
       <recent name="C:\wamp\www\GDM\application\Modules\MediaSpot" />
       <recent name="C:\wamp\www\GDM\application\Modules\Generic" />
-      <recent name="C:\wamp\www\GDM\application\Modules\GDM" />
-      <recent name="C:\wamp\www\GDM\application\Modules\ClassHub\BLL" />
-      <recent name="C:\wamp\www\GDM\application\Modules\ClassHub\Views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp\www\GDM\public\plugins\iCheck\min" />
@@ -722,17 +608,20 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -742,9 +631,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -952,25 +838,25 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938388" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20469256" sideWeight="0.37914693" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20469256" sideWeight="0.37914693" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2669903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27184466" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27588996" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3908686" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3908686" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -992,9 +878,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26375404" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1053,67 +939,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Controllers/MensagemController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83614457" vertical-offset="1380" max-vertical-offset="2210">
-          <caret line="131" column="33" selection-start-line="122" selection-start-column="8" selection-end-line="131" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4ee57c1/5adab088-8d3e-4d59-b461-28132d325358/ClassHub..Escola">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/GeneratorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24216868" vertical-offset="54" max-vertical-offset="884">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Aplicacao/Cadastro.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57349396" vertical-offset="0" max-vertical-offset="1156">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Site/Cadastro.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4506024" vertical-offset="0" max-vertical-offset="1462">
-          <caret line="21" column="22" selection-start-line="16" selection-start-column="16" selection-end-line="21" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Perfil/Acesso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47108433" vertical-offset="1275" max-vertical-offset="2465">
-          <caret line="87" column="433" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="433" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Perfil/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7373494" vertical-offset="612" max-vertical-offset="1921">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.769231" vertical-offset="147" max-vertical-offset="952">
-          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Views/Home/Index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31894934" vertical-offset="0" max-vertical-offset="2227">
@@ -1194,13 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/PreCadastro.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385" vertical-offset="867" max-vertical-offset="1870">
-          <caret line="68" column="156" selection-start-line="68" selection-start-column="156" selection-end-line="68" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Templates/ClassHub/Footer.Login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
@@ -1229,69 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/AplicacaoBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1190">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/NichoBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="952">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/PerfilBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1139">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/SiteBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.061445784" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioAplicacaoBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1751">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="2601">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/BLL/ArtistaBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.061445784" vertical-offset="0" max-vertical-offset="1275">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/BLL/MusicaBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.061445784" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/BLL/SiteDestaqueBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1479">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/CursoBLL.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1275">
@@ -1310,20 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1258">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/BLL/HomeBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="830">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/BLL/LoginBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="2040">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1362,13 +1103,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="856">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Config/ConfigProd.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.87710845" vertical-offset="547" max-vertical-offset="1377">
@@ -1376,38 +1110,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61445785" vertical-offset="255" max-vertical-offset="1088">
-          <caret line="132" column="5" selection-start-line="128" selection-start-column="4" selection-end-line="132" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="830">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="830">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Libs/Helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="816">
+        <state vertical-scroll-proportion="0.7373494" vertical-offset="0" max-vertical-offset="830">
           <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
           <folding>
             <element signature="e#42#407#0#PHP" expanded="false" />
@@ -1465,18 +1170,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/Config/Config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="547" max-vertical-offset="1377">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.87710845" vertical-offset="564" max-vertical-offset="1394">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Templates/Header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9590362" vertical-offset="7449" max-vertical-offset="8347">
+          <caret line="466" column="33" selection-start-line="466" selection-start-column="33" selection-end-line="466" selection-end-column="33" />
+          <folding>
+            <element signature="e#3#26#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#li#0;n#ul#0;n#li#1;n#ul#0;n#li#2;n#ul#0;n#div#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#li#1;n#ul#0;n#li#1;n#ul#0;n#li#2;n#ul#0;n#div#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#li#2;n#ul#0;n#li#1;n#ul#0;n#li#2;n#ul#0;n#div#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#li#3;n#ul#0;n#li#1;n#ul#0;n#li#2;n#ul#0;n#div#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#section#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ol#0;n#section#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/Cadastro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="2380">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Config/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="856">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Config/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="856">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Config/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="830">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/MateriaBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.615385" vertical-offset="462" max-vertical-offset="1360">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="true" />
+            <element signature="e#122#134#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/Core/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2173913" vertical-offset="566" max-vertical-offset="2108">
-          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.16768666" vertical-offset="186" max-vertical-offset="1003">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="e#675#808#0#PHP" expanded="false" />
+            <element signature="e#813#5261#0#PHP" expanded="false" />
             <element signature="e#3246#5063#0#PHP" expanded="false" />
             <element signature="e#3427#4054#0#PHP" expanded="false" />
             <element signature="e#3745#4054#0#PHP" expanded="false" />
@@ -1488,22 +1261,184 @@
             <element signature="e#4707#5041#0#PHP" expanded="false" />
             <element signature="e#4961#5041#0#PHP" expanded="false" />
             <element signature="e#5191#5245#0#PHP" expanded="false" />
-            <element signature="e#5623#6984#0#PHP" expanded="false" />
-            <element signature="e#5894#6933#0#PHP" expanded="false" />
-            <element signature="e#6173#6769#0#PHP" expanded="false" />
-            <element signature="e#6401#6567#0#PHP" expanded="false" />
-            <element signature="e#6581#6769#0#PHP" expanded="false" />
-            <element signature="e#6779#6933#0#PHP" expanded="false" />
-            <element signature="e#6990#7183#0#PHP" expanded="false" />
-            <element signature="e#7189#7369#0#PHP" expanded="false" />
-            <element signature="e#7375#7415#0#PHP" expanded="false" />
-            <element signature="e#7420#9584#0#PHP" expanded="false" />
-            <element signature="e#7595#9551#0#PHP" expanded="false" />
-            <element signature="e#7801#7932#0#PHP" expanded="false" />
-            <element signature="e#7946#9140#0#PHP" expanded="false" />
-            <element signature="e#8562#9140#0#PHP" expanded="false" />
-            <element signature="e#9268#9334#0#PHP" expanded="false" />
+            <element signature="e#5618#6979#0#PHP" expanded="false" />
+            <element signature="e#5889#6928#0#PHP" expanded="false" />
+            <element signature="e#6168#6764#0#PHP" expanded="false" />
+            <element signature="e#6396#6562#0#PHP" expanded="false" />
+            <element signature="e#6576#6764#0#PHP" expanded="false" />
+            <element signature="e#6774#6928#0#PHP" expanded="false" />
+            <element signature="e#6985#7178#0#PHP" expanded="false" />
+            <element signature="e#7370#7410#0#PHP" expanded="false" />
+            <element signature="e#7415#9579#0#PHP" expanded="false" />
+            <element signature="e#7590#9546#0#PHP" expanded="false" />
+            <element signature="e#7796#7927#0#PHP" expanded="false" />
+            <element signature="e#7941#9135#0#PHP" expanded="false" />
+            <element signature="e#8557#9135#0#PHP" expanded="false" />
+            <element signature="e#9263#9329#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/PreCadastro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1547">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Config/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="830">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153" vertical-offset="969" max-vertical-offset="3162">
+          <caret line="85" column="121" selection-start-line="85" selection-start-column="121" selection-end-line="85" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_namespaces.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38915664" vertical-offset="0" max-vertical-offset="830">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioAplicacaoBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="1768">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+          <folding>
+            <element signature="e#33#46#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/PerfilBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="1139">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+          <folding>
+            <element signature="e#33#46#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/SiteBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1088">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="e#126#139#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/NichoBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="952">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+          <folding>
+            <element signature="e#33#46#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/AplicacaoBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="1190">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+          <folding>
+            <element signature="e#33#46#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/BLL/MusicaBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1071">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="31" />
+          <folding>
+            <element signature="e#121#134#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/BLL/ArtistaBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding>
+            <element signature="e#119#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/BLL/SiteDestaqueBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.040963855" vertical-offset="0" max-vertical-offset="1479">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding>
+            <element signature="e#144#157#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/BLL/HomeBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="830">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/BLL/LoginBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020481927" vertical-offset="0" max-vertical-offset="1904">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/MateriaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.423077" vertical-offset="37" max-vertical-offset="1598">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#6#80#0#PHP" expanded="true" />
+            <element signature="e#121#141#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="2601">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/DAL/ClassHub/Materia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36506024" vertical-offset="88" max-vertical-offset="918">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Materia/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52019584" vertical-offset="969" max-vertical-offset="1819">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

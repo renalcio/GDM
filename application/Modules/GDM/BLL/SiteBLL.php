@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 22/01/2015
  */
-namespace BLL\GDM;
+namespace Modules\GDM\BLL;
 use Core\BLL;
 use Libs\Database;
 use DAL\Site;

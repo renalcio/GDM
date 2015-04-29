@@ -1,3 +1,1 @@
-﻿<?php
-
-define('LoginUrl', "Index");
+<?php ?>

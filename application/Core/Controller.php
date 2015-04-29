@@ -79,15 +79,15 @@ class Controller
 
 
         if(file_exists($urlfinal)) {
+            //require_once $urlfinal;
             $this->bll = MODULES . PASTA . 'BLL' . DIRECTORY_SEPARATOR . $bll."BLL";
             $this->bll = new $this->bll($this->db);
-            require_once $urlfinal;
         }else {
             $urlfinal = APP . MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . $bll . 'BLL.php';
            // echo "\n\nBLL: ".$urlfinal;
 
             if(file_exists($urlfinal)) {
-                require_once $urlfinal;
+                //require_once $urlfinal;
                 $this->bll =  MODULES . 'Generic' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . $bll . "BLL";
                 $this->bll = new $this->bll($this->db);
             }

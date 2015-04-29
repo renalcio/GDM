@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 26/01/2015
  */
-namespace BLL\MediaSpot;
+namespace Modules\MediaSpot\BLL;
 use Core\BLL;
 use Libs\Database;
 use DAL\MediaSpot\Musica;

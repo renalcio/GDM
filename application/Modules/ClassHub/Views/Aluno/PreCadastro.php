@@ -22,7 +22,6 @@ $Model = new \DAL\ClassHub\Aluno();
     <?
     Form::ValidationSummary();
     ?>
-
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">
@@ -42,10 +41,6 @@ $Model = new \DAL\ClassHub\Aluno();
                 </label>
                 <? Form::Text("Pessoa_Email", @$Model->Pessoa->Email, Array("class" => "form-control"))?>
             </div>
-            <?
-           // var_dump(ESCOLA);
-            if(empty(ESCOLA)){
-                ?>
                 <div class="form-group">
                     <label>
                         Escola
@@ -58,19 +53,6 @@ $Model = new \DAL\ClassHub\Aluno();
                     </label>
                     <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control TurmaSelec2", "DataUrl" => URL."handler/turma/Select2" ));?>
                 </div>
-            <?
-            }else{
-                ?>
-                <? Form::Hidden("EscolaId", @$Model->EscolaId, Array("class" => "form-control"))?>
-                <div class="form-group" for="TurmaId">
-                    <label>
-                        <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
-                    </label>
-                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control", "DataUrl" => URL."handler/turma/Select2".ESCOLA ));?>
-                </div>
-            <?
-            }
-            ?>
 
             <div class="form-group" for="ChaveRegistro">
                 <label>

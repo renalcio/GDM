@@ -223,7 +223,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
 </head>
 <body class="skin-blue">
 <div class="wrapper">
-<!-- header logo: style can be found in header.less -->
+    <!-- header logo: style can be found in header.less -->
 
     <header class="main-header">
         <!-- Logo -->
@@ -451,7 +451,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                 $Tact = $this->GetActionTitle();
                 //var_dump($Tact);
                 //if(strtolower($Tact) != strtolower($Tctrl)){ ?>
-                    <small><?=$Tact;?></small>
+                <small><?=$Tact;?></small>
                 <? //} ?>
             </h1>
             <ol class="breadcrumb" style="text-transform: capitalize;">

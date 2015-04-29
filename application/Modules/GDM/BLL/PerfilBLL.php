@@ -1,5 +1,5 @@
 <?php
-namespace BLL\GDM;
+namespace Modules\GDM\BLL;
 use Core\BLL;
 use BLL\Generic\MenuBLL;
 use Libs\Database;

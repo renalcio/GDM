@@ -138,7 +138,7 @@ class Application
 
     public function LoadConfig($modulo = null){
         if(empty($modulo))
-            $modulo = DefaultApp;
+            $modulo = PASTA;
         else
             $modulo .= DIRECTORY_SEPARATOR;
 

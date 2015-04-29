@@ -15,4 +15,5 @@ return array(
     'Handler\\' => array($baseDir . '/application'),
     'DAL\\' => array($baseDir . '/application'),
     'BLL\\' => array($baseDir . '/application'),
+    'Modules\\' => array($baseDir . '/application'),
 );
