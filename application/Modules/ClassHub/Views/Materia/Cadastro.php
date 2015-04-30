@@ -2,18 +2,18 @@
 use Libs\Form;
 //$Model = new \DAL\ClassHub\Escola();
 ?>
-<h3 class="page-header">Cadastro de Curso</h3>
+<h3 class="page-header">Cadastro de Matérias</h3>
 
 <form method="post">
     <?
     Form::ValidationSummary();
-    Form::Hidden("ArtistaId", @$Model->CursoId);
+    Form::Hidden("MateriaId", @$Model->MateriaId);
     ?>
 
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">
-                Dados da Escola
+                Dados da Matéria
             </h3>
         </div>
         <div class="box-body">
@@ -22,13 +22,6 @@ use Libs\Form;
                     <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
                 </label>
                 <? Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"))?>
-            </div>
-
-            <div for="EscolaId">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "EscolaId");?>
-                </label>
-                <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control EscolaIdSelect", "DataUrl" => URL."handler/escola/Select2" ))?>
             </div>
         </div>
 

@@ -3,32 +3,35 @@
  * Controller
  *
  * Autor: renalcio.freitas
- * Data: 29/04/2015
+ * Data: 30/04/2015
  *
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
 use DAL\ClassHub\Materia;
+use DAL\ClassHub\MateriaCurso;
 use Libs\Helper;
 use Libs\ModelState;
 
 /**
  *
- * @Title: Matérias
+ * @Title: Vinculos de Matérias
  *
  */
-class MateriaController extends Controller
+class MateriaCursoController extends Controller
 {
 	/**
 	 *
 	 * @Title: Listagem
 	 *
 	 */
-    public function index()
+    public function index($id = 0)
     {
         $this->AddAsset(["iCheck"]);
         $this->loadBLL();
         $Model = new \stdClass();
+        $Model->Materia = new Materia();
+        $Model->Materia->MateriaId = $id;
         $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
@@ -38,22 +41,20 @@ class MateriaController extends Controller
 	 * @Title: Cadastro
 	 *
 	 */
-    public function cadastro($id = 0)
+    public function cadastro()
     {
         // load views
         $this->loadBLL();
-        $Model = new Materia();
-        $Model->MateriaId = $id;
-        $Model = $this->bll->GetToEdit($Model);
+        $Model = new MateriaCurso();
         $this->ModelView($Model);
 
     }
 
-    public function cadastro_post($model = null){
+    public function cadastro_post($id = 0, $model = null){
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, new Materia);
+            Helper::cast($model, new MateriaCurso);
             $this->loadBLL();
 
             //Valida Model via ModelState
@@ -65,14 +66,14 @@ class MateriaController extends Controller
 
                 if(ModelState::isValid()) {
                     $this->bll->Save($model); // Salva
-                    $this->Redirect("Index"); // Redireciona pra index do controller
+                    $this->Redirect(""); // Redireciona pra index do controller
                 }
             }
         }else{
             $model = new \stdClass();
         }
 
-        $this->ModelView($model);
+        $this->Redirect("Index");
     }
 
     public function deletar($id){

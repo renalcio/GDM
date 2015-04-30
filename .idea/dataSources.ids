@@ -93,6 +93,7 @@
       <column name="DiaSemana" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="HoraDe" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="HoraAte" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="MateriaCursoId"/>
     </table>
     <table name="Professor" schema="" catalog="ClassHub" type="TABLE">

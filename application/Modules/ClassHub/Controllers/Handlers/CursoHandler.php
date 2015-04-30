@@ -29,11 +29,11 @@ class CursoHandler extends Controller
         echo $retorno;
     }
 
-    function Select2()
+    function Select2($EscolaId = 0)
     {
         $retorno = "";
         $uow = new UnitofWork();
-        $sql = $uow->Get(new Curso())->ToArray();
+        $sql = $uow->Get(new Curso(), "EscolaId = '".$EscolaId."' OR '".$EscolaId."' = '0'")->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $item) {
                 $retorno .= "<option value='" . $item->CursoId . "'>" . $item->Titulo . "</option>";

@@ -39,13 +39,13 @@ $Model = new \DAL\ClassHub\Aluno();
                 <label>
                     Email
                 </label>
-                <? Form::Text("Pessoa_Email", @$Model->Pessoa->Email, Array("class" => "form-control"))?>
+                <? Form::Text("Pessoa_Email", @$Model->Pessoa->Email, ["class" => "form-control"])?>
             </div>
                 <div class="form-group">
                     <label>
                         Escola
                     </label>
-                    <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control EscolaSelect2", "DataUrl" => URL."handler/escola/Select2" ));?>
+                    <? Form::Select2("EscolaId", @$Model->EscolaId, "", ["class" => "form-control EscolaSelect2", "DataUrl" => URL."handler/escola/Select2" ]);?>
                 </div>
                 <div class="form-group" for="TurmaId">
                     <label>

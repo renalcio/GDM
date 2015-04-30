@@ -1,22 +1,23 @@
 <?php
 /**
  * Model
- * Titulo: Matérias
+ * Titulo: Vinculos de Materias
  * Autor: renalcio.freitas
- * Data: 29/04/2015
+ * Data: 30/04/2015
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
-use DAL\ClassHub\Materia;
+use DAL\ClassHub\MateriaCurso;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
+use Libs\ListHelper;
 use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
 
-class MateriaBLL extends BLL
+class MateriaCursoBLL extends BLL
 {
     function __construct($db)
     {
@@ -28,13 +29,15 @@ class MateriaBLL extends BLL
         parent::__construct();
     }
 
-    public function GetToEdit(Materia $model)
+    public function GetToEdit(\stdClass $model)
     {
-        if($model->MateriaId > 0)
+        if($model->Materia->MateriaId > 0)
         {
-            $model = $this->unitofwork->GetById(new Materia(), $model->MateriaId);
+            $model->Materia = $this->unitofwork->GetById(new Materia(), $model->MateriaId);
+            $model->Lista = $this->unitofwork->Get(new MateriaCurso(), "MateriaId = '".$model->MateriaId."'")->ToList();
         }else{
-            $model = new Materia();
+            $model->Materia = new Materia();
+            $model->Lista = new ListHelper();
         }
         return $model;
     }
@@ -42,16 +45,16 @@ class MateriaBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Materia())->ToList();
+        $model->Lista = $this->unitofwork->Get(new MateriaCurso())->ToList();
 
         return $model;
     }
 
-    public function Save(Materia $model){
+    public function Save(MateriaCurso $model){
 
         if($model!=null) {
 
-                if ($model->MateriaId > 0){
+                if ($model->MateriaCursoId > 0){
 
                     $this->unitofwork->Update($model);
                 } else {
@@ -63,11 +66,11 @@ class MateriaBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Materia(), $id);
+            $this->unitofwork->Delete(new MateriaCurso(), $id);
         }
     }
 
-    public function Validar(Materia $model)
+    public function Validar(MateriaCurso $model)
     {
 
     }
