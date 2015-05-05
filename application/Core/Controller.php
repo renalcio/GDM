@@ -129,7 +129,9 @@ class Controller
     public function Redirect($view, $controller = "", $data = ""){
         if(empty($controller)) $controller = Helper::getController();
 
-            header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '');
+        $strUrl = Helper::getUrl($view, $controller, $data);
+
+            header('location: ' . $strUrl . '');
     }
 
 

@@ -43,21 +43,21 @@ class MateriaCurso
 
     /**
      * @Name: DiaSemana
-     * @DisplayName: DiaSemana
+     * @DisplayName: Dia da Semana
      * @Type: varchar(255)
      */
     var $DiaSemana;
 
     /**
      * @Name: HoraDe
-     * @DisplayName: HoraDe
+     * @DisplayName: De
      * @Type: varchar(50)
      */
     var $HoraDe;
 
     /**
      * @Name: HoraAte
-     * @DisplayName: HoraAte
+     * @DisplayName: Até
      * @Type: varchar(50)
      */
     var $HoraAte;

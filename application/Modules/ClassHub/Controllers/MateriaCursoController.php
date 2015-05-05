@@ -25,13 +25,15 @@ class MateriaCursoController extends Controller
 	 * @Title: Listagem
 	 *
 	 */
-    public function index($id = 0)
+    public function index($id = 0, $materiacursoid = 0)
     {
         $this->AddAsset(["iCheck"]);
         $this->loadBLL();
         $Model = new \stdClass();
         $Model->Materia = new Materia();
         $Model->Materia->MateriaId = $id;
+        $Model->MateriaCurso = new MateriaCurso();
+        $Model->MateriaCurso->MateriaCursoId = $materiacursoid;
         $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
     }
@@ -50,7 +52,7 @@ class MateriaCursoController extends Controller
 
     }
 
-    public function cadastro_post($id = 0, $model = null){
+    public function index_post($model = null){
 
         if($model!=null) {
             $model = (object)$model;
@@ -60,32 +62,36 @@ class MateriaCursoController extends Controller
             //Valida Model via ModelState
             ModelState::ValidateModel($model);
 
+            //var_dump($model);
+
             if(ModelState::isValid()) {
                 //Valida model via Model
                 $this->bll->Validar($model);
 
                 if(ModelState::isValid()) {
                     $this->bll->Save($model); // Salva
-                    $this->Redirect(""); // Redireciona pra index do controller
+                    $this->Redirect("index", "MateriaCurso", $model->MateriaId); // Redireciona pra index do
+                    // controller
                 }
             }
         }else{
-            $model = new \stdClass();
+            $model = new MateriaCurso();
+            $this->Redirect("Index", "Materia");
         }
-
-        $this->Redirect("Index");
     }
 
     public function deletar($id){
         $this->loadBLL();
         if(isset($_POST["DeleteItems"]) && !empty($_POST["DeleteItems"]) && is_array($_POST["DeleteItems"])) {
             foreach($_POST["DeleteItems"] as $item){
+                $model = $this->unitofwork->GetById(new MateriaCurso(), $item);
                 $this->bll->Deletar($item);
             }
         }else if(!empty($id)){
+            $model = $this->unitofwork->GetById(new MateriaCurso(), $id);
             $this->bll->Deletar($id);
         }
 
-        $this->Redirect("Index");
+        $this->Redirect("Index", "MateriaCurso", $model->MateriaCursoId);
     }
 }

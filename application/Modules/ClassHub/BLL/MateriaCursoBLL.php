@@ -7,6 +7,7 @@
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
+use DAL\ClassHub\Materia;
 use DAL\ClassHub\MateriaCurso;
 use Libs\Database;
 use Libs\Helper;
@@ -46,6 +47,13 @@ class MateriaCursoBLL extends BLL
     {
 
         $model->Lista = $this->unitofwork->Get(new MateriaCurso())->ToList();
+        if(isset($model->Materia->MateriaId) && !empty($model->Materia->MateriaId)){
+            $model->Materia = $this->unitofwork->GetById(new Materia(), $model->Materia->MateriaId);
+        }
+
+        if(isset($model->MateriaCurso->MateriaCursoId) && !empty($model->MateriaCurso->MateriaCursoId)){
+            $model->MateriaCurso = $this->unitofwork->GetById(new MateriaCurso(), $model->MateriaCurso->MateriaCursoId);
+        }
 
         return $model;
     }

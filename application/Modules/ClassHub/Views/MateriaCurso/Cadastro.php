@@ -1,6 +1,7 @@
 <?
 use Libs\Form;
-$Model = new \DAL\ClassHub\MateriaCurso();
+//$Model = new \DAL\ClassHub\MateriaCurso();
+//var_dump($Model);
 ?>
 <script>
     $(function(){
@@ -9,7 +10,7 @@ $Model = new \DAL\ClassHub\MateriaCurso();
             $("#CursoIdGroup").fadeOut();
             $.get("<?=URL;?>handler/curso/Select2/"+EscolaId, function(data){
                 $("select.CursoSelect2").html(data);
-                $("select.CursoSelect2").val("").change();
+                $("select.CursoSelect2").val("<?=@$Model->CursoId;?>").change();
                 $("#CursoIdGroup").fadeIn();
             });
         });
@@ -18,6 +19,7 @@ $Model = new \DAL\ClassHub\MateriaCurso();
 <form method="post">
     <?
     Form::ValidationSummary();
+    Form::Hidden("MateriaCursoId", @$Model->MateriaCursoId);
     Form::Hidden("MateriaId", @$Model->MateriaId);
     ?>
 
@@ -43,6 +45,39 @@ $Model = new \DAL\ClassHub\MateriaCurso();
                             <?=\Libs\ModelState::DisplayName($Model, "CursoId");?>
                         </label>
                         <? Form::Select2("CursoId", @$Model->CursoId,"", ["class" => "form-control CursoSelect2", "DataUrl" => URL."handler/curso/select2"]);?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" for="DiaSemana">
+                        <label>
+                            <?=\Libs\ModelState::DisplayName($Model, "DiaSemana");?>
+                        </label>
+                        <? Form::Select2("DiaSemana", @$Model->DiaSemana,[
+                            "Segunda-feira" => "Segunda-feira",
+                            "Terça-feira" => "Terça-feira",
+                            "Quarta-feira" => "Quarta-feira",
+                            "Quinta-feira" => "Quinta-feira",
+                            "Sexta-feira" => "Sexta-feira",
+                            "Sabado" => "Sabado"
+                        ], ["class" => "form-control"]);?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" for="HoraDe">
+                        <label>
+                            <?=\Libs\ModelState::DisplayName($Model, "HoraDe");?>
+                        </label>
+                        <? Form::TimePicker("HoraDe", @$Model->HoraDe, ["class" => "form-control"]);?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" for="HoraAte">
+                        <label>
+                            <?=\Libs\ModelState::DisplayName($Model, "HoraAte");?>
+                        </label>
+                        <? Form::TimePicker("HoraAte", @$Model->HoraAte, ["class" => "form-control"]);?>
                     </div>
                 </div>
             </div>

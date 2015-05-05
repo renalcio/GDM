@@ -93,6 +93,26 @@ class Form
         echo self::Mask("99/99/9999", $Nome, $Valor, $htmlAttr);
     }
 
+    public static function TimePicker($Nome="", $Valor="", $htmlAttr = Array())
+    {
+        if(empty($Valor)) $Valor = "00:00";
+
+        echo '
+        <script>
+        $(function(){
+            $("#'.$Nome.'").timepicker({
+                showMeridian: false,
+                defaultTime: "'.$Valor.'",
+                minuteStep: 10
+            });
+            //$("#'.$Nome.'").timepicker("setTime", "'.$Valor.'");
+        });
+        </script>
+        ';
+
+        echo self::Input("text", $Nome, $Valor, $htmlAttr);
+    }
+
     public static function Mask($Mascara, $Nome="", $Valor="", $htmlAttr = Array())
     {
         if(isset($htmlAttr["class"]))
