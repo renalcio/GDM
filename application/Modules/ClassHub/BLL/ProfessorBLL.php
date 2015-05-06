@@ -1,13 +1,13 @@
 <?php
 /**
  * Model
- * Titulo: Alunos
+ * Titulo: Professors
  * Autor: renalcio.freitas
  * Data: 20/04/2015
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
-use DAL\ClassHub\Aluno;
+use DAL\ClassHub\Professor;
 use DAL\Pessoa;
 use Libs\Database;
 use Libs\Helper;
@@ -17,7 +17,7 @@ use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
 
-class AlunoBLL extends BLL
+class ProfessorBLL extends BLL
 {
     function __construct($db)
     {
@@ -29,13 +29,13 @@ class AlunoBLL extends BLL
         parent::__construct();
     }
 
-    public function GetToEdit(Aluno $model)
+    public function GetToEdit(Professor $model)
     {
-        if($model->AlunoId > 0)
+        if($model->ProfessorId > 0)
         {
-            $model = $this->unitofwork->GetById(new Aluno(), $model->AlunoId);
+            $model = $this->unitofwork->GetById(new Professor(), $model->ProfessorId);
         }else{
-            $model = new Aluno();
+            $model = new Professor();
         }
         return $model;
     }
@@ -43,12 +43,12 @@ class AlunoBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Aluno())->ToList();
+        $model->Lista = $this->unitofwork->Get(new Professor())->ToList();
 
         return $model;
     }
 
-    public function Save(Aluno $model){
+    public function Save(Professor $model){
         if($model!=null) {
             $clsPessoa = new Pessoa();
 
@@ -69,10 +69,8 @@ class AlunoBLL extends BLL
                 $this->unitofwork->Insert($clsPessoa);
             }
             $model->PessoaId = $clsPessoa->PessoaId;
-            if($model->Representante != 0)
-                $model->Representante = 1;
 
-            if ($model->AlunoId > 0){
+            if ($model->ProfessorId > 0){
                 $this->unitofwork->Update($model);
             } else {
                 $this->unitofwork->Insert($model);
@@ -83,11 +81,11 @@ class AlunoBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Aluno(), $id);
+            $this->unitofwork->Delete(new Professor(), $id);
         }
     }
 
-    public function Validar(Aluno $model)
+    public function Validar(Professor $model)
     {
 
     }

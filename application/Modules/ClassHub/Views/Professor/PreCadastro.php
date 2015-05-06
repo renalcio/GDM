@@ -17,12 +17,12 @@ use Libs\Form;
         });
     });
 </script>
-<h3 class="page-header">Pre Cadastro de Aluno</h3>
+<h3 class="page-header">Pre Cadastro de Professor</h3>
 <form method="post">
     <?
     Form::ValidationSummary();
     Form::Hidden("PessoaId", @$Model->PessoaId);
-    Form::Hidden("AlunoId", @$Model->AlunoId);
+    Form::Hidden("ProfessorId", @$Model->ProfessorId);
     ?>
     <div class="box box-primary">
         <div class="box-header">
@@ -49,28 +49,12 @@ use Libs\Form;
                     </label>
                     <? Form::Select2("EscolaId", @$Model->EscolaId, "", ["class" => "form-control EscolaSelect2", "DataUrl" => URL."handler/escola/Select2" ]);?>
                 </div>
-                <div class="form-group" for="TurmaId">
-                    <label>
-                        <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
-                    </label>
-                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control TurmaSelec2", "DataUrl" => URL."handler/turma/Select2" ));?>
-                </div>
 
             <div class="form-group" for="ChaveRegistro">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "ChaveRegistro");?>
                 </label>
                 <? Form::Text("ChaveRegistro", @$Model->ChaveRegistro, Array("class" => "form-control"))?>
-            </div>
-
-            <div class="form-group" for="Representante">
-                <? Form::Checkbox("Representante", @$Model->Representante,[
-                    "class" => "minimal",
-                    ((!empty($Model->Representante)) ? "checked" : "") => ((!empty($Model->Representante)) ? "checked" : "")
-                ]); ?>
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "Representante");?>
-                </label>
             </div>
         </div>
 
