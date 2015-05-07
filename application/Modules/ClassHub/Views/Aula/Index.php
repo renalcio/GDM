@@ -6,7 +6,7 @@ if($Model->Lista->Count() > 0)
     <script type="text/javascript">
         $(function() {
             $("#listagem").dataTable({
-                "aoColumns": [ {"bSortable": false}, null, null, {"bSortable": false} ],
+                "aoColumns": [ {"bSortable": false}, null, null, null, null, null, null, null, null, {"bSortable": false} ],
                 "fnDrawCallback" : function() {
                     iChecks();
                 },
@@ -52,8 +52,14 @@ if($Model->Lista->Count() > 0)
             <thead>
             <tr>
                 <th style="width:18px"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
-                <th>Título</th>
                 <th>Escola</th>
+                <th>Materia</th>
+                <th>Turma</th>
+                <th>Professor</th>
+                <th>Autor</th>
+                <th>Data</th>
+                <th>De</th>
+                <th>Até</th>
                 <th style="width:18px" align="center"></th>
             </tr>
             </thead>
@@ -66,16 +72,20 @@ if($Model->Lista->Count() > 0)
                     <tr>
                         <td><input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]"
                                    value="<?= $Item->AulaId ?>"/></td>
-                        <td><?=$Item->Titulo;?></td>
                         <td><?=$Item->Escola->Nome;?></td>
+                        <td><?=$Item->Materia->Titulo;?></td>
+                        <td><?=$Item->Materia->Titulo;?></td>
+                        <td><?=$Item->Professor->Pessoa->Nome;?></td>
+                        <td><?=$Item->Aluno->Pessoa->Nome;?></td>
+                        <td><?=$Item->Data;?></td>
+                        <td><?=$Item->HoraDe;?></td>
+                        <td><?=$Item->HoraAte;?></td>
                         <td align="center">
                             <div class="btn-group">
                                 <i class="fa fa-bars" class="dropdown-toggle"
                                    data-toggle="dropdown"></i>
                                 <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AulaId)?>"><i
-                                                class="fa fa-edit"></i>
-                                            Editar</a></li>
+                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AulaId)?>"><i class="fa fa-edit"></i>Editar</a></li>
                                     <li><a onclick="Excluir(<?=@$Item->AulaId;?>)"><i class="fa fa-trash-o"></i> Excluir</a></li></ul>
                             </div>
 
@@ -85,7 +95,7 @@ if($Model->Lista->Count() > 0)
                     });
             }else
             {
-                echo "<tr><td colspan='4'>Nenhum Registro</td></tr>";
+                echo "<tr><td colspan='10'>Nenhum Registro</td></tr>";
             }
             ?>
             </tbody>
