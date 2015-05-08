@@ -3,16 +3,37 @@
 <div id="Validacao" class="col-12"></div>
 <script type="text/javascript">
     $(function() {
-        $(".switch").on('switchChange.bootstrapSwitch', function (event, state) {
+        $(".box-body .switch").on('switchChange.bootstrapSwitch', function (event, state) {
             var ref = $(this).attr("ref"); // MenuId
             console.log(ref);
             console.log(state);
             $.getJSON("<?=URL;?>handler/permissao/acesso/" + ref + "/<?=@$Model->PerfilId;
             ?>/" + state + "/<?=@$Model->AplicacaoId;?>", function (data) {
                 console.log(data);
+                verifyAll();
             });
+            verifyAll();
         });
+
+        $("#checkAll").on('switchChange.bootstrapSwitch', function (event, state) {
+            checkAll(state);
+        });
+        verifyAll();
     });
+    function verifyAll(){
+        $("#checkAll").bootstrapSwitch('state', true, true);
+        $(".box-body .switch").each(function(){
+            var check = $(this).prop("checked");
+            if(check != true){
+                $("#checkAll").bootstrapSwitch('state', false, true);
+            }
+        });
+    }
+    function checkAll(state){
+        $(".box-body .switch").each(function(){
+                $(this).bootstrapSwitch('state', state, false);
+        });
+    }
 </script>
 <style>
     .listmenu {
@@ -44,6 +65,9 @@
                 <h3 class="box-title">
                     Acessos ao Perfil <?=@$Model->Titulo;?>
                 </h3>
+                <div class="box-tools pull-right">
+                    <input  data-placement="left" checked type="checkbox" id="checkAll" class="switch pull-right checkAll" data-size="mini" data-off-color="danger" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-ban'></i>" />
+                </div>
             </div>
             <div class="box-body">
                 <div class="row">

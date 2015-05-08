@@ -40,6 +40,7 @@ class AulaController extends Controller
 	 */
     public function cadastro($id = 0)
     {
+        $this->AddAsset(["bootstrap-markdown"]);
         // load views
         $this->loadBLL();
         $Model = new Aula();
@@ -51,6 +52,7 @@ class AulaController extends Controller
 
     public function cadastro_post($model = null){
 
+        $this->AddAsset(["bootstrap-markdown"]);
         if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, new Aula);

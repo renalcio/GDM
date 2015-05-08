@@ -22,21 +22,21 @@ class Aula
 
     /**
      * @Name: MateriaId
-     * @DisplayName: MateriaId
+     * @DisplayName: Matéria
      * @Type: int(11)
      */
     var $MateriaId = 0;
 
     /**
      * @Name: TurmaId
-     * @DisplayName: TurmaId
+     * @DisplayName: Turma
      * @Type: int(11)
      */
     var $TurmaId = 0;
 
     /**
      * @Name: ProfessorId
-     * @DisplayName: ProfessorId
+     * @DisplayName: Professor
      * @Type: int(11)
      */
     var $ProfessorId = 0;
@@ -50,14 +50,14 @@ class Aula
 
     /**
      * @Name: HoraDe
-     * @DisplayName: HoraDe
+     * @DisplayName: Início
      * @Type: varchar(50)
      */
     var $HoraDe;
 
     /**
      * @Name: HoraAte
-     * @DisplayName: HoraAte
+     * @DisplayName: Fim
      * @Type: varchar(50)
      */
     var $HoraAte;
@@ -71,7 +71,7 @@ class Aula
 
     /**
      * @Name: Conteudo
-     * @DisplayName: Conteudo
+     * @DisplayName: Conteúdo
      * @Type: text
      */
     var $Conteudo;
@@ -79,7 +79,7 @@ class Aula
     /**
      * @Name: Sala
      * @DisplayName: Sala
-     * @Type: varchar(30)
+     * @Required
      */
     var $Sala;
 
@@ -91,19 +91,43 @@ class Aula
     var $AlunoId = 0;
 
     /**
-    * @NotMapped
-    */
+     * @Name: EscolaId
+     * @DisplayName: Escola
+     * @NotMapped
+     */
+    var $EscolaId = 0;
+
+    /**
+     * @Name: CursoId
+     * @DisplayName: Curso
+     * @NotMapped
+     */
+    var $CursoId = 0;
+
+    /**
+     * @NotMapped
+     */
     var $Aluno;
 
     /**
-    * @NotMapped
-    */
+     * @NotMapped
+     */
     var $Materia;
 
     /**
-    * @NotMapped
-    */
+     * @NotMapped
+     */
     var $Professor;
+
+    /**
+     * @NotMapped
+     */
+    var $Curso;
+
+    /**
+     * @NotMapped
+     */
+    var $Escola;
 
 
 
@@ -128,6 +152,8 @@ class Aula
             $this->Aluno = new Aluno();
             $this->Materia = new Materia();
             $this->Professor = new Professor();
+            $this->Escola = new Escola();
+            $this->Curso = new Curso();
 
         }
 
@@ -143,6 +169,13 @@ class Aula
 
             if(!empty($this->MateriaId))
                 $this->Materia = $unitofwork->GetById(new Materia(), $this->MateriaId);
+
+
+            if(!empty($this->CursoId))
+                $this->Curso = $unitofwork->GetById(new Curso(), $this->CursoId);
+
+            if(!empty($this->EscolaId))
+                $this->Escola = $unitofwork->GetById(new Escola(), $this->EscolaId);
 
         }
 

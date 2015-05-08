@@ -5,7 +5,7 @@
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <schema name="" catalog="ClassHub"/>
     <schema name="" catalog="GDM"/>
     <schema name="" catalog="MediaSpot"/>
@@ -37,6 +37,8 @@
       <column name="Conteudo" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="Sala" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="AulaId"/>
     </table>
     <table name="AulaArquivo" schema="" catalog="ClassHub" type="TABLE">

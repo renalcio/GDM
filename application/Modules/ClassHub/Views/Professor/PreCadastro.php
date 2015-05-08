@@ -1,19 +1,12 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\ClassHub\Aluno();
+//$Model = new \DAL\ClassHub\Professor();
 ?>
 <script>
     $(function(){
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
             checkboxClass: 'icheckbox_minimal-blue',
             radioClass: 'iradio_minimal-blue'
-        });
-        $("#EscolaId").change(function(){
-            var EscolaId = $(this).val();
-            $.get("<?=URL;?>handler/turma/Select2/"+EscolaId, function(data){
-                $("select.TurmaSelec2").html(data);
-                $("select.TurmaSelec2").val("").change();
-            });
         });
     });
 </script>

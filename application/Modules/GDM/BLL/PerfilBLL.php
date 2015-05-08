@@ -46,7 +46,7 @@ class PerfilBLL extends BLL
             $model = $this->unitofwork->GetById(new Perfil(), $model->PerfilId);
 
             //Menu
-            $menumodel = new MenuBLL();
+            $menumodel = new \Modules\Generic\BLL\MenuBLL();
 
             $model->Menu = $menumodel->GetMenu(0, $model->AplicacaoId);
         }
