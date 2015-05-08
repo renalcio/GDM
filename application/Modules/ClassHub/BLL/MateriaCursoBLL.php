@@ -34,8 +34,8 @@ class MateriaCursoBLL extends BLL
     {
         if($model->Materia->MateriaId > 0)
         {
-            $model->Materia = $this->unitofwork->GetById(new Materia(), $model->MateriaId);
-            $model->Lista = $this->unitofwork->Get(new MateriaCurso(), "MateriaId = '".$model->MateriaId."'")->ToList();
+            $model->Materia = $this->unitofwork->GetById(new Materia(), $model->Materia->MateriaId);
+            $model->Lista = $this->unitofwork->Get(new MateriaCurso(), "MateriaId = '".$model->Materia->MateriaId."'")->ToList();
         }else{
             $model->Materia = new Materia();
             $model->Lista = new ListHelper();
@@ -46,7 +46,7 @@ class MateriaCursoBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new MateriaCurso())->ToList();
+        $model->Lista = $this->unitofwork->Get(new MateriaCurso(), "MateriaId = '".$model->Materia->MateriaId."'")->ToList();
         if(isset($model->Materia->MateriaId) && !empty($model->Materia->MateriaId)){
             $model->Materia = $this->unitofwork->GetById(new Materia(), $model->Materia->MateriaId);
         }

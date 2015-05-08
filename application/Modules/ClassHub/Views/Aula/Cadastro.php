@@ -1,6 +1,7 @@
 <?
 use Libs\Form;
-$Model = new \DAL\ClassHub\Aula();
+//$Model = new \DAL\ClassHub\Aula();
+//var_dump($Model);
 ?>
 
 <script>
@@ -22,6 +23,11 @@ $Model = new \DAL\ClassHub\Aula();
             $.get("<?=URL;?>handler/materia/Select2/"+id, function(data){
                 $("select.MateriaIdSelect").html(data);
                 $("select.MateriaIdSelect").val("<?=@$Model->MateriaId;?>").change();
+            });
+
+            $.get("<?=URL;?>handler/turma/Select2/"+id, function(data){
+                $("select.TurmaIdSelect").html(data);
+                $("select.TurmaIdSelect").val("<?=@$Model->TurmaId;?>").change();
             });
         });
     });

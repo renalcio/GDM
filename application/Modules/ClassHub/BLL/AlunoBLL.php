@@ -49,6 +49,7 @@ class AlunoBLL extends BLL
     }
 
     public function Save(Aluno $model){
+
         if($model!=null) {
             $clsPessoa = new Pessoa();
 

@@ -30,11 +30,11 @@ class TurmaHandler extends Controller
         echo $retorno;
     }
 
-    function Select2($EscolaId)
+    function Select2($CursoId)
     {
         $retorno = "";
         $uow = new UnitofWork();
-        $sql = $uow->Get(new Turma())->Join($uow->Get(new Curso(), "c.CursoId = '".$EscolaId."'"), "t.CursoId", "c
+        $sql = $uow->Get(new Turma())->Join($uow->Get(new Curso(), "c.CursoId = '".$CursoId."'"), "t.CursoId", "c
         .CursoId")->Select("t.*", new Turma())->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $item) {

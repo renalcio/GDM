@@ -24,6 +24,7 @@ class Aula
      * @Name: MateriaId
      * @DisplayName: Matéria
      * @Type: int(11)
+     * @Required
      */
     var $MateriaId = 0;
 
@@ -31,6 +32,7 @@ class Aula
      * @Name: TurmaId
      * @DisplayName: Turma
      * @Type: int(11)
+     * @Required
      */
     var $TurmaId = 0;
 
@@ -45,6 +47,7 @@ class Aula
      * @Name: Data
      * @DisplayName: Data
      * @Type: varchar(100)
+     * @Required
      */
     var $Data;
 
@@ -52,6 +55,7 @@ class Aula
      * @Name: HoraDe
      * @DisplayName: Início
      * @Type: varchar(50)
+     * @Required
      */
     var $HoraDe;
 
@@ -59,6 +63,7 @@ class Aula
      * @Name: HoraAte
      * @DisplayName: Fim
      * @Type: varchar(50)
+     * @Required
      */
     var $HoraAte;
 
@@ -66,6 +71,7 @@ class Aula
      * @Name: Titulo
      * @DisplayName: Titulo
      * @Type: varchar(255)
+     * @Required
      */
     var $Titulo;
 
@@ -79,7 +85,6 @@ class Aula
     /**
      * @Name: Sala
      * @DisplayName: Sala
-     * @Required
      */
     var $Sala;
 
@@ -91,16 +96,16 @@ class Aula
     var $AlunoId = 0;
 
     /**
-     * @Name: EscolaId
-     * @DisplayName: Escola
-     * @NotMapped
+     * @Name: AlunoId
+     * @DisplayName: AlunoId
+     * @Type: int(11)
      */
     var $EscolaId = 0;
 
     /**
-     * @Name: CursoId
-     * @DisplayName: Curso
-     * @NotMapped
+     * @Name: AlunoId
+     * @DisplayName: AlunoId
+     * @Type: int(11)
      */
     var $CursoId = 0;
 
@@ -149,13 +154,15 @@ class Aula
             $this->Conteudo = $Conteudo;
             $this->Sala = $Sala;
             $this->PessoaId = $PessoaId;
-            $this->Aluno = new Aluno();
-            $this->Materia = new Materia();
-            $this->Professor = new Professor();
-            $this->Escola = new Escola();
-            $this->Curso = new Curso();
-
+        }else{
+            $this->Data = date("d/m/Y", time());
         }
+
+        $this->Aluno = new Aluno();
+        $this->Materia = new Materia();
+        $this->Professor = new Professor();
+        $this->Escola = new Escola();
+        $this->Curso = new Curso();
 
         if(!empty($this->AulaId)){
 

@@ -270,7 +270,7 @@ class Form
 
     public static function Wysiwyg($Nome="", $Valor="", $htmlAttr = Array())
     {
-        self::Hidden($Nome, $Valor);
+        self::TextArea($Nome, $Valor, ["style" => "display:none;"]);
         echo "
                 <script type='text/javascript'>
                     jQuery(function($){

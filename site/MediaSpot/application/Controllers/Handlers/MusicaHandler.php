@@ -15,6 +15,9 @@ use Libs\Helper;
 
 class MusicaHandler extends Controller
 {
+    /**
+     * @Public
+     */
     public function Get($pagina = 1, $total = 20, $titulo = ""){
         header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
@@ -33,6 +36,9 @@ class MusicaHandler extends Controller
         echo $retorno;
     }
 
+    /**
+     * @Public
+     */
     public function GetTable($pagina = 1, $total = 20, $titulo = ""){
         $pdo = new Database();
         $pinicio = ($pagina - 1) * $total;
@@ -73,6 +79,9 @@ class MusicaHandler extends Controller
         echo $retorno;
     }
 
+    /**
+     * @Public
+     */
     public function DataTable($ArtistaId = 0){
         //print_r($ArtistaId);
 
@@ -149,6 +158,9 @@ class MusicaHandler extends Controller
 
     }
 
+    /**
+     * @Public
+     */
     public function Consulta($ArtistaId = 0){
         //print_r($ArtistaId);
         //header('Content-Type: application/json; Charset=UTF-8');

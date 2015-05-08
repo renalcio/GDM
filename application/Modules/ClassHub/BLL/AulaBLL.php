@@ -15,6 +15,7 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
+use Modules\ClassHub\Libs\AlunoHelper;
 
 class AulaBLL extends BLL
 {
@@ -51,6 +52,9 @@ class AulaBLL extends BLL
 
         if($model!=null) {
 
+            if(empty($model->AlunoId)){
+                $model->AlunoId = AlunoHelper::GetAlunoId();
+            }
                 if ($model->AulaId > 0){
 
                     $this->unitofwork->Update($model);
