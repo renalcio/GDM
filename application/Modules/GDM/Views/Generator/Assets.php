@@ -31,6 +31,9 @@ use DAL\Site;
                 {
                     if($sub == false)
                         $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value, true);
+                    else if(strtolower($value) == "ie"){
+                        $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value, true);
+                    }
                 }
                 else
                 {
@@ -57,6 +60,7 @@ use DAL\Site;
 
     fwrite($fh, $json);
 
+    var_dump($json);
     ?>
     </pre>
     </p>

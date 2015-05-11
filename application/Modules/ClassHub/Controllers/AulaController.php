@@ -40,7 +40,7 @@ class AulaController extends Controller
 	 */
     public function cadastro($id = 0)
     {
-        $this->AddAsset(["bootstrap-markdown"]);
+        $this->AddAsset(["bootstrap-markdown", "file-upload"]);
         // load views
         $this->loadBLL();
         $Model = new Aula();

@@ -26,6 +26,10 @@ class Controller
 
     private $assetJs = null;
 
+    private $assetIeCss = null;
+
+    private $assetIeJs = null;
+
     public $ControllerTitle = null;
 
     public $ActonTitle = null;
@@ -142,7 +146,7 @@ class Controller
             }
         }else{
             $assetItem = $this->jsonAssets[$asset];
-
+            //var_dump($assetItem);
             if(isset($assetItem) && !empty($assetItem)){
                 if(isset($assetItem["css"]) && !empty($assetItem["css"])) {
                     foreach($assetItem["css"] as $k => $item){
@@ -155,6 +159,26 @@ class Controller
                         $this->assetJs .= "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
                     }
                 }
+
+                //IE
+                //var_dump($assetItem);
+                if(isset($assetItem["ie"]) && !empty($assetItem["ie"])) {
+                    var_dump($assetItem["ie"]);
+                    foreach($assetItem["ie"] as $j => $ie){
+                        if(isset($ie["css"]) && !empty($ie["css"])) {
+                            foreach($ie["css"] as $kie => $item){
+                                $this->assetIeCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
+                            }
+                        }
+
+                        if(isset($ie["js"]) && !empty($ie["js"])) {
+                            foreach($ie["js"] as $kie => $item){
+                                $this->assetIeJs .= "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
+                            }
+                        }
+                    }
+                }
+                //var_dump($this->assetIeJs);
             }
         }
     }
@@ -168,6 +192,14 @@ class Controller
         echo $this->assetCss;
         echo "\n<!--JAVASCRIPT-->\n";
         echo $this->assetJs;
+        echo "\n<!--IE-->\n";
+        echo "\n<!--[if (gte IE 8)&(lt IE 10)]>\n";
+        #CSS
+        echo $this->assetIeCss;
+        #JS
+        echo $this->assetIeJs;
+        echo "\n<![endif]-->\n";
+
     }
 
     public function GetControllerTitle(){
