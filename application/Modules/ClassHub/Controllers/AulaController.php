@@ -52,8 +52,10 @@ class AulaController extends Controller
 
     public function cadastro_post($model = null){
 
-        $this->AddAsset(["bootstrap-markdown"]);
-        if($model!=null) {
+        $this->AddAsset(["bootstrap-markdown", "file-upload"]);
+
+        var_dump($_REQUEST);
+       /* if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, new Aula);
             $this->loadBLL();
@@ -74,7 +76,7 @@ class AulaController extends Controller
             $model = new \stdClass();
         }
 
-        $this->ModelView($model);
+        $this->ModelView($model);*/
     }
 
     public function deletar($id){
