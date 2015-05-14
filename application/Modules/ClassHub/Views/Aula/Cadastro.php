@@ -137,10 +137,7 @@ use Libs\Form;
     </div>
 
 
-    <div class="row">
-        <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
-    </div>
+
 <br>
 
 <!-- The file upload form used as target for the file upload widget -->
@@ -194,6 +191,11 @@ use Libs\Form;
         <div class="box-footer">
             </div>
         </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+    </div>
 </form>
 
 <!-- The template to display files available for upload -->
