@@ -55,6 +55,7 @@ class AulaController extends Controller
         $this->AddAsset(["bootstrap-markdown", "file-upload"]);
 
         var_dump($_REQUEST);
+        var_dump($model);
        /* if($model!=null) {
             $model = (object)$model;
             Helper::cast($model, new Aula);

@@ -134,6 +134,16 @@ class Aula
      */
     var $Escola;
 
+    /**
+     * @NotMapped
+     */
+    var $arquivo;
+
+    /**
+     * @NotMapped
+     */
+    var $ListAulaArquivo;
+
 
 
     function __construct($AulaId = "",$MateriaId = "",$TurmaId = "",$ProfessorId = "",$Data = "",$HoraDe = "",$HoraAte = "",$Titulo = "",$Conteudo = "",$Sala = "",$PessoaId = ""){

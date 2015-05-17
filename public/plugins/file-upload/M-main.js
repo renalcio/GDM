@@ -15,11 +15,11 @@ $(function () {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
-    var pasta =
+    var pasta = $('#fileupload').attr("pasta");
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: SiteURL + 'upload/'
+        url: SiteURL + 'upload/?pasta='+pasta
     });
 
     // Enable iframe cross-domain access via redirect option:

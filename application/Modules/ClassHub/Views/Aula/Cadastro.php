@@ -35,7 +35,8 @@ use Libs\Form;
 
 <h3 class="page-header">Cadastro de Aula</h3>
 
-<form method="post" enctype="multipart/form-data" id="fileupload">
+<form method="post" enctype="multipart/form-data" id="fileupload" pasta="<?=(!empty($Model->AulaId) ? $Model->AulaId : 0
+);?>">
     <?
     Form::ValidationSummary();
     Form::Hidden("AulaId", @$Model->AulaId);
@@ -230,12 +231,13 @@ use Libs\Form;
     </tr>
 {% } %}
 </script>
+<? explode()
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-download fade">
         <td>
-        <input type="hidden" name="arquivo[]" value="{%=file.url%}" />
+        <input type="hidden" name="arquivo[{%=i%}][url]" value="{%=file.url%}" />
             <span class="preview">
                 {% if (file.thumbnailUrl) { %}
                     <a href="{%=file.url%}" title="{%=file.name%}" target="_blank" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
@@ -249,6 +251,7 @@ use Libs\Form;
                 {% } else { %}
                     <span>{%=file.name%}</span>
                 {% } %}
+                <input type="text" class="form-control" name="arquivo[{%=i%}][titulo]" value="{%=file.name%}" />
             </p>
             {% if (file.error) { %}
                 <div><span class="label label-danger">Error</span> {%=file.error%}</div>
