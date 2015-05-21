@@ -139,9 +139,9 @@ use Libs\Form;
 
 
 
-<br>
+    <br>
 
-<!-- The file upload form used as target for the file upload widget -->
+    <!-- The file upload form used as target for the file upload widget -->
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">
@@ -149,49 +149,64 @@ use Libs\Form;
             </h3>
         </div>
         <div class="box-body">
-    <!-- Redirect browsers with JavaScript disabled to the origin page
-    <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
-     The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-    <div class="row fileupload-buttonbar">
-        <div class="col-lg-7">
-            <!-- The fileinput-button span is used to style the file input field as button -->
+            <!-- Redirect browsers with JavaScript disabled to the origin page
+            <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
+             The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+            <div class="row fileupload-buttonbar">
+                <div class="col-lg-7">
+
+                    <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button">
                     <i class="glyphicon glyphicon-plus"></i>
                     <span>Adicionar Arquivos...</span>
                     <input type="file" name="files[]" multiple>
                 </span>
-            <button type="submit" class="btn btn-primary start">
-                <i class="glyphicon glyphicon-upload"></i>
-                <span>Iniciar Envio</span>
-            </button>
-            <button type="reset" class="btn btn-warning cancel">
-                <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>Cancelar Envio</span>
-            </button>
-            <button type="button" class="btn btn-danger delete">
-                <i class="glyphicon glyphicon-trash"></i>
-                <span>Apagar</span>
-            </button>
-            <input type="checkbox" class="toggle">
-            <!-- The global file processing state -->
-            <span class="fileupload-process"></span>
-        </div>
-        <!-- The global progress state -->
-        <div class="col-lg-5 fileupload-progress fade">
-            <!-- The global progress bar -->
-            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                    <button type="submit" class="btn btn-primary start">
+                        <i class="glyphicon glyphicon-upload"></i>
+                        <span>Iniciar Envio</span>
+                    </button>
+                    <button type="reset" class="btn btn-warning cancel">
+                        <i class="glyphicon glyphicon-ban-circle"></i>
+                        <span>Cancelar Envio</span>
+                    </button>
+                    <button type="button" class="btn btn-danger delete">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <span>Apagar</span>
+                    </button>
+
+                    <!-- The global file processing state -->
+                    <span class="fileupload-process"></span>
+                </div>
+                <!-- The global progress state -->
+                <div class="col-lg-5 fileupload-progress fade">
+                    <!-- The global progress bar -->
+                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                    </div>
+                    <!-- The extended global progress state -->
+                    <div class="progress-extended">&nbsp;</div>
+                </div>
             </div>
-            <!-- The extended global progress state -->
-            <div class="progress-extended">&nbsp;</div>
+            <!-- The table listing the files available for upload/download -->
+            <table role="presentation" class="table table-striped">
+                <thead>
+                <tr>
+                    <td>
+                        <input type="checkbox" class="toggle">
+                    </td>
+                    <td></td>
+                    <td>Arquivo</td>
+                    <td>Titulo</td>
+                    <td>Tamanho</td>
+                    <td>Apagar</td>
+                </tr>
+                </thead>
+                <tbody class="files"></tbody>
+            </table>
+        </div>
+        <div class="box-footer">
         </div>
     </div>
-    <!-- The table listing the files available for upload/download -->
-    <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
-            </div>
-        <div class="box-footer">
-            </div>
-        </div>
 
     <div class="row">
         <div class="col-lg-12">
@@ -231,31 +246,53 @@ use Libs\Form;
     </tr>
 {% } %}
 </script>
-<? explode()
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-download fade">
+    <td>
+     {% if (file.deleteUrl) { %}
+     <input type="checkbox" name="delete" value="1" class="toggle">
+     {% } %}
+    </td>
         <td>
         <input type="hidden" name="arquivo[{%=i%}][url]" value="{%=file.url%}" />
             <span class="preview">
+            <a class="btn btn-success btn-sm" href="{%=file.url%}" title="{%=file.name%}" target="_blank" download="{%=file.url%}"><i class="fa fa-download"></i></a>
                 {% if (file.thumbnailUrl) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" target="_blank" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalFile_{%=i%}">
+  <i class="fa fa-search-plus"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalFile_{%=i%}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{%=file.name%}</h4>
+      </div>
+      <div class="modal-body">
+        <img style="width: 100%; height: auto;" src="{%=file.url%}">
+      </div>
+    </div>
+  </div>
+</div>
+
                 {% } %}
             </span>
         </td>
         <td>
-            <p class="name">
-                {% if (file.url) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" target="_blank" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
-                {% } else { %}
-                    <span>{%=file.name%}</span>
-                {% } %}
-                <input type="text" class="form-control" name="arquivo[{%=i%}][titulo]" value="{%=file.name%}" />
-            </p>
+        <p class="name">
+            <span>{%=file.name%}</span>
+        </p>
             {% if (file.error) { %}
                 <div><span class="label label-danger">Error</span> {%=file.error%}</div>
             {% } %}
+        </td>
+        <td>
+            <input type="text" class="form-control" name="arquivo[{%=i%}][titulo]" value="{%=file.name%}" />
         </td>
         <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
@@ -266,7 +303,7 @@ use Libs\Form;
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Apagar</span>
                 </button>
-                <input type="checkbox" name="delete" value="1" class="toggle">
+
             {% } else { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
