@@ -17,7 +17,7 @@ use Libs\Form;
                             $("#usrInfo i").html(data.Login);
                         }else{
                             $("#UsuarioId").val(0);
-                            $("#usrAvatar").attr("src", "<? $nusr = new \DAL\Usuario(); echo $nusr->Avatar; ?>");
+                            $("#usrAvatar").attr("src", "<? $nusr = new \Model\Usuario(); echo $nusr->Avatar; ?>");
                             $("#usrInfo h4").html("Nenhum usuário encontrado");
                             $("#usrInfo i").html("");
                         }

@@ -7,8 +7,8 @@
  */
 namespace Modules\Generic\Controllers\Handlers;
 use Core\Controller;
-use DAL\Mensagem;
-use DAL\MensagemPessoa;
+use Model\Mensagem;
+use Model\MensagemPessoa;
 use Libs\Database;
 use Libs\Helper;
 use Libs\ListHelper;

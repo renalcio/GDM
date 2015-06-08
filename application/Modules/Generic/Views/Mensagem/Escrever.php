@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Mensagem();
+//$Model = new \Model\Mensagem();
 
 ?>
 <form method="post">

@@ -1,7 +1,7 @@
 <?php
 
 /**
-* DAL
+* Model
 * @author: Gerador de Classe
 * @date: 10/02/2015 15:04:13
 */

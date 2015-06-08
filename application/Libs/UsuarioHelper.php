@@ -1,15 +1,15 @@
 <?php
 namespace Libs;
-use DAL\Aplicacao;
-use DAL\Menu;
-use DAL\Perfil;
-use DAL\Permissao;
-use DAL\Site;
-use DAL\Usuario;
-use DAL\UsuarioPerfil;
+use Model\Aplicacao;
+use Model\Menu;
+use Model\Perfil;
+use Model\Permissao;
+use Model\Site;
+use Model\Usuario;
+use Model\UsuarioPerfil;
 use Libs\ArrayHelper;
 use Libs\Database;
-use DAL\UsuarioAplicacao;
+use Model\UsuarioAplicacao;
 
 class UsuarioHelper
 {
@@ -44,7 +44,7 @@ class UsuarioHelper
                           WHERE u.UsuarioId = ua.UsuarioId
                           AND u.UsuarioId = '" . $sessao->Ver("UsuarioId") . "'
                           AND ua.AplicacaoId = '" . $sessao->Ver("AplicacaoId") . "'
-                          ", "DAL\\Usuario");*/
+                          ", "Model\\Usuario");*/
 
             $Usuario = $uow->Get(new Usuario, "u.UsuarioId = '" . $sessao->Ver("UsuarioId") . "'")->Join($uow->Get(new UsuarioAplicacao(), "ua.AplicacaoId = '" . $sessao->Ver("AplicacaoId") . "'"),"u.UsuarioId", "ua.UsuarioId")->Select("u", new Usuario())->First();
 
@@ -66,7 +66,7 @@ class UsuarioHelper
                                 AND up.UsuarioId = '".$Usuario->UsuarioId."'
                                 AND p.PerfilId = up.PerfilId
                                 ORDER BY p.Nivel DESC LIMIT 1
-                                ", "DAL\\Perfil");*/
+                                ", "Model\\Perfil");*/
 
         $Perfil = $uow->Get(new Perfil(), "p.AplicacaoId = '".$AplicacaoId."'")->Join($uow->Get(new UsuarioPerfil(), "up.UsuarioId = '".$Usuario->UsuarioId."'"), "p.PerfilId", "up.PerfilId")->OrderBy("p.Nivel")->Select("p", new Perfil())->First();
 
@@ -192,7 +192,7 @@ class UsuarioHelper
                                 AND up.UsuarioId = '".$Usuario->UsuarioId."'
                                 AND p.PerfilId = up.PerfilId
                                 ORDER BY p.Nivel DESC
-                                ", "DAL\\Perfil", true);*/
+                                ", "Model\\Perfil", true);*/
 
         $Perfis = $unitofwork->Get(new Perfil(), "p.AplicacaoId = '".$Menu->AplicacaoId."'")->Join($unitofwork->Get(new UsuarioPerfil(), "up.UsuarioId = '".$Usuario->UsuarioId."'"), "p.PerfilId", "up.PerfilId")->OrderByDescending("p.Nivel")->Select("p", new Perfil())->ToArray();
 

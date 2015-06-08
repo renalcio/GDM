@@ -10,7 +10,7 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
-use DAL\Aplicacao;
+use Model\Aplicacao;
 
 /**
  * Class AplicacaoController

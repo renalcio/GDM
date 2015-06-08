@@ -1,14 +1,14 @@
 <?php
 namespace Modules\Generic\BLL;
 use Core\BLL;
-use DAL\PessoaAplicacao;
-use DAL\PessoaFisica;
-use DAL\PessoaJuridica;
+use Model\PessoaAplicacao;
+use Model\PessoaFisica;
+use Model\PessoaJuridica;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
-use DAL\Pessoa;
+use Model\Pessoa;
 class PessoaBLL extends BLL
 {
     public function GetToEdit($Model)
@@ -56,9 +56,9 @@ class PessoaBLL extends BLL
     public function Save($model){
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Pessoa");
-            Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
+            Helper::cast($model, "Model\\Pessoa");
+            Helper::cast($model->PessoaFisica, "Model\\PessoaFisica");
+            Helper::cast($model->PessoaJuridica, "Model\\PessoaJuridica");
 
             $PessoaFisica = $model->PessoaFisica;
             $PessoaJuridica = $model->PessoaJuridica;
@@ -116,9 +116,9 @@ class PessoaBLL extends BLL
     {
         $retorno = Array();
         if($model != null) {
-            Helper::cast($model, "DAL\\Pessoa");
-            Helper::cast($model->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->PessoaJuridica, "DAL\\PessoaJuridica");
+            Helper::cast($model, "Model\\Pessoa");
+            Helper::cast($model->PessoaFisica, "Model\\PessoaFisica");
+            Helper::cast($model->PessoaJuridica, "Model\\PessoaJuridica");
 
 
         }

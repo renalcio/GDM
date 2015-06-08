@@ -1,7 +1,7 @@
 <?php
 namespace Modules\GDM\BLL;
 use Core\BLL;
-use DAL\Nicho;
+use Model\Nicho;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;
@@ -27,7 +27,7 @@ class NichoBLL extends BLL
     public function Save($model){
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Nicho");
+            Helper::cast($model, "Model\\Nicho");
 
 
             /* print_r($model);

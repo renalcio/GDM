@@ -9,7 +9,7 @@
  */
 namespace Modules\Generic\Controllers;
 use Core\Controller;
-use DAL\Notificacao;
+use Model\Notificacao;
 use Libs\Helper;
 use Libs\ModelState;
 

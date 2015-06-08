@@ -7,9 +7,9 @@
  */
 namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
-use DAL\Acesso;
-use DAL\Perfil;
-use DAL\Permissao;
+use Model\Acesso;
+use Model\Perfil;
+use Model\Permissao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;

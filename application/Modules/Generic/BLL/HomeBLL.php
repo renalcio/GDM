@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Generic\BLL;
 use Core\BLL;
-use DAL\Aplicacao;
-use DAL\MediaSpot\Artista;
+use Model\Aplicacao;
+use Model\MediaSpot\Artista;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;

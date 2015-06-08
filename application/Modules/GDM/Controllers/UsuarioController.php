@@ -10,8 +10,8 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
-use Dal\Pessoa;
-use DAL\Usuario;
+use Model\Pessoa;
+use Model\Usuario;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -62,10 +62,10 @@ class UsuarioController extends Controller
             var_dump($model);
             echo "</pre>";*/
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Usuario");
-            Helper::cast($model->Pessoa, "DAL\\Pessoa");
-            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+            Helper::cast($model, "Model\\Usuario");
+            Helper::cast($model->Pessoa, "Model\\Pessoa");
+            Helper::cast($model->Pessoa->PessoaFisica, "Model\\PessoaFisica");
+            Helper::cast($model->Pessoa->PessoaJuridica, "Model\\PessoaJuridica");
 
             $this->loadBLL();
 

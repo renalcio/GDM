@@ -1,7 +1,7 @@
 <?php
 /**
- * DAL
- * Titulo: Permissão DAL
+ * Model
+ * Titulo: Permissão Model
  * Autor: renalcio.freitas
  * Data: 16/01/2015
  */

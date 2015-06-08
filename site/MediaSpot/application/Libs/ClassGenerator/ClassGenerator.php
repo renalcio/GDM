@@ -33,8 +33,8 @@ class ClassGenerator
     {
         $this->db = new Database();
 
-        if (!is_dir(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta))
-            @mkdir(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta);
+        if (!is_dir(APP . 'Model' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta))
+            @mkdir(APP . 'Model' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta);
 
         $this->getTables();
     }
@@ -191,7 +191,7 @@ class ClassGenerator
         $construct = $this->generateConstruct();
         var_dump($construct);
 
-        $namespace = "DAL";
+        $namespace = "Model";
         if(!empty($this->pasta) && $this->pasta != "GDM"){
             $namespace .= "\\".$this->pasta;
         }
@@ -203,7 +203,7 @@ class ClassGenerator
         $template->set('vars', $vars);
         $template->set('construct_parametros', $construct->parametros);
         $template->set('construct_conteudo', $construct->conteudo);
-        $template->write(APP . 'DAL' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta . DIRECTORY_SEPARATOR  . ucfirst($table) . '.php');
+        $template->write(APP . 'Model' . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $this->pasta . DIRECTORY_SEPARATOR  . ucfirst($table) . '.php');
     }
 
 } 

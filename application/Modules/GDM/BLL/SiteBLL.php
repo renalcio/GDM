@@ -8,7 +8,7 @@
 namespace Modules\GDM\BLL;
 use Core\BLL;
 use Libs\Database;
-use DAL\Site;
+use Model\Site;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;

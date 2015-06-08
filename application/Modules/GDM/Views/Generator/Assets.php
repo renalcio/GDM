@@ -1,6 +1,6 @@
 <?
 use Libs\ArrayHelper;
-use DAL\Site;
+use Model\Site;
 ?>
 
     <h2>You are in the View: application/views/home/index.php (everything in the box comes from this file)</h2>

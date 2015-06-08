@@ -1,15 +1,15 @@
 <?php
 namespace Modules\GDM\BLL;
 use Core\BLL;
-use DAL\UsuarioPerfil;
+use Model\UsuarioPerfil;
 use Libs\Database;
-use DAL\UsuarioAplicacao;
+use Model\UsuarioAplicacao;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;
 use Libs\SessionHelper;
 use Libs\UsuarioHelper;
-use DAL\Pessoa;
+use Model\Pessoa;
 use Libs\Debug;
 use Libs\ArrayHelper;
 class UsuarioAplicacaoBLL extends BLL
@@ -20,7 +20,7 @@ class UsuarioAplicacaoBLL extends BLL
         {
             $model = $this->unitofwork->GetById(new UsuarioAplicacao(), $model->UsuarioAplicacaoId);
         }else{
-            $model = new \DAL\UsuarioAplicacao();
+            $model = new \Model\UsuarioAplicacao();
         }
         return $model;
     }

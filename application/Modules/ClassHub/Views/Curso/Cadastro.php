@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\ClassHub\Escola();
+//$Model = new \Model\ClassHub\Escola();
 ?>
 <h3 class="page-header">Cadastro de Curso</h3>
 

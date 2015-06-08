@@ -13,7 +13,6 @@ return array(
     'Core\\' => array($baseDir . '/application'),
     'Class\\' => array($baseDir . '/application'),
     'Handler\\' => array($baseDir . '/application'),
-    'DAL\\' => array($baseDir . '/application'),
     'BLL\\' => array($baseDir . '/application'),
     'Modules\\' => array($baseDir . '/application'),
 );

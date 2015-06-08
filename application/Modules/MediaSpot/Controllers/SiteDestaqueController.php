@@ -9,7 +9,7 @@
  */
 namespace Modules\MediaSpot\Controllers;
 use Core\Controller;
-use DAL\MediaSpot\SiteDestaque;
+use Model\MediaSpot\SiteDestaque;
 use Libs\ArrayHelper;
 use Libs\Database;
 use Libs\Helper;

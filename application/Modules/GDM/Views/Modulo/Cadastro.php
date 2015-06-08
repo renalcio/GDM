@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Modulo();
+//$Model = new \Model\Modulo();
 ?>
 <h3 class="page-header">Cadastro de Módulo</h3>
 <form method="post">

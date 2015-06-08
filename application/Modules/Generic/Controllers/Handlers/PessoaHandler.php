@@ -1,12 +1,12 @@
 <?php
 namespace Modules\Generic\Controllers\Handlers;
 use Core\Controller;
-use DAL\Pessoa;
-use DAL\PessoaAplicacao;
-use DAL\PessoaFisica;
-use DAL\PessoaJuridica;
-use DAL\Usuario;
-use DAL\UsuarioAplicacao;
+use Model\Pessoa;
+use Model\PessoaAplicacao;
+use Model\PessoaFisica;
+use Model\PessoaJuridica;
+use Model\Usuario;
+use Model\UsuarioAplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;
@@ -26,7 +26,7 @@ class PessoaHandler extends Controller
     function GetById($id){
         header('Content-Type: application/json; Charset=UTF-8');
         $pdo = new Database();
-        $retorno = $pdo->GetById("Pessoa", "PessoaId", $id, "DAL\\Pessoa");
+        $retorno = $pdo->GetById("Pessoa", "PessoaId", $id, "Model\\Pessoa");
         $retorno = json_encode($retorno);
         echo $retorno;
     }
@@ -36,7 +36,7 @@ class PessoaHandler extends Controller
         $doc = Helper::SomenteNumeros($doc);
         if(!empty($doc)) {
             /*$retorno = $this->unitofwork->select("SELECT p.* FROM Pessoa p, PessoaFisica pf, PessoaJuridica pj WHERE (p.PessoaId = pf.PessoaId AND pf.CPF = '$doc') OR
- (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "DAL\\Pessoa");*/
+ (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "Model\\Pessoa");*/
 
             $retorno = $this->unitofwork->Get(new Pessoa())->LeftJoin($this->unitofwork->Get(new PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($this->unitofwork->Get(new PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId = pf.PessoaId AND pf.CPF = '".$doc."') OR (p.PessoaId = pj.PessoaId AND pj.CNPJ = '".$doc."')")->Select("p.*", new Pessoa())->First();
         }

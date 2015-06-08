@@ -51,8 +51,8 @@ class UploadHandler
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/'.basename($this->get_server_var('SCRIPT_NAME')),
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$usuarioid.'/'.$pasta.'/',
-            'upload_url' => $this->get_full_url().'/files/'.$usuarioid.'/'.$pasta.'/',
+            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$pasta.'/'.$usuarioid.'/',
+            'upload_url' => $this->get_full_url().'/files/'.$pasta.'/'.$usuarioid.'/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',

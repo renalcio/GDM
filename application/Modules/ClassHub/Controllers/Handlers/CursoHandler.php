@@ -1,9 +1,9 @@
 <?php
 namespace Modules\ClassHub\Controllers\Handlers;
 use Core\Controller;
-use DAL\Aplicacao;
-use DAL\ClassHub\Curso;
-use DAL\ClassHub\Escola;
+use Model\Aplicacao;
+use Model\ClassHub\Curso;
+use Model\ClassHub\Escola;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;

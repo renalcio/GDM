@@ -2,12 +2,12 @@
 namespace Modules\GDM\BLL;
 use Core\BLL;
 use BLL\Generic\PessoaBLL;
-use DAL\Aplicacao;
+use Model\Aplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\SessionHelper;
-use DAL\Pessoa;
+use Model\Pessoa;
 use Libs\UnitofWork;
 
 class AplicacaoBLL extends BLL
@@ -32,10 +32,10 @@ class AplicacaoBLL extends BLL
     public function Save($model){
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Aplicacao");
-            Helper::cast($model->Pessoa, "DAL\\Pessoa");
-            Helper::cast($model->Pessoa->PessoaFisica, "DAL\\PessoaFisica");
-            Helper::cast($model->Pessoa->PessoaJuridica, "DAL\\PessoaJuridica");
+            Helper::cast($model, "Model\\Aplicacao");
+            Helper::cast($model->Pessoa, "Model\\Pessoa");
+            Helper::cast($model->Pessoa->PessoaFisica, "Model\\PessoaFisica");
+            Helper::cast($model->Pessoa->PessoaJuridica, "Model\\PessoaJuridica");
 
             $Pessoa = $model->Pessoa;
             $PessoaFisica = $model->Pessoa->PessoaFisica;

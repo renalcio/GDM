@@ -7,7 +7,10 @@
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
-use DAL\ClassHub\Aula;
+use Libs\FileHelper;
+use Libs\ListHelper;
+use Libs\UsuarioHelper;
+use Model\ClassHub\Aula;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -15,6 +18,8 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
+use Model\ClassHub\AulaArquivo;
+use Model\Pessoa;
 use Modules\ClassHub\Libs\AlunoHelper;
 
 class AulaBLL extends BLL
@@ -34,6 +39,26 @@ class AulaBLL extends BLL
         if($model->AulaId > 0)
         {
             $model = $this->unitofwork->GetById(new Aula(), $model->AulaId);
+            $model->ListAulaArquivo = new ListHelper();
+            $arrFiles = FileHelper::DirList(ROOT.'public\\upload\\files\\aulas\\'.$model->AulaId, ["thumbnail"]);
+            foreach($arrFiles as $dir=>$files){
+                if($dir != UsuarioHelper::GetUsuarioPessoaId()) {
+                    $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
+                    foreach ($files as $k => $file) {
+                        $addFile = new AulaArquivo();
+                        $addFile->PessoaId = $dir;
+                        $addFile->Pessoa = $autor;
+                        $addFile->Titulo = $file["title"];
+                        $addFile->Tamanho = $file["size"];
+                        $addFile->Url = $file["url"];
+                        $addFile->Tipo = $file["type"];
+                        $addFile->img = $file["img"];
+                        //var_dump($file);
+
+                        $model->ListAulaArquivo->Add($addFile);
+                    }
+                }
+            }
         }else{
             $model = new Aula();
         }

@@ -7,9 +7,9 @@
  */
 namespace Modules\Generic\Controllers\Handlers;
 use Core\Controller;
-use DAL\Mensagem;
-use DAL\MensagemPessoa;
-use DAL\Notificacao;
+use Model\Mensagem;
+use Model\MensagemPessoa;
+use Model\Notificacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\ListHelper;
@@ -21,7 +21,7 @@ class NotificacaoHandler extends Controller
     public function GetIndex(){
         header('Content-Type: application/json; Charset=UTF-8');
         $retorno = new \stdClass();
-        $sql = $this->unitofwork->Get(new \DAL\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
+        $sql = $this->unitofwork->Get(new \Model\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
 
         $retorno->Count = $sql->Count();
         $retorno->HtmlDrop = "";

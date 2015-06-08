@@ -39,7 +39,7 @@ class musicaController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Musica");
+            Helper::cast($model, "Model\\Musica");
             $this->loadBLL();
 
             //Valida Model via ModelState

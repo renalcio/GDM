@@ -39,7 +39,7 @@ class ArtistaController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Artista");
+            Helper::cast($model, "Model\\Artista");
             $this->loadBLL();
 
             //Valida Model via ModelState

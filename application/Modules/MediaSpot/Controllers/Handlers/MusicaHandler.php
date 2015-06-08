@@ -7,8 +7,8 @@
  */
 namespace Modules\MediaSpot\Controllers\Handlers;
 use Core\Controller;
-use DAL\MediaSpot\Artista;
-use DAL\Musica;
+use Model\MediaSpot\Artista;
+use Model\Musica;
 use Libs\Database;
 use Libs\Helper;
 
@@ -25,7 +25,7 @@ class MusicaHandler extends Controller
         echo "\nLIMIT: ".$pinicio;
         echo "\nTermo de Busca: ".$titulo."\n";*/
 
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
+        $retorno = $this->unitofwork->Get(new \Model\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
 
         $retorno = json_encode($retorno);
 
@@ -42,7 +42,7 @@ class MusicaHandler extends Controller
         echo "\nLIMIT: ".$pinicio;
         echo "\nTermo de Busca: ".$titulo."\n";*/
         $retorno = "";
-        $query = $this->unitofwork->Get(new \DAL\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
+        $query = $this->unitofwork->Get(new \Model\MediaSpot\Musica(), "LOWER(Titulo) LIKE '%".$titulo."%' OR '".$titulo."' = '' LIMIT ".$pinicio.", ".$total)->ToArray();
         //var_dump($query);
         foreach($query as $item){
             $retorno .= '<tr>
@@ -94,7 +94,7 @@ class MusicaHandler extends Controller
 
         //echo $orderby;
 
-        $retorno = $this->unitofwork->Get(new \DAL\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'".$titulo."' = ''")->OrderBy($orderby)->Select("m.*");
+        $retorno = $this->unitofwork->Get(new \Model\MediaSpot\Musica())->Join($this->unitofwork->Get(new Artista()), "m.ArtistaId", "a.ArtistaId")->Where("(LOWER(m.Titulo) LIKE '%" . $titulo . "%' OR LOWER(a.Titulo) LIKE '%" . $titulo . "%' ) OR'".$titulo."' = ''")->OrderBy($orderby)->Select("m.*");
 
 
         //$retorno->BuildQuery();

@@ -8,7 +8,7 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Professor;
+use Model\ClassHub\Professor;
 use Libs\Helper;
 use Libs\ModelState;
 

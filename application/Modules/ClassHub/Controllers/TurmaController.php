@@ -8,7 +8,7 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Turma;
+use Model\ClassHub\Turma;
 use Libs\Helper;
 use Libs\ModelState;
 

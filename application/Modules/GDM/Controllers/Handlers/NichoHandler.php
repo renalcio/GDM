@@ -1,7 +1,7 @@
 <?php
 namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
-use DAL\Nicho;
+use Model\Nicho;
 use Libs\Database;
 use Libs\UnitofWork;
 

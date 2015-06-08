@@ -8,8 +8,8 @@
  */
 namespace Modules\Generic\Controllers;
 use Core\Controller;
-use DAL\Mensagem;
-use DAL\MensagemPessoa;
+use Model\Mensagem;
+use Model\MensagemPessoa;
 use Libs\Helper;
 use Libs\ModelState;
 

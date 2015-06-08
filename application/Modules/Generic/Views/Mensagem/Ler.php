@@ -1,5 +1,5 @@
 <?
-//$Model = new \DAL\Mensagem();
+//$Model = new \Model\Mensagem();
 $enviada = false;
 $UsuarioId = \Libs\UsuarioHelper::GetUsuarioPessoaId();
 //var_dump($Model->PessoaId);

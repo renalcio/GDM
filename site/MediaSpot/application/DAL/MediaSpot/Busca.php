@@ -1,7 +1,7 @@
 <?php
 /**
- * DAL
- * Titulo: Busca DAL
+ * Model
+ * Titulo: Busca Model
  * Autor: renalcio.freitas
  * Data: 24/02/2015
  */

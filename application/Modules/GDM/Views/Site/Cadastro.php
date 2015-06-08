@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Site();
+//$Model = new \Model\Site();
 ?>
 <h3 class="page-header">Cadastro de Site</h3>
 <form method="post">

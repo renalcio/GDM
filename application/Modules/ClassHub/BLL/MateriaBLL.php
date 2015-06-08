@@ -7,7 +7,7 @@
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
-use DAL\ClassHub\Materia;
+use Model\ClassHub\Materia;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;

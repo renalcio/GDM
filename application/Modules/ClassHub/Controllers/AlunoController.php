@@ -8,7 +8,7 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Aluno;
+use Model\ClassHub\Aluno;
 use Libs\Helper;
 use Libs\ModelState;
 

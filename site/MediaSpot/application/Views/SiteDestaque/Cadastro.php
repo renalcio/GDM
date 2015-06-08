@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\SiteDestaque();
+//$Model = new \Model\SiteDestaque();
 ?>
 <h3 class="page-header">Cadastro de Destaque</h3>
 

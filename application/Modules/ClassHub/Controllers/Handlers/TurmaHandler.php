@@ -1,10 +1,10 @@
 <?php
 namespace Modules\ClassHub\Controllers\Handlers;
 use Core\Controller;
-use DAL\Aplicacao;
-use DAL\ClassHub\Curso;
-use DAL\ClassHub\Escola;
-use DAL\ClassHub\Turma;
+use Model\Aplicacao;
+use Model\ClassHub\Curso;
+use Model\ClassHub\Escola;
+use Model\ClassHub\Turma;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;

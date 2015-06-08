@@ -9,7 +9,7 @@
  */
 namespace Modules\Generic\Controllers;
 use Core\Controller;
-use DAL\DestaqueSite;
+use Model\DestaqueSite;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -50,7 +50,7 @@ class DestaqueSiteController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\DestaqueSiteId");
+            Helper::cast($model, "Model\\DestaqueSiteId");
             // select
             $this->loadModel();
 

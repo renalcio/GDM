@@ -1,8 +1,8 @@
 <?php
 namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
-use DAL\Aplicacao;
-use DAL\Modulo;
+use Model\Aplicacao;
+use Model\Modulo;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;

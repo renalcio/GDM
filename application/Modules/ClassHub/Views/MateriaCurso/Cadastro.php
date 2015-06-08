@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\ClassHub\MateriaCurso();
+//$Model = new \Model\ClassHub\MateriaCurso();
 //var_dump($Model);
 ?>
 <script>

@@ -9,7 +9,7 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
-use DAL\Aplicacao;
+use Model\Aplicacao;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -22,7 +22,7 @@ class GeneratorController extends Controller
 {
 
     /**
-     * @Title: DAL
+     * @Title: Model
      */
     public function DAL()
     {

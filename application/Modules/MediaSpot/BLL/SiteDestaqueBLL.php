@@ -7,8 +7,8 @@
  */
 namespace Modules\MediaSpot\BLL;
 use Core\BLL;
-use DAL\MediaSpot\Artista;
-use DAL\Site;
+use Model\MediaSpot\Artista;
+use Model\Site;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -17,7 +17,7 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
-use DAL\MediaSpot\SiteDestaque;
+use Model\MediaSpot\SiteDestaque;
 use Libs\UsuarioHelper;
 
 class SiteDestaqueBLL extends BLL

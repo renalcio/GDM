@@ -111,7 +111,7 @@
             {
                 foreach($Model->Lista as $Item)
                 {
-                    //$Item = new \DAL\Musica();
+                    //$Item = new \Model\Musica();
                     //var_dump($Item);
                     ?>
                     <tr>

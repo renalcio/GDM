@@ -9,7 +9,7 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
-use DAL\Site;
+use Model\Site;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -51,7 +51,7 @@ class siteController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Site");
+            Helper::cast($model, "Model\\Site");
             $this->loadBLL();
 
             //Valida Model via ModelState

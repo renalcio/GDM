@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Generic\BLL;
 use Core\BLL;
-use DAL\Menu;
-use DAL\Permissao;
+use Model\Menu;
+use Model\Permissao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;

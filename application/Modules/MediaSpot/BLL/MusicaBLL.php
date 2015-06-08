@@ -8,7 +8,7 @@
 namespace Modules\MediaSpot\BLL;
 use Core\BLL;
 use Libs\Database;
-use DAL\MediaSpot\Musica;
+use Model\MediaSpot\Musica;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;

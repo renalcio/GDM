@@ -9,7 +9,7 @@
  */
 namespace Modules\MediaSpot\Controllers;
 use Core\Controller;
-use DAL\MediaSpot\Artista;
+use Model\MediaSpot\Artista;
 use Libs\Helper;
 use Libs\ModelState;
 

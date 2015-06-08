@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Artista();
+//$Model = new \Model\Artista();
 ?>
 <h3 class="page-header">Cadastro de Artista</h3>
 <script>

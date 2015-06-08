@@ -7,7 +7,7 @@
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
-use DAL\ClassHub\Turma;
+use Model\ClassHub\Turma;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;

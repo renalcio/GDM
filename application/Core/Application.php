@@ -1,8 +1,8 @@
 <?php
 namespace Core;
-use DAL\Action;
-use DAL\ActionModulo;
-use DAL\Modulo;
+use Model\Action;
+use Model\ActionModulo;
+use Model\Modulo;
 use Libs\ModelState;
 use Libs\SessionHelper;
 use Libs\Helper;

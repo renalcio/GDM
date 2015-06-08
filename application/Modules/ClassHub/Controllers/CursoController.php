@@ -8,7 +8,7 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Curso;
+use Model\ClassHub\Curso;
 use Libs\Helper;
 use Libs\ModelState;
 

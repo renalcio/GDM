@@ -66,7 +66,7 @@ if(is_array($Model->Lista) && count($Model->Lista) > 0)
                         {
                             foreach($Model->Lista as $Item)
                             {
-                                //$Item = new \DAL\Artista();
+                                //$Item = new \Model\Artista();
                                 ?>
                                 <li class="dd-item" data-SiteDestaqueId="<?=$Item->SiteDestaqueId;?>"
                                     data-ReferenciaId="<?=$Item->ReferenciaId;?>">

@@ -1,10 +1,10 @@
 <?php
 namespace Modules\Generic\BLL;
 use Core\BLL;
-use DAL\Aplicacao;
-use DAL\Pessoa;
-use DAL\Usuario;
-use DAL\UsuarioAplicacao;
+use Model\Aplicacao;
+use Model\Pessoa;
+use Model\Usuario;
+use Model\UsuarioAplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\CookieHelper;

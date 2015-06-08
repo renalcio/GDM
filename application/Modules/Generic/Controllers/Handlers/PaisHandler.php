@@ -1,7 +1,7 @@
 <?php
 namespace Modules\Generic\Controllers\Handlers;
 use Core\Controller;
-use DAL\Pais;
+use Model\Pais;
 use Libs\Database;
 class PaisHandler extends Controller
 {

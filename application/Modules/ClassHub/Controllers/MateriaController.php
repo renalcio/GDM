@@ -8,7 +8,7 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Materia;
+use Model\ClassHub\Materia;
 use Libs\Helper;
 use Libs\ModelState;
 

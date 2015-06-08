@@ -10,7 +10,7 @@
  */
 namespace Modules\Generic\Controllers;
 use Core\Controller;
-use Dal\Pessoa;
+use Model\Pessoa;
 use Libs\Helper;
 use Libs\ModelState;
 

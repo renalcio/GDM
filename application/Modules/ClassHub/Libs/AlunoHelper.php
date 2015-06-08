@@ -9,7 +9,7 @@
 namespace Modules\ClassHub\Libs;
 
 use Core\Lib;
-use DAL\ClassHub\Aluno;
+use Model\ClassHub\Aluno;
 use Libs\Helper;
 use Libs\UnitofWork;
 use Libs\UsuarioHelper;

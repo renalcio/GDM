@@ -1,6 +1,6 @@
 <?php
 /**
- * DAL
+ * Model
  * Titulo: Destaques do Site
  * Autor: renalcio.freitas
  * Data: 30/01/2015

@@ -7,7 +7,7 @@
  */
 namespace Modules\MediaSpot\Controllers\Handlers;
 use Core\Controller;
-use DAL\Artista;
+use Model\Artista;
 use Libs\Database;
 use Libs\Helper;
 
@@ -17,7 +17,7 @@ class ArtistaHandler extends Controller
     {
         $retorno = "";
         $pdo = new Database();
-        $sql = $this->unitofwork->Get(new \DAL\MediaSpot\Artista(), "AplicacaoId = '".$AplicacaoId."'")->ToArray();
+        $sql = $this->unitofwork->Get(new \Model\MediaSpot\Artista(), "AplicacaoId = '".$AplicacaoId."'")->ToArray();
         if (count($sql) > 0) {
             foreach ($sql as $item) {
                 $retorno .= "<option value='" . $item->ArtistaId . "'>" . $item->Titulo . "</option>";

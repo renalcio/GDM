@@ -7,8 +7,8 @@
  */
 namespace Modules\Generic\BLL;
 use Core\BLL;
-use DAL\Mensagem;
-use DAL\MensagemPessoa;
+use Model\Mensagem;
+use Model\MensagemPessoa;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;

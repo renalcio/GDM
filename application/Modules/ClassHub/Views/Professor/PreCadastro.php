@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\ClassHub\Professor();
+//$Model = new \Model\ClassHub\Professor();
 ?>
 <script>
     $(function(){

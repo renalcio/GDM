@@ -7,7 +7,7 @@
  */
 namespace Modules\Generic\BLL;
 use Core\BLL;
-use DAL\Notificacao;
+use Model\Notificacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;

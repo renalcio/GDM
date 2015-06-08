@@ -10,7 +10,7 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
-use DAL\Perfil;
+use Model\Perfil;
 
 /**
  * Class PerfilController

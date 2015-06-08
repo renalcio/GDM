@@ -1,6 +1,6 @@
 <?php
 //var_dump($Model);
-//$Model = new \DAL\MediaSpot\Busca();
+//$Model = new \Model\MediaSpot\Busca();
 ?>
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs pull-right">

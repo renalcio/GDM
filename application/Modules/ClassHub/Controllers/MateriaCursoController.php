@@ -8,8 +8,8 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Materia;
-use DAL\ClassHub\MateriaCurso;
+use Model\ClassHub\Materia;
+use Model\ClassHub\MateriaCurso;
 use Libs\Helper;
 use Libs\ModelState;
 

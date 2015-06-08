@@ -2,28 +2,28 @@
 namespace Modules\GDM\BLL;
 use Core\BLL;
 use Modules\Generic\BLL\PessoaBLL;
-use DAL\Usuario;
-use DAL\UsuarioPerfil;
+use Model\Usuario;
+use Model\UsuarioPerfil;
 use Libs\Database;
-use DAL\UsuarioAplicacao;
+use Model\UsuarioAplicacao;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;
 use Libs\SessionHelper;
 use Libs\UnitofWork;
 use Libs\UsuarioHelper;
-use DAL\Pessoa;
+use Model\Pessoa;
 use Libs\Debug;
 class UsuarioBLL extends BLL
 {
 
-    public function GetToEdit(\DAL\Usuario $model)
+    public function GetToEdit(\Model\Usuario $model)
     {
         if($model->UsuarioId > 0)
         {
             $model = $this->unitofwork->GetById(new Usuario(), $model->UsuarioId);
         }else{
-            $model = new \DAL\Usuario();
+            $model = new \Model\Usuario();
         }
         return $model;
     }
@@ -33,7 +33,7 @@ class UsuarioBLL extends BLL
         if(defined('APP_ID') && APP_ID == ROOTAPP)
             $model->ListUsuario = $this->unitofwork->Get(new Usuario())->ToArray();
         else {
-            //$model->ListUsuario = $this->pdo->select("SELECT u.*, ua.Ativo FROM ".DB_NAME.".Usuario u, ".DB_NAME.".UsuarioAplicacao ua WHERE ua.UsuarioId = u.UsuarioId AND ua.AplicacaoId = " . APP_ID, "DAL\\Usuario", true);
+            //$model->ListUsuario = $this->pdo->select("SELECT u.*, ua.Ativo FROM ".DB_NAME.".Usuario u, ".DB_NAME.".UsuarioAplicacao ua WHERE ua.UsuarioId = u.UsuarioId AND ua.AplicacaoId = " . APP_ID, "Model\\Usuario", true);
             $model->ListUsuario = $this->unitofwork->Get(new Usuario())->Join(
                 $this->unitofwork->Get(new UsuarioAplicacao(), "ua.AplicacaoId = ".APPID),
                 "u.UsuarioId",
@@ -52,7 +52,7 @@ class UsuarioBLL extends BLL
         return $model;
     }
 
-    public function Save(\DAL\Usuario $model){
+    public function Save(\Model\Usuario $model){
         if($model!=null) {
 
                 $listaPerfil = explode(",", $model->ListPerfil);
@@ -117,7 +117,7 @@ class UsuarioBLL extends BLL
         }
     }
 
-    public function Validar(\DAL\Usuario $model)
+    public function Validar(\Model\Usuario $model)
     {
         $retorno = Array();
         if($model != null) {

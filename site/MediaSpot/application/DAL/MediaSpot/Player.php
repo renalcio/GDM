@@ -1,6 +1,6 @@
 <?php
 /**
- * DAL
+ * Model
  * Titulo: Player
  * Autor: renalcio.freitas
  * Data: 24/02/2015

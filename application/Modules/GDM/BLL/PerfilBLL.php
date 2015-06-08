@@ -3,7 +3,7 @@ namespace Modules\GDM\BLL;
 use Core\BLL;
 use BLL\Generic\MenuBLL;
 use Libs\Database;
-use DAL\Perfil;
+use Model\Perfil;
 use Libs\Helper;
 class PerfilBLL extends BLL
 {
@@ -29,7 +29,7 @@ class PerfilBLL extends BLL
     public function Save($model){
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\Perfil");
+            Helper::cast($model, "Model\\Perfil");
 
             if($model->PerfilId > 0)
                 $this->unitofwork->Update($model);

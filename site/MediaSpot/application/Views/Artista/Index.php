@@ -43,7 +43,7 @@ if(is_array($Model->Lista) && count($Model->Lista) > 0)
             {
                 foreach($Model->Lista as $Item)
                 {
-                    //$Item = new \DAL\Artista();
+                    //$Item = new \Model\Artista();
                     ?>
                     <tr>
                         <td><?=$Item->Titulo;?></td>

@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Notificacao();
+//$Model = new \Model\Notificacao();
 
 ?>
 <form method="post">

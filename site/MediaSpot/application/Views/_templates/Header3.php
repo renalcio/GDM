@@ -3,7 +3,7 @@ use Libs\SessionHelper;
 use Libs\Helper;
 $db = new Libs\UnitofWork();
 $sessao = new SessionHelper("GDMAuth");
-//$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "DAL\\UsuarioAplicacao");
+//$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "Model\\UsuarioAplicacao");
 $HUser = new \DAL\UsuarioAplicacao();
 $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'")->First();
 //var_dump($HUser);

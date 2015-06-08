@@ -1,6 +1,6 @@
 <?php
 //var_dump($Model);
-//$Model = new \DAL\MediaSpot\Player();
+//$Model = new \Model\MediaSpot\Player();
 if(isset($Model)&& !empty($Model)){
     ?>
     <script src="https://apis.google.com/js/search.js" type="text/javascript"></script>

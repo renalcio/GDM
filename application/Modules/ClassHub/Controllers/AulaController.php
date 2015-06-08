@@ -8,7 +8,7 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use DAL\ClassHub\Aula;
+use Model\ClassHub\Aula;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -31,6 +31,7 @@ class AulaController extends Controller
         $Model = new \stdClass();
         $Model = $this->bll->GetToIndex($Model);
         $this->ModelView($Model);
+
     }
 
 	/**
@@ -47,6 +48,7 @@ class AulaController extends Controller
         $Model->AulaId = $id;
         $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
+        //var_dump($Model->ListAulaArquivo);
 
     }
 

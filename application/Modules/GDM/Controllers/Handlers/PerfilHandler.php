@@ -1,7 +1,7 @@
 <?php
 namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
-use DAL\Perfil;
+use Model\Perfil;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;

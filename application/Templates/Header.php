@@ -3,9 +3,9 @@ use Libs\SessionHelper;
 use Libs\Helper;
 $db = new Libs\UnitofWork();
 $sessao = new SessionHelper("GDMAuth");
-//$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "DAL\\UsuarioAplicacao");
-$HUser = new \DAL\UsuarioAplicacao();
-$HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'")->First();
+//$HUser = $db->select("SELECT * FROM UsuarioAplicacao WHERE UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'", "Model\\UsuarioAplicacao");
+$HUser = new \Model\UsuarioAplicacao();
+$HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("UsuarioId")."' AND AplicacaoId = '". $sessao->Ver("AplicacaoId")."'")->First();
 //var_dump($HUser);
 ?>
 <!DOCTYPE html>
@@ -255,7 +255,7 @@ $HUser = $db->Get(new \DAL\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("Us
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
                     <?
-                    $notificacoes = $db->Get(new \DAL\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
+                    $notificacoes = $db->Get(new \Model\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
                     ?>
                     <li class="dropdown notifications-menu" id="topMenuNotify">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

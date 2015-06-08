@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \DAL\Musica();
+//$Model = new \Model\Musica();
 ?>
 <h3 class="page-header">Cadastro de Site</h3>
 <form method="post">

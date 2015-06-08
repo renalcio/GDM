@@ -46,17 +46,29 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * This is the place where you define your database credentials, database type etc.
  */
 
-define("ROOTAPP", 1); #AplicacaoId GDM
-define("ROOTDB", "GDM"); #banco Principal
+if($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
+    define("ROOTAPP", 1); #AplicacaoId GDM
+    define("ROOTDB", "GDM"); #banco Principal
 
 
-define('DB_PREFIX', '');
-define('DB_TYPE', 'mysql');
-define('DB_HOST', 'localhost');
-define('DB_NAME', DB_PREFIX.ROOTDB);
-define('DB_USER', 'root');
-define('DB_PASS', '');
+    define('DB_PREFIX', '');
+    define('DB_TYPE', 'mysql');
+    define('DB_HOST', 'localhost');
+    define('DB_NAME', DB_PREFIX . ROOTDB);
+    define('DB_USER', 'root');
+    define('DB_PASS', '123');
+}else{
+    define("ROOTAPP", 1); #AplicacaoId GDM
+    define("ROOTDB", "GDM"); #banco Principal
 
+
+    define('DB_PREFIX', 'movew579_');
+    define('DB_TYPE', 'mysql');
+    define('DB_HOST', 'localhost');
+    define('DB_NAME', DB_PREFIX.ROOTDB);
+    define('DB_USER', 'movew579_gdm');
+    define('DB_PASS', 'movew579');
+}
 
 
 define("MODULES", "Modules" . DIRECTORY_SEPARATOR); #Pasta de Aplicações
@@ -67,5 +79,5 @@ $appsess = new \Libs\SessionHelper("GDMAuth"); #Session
 
 define('APPID', 3); #AplicacaoId
 define('APP_ID', 3); #AplicacaoId
-define('ROOT_URL', "http://127.0.0.1:8090/GDM/"); #AplicacaoId
+define('ROOT_URL', "http://127.0.0.1/GDM/"); #AplicacaoId
 define('PASTA', 'MediaSpot'. DIRECTORY_SEPARATOR); #Pasta da Aplicacao

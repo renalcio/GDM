@@ -7,8 +7,8 @@
  */
 namespace Modules\ClassHub\BLL;
 use Core\BLL;
-use DAL\ClassHub\Professor;
-use DAL\Pessoa;
+use Model\ClassHub\Professor;
+use Model\Pessoa;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;

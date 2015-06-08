@@ -7,10 +7,10 @@
  */
 namespace Modules\MediaSpot\BLL;
 use Core\BLL;
-use DAL\MediaSpot\Musica;
+use Model\MediaSpot\Musica;
 use Libs\ArrayHelper;
 use Libs\Database;
-use DAL\MediaSpot\Artista;
+use Model\MediaSpot\Artista;
 use Libs\Helper;
 use Libs\CookieHelper;
 use Libs\ModelState;

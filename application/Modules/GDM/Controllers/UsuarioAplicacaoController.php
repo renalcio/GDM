@@ -10,8 +10,8 @@
  */
 namespace Modules\GDM\Controllers;
 use Core\Controller;
-use Dal\Pessoa;
-use DAL\UsuarioAplicacao;
+use Model\Pessoa;
+use Model\UsuarioAplicacao;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -58,9 +58,9 @@ class UsuarioAplicacaoController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "DAL\\UsuarioAplicacao");
-            Helper::cast($model->Usuario, "DAL\\Usuario");
-            Helper::cast($model->Aplicacao, "DAL\\Aplicacao");
+            Helper::cast($model, "Model\\UsuarioAplicacao");
+            Helper::cast($model->Usuario, "Model\\Usuario");
+            Helper::cast($model->Aplicacao, "Model\\Aplicacao");
 
             $this->loadBLL();
 

@@ -1,11 +1,11 @@
 <?php
 namespace Modules\GDM\Controllers\Handlers;
 use Core\Controller;
-use DAL\Pessoa;
-use DAL\PessoaFisica;
-use DAL\PessoaJuridica;
-use DAL\Usuario;
-use DAL\UsuarioAplicacao;
+use Model\Pessoa;
+use Model\PessoaFisica;
+use Model\PessoaJuridica;
+use Model\Usuario;
+use Model\UsuarioAplicacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\UnitofWork;
@@ -41,7 +41,7 @@ class UsuarioHandler extends Controller
             /*$retorno = $pdo->select("SELECT u.* FROM Usuario u, Pessoa p, PessoaFisica pf, PessoaJuridica pj WHERE u.PessoaId = p.PessoaId AND (p.PessoaId
 = pf
 .PessoaId AND pf.CPF = '$doc') OR
- (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "DAL\\Usuario");*/
+ (p.PessoaId = pj.PessoaId AND pj.CNPJ = '$doc') LIMIT 1", "Model\\Usuario");*/
 
             $retorno = $uow->Get(new Usuario)->Join($uow->Get(new Pessoa()), "u.PessoaId", "p.PessoaId")->LeftJoin($uow->Get(new PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($uow->Get(new PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId = pf.PessoaId AND pf.CPF = '".$doc."') OR (p.PessoaId = pj.PessoaId AND pj.CNPJ = '".$doc."')")->Select("u.*", new Usuario())->First();
         }

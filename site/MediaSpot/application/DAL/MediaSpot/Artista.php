@@ -1,6 +1,6 @@
 <?php
 /**
- * DAL
+ * Model
  * Titulo: Artista
  * Autor: renalcio.freitas
  * Data: 26/01/2015
