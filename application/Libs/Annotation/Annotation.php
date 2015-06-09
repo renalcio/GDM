@@ -173,6 +173,7 @@ class Annotation {
         if(class_exists($class))
             return $this->_class = new $class();
 
+        var_dump($class);
         throw new AnnotationException("AnnotationError: Esta classe não existe.", 1);
     }
 

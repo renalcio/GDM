@@ -36,10 +36,11 @@ class AulaBLL extends BLL
 
     public function GetToEdit(Aula $model)
     {
+        $model->ListAulaArquivo = new ListHelper();
+
         if($model->AulaId > 0)
         {
             $model = $this->unitofwork->GetById(new Aula(), $model->AulaId);
-            $model->ListAulaArquivo = new ListHelper();
             $arrFiles = FileHelper::DirList(ROOT.'public\\upload\\files\\aulas\\'.$model->AulaId, ["thumbnail"]);
             foreach($arrFiles as $dir=>$files){
                 if($dir != UsuarioHelper::GetUsuarioPessoaId()) {

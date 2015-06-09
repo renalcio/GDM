@@ -33,8 +33,6 @@ use Libs\Form;
     });
 </script>
 
-<h3 class="page-header">Cadastro de Aula</h3>
-
 <form method="post" enctype="multipart/form-data" id="fileupload" pasta="aulas/<?=(!empty($Model->AulaId) ? $Model->AulaId : 0
 );?>">
 <?
@@ -225,7 +223,7 @@ Form::Hidden("AlunoId", @$Model->AlunoId);
             </thead>
             <tbody>
             <?
-            if($Model->ListAulaArquivo->Count() > 0) {
+            if(!empty($Model->ListAulaArquivo) && $Model->ListAulaArquivo->Count() > 0) {
                 $Model->ListAulaArquivo->For_Each(function ($item, $i) {
                     ?>
                     <tr>

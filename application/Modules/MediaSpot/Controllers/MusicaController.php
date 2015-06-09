@@ -9,7 +9,7 @@
  */
 namespace Modules\MediaSpot\Controllers;
 use Core\Controller;
-use Model\Musica;
+use Model\MediaSpot\Musica;
 use Libs\Helper;
 use Libs\ModelState;
 
@@ -52,7 +52,7 @@ class musicaController extends Controller
 
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, "Model\\Musica");
+            Helper::cast($model, new Musica());
             $this->loadBLL();
 
             //Valida Model via ModelState
