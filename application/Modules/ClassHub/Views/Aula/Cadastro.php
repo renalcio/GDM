@@ -144,14 +144,12 @@ Form::Hidden("AlunoId", @$Model->AlunoId);
                 Meus Arquivos
             </h3>
         </div>
-        <div class="box-body" style="height: 400px;">
-<iframe height="395px" width="100%" src="<?=URL?>/Aula/upload/<?=$Model->AulaId?>" frameborder="0"
+        <div class="box-body">
+<iframe height="400px" width="100%" src="<?=URL?>/Aula/upload/<?=$Model->AulaId?>" frameborder="0"
         scrolling="yes" id="uploadFrame"></iframe>
+    </div>
+    </div>
 
-    </div>
-    <div class="box-footer">
-    </div>
-    </div>
 <div class="box box-primary">
     <div class="box-header">
         <h3 class="box-title">

@@ -6,7 +6,7 @@ use Libs\Form;
 <script>
     $(function(){
         $('section.content').slimScroll({
-            height: 'auto'
+            height: '400px'
         });
     });
 </script>
