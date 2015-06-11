@@ -107,6 +107,10 @@ class Controller
         $this->HeaderLayout = ucfirst($header);
         $this->FooterLayout = ucfirst($footer);
     }
+
+    public function Template($header="", $footer=""){
+        $this->Layout($header, $footer);
+    }
     
     public function ModelView($Model = "", $view = "", $controller = ""){
         if(empty($view)) $view = Helper::getAction();

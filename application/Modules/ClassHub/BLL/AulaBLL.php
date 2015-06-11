@@ -38,6 +38,7 @@ class AulaBLL extends BLL
     {
         $model->ListAulaArquivo = new ListHelper();
 
+
         if($model->AulaId > 0)
         {
             $model = $this->unitofwork->GetById(new Aula(), $model->AulaId);
@@ -55,7 +56,7 @@ class AulaBLL extends BLL
                         $addFile->Tipo = $file["type"];
                         $addFile->img = $file["img"];
                         //var_dump($file);
-
+                        if($model->ListAulaArquivo == null) $model->ListAulaArquivo = new ListHelper();
                         $model->ListAulaArquivo->Add($addFile);
                     }
                 }

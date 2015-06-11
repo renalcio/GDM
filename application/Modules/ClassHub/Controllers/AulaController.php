@@ -34,14 +34,33 @@ class AulaController extends Controller
 
     }
 
+    /**
+     *
+     * @Title: Cadastro
+     *
+     */
+    public function cadastro($id = 0)
+    {
+        $this->AddAsset(["bootstrap-markdown", "file-upload"]);
+        // load views
+        $this->loadBLL();
+        $Model = new Aula();
+        $Model->AulaId = $id;
+        $Model = $this->bll->GetToEdit($Model);
+        $this->ModelView($Model);
+        //var_dump($Model->ListAulaArquivo);
+
+    }
+
 	/**
 	 *
 	 * @Title: Cadastro
 	 *
 	 */
-    public function cadastro($id = 0)
+    public function upload($id = 0)
     {
         $this->AddAsset(["bootstrap-markdown", "file-upload"]);
+        $this->Template("ClassHub/HeaderSemBarra", "ClassHub/FooterSemBarra");
         // load views
         $this->loadBLL();
         $Model = new Aula();
