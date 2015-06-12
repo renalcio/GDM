@@ -96,15 +96,15 @@ class Aula
     var $AlunoId = 0;
 
     /**
-     * @Name: AlunoId
-     * @DisplayName: AlunoId
+     * @Name: EscolaId
+     * @DisplayName: Escola
      * @Type: int(11)
      */
     var $EscolaId = 0;
 
     /**
-     * @Name: AlunoId
-     * @DisplayName: AlunoId
+     * @Name: CursoId
+     * @DisplayName: Curso
      * @Type: int(11)
      */
     var $CursoId = 0;

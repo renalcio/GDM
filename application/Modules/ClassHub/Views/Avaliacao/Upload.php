@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-//$Model = new \Model\ClassHub\Aula();
+//$Model = new \Model\ClassHub\Avaliacao();
 //var_dump($Model);
 ?>
 <script>
@@ -10,10 +10,12 @@ use Libs\Form;
         });
     });
 </script>
-<form method="post" enctype="multipart/form-data" id="fileupload" pasta="ClassHub/aulas/<?=(!empty($Model->AulaId) ? $Model->AulaId : 0
+<form method="post" enctype="multipart/form-data" id="fileupload" pasta="ClassHub/avaliacoes/<?=(!empty
+($Model->AvaliacaoId) ?
+    $Model->AvaliacaoId : 0
 );?>">
     <?
-    Form::Hidden("AulaId", @$Model->AulaId);
+    Form::Hidden("AvaliacaoId", @$Model->AvaliacaoId);
     Form::Hidden("AlunoId", @$Model->AlunoId);
     ?>
 
@@ -187,7 +189,7 @@ data-target="#ModalFile_{%=i%}" titulo="{%=file.name%}" url="{%=file.url%}" i="{
         </td>
         <td>
             {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}&pasta=aulas/<?=(!empty($Model->AulaId) ? $Model->AulaId : 0
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}&pasta=Avaliacaos/<?=(!empty($Model->AvaliacaoId) ? $Model->AvaliacaoId : 0
     );?>"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Apagar</span>

@@ -114,7 +114,7 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
         //"dist/js/pages/dashboard2.js",
 
         //DEMO
-        "dist/js/demo.js"
+        //"dist/js/demo.js"
 
     ));
 

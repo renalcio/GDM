@@ -64,9 +64,19 @@ class Form
         return $html;
     }
 
-    public static function Checkbox($Nome="", $Valor="", $htmlAttr = Array())
+    public static function Checkbox($Nome="", $Valor="", $ValorModel = "", $htmlAttr = Array())
     {
+        if($Valor == $ValorModel)
+            $htmlAttr["checked"] = "checked";
+
         echo self::Input("checkbox", $Nome, $Valor, $htmlAttr);
+    }
+    public static function Radio($Nome="", $Valor="", $ValorModel = "", $htmlAttr = Array())
+    {
+        if($Valor == $ValorModel)
+            $htmlAttr["checked"] = "checked";
+
+        echo self::Input("radio", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Text($Nome="", $Valor="", $htmlAttr = Array())

@@ -8,20 +8,20 @@
  */
 namespace Modules\ClassHub\Controllers;
 use Core\Controller;
-use Model\ClassHub\Aula;
+use Model\ClassHub\Avaliacao;
 use Libs\Helper;
 use Libs\ModelState;
 
 /**
  *
- * @Title: Aulas
+ * @Title: Avaliações
  *
  */
-class AulaController extends Controller
+class AvaliacaoController extends Controller
 {
 	/**
 	 *
-	 * @Title: Listagem de Aulas
+	 * @Title: Listagem de Avaliações
 	 *
 	 */
     public function index()
@@ -41,14 +41,14 @@ class AulaController extends Controller
      */
     public function cadastro($id = 0)
     {
-        $this->AddAsset(["bootstrap-markdown", "file-upload"]);
+        $this->AddAsset(["bootstrap-markdown", "file-upload", "iCheck"]);
         // load views
         $this->loadBLL();
-        $Model = new Aula();
-        $Model->AulaId = $id;
+        $Model = new Avaliacao();
+        $Model->AvaliacaoId = $id;
         $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
-        //var_dump($Model->ListAulaArquivo);
+        //var_dump($Model->ListAvaliacaoArquivo);
 
     }
 
@@ -63,11 +63,11 @@ class AulaController extends Controller
         $this->Template("ClassHub/HeaderSemBarra", "ClassHub/FooterSemBarra");
         // load views
         $this->loadBLL();
-        $Model = new Aula();
-        $Model->AulaId = $id;
+        $Model = new Avaliacao();
+        $Model->AvaliacaoId = $id;
         $Model = $this->bll->GetToEdit($Model);
         $this->ModelView($Model);
-        //var_dump($Model->ListAulaArquivo);
+        //var_dump($Model->ListAvaliacaoArquivo);
 
     }
 
@@ -79,7 +79,7 @@ class AulaController extends Controller
         //var_dump($model);
         if($model!=null) {
             $model = (object)$model;
-            Helper::cast($model, new Aula);
+            Helper::cast($model, new Avaliacao);
             $this->loadBLL();
 
             //Valida Model via ModelState
@@ -91,14 +91,14 @@ class AulaController extends Controller
 
                 if(ModelState::isValid()) {
                     $this->bll->Save($model); // Salva
-                    //$this->Redirect("Index"); // Redireciona pra index do controller
+                    $this->Redirect("Index"); // Redireciona pra index do controller
                 }
             }
         }else{
             $model = new \stdClass();
         }
 
-        //$this->ModelView($model);
+        $this->ModelView($model);
     }
 
     public function deletar($id){

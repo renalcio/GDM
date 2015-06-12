@@ -1,7 +1,7 @@
 <?php
 /**
  * Model
- * Titulo: Aulas
+ * Titulo: Avaliacaos
  * Autor: renalcio.freitas
  * Data: 06/05/2015
  */
@@ -10,7 +10,7 @@ use Core\BLL;
 use Libs\FileHelper;
 use Libs\ListHelper;
 use Libs\UsuarioHelper;
-use Model\ClassHub\Aula;
+use Model\ClassHub\Avaliacao;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -18,11 +18,11 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
-use Model\ClassHub\AulaArquivo;
+use Model\ClassHub\AvaliacaoArquivo;
 use Model\Pessoa;
 use Modules\ClassHub\Libs\AlunoHelper;
 
-class AulaBLL extends BLL
+class AvaliacaoBLL extends BLL
 {
     function __construct($db)
     {
@@ -34,20 +34,20 @@ class AulaBLL extends BLL
         parent::__construct();
     }
 
-    public function GetToEdit(Aula $model)
+    public function GetToEdit(Avaliacao $model)
     {
-        $model->ListAulaArquivo = new ListHelper();
+        $model->ListArquivo = new ListHelper();
 
 
-        if($model->AulaId > 0)
+        if($model->AvaliacaoId > 0)
         {
-            $model = $this->unitofwork->GetById(new Aula(), $model->AulaId);
-            $arrFiles = FileHelper::DirList(UPLOAD_APP_DIR.'aulas\\'.$model->AulaId, ["thumbnail"]);
+            $model = $this->unitofwork->GetById(new Avaliacao(), $model->AvaliacaoId);
+            $arrFiles = FileHelper::DirList(UPLOAD_APP_DIR.'avaliacoes\\'.$model->AvaliacaoId, ["thumbnail"]);
             foreach($arrFiles as $dir=>$files){
                 if($dir != UsuarioHelper::GetUsuarioPessoaId()) {
                     $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
                     foreach ($files as $k => $file) {
-                        $addFile = new AulaArquivo();
+                        $addFile = new AvaliacaoArquivo();
                         $addFile->PessoaId = $dir;
                         $addFile->Pessoa = $autor;
                         $addFile->Titulo = $file["title"];
@@ -56,13 +56,13 @@ class AulaBLL extends BLL
                         $addFile->Tipo = $file["type"];
                         $addFile->img = $file["img"];
                         //var_dump($file);
-                        if($model->ListAulaArquivo == null) $model->ListAulaArquivo = new ListHelper();
-                        $model->ListAulaArquivo->Add($addFile);
+                        if($model->ListArquivo == null) $model->ListAvaliacaoArquivo = new ListHelper();
+                        $model->ListArquivo->Add($addFile);
                     }
                 }
             }
         }else{
-            $model = new Aula();
+            $model = new Avaliacao();
         }
         return $model;
     }
@@ -70,19 +70,19 @@ class AulaBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Aula())->ToList();
+        $model->Lista = $this->unitofwork->Get(new Avaliacao())->ToList();
 
         return $model;
     }
 
-    public function Save(Aula $model){
+    public function Save(Avaliacao $model){
 
         if($model!=null) {
 
             if(empty($model->AlunoId)){
                 $model->AlunoId = AlunoHelper::GetAlunoId();
             }
-                if ($model->AulaId > 0){
+                if ($model->AvaliacaoId > 0){
 
                     $this->unitofwork->Update($model);
                 } else {
@@ -90,8 +90,9 @@ class AulaBLL extends BLL
 
                     $UsuarioId = UsuarioHelper::GetUsuarioPessoaId();
 
-                    $PastaTemp = UPLOAD_APP_DIR.'aulas'.DIRECTORY_SEPARATOR.'0'.DIRECTORY_SEPARATOR.$UsuarioId;
-                    $PastaFinal = UPLOAD_APP_DIR.'aulas'.DIRECTORY_SEPARATOR.$model->AulaId.DIRECTORY_SEPARATOR.$UsuarioId;
+                    $PastaTemp = UPLOAD_APP_DIR.'avaliacoes'.DIRECTORY_SEPARATOR.'0'.DIRECTORY_SEPARATOR.$UsuarioId;
+                    $PastaFinal = UPLOAD_APP_DIR.'avaliacoes'.DIRECTORY_SEPARATOR.$model->AvaliacaoId.DIRECTORY_SEPARATOR
+                        .$UsuarioId;
 
                     FileHelper::MoveDir($PastaTemp,$PastaFinal);
                 }
@@ -101,11 +102,11 @@ class AulaBLL extends BLL
 
     public function Deletar($id){
         if($id > 0){
-            $this->unitofwork->Delete(new Aula(), $id);
+            $this->unitofwork->Delete(new Avaliacao(), $id);
         }
     }
 
-    public function Validar(Aula $model)
+    public function Validar(Avaliacao $model)
     {
 
     }

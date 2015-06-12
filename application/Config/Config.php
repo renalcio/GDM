@@ -87,3 +87,8 @@ if(!empty($pasta)) {
 }else{
     define('PASTA', ''); #Pasta da Aplicacao
 }
+
+//UPLOAD
+define('UPLOAD_GLOBAL_DIR', ROOT.'public'.DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR
+    .'files'.DIRECTORY_SEPARATOR);
+define('UPLOAD_APP_DIR', UPLOAD_GLOBAL_DIR.PASTA);

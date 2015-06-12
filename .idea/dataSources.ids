@@ -61,6 +61,9 @@
       <column name="Peso" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Descricao" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="Trabalho" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="AvaliacaoId"/>
     </table>
     <table name="CanalSocial" schema="" catalog="ClassHub" type="TABLE">

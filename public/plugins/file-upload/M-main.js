@@ -19,15 +19,11 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: SiteURL + 'upload/?pasta='+pasta,
-    }).bind('fileuploaddone', function (e, data) {
+        url: SiteURL + 'upload/?pasta='+pasta
+    }).bind('fileuploadstop', function (e, data) {
         //console.log(e);
        // console.log(data);
-        if(confirm("Deseja salvar as outras alterações no formulário?")){
-         $('#fileupload').submit();
-         }else{
          location.reload();
-         }
     });
     // Enable iframe cross-domain access via redirect option:
     $('#fileupload').fileupload(
