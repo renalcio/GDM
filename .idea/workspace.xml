@@ -35,6 +35,38 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="GDM" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="ClassHub" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="GDM" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="ClassHub" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Aviso" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -42,136 +74,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Avaliacao.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Avaliacao.php">
+      <file leaf-file-name="Aviso.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Aviso.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2160" max-vertical-offset="3264">
-              <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+            <state vertical-scroll-proportion="-15.884615" vertical-offset="2171" max-vertical-offset="2771">
+              <caret line="152" column="27" selection-start-line="152" selection-start-column="27" selection-end-line="152" selection-end-column="27" />
               <folding>
-                <element signature="e#7#83#0#PHP" expanded="true" />
+                <element signature="e#7#81#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AvaliacaoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvaliacaoController.php">
+      <file leaf-file-name="AvisoBLL.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvisoBLL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="692" max-vertical-offset="2057">
-              <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+            <state vertical-scroll-proportion="-10.0" vertical-offset="777" max-vertical-offset="1513">
+              <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
               <folding>
-                <element signature="e#6#80#0#PHP" expanded="true" />
-                <element signature="e#121#141#0#PHP" expanded="true" />
+                <element signature="e#6#76#0#PHP" expanded="true" />
+                <element signature="e#109#122#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Index.php">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aviso/Index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1904">
-              <caret line="21" column="15" selection-start-line="18" selection-start-column="11" selection-end-line="21" selection-end-column="15" />
+            <state vertical-scroll-proportion="-9.807693" vertical-offset="102" max-vertical-offset="1955">
+              <caret line="21" column="15" selection-start-line="17" selection-start-column="11" selection-end-line="21" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Cadastro.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Cadastro.php">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aviso/Cadastro.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22326455" vertical-offset="1870" max-vertical-offset="4182">
-              <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+            <state vertical-scroll-proportion="2.7539682" vertical-offset="176" max-vertical-offset="2363">
+              <caret line="90" column="75" selection-start-line="90" selection-start-column="75" selection-end-line="90" selection-end-column="75" />
               <folding>
-                <marker date="1434137863520" expanded="true" signature="4434:4496" placeholder="..." />
+                <marker date="1434401515530" expanded="true" signature="3828:3894" placeholder="..." />
+                <marker date="1434401515530" expanded="true" signature="4743:4809" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Libs/Form.php">
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Perfil/Index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="1037">
-              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-              <folding>
-                <element signature="e#41#650#0#PHP" expanded="false" />
-                <element signature="e#155#644#0#PHP" expanded="false" />
-                <element signature="e#191#633#0#PHP" expanded="false" />
-                <element signature="e#656#1780#0#PHP" expanded="false" />
-                <element signature="e#768#1752#0#PHP" expanded="false" />
-                <element signature="e#929#1132#0#PHP" expanded="false" />
-                <element signature="e#1007#1118#0#PHP" expanded="false" />
-                <element signature="e#1261#1752#0#PHP" expanded="false" />
-                <element signature="e#1444#1647#0#PHP" expanded="false" />
-                <element signature="e#1522#1633#0#PHP" expanded="false" />
-                <element signature="e#2287#2428#0#PHP" expanded="false" />
-                <element signature="e#2434#2922#0#PHP" expanded="false" />
-                <element signature="e#2928#3451#0#PHP" expanded="false" />
-                <element signature="e#3457#4326#0#PHP" expanded="false" />
-                <element signature="e#3702#4259#0#PHP" expanded="false" />
-                <element signature="e#4087#4259#0#PHP" expanded="false" />
-                <element signature="e#4333#4482#0#PHP" expanded="false" />
-                <element signature="e#4488#5358#0#PHP" expanded="false" />
-                <element signature="e#4681#4860#0#PHP" expanded="false" />
-                <element signature="e#4751#4850#0#PHP" expanded="false" />
-                <element signature="e#4892#5299#0#PHP" expanded="false" />
-                <element signature="e#4977#5226#0#PHP" expanded="false" />
-                <element signature="e#5364#5546#0#PHP" expanded="false" />
-                <element signature="e#5551#6455#0#PHP" expanded="false" />
-                <element signature="e#5809#6230#0#PHP" expanded="false" />
-                <element signature="e#6461#7429#0#PHP" expanded="false" />
-                <element signature="e#6728#7374#0#PHP" expanded="false" />
-                <element signature="e#7189#7374#0#PHP" expanded="false" />
-                <element signature="e#7436#7585#0#PHP" expanded="false" />
-                <element signature="e#7591#7734#0#PHP" expanded="false" />
-                <element signature="e#7740#7883#0#PHP" expanded="false" />
-                <element signature="e#7889#8034#0#PHP" expanded="false" />
-                <element signature="e#8040#8185#0#PHP" expanded="false" />
-                <element signature="e#8191#11170#0#PHP" expanded="false" />
-                <marker date="1434137779797" expanded="false" signature="248:616" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="286:581" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="319:493" placeholder="{&quot;texto&quot;: &quot;EXTERNAL_FRAGMENT&quot;...}" />
-                <marker date="1434137779797" expanded="false" signature="2592:2838" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="2614:2819" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="2655:2742" placeholder="{&quot;format&quot;: &quot;dd/mm/yyyy&quot;...}" />
-                <marker date="1434137779797" expanded="false" signature="3085:3372" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="3107:3353" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="3148:3274" placeholder="{&quot;showMeridian&quot;: false...}" />
-                <marker date="1434137779797" expanded="false" signature="3922:4065" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="3944:4046" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="4127:4237" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="4149:4218" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="5900:6217" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="5929:6193" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="5998:6174" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="6252:6386" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="6282:6362" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="6819:7176" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="6848:7152" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="6917:7132" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="6987:7109" placeholder="{&quot;multiple&quot;: true...}" />
-                <marker date="1434137779797" expanded="false" signature="7221:7361" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="7251:7337" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="8400:11061" placeholder="..." />
-                <marker date="1434137779797" expanded="false" signature="8440:11034" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="8590:10845" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="8661:10691" placeholder="[...]" />
-                <marker date="1434137779797" expanded="false" signature="10732:10819" placeholder="{...}" />
-                <marker date="1434137779797" expanded="false" signature="10922:11014" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1904">
+              <caret line="11" column="15" selection-start-line="6" selection-start-column="12" selection-end-line="11" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AvaliacaoBLL.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvaliacaoBLL.php">
+      <file leaf-file-name="AvisoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvisoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2023">
-              <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+            <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1632">
+              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
               <folding>
-                <element signature="e#6#91#0#PHP" expanded="true" />
-                <element signature="e#124#137#0#PHP" expanded="true" />
+                <element signature="e#6#69#0#PHP" expanded="true" />
+                <element signature="e#110#130#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -200,13 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/site/MediaSpot/application/Config/Config.php" />
-        <option value="$PROJECT_DIR$/application/Model/Acesso.php" />
-        <option value="$PROJECT_DIR$/application/Model/Action.php" />
-        <option value="$PROJECT_DIR$/application/Model/ActionModulo.php" />
-        <option value="$PROJECT_DIR$/application/Model/Aplicacao.php" />
-        <option value="$PROJECT_DIR$/application/Model/Mensagem.php" />
-        <option value="$PROJECT_DIR$/application/Model/MensagemPessoa.php" />
         <option value="$PROJECT_DIR$/application/Model/Menu.php" />
         <option value="$PROJECT_DIR$/application/Model/Modulo.php" />
         <option value="$PROJECT_DIR$/application/Model/Generator/GDM/Acesso.php" />
@@ -233,19 +194,31 @@
         <option value="$PROJECT_DIR$/application/Templates/ClassHub/HeaderSemBarra.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aula/Cadastro.php" />
         <option value="$PROJECT_DIR$/application/Templates/Footer.php" />
-        <option value="$PROJECT_DIR$/application/Model/ClassHub/Aula.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AulaController.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aula/Upload.php" />
         <option value="$PROJECT_DIR$/application/Config/Config.php" />
         <option value="$PROJECT_DIR$/application/Libs/FileHelper.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/AulaBLL.php" />
-        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Index.php" />
-        <option value="$PROJECT_DIR$/application/Model/ClassHub/Avaliacao.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvaliacaoBLL.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Upload.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvaliacaoController.php" />
         <option value="$PROJECT_DIR$/application/Libs/Form.php" />
         <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Cadastro.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/CanalSocialBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/Index.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aula/Index.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Index.php" />
+        <option value="$PROJECT_DIR$/application/Model/ClassHub/Avaliacao.php" />
+        <option value="$PROJECT_DIR$/application/Model/ClassHub/Aula.php" />
+        <option value="$PROJECT_DIR$/application/Model/ClassHub/CanalSocial.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/CanalSocial/Index.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/CanalSocial/Cadastro.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/CanalSocialController.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aviso/Index.php" />
+        <option value="$PROJECT_DIR$/application/Model/ClassHub/Aviso.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvisoBLL.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvisoController.php" />
+        <option value="$PROJECT_DIR$/application/Modules/ClassHub/Views/Aviso/Cadastro.php" />
       </list>
     </option>
   </component>
@@ -290,7 +263,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -301,7 +274,205 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Perfil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GDM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -324,11 +495,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\gdm\application\Modules\ClassHub\BLL" />
-      <recent name="C:\xampp\htdocs\gdm\application\Modules\ClassHub\Controllers" />
       <recent name="C:\xampp\htdocs\gdm\application\Modules\ClassHub\Views" />
+      <recent name="C:\xampp\htdocs\gdm\application\Model\ClassHub" />
+      <recent name="C:\xampp\htdocs\gdm\application\Modules\ClassHub\Controllers" />
+      <recent name="C:\xampp\htdocs\gdm\application\Modules\ClassHub\BLL" />
       <recent name="C:\xampp\htdocs\gdm\application\Templates\ClassHub" />
-      <recent name="C:\wamp\www\GDM\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp\www\GDM\public\plugins\timepicker\min" />
@@ -570,18 +741,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938388" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20440729" sideWeight="0.37914693" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20440729" sideWeight="0.37914693" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2669903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22720365" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22720365" sideWeight="0.62085307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39078498" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -671,137 +842,11 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/Model/Generator/GDM/Acesso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15315315" vertical-offset="0" max-vertical-offset="1190">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Model/Nicho.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="493">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Core/Application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31365314" vertical-offset="0" max-vertical-offset="4454">
-          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_namespaces.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42882884" vertical-offset="0" max-vertical-offset="555">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioAplicacaoBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6538463" vertical-offset="14" max-vertical-offset="1513">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/BLL/UsuarioBLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6538463" vertical-offset="1629" max-vertical-offset="2227">
-          <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/UsuarioAplicacao/Formulario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.9615383" vertical-offset="142" max-vertical-offset="2193">
-          <caret line="19" column="73" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/Generic/Controllers/Handlers/NotificacaoHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="782">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Controllers/Handlers/ArtistaHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="442">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Controllers/Handlers/MusicaHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6538463" vertical-offset="1306" max-vertical-offset="2431">
-          <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/upload/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42882884" vertical-offset="0" max-vertical-offset="555">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/GeneratorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13333334" vertical-offset="329" max-vertical-offset="884">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/MediaSpot/Busca.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="581">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/application/DAL/Acesso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/MediaSpot/vendor/composer/autoload_namespaces.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45945945" vertical-offset="0" max-vertical-offset="555">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Generator/Assets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42882884" vertical-offset="612" max-vertical-offset="1207">
-          <caret line="51" column="37" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Libs/Annotation/AnnotationException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="535">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Libs/Annotation/Annotation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="2652" max-vertical-offset="3298">
-          <caret line="175" column="25" selection-start-line="175" selection-start-column="25" selection-end-line="175" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Modules/MediaSpot/Controllers/MusicaController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36738703" vertical-offset="612" max-vertical-offset="1462">
@@ -869,7 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.514019" vertical-offset="10503" max-vertical-offset="12019">
           <caret line="233" column="41" selection-start-line="233" selection-start-column="41" selection-end-line="233" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -877,9 +921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4029" max-vertical-offset="25041">
           <caret line="249" column="62" selection-start-line="249" selection-start-column="48" selection-end-line="249" selection-end-column="62" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -887,7 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4728972" vertical-offset="19" max-vertical-offset="1275">
           <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="391">
           <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6538463" vertical-offset="1078" max-vertical-offset="3995">
           <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -967,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15977444" vertical-offset="0" max-vertical-offset="544">
           <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -982,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40078586" vertical-offset="0" max-vertical-offset="3655">
           <caret line="12" column="82" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1006,7 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.576923" vertical-offset="965" max-vertical-offset="1683">
           <caret line="95" column="64" selection-start-line="90" selection-start-column="19" selection-end-line="95" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1017,37 +1052,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Aula.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0" vertical-offset="2567" max-vertical-offset="3451">
-          <caret line="181" column="81" selection-start-line="180" selection-start-column="11" selection-end-line="181" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Avaliacao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2160" max-vertical-offset="3264">
-          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#83#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Upload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.511579" vertical-offset="3157" max-vertical-offset="3672">
           <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1904">
-          <caret line="21" column="15" selection-start-line="18" selection-start-column="11" selection-end-line="21" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,36 +1063,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7988722" vertical-offset="1122" max-vertical-offset="1904">
           <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Cadastro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.076923" vertical-offset="1173" max-vertical-offset="4182">
+          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aluno/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76817286" vertical-offset="816" max-vertical-offset="1904">
+          <caret line="71" column="28" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aula/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9266917" vertical-offset="816" max-vertical-offset="1989">
+          <caret line="76" column="139" selection-start-line="76" selection-start-column="139" selection-end-line="76" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2781955" vertical-offset="595" max-vertical-offset="1938">
+          <caret line="74" column="139" selection-start-line="74" selection-start-column="139" selection-end-line="74" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Avaliacao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2556391" vertical-offset="2652" max-vertical-offset="3366">
+          <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvaliacaoController.php">
+    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Aula.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="692" max-vertical-offset="2057">
-          <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+        <state vertical-scroll-proportion="-13.923077" vertical-offset="3004" max-vertical-offset="3587">
+          <caret line="202" column="28" selection-start-line="202" selection-start-column="28" selection-end-line="202" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/CanalSocial/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.608421" vertical-offset="918" max-vertical-offset="1921">
+          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/26ef5338/5adab088-8d3e-4d59-b461-28132d325358/ClassHub..AlunoNota">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/CanalSocialController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18984963" vertical-offset="817" max-vertical-offset="2057">
+          <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
           <folding>
-            <element signature="e#6#80#0#PHP" expanded="true" />
-            <element signature="e#121#141#0#PHP" expanded="true" />
+            <element signature="e#6#80#0#PHP" expanded="false" />
+            <element signature="e#121#141#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvaliacaoBLL.php">
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/CanalSocial/Cadastro.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2023">
-          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <element signature="e#124#137#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.11278196" vertical-offset="1453" max-vertical-offset="2023">
+          <caret line="87" column="26" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/Libs/Form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="1037">
-          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.4924812" vertical-offset="537" max-vertical-offset="1700">
+          <caret line="177" column="31" selection-start-line="177" selection-start-column="25" selection-end-line="177" selection-end-column="31" />
           <folding>
             <element signature="e#41#650#0#PHP" expanded="false" />
             <element signature="e#155#644#0#PHP" expanded="false" />
@@ -1103,13 +1168,9 @@
             <element signature="e#3702#4259#0#PHP" expanded="false" />
             <element signature="e#4087#4259#0#PHP" expanded="false" />
             <element signature="e#4333#4482#0#PHP" expanded="false" />
-            <element signature="e#4488#5358#0#PHP" expanded="false" />
             <element signature="e#4681#4860#0#PHP" expanded="false" />
             <element signature="e#4751#4850#0#PHP" expanded="false" />
-            <element signature="e#4892#5299#0#PHP" expanded="false" />
-            <element signature="e#4977#5226#0#PHP" expanded="false" />
             <element signature="e#5364#5546#0#PHP" expanded="false" />
-            <element signature="e#5551#6455#0#PHP" expanded="false" />
             <element signature="e#5809#6230#0#PHP" expanded="false" />
             <element signature="e#6461#7429#0#PHP" expanded="false" />
             <element signature="e#6728#7374#0#PHP" expanded="false" />
@@ -1120,46 +1181,164 @@
             <element signature="e#7889#8034#0#PHP" expanded="false" />
             <element signature="e#8040#8185#0#PHP" expanded="false" />
             <element signature="e#8191#11170#0#PHP" expanded="false" />
-            <marker date="1434137779797" expanded="false" signature="248:616" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="286:581" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="319:493" placeholder="{&quot;texto&quot;: &quot;EXTERNAL_FRAGMENT&quot;...}" />
-            <marker date="1434137779797" expanded="false" signature="2592:2838" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="2614:2819" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="2655:2742" placeholder="{&quot;format&quot;: &quot;dd/mm/yyyy&quot;...}" />
-            <marker date="1434137779797" expanded="false" signature="3085:3372" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="3107:3353" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="3148:3274" placeholder="{&quot;showMeridian&quot;: false...}" />
-            <marker date="1434137779797" expanded="false" signature="3922:4065" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="3944:4046" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="4127:4237" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="4149:4218" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="5900:6217" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="5929:6193" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="5998:6174" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="6252:6386" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="6282:6362" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="6819:7176" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="6848:7152" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="6917:7132" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="6987:7109" placeholder="{&quot;multiple&quot;: true...}" />
-            <marker date="1434137779797" expanded="false" signature="7221:7361" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="7251:7337" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="8400:11061" placeholder="..." />
-            <marker date="1434137779797" expanded="false" signature="8440:11034" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="8590:10845" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="8661:10691" placeholder="[...]" />
-            <marker date="1434137779797" expanded="false" signature="10732:10819" placeholder="{...}" />
-            <marker date="1434137779797" expanded="false" signature="10922:11014" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{&quot;texto&quot;: &quot;EXTERNAL_FRAGMENT&quot;...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{&quot;format&quot;: &quot;dd/mm/yyyy&quot;...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{&quot;showMeridian&quot;: false...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{&quot;multiple&quot;: true...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="[...]" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1434137779797" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Avaliacao/Cadastro.php">
+    <entry file="dbDummy://dbtable:/26ef5338/5adab088-8d3e-4d59-b461-28132d325358/ClassHub..Turma">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/MateriaCurso.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22326455" vertical-offset="1870" max-vertical-offset="4182">
-          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/CanalSocial.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.23077" vertical-offset="1533" max-vertical-offset="2142">
+          <caret line="119" column="0" selection-start-line="111" selection-start-column="12" selection-end-line="119" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/CursoBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/CanalSocialBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.35150376" vertical-offset="510" max-vertical-offset="1581">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
           <folding>
-            <marker date="1434137863520" expanded="true" signature="4434:4496" placeholder="..." />
+            <element signature="e#6#93#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvaliacaoBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6447368" vertical-offset="887" max-vertical-offset="1700">
+          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvaliacaoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7988722" vertical-offset="153" max-vertical-offset="1904">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Model/ClassHub/Aviso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.884615" vertical-offset="2171" max-vertical-offset="2771">
+          <caret line="152" column="27" selection-start-line="152" selection-start-column="27" selection-end-line="152" selection-end-column="27" />
+          <folding>
+            <element signature="e#7#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Controllers/PerfilController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.575188" vertical-offset="306" max-vertical-offset="1326">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/BLL/AvisoBLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0" vertical-offset="777" max-vertical-offset="1513">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <folding>
+            <element signature="e#6#76#0#PHP" expanded="true" />
+            <element signature="e#109#122#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Controllers/AvisoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1632">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+          <folding>
+            <element signature="e#6#69#0#PHP" expanded="true" />
+            <element signature="e#110#130#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/GDM/Views/Perfil/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1904">
+          <caret line="11" column="15" selection-start-line="6" selection-start-column="12" selection-end-line="11" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aviso/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="102" max-vertical-offset="1955">
+          <caret line="21" column="15" selection-start-line="17" selection-start-column="11" selection-end-line="21" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/Modules/ClassHub/Views/Aviso/Cadastro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.7539682" vertical-offset="176" max-vertical-offset="2363">
+          <caret line="90" column="75" selection-start-line="90" selection-start-column="75" selection-end-line="90" selection-end-column="75" />
+          <folding>
+            <marker date="1434401515530" expanded="true" signature="3828:3894" placeholder="..." />
+            <marker date="1434401515530" expanded="true" signature="4743:4809" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -20,10 +20,11 @@
       <primary-key name="PRIMARY" columns="AlunoId"/>
     </table>
     <table name="AlunoNota" schema="" catalog="ClassHub" type="TABLE">
-      <column name="AlunoNotaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="AvaliacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Nota" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="AlunoNotaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="AlunoNotaId"/>
     </table>
     <table name="Aula" schema="" catalog="ClassHub" type="TABLE">
       <column name="AulaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -66,11 +67,28 @@
       <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="AvaliacaoId"/>
     </table>
+    <table name="Aviso" schema="" catalog="ClassHub" type="TABLE">
+      <column name="AvisoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TurmaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Descricao" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Alerta" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="DataDe" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="DataAte" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="Tipo" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="AvisoId"/>
+    </table>
     <table name="CanalSocial" schema="" catalog="ClassHub" type="TABLE">
       <column name="CanalSocialId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="TurmaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Tipo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="Url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Login" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Senha" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="CanalSocialId"/>
     </table>
     <table name="Curso" schema="" catalog="ClassHub" type="TABLE">

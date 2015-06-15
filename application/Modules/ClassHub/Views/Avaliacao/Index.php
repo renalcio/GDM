@@ -72,7 +72,7 @@ if($Model->Lista->Count() > 0)
                                    value="<?= $Item->AulaId ?>"/></td>
                         <td><?=$Item->Escola->Nome;?></td>
                         <td><?=$Item->Materia->Titulo;?></td>
-                        <td><?=$Item->Materia->Titulo;?></td>
+                        <td><?=$Item->Turma->Semestre."S ".$Item->Turma->Ano." - ".$Item->Turma->Turno." - ".$Item->Turma->Curso->Titulo;?></td>
                         <td><?=$Item->Titulo;?></td>
                         <td><?=$Item->Data;?></td>
                         <td><?=($Item->Trabalho > 0) ? "Trabalho" : "Prova";?></td>

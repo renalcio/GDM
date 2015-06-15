@@ -144,6 +144,10 @@ class Aula
      */
     var $ListAulaArquivo;
 
+    /**
+     * @NotMapped
+     */
+    var $Turma;
 
 
     function __construct($AulaId = "",$MateriaId = "",$TurmaId = "",$ProfessorId = "",$Data = "",$HoraDe = "",$HoraAte = "",$Titulo = "",$Conteudo = "",$Sala = "",$PessoaId = ""){
@@ -173,6 +177,7 @@ class Aula
         $this->Professor = new Professor();
         $this->Escola = new Escola();
         $this->Curso = new Curso();
+        $this->Turma = new Turma();
 
         if(!empty($this->AulaId)){
 
@@ -193,6 +198,9 @@ class Aula
 
             if(!empty($this->EscolaId))
                 $this->Escola = $unitofwork->GetById(new Escola(), $this->EscolaId);
+
+            if(!empty($this->TurmaId))
+                $this->Turma = $unitofwork->GetById(new Turma(), $this->TurmaId);
 
         }
 

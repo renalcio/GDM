@@ -132,6 +132,11 @@ class Avaliacao
      */
     var $ListArquivo;
 
+    /**
+     * @NotMapped
+     */
+    var $Turma;
+
 
     function __construct($AvaliacaoId = "",$MateriaId = "",$TurmaId = "",$Titulo = "",$Data = "",$DataCadastro = "",$Peso = "",$Descricao = "",$Trabalho = ""){
 
@@ -160,6 +165,7 @@ class Avaliacao
         $this->Professor = new Professor();
         $this->Escola = new Escola();
         $this->Curso = new Curso();
+        $this->Turma = new Turma();
 
         if(!empty($this->AvaliacaoId)){
 
@@ -179,6 +185,9 @@ class Avaliacao
 
             if(!empty($this->AlunoId))
                 $this->Aluno = $unitofwork->GetById(new Aluno(), $this->AlunoId);
+
+            if(!empty($this->TurmaId))
+                $this->Turma = $unitofwork->GetById(new Turma(), $this->TurmaId);
 
         }
 
