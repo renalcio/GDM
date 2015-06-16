@@ -422,9 +422,23 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
                 </div>
             </div>
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
+            <script>
+                $(function(){
+                   $("#BuscaSidebarForm").submit(function(){
+                       var termo = $("#BuscaSidebar", this).val();
+                       $(".sidebar-menu li").hide();
+                       if(termo.length > 0){
+                           $(".sidebar-menu>li:contains('"+termo+"')").show();
+                       }else{
+                           $(".sidebar-menu li").show();
+                       }
+                       return false;
+                   });
+                });
+            </script>
+            <form action="#" method="get" id="BuscaSidebarForm" class="sidebar-form">
                 <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                    <input type="text" name="q" id="BuscaSidebar" class="form-control" placeholder="Pesquisar..."/>
               <span class="input-group-btn">
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>

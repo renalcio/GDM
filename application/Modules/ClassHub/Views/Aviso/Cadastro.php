@@ -1,6 +1,6 @@
 <?
 use Libs\Form;
-$Model = new \Model\ClassHub\Aviso();
+//$Model = new \Model\ClassHub\Aviso();
 //var_dump($Model);
 ?>
 
@@ -27,6 +27,13 @@ $Model = new \Model\ClassHub\Aviso();
             var ref = $(this).attr("ref"); // true | false (state)
         });
     });
+
+    function PreView(){
+        var titulo = $("#Titulo").val();
+        var descricao = $("#Descricao").val();
+        var tipo = $("#Tipo").val();
+        $("#AlertPreview").attr("class", "alert alert-dismissable alert-"+tipo).html('<h4>'+titulo+'</h4>').append(descricao).show();
+    }
 </script>
 
 <form method="post" enctype="multipart/form-data">
@@ -65,52 +72,51 @@ $Model = new \Model\ClassHub\Aviso();
                         "DataUrl" => URL."handler/turma/Select2" ))?>
                 </div>
 
-                <div class="col-md-4" for="txDataDe">
+                <div class="col-md-3" for="txDataDe">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "txDataDe");?>
                     </label>
                     <? Form::DatePicker("txDataDe", @$Model->txDataDe, ["class" => "form-control"])?>
                 </div>
 
-                <div class="col-md-4" for="txDataAte">
+                <div class="col-md-3" for="txDataAte">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "txDataAte");?>
                     </label>
                     <? Form::DatePicker("txDataAte", @$Model->txDataAte, ["class" => "form-control"])?>
                 </div>
 
-                <div class="col-md-4" for="Alerta">
+                <div class="col-md-1" for="Alerta">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "Alerta");?>
-                    </label>
-                    <? Form::Checkbox("Alerta", @$Model->Alerta, [
-                        "class" => "switch ".((@$Model->Alerta == 1) ? "checked" : ""),
-                        "data-size"=>"mini",
-                        "data-off-color"=>"danger",
-                        "data-on-text"=>"<i class='fa fa-check'></i>",
-                        "data-off-text" => "<i class='fa fa-times'></i>"]);?>
+                    </label><br>
+                    <? Form::Checkbox("Alerta", "1", @$Model->Alerta, [
+                            "class" => "switch ".((@$Model->Alerta == 1) ? "checked" : ""),
+                            "data-size" => "medium",
+                            "data-off-color" => "danger",
+                            "data-on-text" => "<i class='fa fa-check'></i>",
+                            "data-off-text" => "<i class='fa fa-times'></i>"]
+                    );?>
                 </div>
 
-
-                <div class="col-md-8" for="Titulo">
-                    <label>
-                        <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
-                    </label>
-                    <? Form::Text("Titulo", @$Model->Titulo, ["class" => "form-control"])?>
-                </div>
-
-                <div class="col-md-4" for="Tipo">
+                <div class="col-md-5" for="Tipo">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "Tipo");?>
                     </label>
                     <? Form::Select2("Tipo", @$Model->Tipo, [
-                        "default" => "Padrão",
-                        "primary" => "Destaque",
-                        "warning" => "Aviso",
-                        "danger" => "Vermelho",
                         "info" => "Informação",
-                        "success" => "Sucesso"
+                        "warning" => "Aviso",
+                        "danger" => "Alerta",
+                        "info" => "Sucesso"
                     ], ["class" => "form-control"])?>
+                </div>
+
+
+                <div class="col-md-12" for="Titulo">
+                    <label>
+                        <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
+                    </label>
+                    <? Form::Text("Titulo", @$Model->Titulo, ["class" => "form-control"])?>
                 </div>
 
                 <div class="col-md-12" for="Descricao">
@@ -124,8 +130,14 @@ $Model = new \Model\ClassHub\Aviso();
 
     </div>
 
+    <div class="alert" style="display: none" id="AlertPreview"></div>
+
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>
+            <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button>
+            <button type="button" onclick="PreView();" class="btn btn-default btn-sm pull-right"
+                    style="margin-right: 10px">Pré-visualizar</button>
+        </div>
     </div>
 </form>

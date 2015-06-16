@@ -285,6 +285,17 @@
       <column name="Metatags" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="SiteId"/>
     </table>
+    <table name="SiteMenu" schema="" catalog="GDM" type="TABLE">
+      <column name="SiteMenuId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="AplicacaoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SiteId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Icone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Pai" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Posicao" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="SiteMenuId"/>
+    </table>
     <table name="Usuario" schema="" catalog="GDM" type="TABLE">
       <column name="UsuarioId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Login" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>

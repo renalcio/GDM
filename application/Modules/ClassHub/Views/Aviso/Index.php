@@ -81,8 +81,8 @@ if($Model->Lista->Count() > 0)
                                 <i class="fa fa-bars" class="dropdown-toggle"
                                    data-toggle="dropdown"></i>
                                 <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->CanalSocialId)?>"><i class="fa fa-edit"></i>Editar</a></li>
-                                    <li><a onclick="Excluir(<?=@$Item->CanalSocialId;?>)"><i class="fa fa-trash-o"></i>
+                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AvisoId)?>"><i class="fa fa-edit"></i>Editar</a></li>
+                                    <li><a onclick="Excluir(<?=@$Item->AvisoId;?>)"><i class="fa fa-trash-o"></i>
                                             Excluir</a></li>
                                 </ul>
                             </div>

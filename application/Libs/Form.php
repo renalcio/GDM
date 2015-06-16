@@ -53,7 +53,7 @@ class Form
             {
                 foreach($htmlAttr as $k=>$attr)
                 {
-                    $html .= "$k='$attr' ";
+                    $html .= "$k=\"$attr\" ";
                 }
             }
 

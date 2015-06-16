@@ -6,7 +6,7 @@ function LoadMenuObj($Pai = 0)
     $menu = $pdo->select("SELECT * FROM ".DB_NAME.".Menu
                                         WHERE AplicacaoId='" . APP_ID . "'
                                         AND Pai = '$Pai'
-                                        ORDER BY Posicao ASC");
+                                        ORDER BY Posicao ASC", new stdClass(), true);
 
     if (is_array($menu) && count($menu) > 0) {
         for ($i = 0; $i < count($menu); $i++) {

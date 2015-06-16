@@ -1,9 +1,9 @@
 <?php
 
 /**
-* Model
+* DAL
 * @author: Gerador de Classe
-* @date: 13/04/2015 11:47:07
+* @date: 16/06/2015 17:15:19
 */
 
 namespace Model;
@@ -37,9 +37,9 @@ class MensagemPessoa
 /**
                  * @Name: DataLeitura
                  * @DisplayName: DataLeitura
-                 * @Type: varchar(255)
+                 * @Type: bigint(20)
                  */
- var $DataLeitura;
+ var $DataLeitura = 0;
 
 /**
                  * @Name: Copia
@@ -48,8 +48,36 @@ class MensagemPessoa
                  */
  var $Copia = 0;
 
+/**
+                 * @Name: Encaminhamento
+                 * @DisplayName: Encaminhamento
+                 * @Type: tinyint(1)
+                 */
+ var $Encaminhamento = 0;
 
-    function __construct($MensagemPessoaId = "",$MensagemId = "",$PessoaId = "",$DataLeitura = "",$Copia = ""){
+/**
+                 * @Name: RespostaId
+                 * @DisplayName: RespostaId
+                 * @Type: int(11)
+                 */
+ var $RespostaId = 0;
+
+/**
+                 * @Name: Apagada
+                 * @DisplayName: Apagada
+                 * @Type: tinyint(1)
+                 */
+ var $Apagada = 0;
+
+/**
+                 * @Name: Lida
+                 * @DisplayName: Lida
+                 * @Type: tinyint(1)
+                 */
+ var $Lida = 0;
+
+
+    function __construct($MensagemPessoaId = "",$MensagemId = "",$PessoaId = "",$DataLeitura = "",$Copia = "",$Encaminhamento = "",$RespostaId = "",$Apagada = "",$Lida = ""){
         
 
             $unitofwork = new UnitofWork();
@@ -61,6 +89,10 @@ class MensagemPessoa
   $this->PessoaId = $PessoaId;
   $this->DataLeitura = $DataLeitura;
   $this->Copia = $Copia;
+  $this->Encaminhamento = $Encaminhamento;
+  $this->RespostaId = $RespostaId;
+  $this->Apagada = $Apagada;
+  $this->Lida = $Lida;
 
         }
         

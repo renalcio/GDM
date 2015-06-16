@@ -1,9 +1,9 @@
 <?php
 
 /**
-* Model
+* DAL
 * @author: Gerador de Classe
-* @date: 13/04/2015 11:47:08
+* @date: 16/06/2015 17:15:19
 */
 
 namespace Model;

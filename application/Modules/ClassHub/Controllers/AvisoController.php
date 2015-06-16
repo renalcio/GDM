@@ -60,6 +60,7 @@ class AvisoController extends Controller
             //Valida Model via ModelState
             ModelState::ValidateModel($model);
 
+
             if(ModelState::isValid()) {
                 //Valida model via Model
                 $this->bll->Validar($model);

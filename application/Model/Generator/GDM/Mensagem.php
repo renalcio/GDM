@@ -1,9 +1,9 @@
 <?php
 
 /**
-* Model
+* DAL
 * @author: Gerador de Classe
-* @date: 13/04/2015 11:47:07
+* @date: 16/06/2015 17:15:19
 */
 
 namespace Model;
@@ -44,19 +44,12 @@ class Mensagem
 /**
                  * @Name: DataEnvio
                  * @DisplayName: DataEnvio
-                 * @Type: varchar(255)
+                 * @Type: bigint(20)
                  */
- var $DataEnvio;
-
-/**
-                 * @Name: Apagada
-                 * @DisplayName: Apagada
-                 * @Type: tinyint(4)
-                 */
- var $Apagada = 0;
+ var $DataEnvio = 0;
 
 
-    function __construct($MensagemId = "",$PessoaId = "",$Assunto = "",$Conteudo = "",$DataEnvio = "",$Apagada = ""){
+    function __construct($MensagemId = "",$PessoaId = "",$Assunto = "",$Conteudo = "",$DataEnvio = ""){
         
 
             $unitofwork = new UnitofWork();
@@ -68,7 +61,6 @@ class Mensagem
   $this->Assunto = $Assunto;
   $this->Conteudo = $Conteudo;
   $this->DataEnvio = $DataEnvio;
-  $this->Apagada = $Apagada;
 
         }
         

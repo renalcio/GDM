@@ -253,7 +253,7 @@
             </div>
             <script>
                 $(function() {
-                    $("#Icone").on("keyup blur", function() {
+                    $("#Icone").on("keyup blur change", function() {
                         var classe = $(this).val();
                         $("#menuIconediv i").attr("class", "fa " + classe);
                     });
@@ -263,12 +263,13 @@
                 <label>
                     Icone:
                 </label>
-                <div class="input-group">
-                    <div class="input-group-addon" id="menuIconediv">
-                        <i class="fa ">
-                        </i>
-                    </div>
+
+                <div class="input-group" id="menuIconediv" for="Icone">
+                    <span class="input-group-addon" id="icon-span"><i class="fa "></i></span>
                     <input type="text" class="form-control pull-right" id="Icone" name="Icone" />
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#iconeModal">Selecionar Icone</button>
+                    </div><!-- /btn-group -->
                 </div>
             </div>
         </div><!-- /.box-body -->
@@ -280,5 +281,60 @@
             </div>
         </div><!-- /.box-footer-->
     </div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $("#BuscaIcone").on("keypress keyup change",function(){
+                var termo = $(this).val();
+                if(termo.length > 0) {
+                    $("#iconeModal .fontawesome-icon-list div").hide();
+                    $("#iconeModal .fontawesome-icon-list div:contains('" + termo + "')").show();
+                }else{
+                    $("#iconeModal .fontawesome-icon-list div").show();
+                }
+            });
+
+            $("#iconeModal .fontawesome-icon-list div").click(function(){
+                var $ico = $(this).find("i");
+                $ico.removeClass("fa");
+                $ico.removeClass("fa-fw");
+                var classe = $ico.attr("class");
+                $ico.addClass("fa");
+                $ico.addClass("fa-fw");
+                $("#Icone").val(classe).change();
+                $('#iconeModal').modal('hide');
+            });
+        });
+    </script>
+    <style>
+        #iconeModal .fontawesome-icon-list div {
+            padding: 10px;
+        }
+        #iconeModal .fontawesome-icon-list div:hover {
+            background: #cecece;
+        }
+    </style>
+    <!-- Modal icone -->
+    <div class="modal fade" id="iconeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Selecione um Icone</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-4">
+                            <input type="text" id="BuscaIcone" class="pull-right form-control" placeholder="Pesquisar" />
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <?  \Libs\Helper::LoadModelView($Model, "icones", "notificacao");?>
+                </div>
+            </div>
         </div>
     </div>
