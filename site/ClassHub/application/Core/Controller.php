@@ -49,6 +49,8 @@ class Controller
         $str = file_get_contents(ROOT_URL.'assets.json');
         $json = json_decode($str, true);
         $this->jsonAssets = $json;
+        $this->HeaderLayout = "_templates/Header";
+        $this->FooterLayout = "_templates/Footer";
     }
 
     /**
@@ -90,41 +92,43 @@ class Controller
         $this->ModelView(null, $view, $controller, $header, $footer);
     }
 
-    public function ModelView($Model = "", $view = "", $controller = "", $header = "", $footer = ""){
+    public function Layout($header="", $footer=""){
+        $this->HeaderLayout = ucfirst($header);
+        $this->FooterLayout = ucfirst($footer);
+    }
+
+    public function Template($header="", $footer=""){
+        $this->Layout($header, $footer);
+    }
+
+    public function ModelView($Model = "", $view = "", $controller = ""){
         if(empty($view)) $view = Helper::getAction();
-        if(empty($header))  $header = "Header";
-        if(empty($footer))  $footer = "Footer";
         if(empty($controller)) $controller = Helper::getController();
         // load views
 
-        require APP . 'Views/_templates/' . ucfirst($header) . '.php';
+        if(!empty($this->HeaderLayout))
+            require APP . 'Views/' . ucfirst($this->HeaderLayout) . '.php';
 
 
-        if(empty($controller))
-            require APP . 'Views/' . ucfirst($view) . '.php';
+        /*if(empty($controller))
+            require APP . 'views/' . $view . '.php';
         else
-            require APP . 'Views/' . ucfirst($controller) . '/' . $view . '.php';
+            require APP . 'views/' . $controller . '/' . $view . '.php';
+        */
+        Helper::LoadModelView($Model, $view, $controller);
 
-
-        require APP . 'Views/_templates/' . ucfirst($footer) . '.php';
+        if(!empty($this->FooterLayout))
+            require APP . 'Views/' . ucfirst($this->FooterLayout) . '.php';
 
         //$this->PrintAssets();
     }
 
-    public function Redirect($view, $controller = "", $params = ""){
+    public function Redirect($view, $controller = "", $data = ""){
         if(empty($controller)) $controller = Helper::getController();
-        if(empty($view)) $view = "Index";
 
-        if(is_array($params)) {
-            $strPars = "";
-            foreach ($params as $par) {
-                $strPars .= $par.'/';
-            }
-        }else{
-            $strPars = $params;
-        }
+        $strUrl = Helper::getUrl($view, $controller, $data);
 
-        header('location: ' . URL . ucfirst($controller) . '/' . ucfirst($view) . '/'. $strPars);
+        header('location: ' . $strUrl . '');
     }
 
 

@@ -42,25 +42,7 @@ class AulaBLL extends BLL
         if($model->AulaId > 0)
         {
             $model = $this->unitofwork->GetById(new Aula(), $model->AulaId);
-            $arrFiles = FileHelper::DirList(UPLOAD_APP_DIR.'aulas\\'.$model->AulaId, ["thumbnail"]);
-            foreach($arrFiles as $dir=>$files){
-                if($dir != UsuarioHelper::GetUsuarioPessoaId()) {
-                    $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
-                    foreach ($files as $k => $file) {
-                        $addFile = new AulaArquivo();
-                        $addFile->PessoaId = $dir;
-                        $addFile->Pessoa = $autor;
-                        $addFile->Titulo = $file["title"];
-                        $addFile->Tamanho = $file["size"];
-                        $addFile->Url = $file["url"];
-                        $addFile->Tipo = $file["type"];
-                        $addFile->img = $file["img"];
-                        //var_dump($file);
-                        if($model->ListAulaArquivo == null) $model->ListAulaArquivo = new ListHelper();
-                        $model->ListAulaArquivo->Add($addFile);
-                    }
-                }
-            }
+
         }else{
             $model = new Aula();
         }
@@ -86,14 +68,8 @@ class AulaBLL extends BLL
 
                     $this->unitofwork->Update($model);
                 } else {
+                    $model->Compartilhado = 1;
                     $this->unitofwork->Insert($model);
-
-                    $UsuarioId = UsuarioHelper::GetUsuarioPessoaId();
-
-                    $PastaTemp = UPLOAD_APP_DIR.'aulas'.DIRECTORY_SEPARATOR.'0'.DIRECTORY_SEPARATOR.$UsuarioId;
-                    $PastaFinal = UPLOAD_APP_DIR.'aulas'.DIRECTORY_SEPARATOR.$model->AulaId.DIRECTORY_SEPARATOR.$UsuarioId;
-
-                    FileHelper::MoveDir($PastaTemp,$PastaFinal);
                 }
         }
         return $model;

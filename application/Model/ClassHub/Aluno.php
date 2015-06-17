@@ -43,6 +43,13 @@ class Aluno
     var $TurmaId = 0;
 
     /**
+     * @Name: Pontos
+     * @DisplayName: Pontos
+     * @Type: int(11)
+     */
+    var $Pontos = 0;
+
+    /**
      * @Name: ChaveRegistro
      * @DisplayName: Chave de Registro
      * @Type: varchar(255)

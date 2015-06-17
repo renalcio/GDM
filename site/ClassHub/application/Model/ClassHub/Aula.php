@@ -110,6 +110,13 @@ class Aula
     var $CursoId = 0;
 
     /**
+     * @Name: Compartilhado
+     * @DisplayName: Compartilhar com a turma (+10 pontos)
+     * @Type: tiny(1)
+     */
+    var $Compartilhado = 0;
+
+    /**
      * @NotMapped
      */
     var $Aluno;

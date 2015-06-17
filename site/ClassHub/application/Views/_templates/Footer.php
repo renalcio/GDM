@@ -1,12 +1,11 @@
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <footer class="main-footer">
-    <div class="container-fluid">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-    </div><!-- /.container -->
+    <div class="pull-right hidden-xs">
+        <b>Versão</b> Pre-alpha 0.01
+    </div>
+    <strong><?=date("Y", time());?> &copy; ClassHub - </strong> Todos os direitos
+    reservados.
 </footer>
 </div><!-- ./wrapper -->
 

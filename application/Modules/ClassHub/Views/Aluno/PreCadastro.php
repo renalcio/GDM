@@ -12,7 +12,7 @@ use Libs\Form;
             var EscolaId = $(this).val();
             $.get("<?=URL;?>handler/turma/Select2/"+EscolaId, function(data){
                 $("select.TurmaSelec2").html(data);
-                $("select.TurmaSelec2").val("").change();
+                $("select.TurmaSelec2").val("<?=@$Model->TurmaId?>").change();
             });
         });
     });
@@ -64,7 +64,7 @@ use Libs\Form;
             </div>
 
             <div class="form-group" for="Representante">
-                <? Form::Checkbox("Representante", @$Model->Representante,[
+                <? Form::Checkbox("Representante","1", @$Model->Representante,[
                     "class" => "minimal",
                     ((!empty($Model->Representante)) ? "checked" : "") => ((!empty($Model->Representante)) ? "checked" : "")
                 ]); ?>

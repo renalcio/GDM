@@ -27,4 +27,55 @@ class AlunoHelper extends Lib {
         return $clsAluno->AlunoId;
     }
 
+    public static function GetUsuarioEscolaId(){
+        $unitofwork = new UnitofWork();
+        $sessao = new SessionHelper("GDMAuth");
+        $PessoaId = $sessao->Ver("PessoaId");
+
+        $aluno = $unitofwork->Get(new Aluno(), "PessoaId = '".$PessoaId."'");
+
+        return $aluno->EscolaId;
+    }
+
+    public static function GetUsuarioAluno(){
+        $unitofwork = new UnitofWork();
+        $sessao = new SessionHelper("GDMAuth");
+        $PessoaId = $sessao->Ver("PessoaId");
+
+        $aluno = new Aluno();
+        $aluno = $unitofwork->Get(new Aluno(), "PessoaId = '".$PessoaId."'")->FirstOrDefault();
+        if(!isset($aluno) || empty($aluno))
+            $aluno = new Aluno();
+
+        return $aluno;
+    }
+
+    public static function AddPontos($Pontos, $AlunoId = 0){
+        $unitofwork = new UnitofWork();
+        $clsAluno = new Aluno();
+        if(empty($AlunoId))
+            $clsAluno = self::GetUsuarioAluno();
+        else
+            $clsAluno = $unitofwork->GetById(new Aluno(), $AlunoId);
+
+        $clsAluno->Pontos += $Pontos;
+
+        $unitofwork->Update($clsAluno);
+    }
+
+    public static function RemovePontos($Pontos, $AlunoId = 0){
+        self::AddPontos(-$Pontos, $AlunoId);
+    }
+
+    public static function GetPontos($AlunoId = 0){
+        $unitofwork = new UnitofWork();
+        $clsAluno = new Aluno();
+        if(empty($AlunoId))
+            $clsAluno = self::GetUsuarioAluno();
+        else
+            $clsAluno = $unitofwork->GetById(new Aluno(), $AlunoId);
+
+        return $clsAluno->Pontos;
+    }
+
 }

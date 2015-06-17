@@ -30,6 +30,7 @@ class UnitofWork {
     private $where = null;
 
     private $orderby = null;
+    private $groupby = null;
 
     private $limit = null;
     private $skip = null;
@@ -44,8 +45,6 @@ class UnitofWork {
 
     private $as;
 
-
-    private $groupby; /* TODO */
 
     public function __construct(){
         $this->pdo = new Database();
@@ -82,6 +81,7 @@ class UnitofWork {
                 }
             }
 
+            //var_dump($comparacoes);
             if(!empty($comparacoes))
                 $this->Where($comparacoes);
             else
@@ -113,7 +113,7 @@ class UnitofWork {
 
         $this->select = $nSelect;
 
-        //$this->BuildQuery();
+       // $this->BuildQuery();
         //echo $this->query;
 
         return clone $this;
@@ -127,7 +127,7 @@ class UnitofWork {
 
         $this->join .= $strJoin;
 
-        $this->where = $join->where;
+        $this->Where($join->where);
 
         //echo "<br>This Where: ".$this->where;
         //echo "<br>Join Where: ".$join->where;
@@ -155,7 +155,10 @@ class UnitofWork {
         return clone $this;
     }
 
-
+    public function GroupBy($group){
+        $this->groupby = $group;
+        return clone $this;
+    }
 
     public function Where($where){
         if($where != null) {
@@ -257,7 +260,7 @@ class UnitofWork {
 
     public function Update(&$objeto){
         $this->Initialize($objeto);
-       // print_r($this->lista);
+        // print_r($this->lista);
         $this->lista->For_Each(function($item) {
             //print_r($item);
             if(is_object($item))
@@ -461,6 +464,7 @@ class UnitofWork {
         $this->query = "SELECT " .$this->select. " FROM " .$this->from. (empty($this->as) ? "" : " AS ".$this->as).
             $this->join.
             (empty($this->where) ? "" : " WHERE". $this->where).
+            (empty($this->groupby) ? "" : " GROUP BY ". $this->groupby)." ".
             $this->orderby.
             $this->limit;
 

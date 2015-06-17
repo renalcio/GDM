@@ -35,4 +35,15 @@ class Datetime
         return date($formato, time());
     }
 
+    static public function Porcentagem($dataDe, $dataAte){
+        $hoje = self::Hoje("d/m/Y");
+        $begin= self::ToTime($dataDe);
+        $now = self::ToTime($hoje);
+        $end = self::ToTime($dataAte);
+
+        $percent = ($now-$begin) / ($end-$begin) * 100;
+
+        return $percent;
+    }
+
 }

@@ -39,6 +39,7 @@ use Libs\Form;
 Form::ValidationSummary();
 Form::Hidden("AulaId", @$Model->AulaId);
 Form::Hidden("AlunoId", @$Model->AlunoId);
+Form::Hidden("Compartilhado", @$Model->Compartilhado);
 ?>
 
 <div class="box box-primary">
@@ -135,112 +136,6 @@ Form::Hidden("AlunoId", @$Model->AlunoId);
 
 </div>
 
-
-
-<br>
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
-                Meus Arquivos
-            </h3>
-        </div>
-        <div class="box-body">
-<iframe height="400px" width="100%" src="<?=URL?>/Aula/upload/<?=$Model->AulaId?>" frameborder="0"
-        scrolling="no" id="uploadFrame"></iframe>
-            <script>
-                function renderModal(selector, html, options) {
-                    var parent = "div#FrameModals",
-                        $this = $(parent).find(selector);
-
-                    options = options || {};
-                    options.width = options.width || 'auto';
-
-                    if ($this.length == 0) {
-                        var selectorArr = selector.split(".");
-                        var $wrapper = $('<div class="modal fade ' + selectorArr[selectorArr.length-1] + '" tabindex="-1" role="dialog" aria-hidden="true"></div>').append(html);
-                        $this = $wrapper.appendTo(parent);
-                        $this.modal("show");
-                    } else {
-                        $this.html(html).modal("show");
-                    }
-
-
-                }
-            </script>
-            <div id="FrameModals">
-
-            </div>
-    </div>
-    </div>
-
-<div class="box box-primary">
-    <div class="box-header">
-        <h3 class="box-title">
-            Outros Arquivos
-        </h3>
-    </div>
-    <div class="box-body">
-        <table id="tbOutrosArquivos" class="table table-striped">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Arquivo</th>
-                <th>Autor</th>
-                <th>Tamanho</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?
-            if(!empty($Model->ListAulaArquivo) && $Model->ListAulaArquivo->Count() > 0) {
-                $Model->ListAulaArquivo->For_Each(function ($item, $i) {
-                    ?>
-                    <tr>
-                        <td><a class="btn btn-success btn-sm" href="<?= $item->Url; ?>" title="<?= $item->Titulo; ?>"
-                               target="_blank" download="<?= $item->Url; ?>"><i class="fa fa-download"></i></a>
-                            <? if ($item->img == true) { ?>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#ModalFileB_<?= $i; ?>">
-                                    <i class="fa fa-search-plus"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="ModalFileB_<?= $i; ?>" tabindex="-1" role="dialog"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Fechar"><span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h4 class="modal-title"><?= $item->Titulo; ?></h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img style="width: 100%; height: auto;" src="<?= $item->Url; ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <? } ?>
-                        </td>
-                        <td><?= $item->Titulo; ?></td>
-                        <td>
-                            <?= $item->Pessoa->Nome; ?>
-                        </td>
-                        <td><?= $item->Tamanho; ?></td>
-                    </tr>
-                <?
-                });
-            }else{
-                ?>
-                <td colspan="4">Nenhum Arquivo</td>
-            <?
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-lg-12">

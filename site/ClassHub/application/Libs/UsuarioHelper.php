@@ -1,6 +1,7 @@
 <?php
 namespace Libs;
 use Model\Aplicacao;
+use Model\ClassHub\Aluno;
 use Model\Menu;
 use Model\Perfil;
 use Model\Permissao;
@@ -211,5 +212,6 @@ class UsuarioHelper
 
         return false;
     }
+
 
 }

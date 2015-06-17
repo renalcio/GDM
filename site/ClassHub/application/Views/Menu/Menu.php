@@ -3,14 +3,14 @@ $controle = Libs\Helper::getController();
 function LoadMenuObj($Pai = 0)
 {
     $pdo = new Libs\Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
-    $menu = $pdo->select("SELECT * FROM ".DB_NAME.".Menu
+    $menu = $pdo->select("SELECT * FROM ".DB_NAME.".SiteMenu
                                         WHERE AplicacaoId='" . APP_ID . "'
                                         AND Pai = '$Pai'
                                         ORDER BY Posicao ASC");
 
     if (is_array($menu) && count($menu) > 0) {
         for ($i = 0; $i < count($menu); $i++) {
-            $menu[$i]->ListSubMenu = LoadMenuObj($menu[$i]->MenuId);
+            $menu[$i]->ListSubMenu = LoadMenuObj($menu[$i]->SiteMenuId);
         }
     }
 
@@ -28,7 +28,6 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
         <?
         $ref = -1;
         foreach ($menu as $MenuItem) {
-            if (Libs\UsuarioHelper::GetAcessoByUsuarioId($MenuItem->MenuId)) {
                 $ref++;
                 $classSubmenu = '';
                 if (isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
@@ -49,7 +48,6 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                         <ul class="treeview-menu">
                             <?php
                             foreach ($MenuItem->ListSubMenu as $SubItem) {
-                                if (Libs\UsuarioHelper::GetAcessoByUsuarioId($SubItem->MenuId)) {
                                     $ref++;
                                     $classSubmenu = '';
                                     if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
@@ -74,7 +72,6 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                                             <ul class="treeview-menu">
                                                 <?php
                                                 foreach ($SubItem->ListSubMenu as $SubSubItem) {
-                                                    if (Libs\UsuarioHelper::GetAcessoByUsuarioId($SubSubItem->MenuId)) {
                                                         ?>
                                                         <li>
                                                             <a href="<?= URL . $SubSubItem->Url; ?>">
@@ -82,18 +79,17 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                                                             </a>
                                                         </li>
                                                     <?php
-                                                    }
                                                 }
                                                 ?>
                                             </ul>
                                         <?php } ?>
                                     </li>
-                                <?php }
+                                <?php
                             }?>
                         </ul>
                     <?php } ?>
                 </li>
-            <?php }
+            <?php
         }?>
 
     </ul>

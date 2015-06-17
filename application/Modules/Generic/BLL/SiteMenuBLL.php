@@ -79,8 +79,6 @@ class SiteMenuBLL extends BLL
                                 $this->unitofwork->Delete(new Permissao(), "SiteMenuId='".$filho->SiteMenuId."' AND AplicacaoId = '".$App."'");
                             }
                         }
-                        //Exclui Permissões do Principal
-                        $this->unitofwork->Delete(new Permissao(), "SiteMenuId='".$SiteMenuItem["sitemenuid"]."' AND AplicacaoId = '".$App."'");
 
                         //Exclui principal
                         $this->unitofwork->Delete(new SiteMenu(), "SiteMenuId = '".$SiteMenuItem["sitemenuid"]."' OR Pai = '".$SiteMenuItem["sitemenuid"]."' AND AplicacaoId = '".$App."'");

@@ -76,8 +76,16 @@ define("MODULES", "Modules" . DIRECTORY_SEPARATOR); #Pasta de Aplicações
 $appsess = new \Libs\SessionHelper("GDMAuth"); #Session
 
 
-
 define('APPID', 4); #AplicacaoId
 define('APP_ID', 4); #AplicacaoId
 define('ROOT_URL', "http://127.0.0.1/GDM/"); #AplicacaoId
 define('PASTA', 'ClassHub'. DIRECTORY_SEPARATOR); #Pasta da Aplicacao
+
+//UPLOAD
+define('UPLOAD_GLOBAL_DIR', ROOT.'public'.DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR
+    .'files'.DIRECTORY_SEPARATOR);
+define('UPLOAD_APP_DIR', UPLOAD_GLOBAL_DIR.PASTA);
+
+
+//PONTOS
+define('PONTOSADD', 10);

@@ -319,7 +319,7 @@ class Form
                                     {name:'redo', className:'btn-grey'}
                                 ],
                             'wysiwyg': {
-                        fileUploadError: showErrorAlert
+                        //fileUploadError: showErrorAlert
                             }
                         });
                         $('#".$Nome."wysiwyg').on('keyup blur', function(){

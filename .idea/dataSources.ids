@@ -17,6 +17,7 @@
       <column name="Registrado" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="Representante" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="Pontos" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="AlunoId"/>
     </table>
     <table name="AlunoNota" schema="" catalog="ClassHub" type="TABLE">
@@ -40,6 +41,7 @@
       <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="Compartilhado" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <primary-key name="PRIMARY" columns="AulaId"/>
     </table>
     <table name="AulaArquivo" schema="" catalog="ClassHub" type="TABLE">
@@ -65,6 +67,7 @@
       <column name="EscolaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Compartilhado" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <primary-key name="PRIMARY" columns="AvaliacaoId"/>
     </table>
     <table name="Aviso" schema="" catalog="ClassHub" type="TABLE">

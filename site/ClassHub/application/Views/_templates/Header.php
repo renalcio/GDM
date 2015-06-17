@@ -44,7 +44,10 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
     ]);
 
     echo "\n<!--ASSETS-->\n";
-    $this->AddAsset(["fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter","moment", "ionslider", "bootstrap-typeahead", "jquery.cookie"]);
+    //$this->AddAsset(["fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter","moment", "ionslider", "bootstrap-typeahead", "jquery.cookie"]);
+
+    $this->AddAsset(["fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter",  "moment", "bootbox", "slimScroll", "timepicker", "jquery.cookie"]);
+
     $this->PrintAssets();
 
     echo "\n<!--/ASSETS-->\n";
@@ -58,51 +61,6 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
         "dist/js/functions.js"
     ]);
     ?>
-    <script>
-        $(function(){
-            var Resultados = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: '<?=URL?>handler/artista/Consulta/',
-                remote: '<?=URL?>handler/artista/Consulta/?query=%QUERY'
-            });
-
-            Resultados.initialize();
-
-            $('#navbar-search-input').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
-                name: 'busca-q',
-                displayKey: 'value',
-                source: Resultados.ttAdapter(),
-                templates: {
-                    empty: [
-                        '<p style="padding: 0 12px;">',
-                        'Nenhum artista encontrado, pressione enter para uma pesquisa personalizada',
-                        '</p>'
-                    ].join('\n'),
-                    suggestion: Handlebars.compile('<p>{{name}}</p>')
-                }
-            });
-            $('#navbar-search-input').on(['typeahead:selected'].join(' '), function(item){
-                var id = $(this).val();
-                $(this).val("");
-                //console.log(id);
-                location.href = "<?=URL?>Player/Index/"+id;
-            });
-
-            $('#navbar-search-input').keyup(function(e) {
-                if (e.keyCode == 13) {
-                    setTimeout(function(){
-                        $("#buscaForm").submit();
-                    }, 800);
-                }
-            });
-        });
-    </script>
-
     <style>
         * {
             -moz-user-select: none;

@@ -9,6 +9,11 @@ use Libs\Form;
         $('#avatar-modal').on('shown.bs.modal', function (e) {
             DropZone("drop-avatar", "drop-avatar-btn", "mouse-over");
         });
+
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
     });
 </script>
 

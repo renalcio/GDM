@@ -43,7 +43,7 @@ class ArtistaBLL extends BLL
     public function Save(Artista $model){
 
         if($model!=null) {
-            $this->md5 = md5(strtolower($this->Titulo));
+            $model->md5 = md5(strtolower($model->Titulo));
 
             if(empty($this->AplicacaoId))
                 $this->AplicacaoId = APPID;
