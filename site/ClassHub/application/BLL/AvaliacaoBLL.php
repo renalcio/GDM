@@ -18,7 +18,7 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
-use Model\ClassHub\AvaliacaoArquivo;
+use Model\ClassHub\Arquivo;
 use Model\Pessoa;
 use Libs\AlunoHelper;
 
@@ -34,6 +34,42 @@ class AvaliacaoBLL extends BLL
         parent::__construct();
     }
 
+    public function GetToDetails(Avaliacao $model)
+    {
+        $model->ListArquivo = new ListHelper();
+
+
+        if($model->AvaliacaoId > 0)
+        {
+            $model = $this->unitofwork->GetById(new Avaliacao(), $model->AvaliacaoId);
+            $model->ListArquivo = new ListHelper();
+            $arrFiles = FileHelper::DirList(UPLOAD_APP_DIR.'avaliacoes\\'.$model->AvaliacaoId, ["thumbnail"]);
+            foreach($arrFiles as $dir=>$files){
+                    $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
+                    foreach ($files as $k => $file) {
+                        $addFile = new Arquivo();
+                        $addFile->PessoaId = $dir;
+                        $addFile->Pessoa = $autor;
+                        $addFile->Titulo = $file["title"];
+                        $addFile->Tamanho = $file["size"];
+                        $addFile->Url = $file["url"];
+                        $addFile->Tipo = $file["type"];
+                        $addFile->img = $file["img"];
+                        //var_dump($file);
+                        //if(!isset($model->ListArquivo) or empty($model->ListArquivo)) $model->ListAvaliacaoArquivo = new ListHelper();
+                        $model->ListArquivo->Add($addFile);
+                    }
+            }
+        }else{
+            $model = new Avaliacao();
+            $clsAluno = AlunoHelper::GetUsuarioAluno();
+            $model->EscolaId = $clsAluno->EscolaId;
+            $model->CursoId = $clsAluno->Turma->CursoId;
+            $model->TurmaId = $clsAluno->TurmaId;
+        }
+        return $model;
+    }
+
     public function GetToEdit(Avaliacao $model)
     {
         $model->ListArquivo = new ListHelper();
@@ -47,7 +83,7 @@ class AvaliacaoBLL extends BLL
                 if($dir != UsuarioHelper::GetUsuarioPessoaId()) {
                     $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
                     foreach ($files as $k => $file) {
-                        $addFile = new AvaliacaoArquivo();
+                        $addFile = new Arquivo();
                         $addFile->PessoaId = $dir;
                         $addFile->Pessoa = $autor;
                         $addFile->Titulo = $file["title"];
@@ -70,20 +106,22 @@ class AvaliacaoBLL extends BLL
         }
         return $model;
     }
-
     public function GetToIndex($model)
     {
-        $TurmaId = \Libs\AlunoHelper::GetUsuarioAluno()->TurmaId;
-        $model->Lista = $this->unitofwork->Get(new Avaliacao(), "TurmaId = '".$TurmaId."'")->ToList();
+        $TurmaId = AlunoHelper::GetUsuarioAluno()->TurmaId;
+        $AlunoId = AlunoHelper::GetAlunoId();
+        $model->Lista = $this->unitofwork->Get(new Avaliacao(), "TurmaId = '".$TurmaId."' AND (Compartilhado = 1 OR
+        AlunoId = '".$AlunoId."')")->ToList();
+
         $model->clsProva = $this->unitofwork->Get(new Avaliacao(), "(STR_TO_DATE(Data,
-        '%d/%m/%Y') >= STR_TO_DATE('".date("d/m/Y", time())."', '%d/%m/%Y')) AND (Trabalho = 0)")->OrderBy("STR_TO_DATE
-        (Data,
-        '%d/%m/%Y')")->FirstOrDefault();
+        '%d/%m/%Y') >= STR_TO_DATE('".date("d/m/Y", time())."', '%d/%m/%Y')) AND (Trabalho = 0)  AND (Compartilhado = 1 OR
+        AlunoId = '".$AlunoId."')")->OrderBy("STR_TO_DATE
+        (Data, '%d/%m/%Y')")->FirstOrDefault();
 
         $model->clsTrabalho = $this->unitofwork->Get(new Avaliacao(), "(STR_TO_DATE(Data,
-        '%d/%m/%Y') >= STR_TO_DATE('".date("d/m/Y", time())."', '%d/%m/%Y')) AND (Trabalho = 1)")->OrderBy("STR_TO_DATE
-        (Data,
-        '%d/%m/%Y')")->FirstOrDefault();
+        '%d/%m/%Y') >= STR_TO_DATE('".date("d/m/Y", time())."', '%d/%m/%Y')) AND (Trabalho = 1)  AND (Compartilhado = 1 OR
+        AlunoId = '".$AlunoId."')")->OrderBy("STR_TO_DATE
+        (Data, '%d/%m/%Y')")->FirstOrDefault();
 
         return $model;
     }
@@ -109,7 +147,8 @@ class AvaliacaoBLL extends BLL
 
                     FileHelper::MoveDir($PastaTemp,$PastaFinal);
 
-                    AlunoHelper::AddPontos(PONTOSADD);
+                    if($model->Compartilhado > 0)
+                        AlunoHelper::AddPontos(PONTOSADD);
                 }
         }
         return $model;
@@ -118,7 +157,7 @@ class AvaliacaoBLL extends BLL
     public function Deletar($id){
         if($id > 0){
             $Model = $this->unitofwork->GetById(new Avaliacao(), $id);
-            $isTurma = ($Model->TurmaId == \Libs\AlunoHelper::GetUsuarioAluno()->TurmaId) ? true : false;
+            $isTurma = ($Model->TurmaId == AlunoHelper::GetUsuarioAluno()->TurmaId) ? true : false;
             if($isTurma) {
                 $this->unitofwork->Delete(new Avaliacao(), $id);
             }

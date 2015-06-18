@@ -52,7 +52,7 @@ Form::Hidden("Compartilhado", @$Model->Compartilhado);
     <div class="box-body">
 
             <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="form-group" for="Data">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "Data");?>
@@ -60,12 +60,18 @@ Form::Hidden("Compartilhado", @$Model->Compartilhado);
                     <? Form::DatePicker("Data", @$Model->Data, Array("class" => "form-control"))?>
                 </div>
             </div>
-            <div class="col-md-9" for="Titulo">
+            <div class="col-md-8" for="Titulo">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
                 </label>
                 <? Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"))?>
             </div>
+                <div class="col-md-2" for="Peso">
+                    <label>
+                        <?=\Libs\ModelState::DisplayName($Model, "Peso");?>
+                    </label>
+                    <? Form::Number("Peso", @$Model->Peso, Array("class" => "form-control"))?>
+                </div>
             </div>
         <div class="row">
             <div for="EscolaId" class="col-md-6">

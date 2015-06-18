@@ -36,6 +36,30 @@ class AvaliacaoController extends Controller
 
     /**
      *
+     * @Title: Detalhes
+     *
+     */
+    public function detalhes($id = 0)
+    {
+        $this->AddAsset(["bootstrap-markdown", "file-upload", "iCheck"]);
+        $this->Template("_templates/HeaderSemBarra", "_templates/FooterSemBarra");
+        // load views
+        $this->loadBLL();
+        $Model = new Avaliacao();
+        $Model->AvaliacaoId = $id;
+        $Model = $this->bll->GetToDetails($Model);
+        $isTurma = ($Model->TurmaId == \Libs\AlunoHelper::GetUsuarioAluno()->TurmaId) ? true : false;
+        if($isTurma || empty($Model->AvaliacaoId)) {
+            $this->ModelView($Model);
+        }else{
+            $this->Redirect("Index");
+        }
+        //var_dump($Model->ListAvaliacaoArquivo);
+
+    }
+
+    /**
+     *
      * @Title: Cadastro
      *
      */

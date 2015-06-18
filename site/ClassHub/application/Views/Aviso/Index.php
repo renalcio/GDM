@@ -5,20 +5,9 @@ if($Model->Lista->Count() > 0)
     ?>
     <script type="text/javascript">
         $(function() {
-            $("#listagem").dataTable({
-                "aoColumns": [ {"bSortable": false}, null, null, null, null, null, null, {"bSortable": false} ],
-                "fnDrawCallback" : function() {
-                    iChecks();
-                },
-                "order": [[ 1, "asc" ]]
-            });
-        });
-
-        function iChecks(){
-            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck('destroy');
             $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass: 'iradio_minimal-blue'
+                checkboxClass: 'icheckbox_square',
+                radioClass: 'icheckbox_square'
             });
 
             $(".chkDeleteAll").on('ifChecked', function(event){
@@ -28,7 +17,8 @@ if($Model->Lista->Count() > 0)
             $(".chkDeleteAll").on('ifUnchecked', function(event){
                 $(".chkDelete").iCheck('uncheck');
             });
-        }
+        });
+
         function Excluir(Id){
             bootbox.confirm('Deseja realmente excluir este item?', function(result){
                 if(result)
@@ -39,69 +29,59 @@ if($Model->Lista->Count() > 0)
     </script>
 <? } ?>
 <form method="post" action="<?=\Libs\Helper::getUrl("deletar");?>">
-<div class="box box-primary">
-    <div class="box-header">
-        <h3 class="box-title">Canal Social</h3>
-        <div class="box-tools pull-right">
-            <a href="<?=\Libs\Helper::getUrl("Cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
-                    fa-plus"></i> Novo Aviso</a>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label>
+                <input type="checkbox" data-toggle="tooltip" data-placement="top" title="Selecionar todos"
+                       class="chkDeleteAll chkDelete
+                minimal" /> Selecionar tudo
+            </label>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                <a href="<?=\Libs\Helper::getUrl("Cadastro")?>" class="btn btn-primary btn-md" style="color:#fff;" ><i class="fa
+                    fa-plus"></i></a>
+
+            </div>
+        </div>
+    </div><br>
+    <div class="clearfix"></div>
+
+    <div id="grid" class="row">
+        <div class="col-md-4">
+        <?
+        if($Model->Lista->Count() > 0)
+        {
+            $Model->Lista->For_Each(function ($Item, $i){
+                if($i > 0 AND $i % 3 == 0){
+                    echo ' </div><div class="col-md-4">';
+                }
+                ?>
+
+                    <div class="callout callout-<?=$Item->Tipo;?>" style="word-wrap:break-word;">
+                        <span class="pull-right"><input type="checkbox" class="chkDelete minimal"
+                                                          name="DeleteItems[<?= $i ?>]"
+                               value="<?= $Item->AvisoId ?>" /></span>
+                        <h4><?=$Item->Titulo;?></h4>
+                        <p><?=nl2br($Item->Descricao);?></p>
+                    </div>
+
+            <?
+            });
+        }else
+        {
+            echo "<div class='well'>Nenhum aviso</div>";
+        }
+        ?>
         </div>
     </div>
-    <div class="box-body">
-        <table id="listagem" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-                <th style="width:18px"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
-                <th>Escola</th>
-                <th>Curso</th>
-                <th>Turma</th>
-                <th>Titulo</th>
-                <th>Início</th>
-                <th>Fim</th>
-                <th style="width:18px" align="center"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?
-            if($Model->Lista->Count() > 0)
-            {
-                $Model->Lista->For_Each(function ($Item, $i){
-                    ?>
-                    <tr>
-                        <td><input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]"
-                                   value="<?= $Item->AulaId ?>"/></td>
-                        <td><?=$Item->Escola->Nome;?></td>
-                        <td><?=$Item->Curso->Titulo;?></td>
-                        <td><?=$Item->Turma->Semestre."S ".$Item->Turma->Ano." - ".$Item->Turma->Turno." - ".$Item->Turma->Curso->Titulo;?></td>
-                        <td><?=$Item->Titulo;?></td>
-                        <td><?=$Item->txDataDe;?></td>
-                        <td><?=$Item->txDataAte;?></td>
-                        <td align="center">
-                            <div class="btn-group">
-                                <i class="fa fa-bars" class="dropdown-toggle"
-                                   data-toggle="dropdown"></i>
-                                <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AvisoId)?>"><i class="fa fa-edit"></i>Editar</a></li>
-                                    <li><a onclick="Excluir(<?=@$Item->AvisoId;?>)"><i class="fa fa-trash-o"></i>
-                                            Excluir</a></li>
-                                </ul>
-                            </div>
+    <? if($Model->Lista->Count() > 0) { ?>
 
-                        </td>
-                    </tr>
-                <?
-                    });
-            }else
-            {
-                echo "<tr><td colspan='8'>Nenhum Registro</td></tr>";
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="box-footer">
-        <button type="submit" class="btn btn-default"><i class="fa fa-trash-o"></i> Apagar</button>
-    </div>
-</div>
+<script>
+    $(function(){
+
+    });
+</script>
+    <? } ?>
 </form>
 

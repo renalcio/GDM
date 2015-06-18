@@ -6,11 +6,11 @@ if($Model->Lista->Count() > 0)
     <script type="text/javascript">
         $(function() {
             $("#listagem").dataTable({
-                "aoColumns": [ {"bSortable": false}, null, null, null, {"bSortable": false} ],
+                "aoColumns": [ {"bSortable": false}, {"bSortable": false}, null, null, null, {"bSortable": false} ],
                 "fnDrawCallback" : function() {
                     iChecks();
                 },
-                "order": [[ 1, "asc" ]]
+                "order": [[ 2, "asc" ]]
             });
         });
 
@@ -40,6 +40,7 @@ if($Model->Lista->Count() > 0)
 
     <div class="row">
     <div class="col-md-6 col-xs-12">
+        <? if(!empty($Model->clsProva)){ ?>
         <div class="info-box bg-aqua">
             <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
             <div class="info-box-content">
@@ -54,9 +55,26 @@ if($Model->Lista->Count() > 0)
                   </span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
-    </div>
+        <? }else{
+            ?>
+            <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Próxima Prova </span>
+                <span class="info-box-number">Nenhuma prova encontrada</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                  <span class="progress-description">
 
+                  </span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        <?
+        } ?>
+    </div>
         <div class="col-md-6 col-xs-12">
+        <? if(!empty($Model->clsTrabalho)){ ?>
             <div class="info-box bg-green">
                 <span class="info-box-icon"><i class="fa fa-search"></i></span>
                 <div class="info-box-content">
@@ -72,6 +90,21 @@ if($Model->Lista->Count() > 0)
                   </span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
+            <? }else{ ?>
+                <div class="info-box bg-gray">
+                    <span class="info-box-icon"><i class="fa fa-search"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Próximo Trabalho </span>
+                        <span class="info-box-number">Nenhum trabalho encontrado</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                  <span class="progress-description">
+                  </span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            <?
+            } ?>
         </div>
 
     </div>
@@ -90,6 +123,7 @@ if($Model->Lista->Count() > 0)
             <thead>
             <tr>
                 <th style="width:18px"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
+                <th width="10px"></th>
                 <th>Titulo</th>
                 <th>Data</th>
                 <th>Tipo</th>
@@ -103,21 +137,34 @@ if($Model->Lista->Count() > 0)
                 $Model->Lista->For_Each(function ($Item, $i){
 
                     $isAutor = ($Item->AlunoId == \Libs\AlunoHelper::GetUsuarioAluno()->AlunoId) ? true : false;
+
+                    $dataArr = explode('/', $Item->Data);
+                $dataOrder = $dataArr[2].$dataArr[1].$dataArr[0];
                     ?>
                     <tr>
                         <td>
                             <input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]"
                                    value="<?= $Item->AvaliacaoId ?>"/>
                         </td>
+                        <td data-search="<?=strip_tags($Item->Descricao);?>">
+                            <? if($Item->Compartilhado > 0) {?>
+                                <i class="fa fa-users" data-toggle="tooltip" data-placement="top"
+                                   title="Compartilhado por <?=\Libs\Helper::Abreviar($Item->Aluno->Pessoa->Nome);
+                                   ?>"></i>
+                        <? }else{?>
+                                <i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="Não
+                                compartilhado"></i>
+                        <? }?>
+                        </td>
                         <td><?=$Item->Titulo;?></td>
-                        <td><?=$Item->Data;?></td>
+                        <td data-order="<?=$dataOrder;?>"><?=$Item->Data;?></td>
                         <td><?=($Item->Trabalho > 0) ? "Trabalho" : "Prova";?></td>
                         <td align="center">
                             <div class="btn-group">
                                 <i class="fa fa-bars" class="dropdown-toggle"
                                    data-toggle="dropdown"></i>
                                 <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="<?=\Libs\Helper::getUrl("detalhes","", $Item->AvaliacaoId)?>"><i class="fa fa-eye"></i>Detalhes</a></li>
+                                    <li><a href="<?=\Libs\Helper::getUrl("detalhes","", $Item->AvaliacaoId)?>" target="detailsFrame" onclick="$('#detailsModal').modal('show')"><i class="fa fa-eye"></i>Detalhes</a></li>
 
                                     <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AvaliacaoId)?>"><i class="fa fa-edit"></i>Editar</a></li>
                                     <li><a onclick="Excluir(<?=@$Item->AvaliacaoId;?>)"><i class="fa fa-trash-o"></i>
@@ -143,3 +190,24 @@ if($Model->Lista->Count() > 0)
 </div>
 </form>
 
+<!-- Large modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Detalhes da Avaliação</h4>
+            </div>
+            <div class="modal-body">
+                <iframe height="400px" width="100%" src="" frameborder="0"
+                        scrolling="no" id="detailsFrame" name="detailsFrame"></iframe>
+                <script>
+                    $(function(){
+                        var altura = $(window).height() - 200;
+                        $("#detailsFrame").height(altura);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

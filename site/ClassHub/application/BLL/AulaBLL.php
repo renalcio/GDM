@@ -5,7 +5,7 @@
  * Autor: renalcio.freitas
  * Data: 06/05/2015
  */
-namespace Modules\ClassHub\BLL;
+namespace BLL;
 use Core\BLL;
 use Libs\FileHelper;
 use Libs\ListHelper;
@@ -18,9 +18,9 @@ use Libs\ModelState;
 use Libs\Session;
 use Libs\Usuario;
 use Libs\Debug;
-use Model\ClassHub\AulaArquivo;
+use Model\ClassHub\Arquivo;
 use Model\Pessoa;
-use Modules\ClassHub\Libs\AlunoHelper;
+use Libs\AlunoHelper;
 
 class AulaBLL extends BLL
 {
@@ -32,6 +32,39 @@ class AulaBLL extends BLL
             exit('Database connection could not be established.');
         }
         parent::__construct();
+    }
+
+    public function GetToDetails(Aula $model)
+    {
+        $model->ListAulaArquivo = new ListHelper();
+        if($model->AulaId > 0)
+        {
+            $model = $this->unitofwork->GetById(new Aula(), $model->AulaId);
+            $arrFiles = FileHelper::DirList(UPLOAD_APP_DIR.'aulas\\'.$model->AulaId, ["thumbnail"]);
+            foreach($arrFiles as $dir=>$files){
+                    $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
+                    foreach ($files as $k => $file) {
+                        $addFile = new Arquivo();
+                        $addFile->PessoaId = $dir;
+                        $addFile->Pessoa = $autor;
+                        $addFile->Titulo = $file["title"];
+                        $addFile->Tamanho = $file["size"];
+                        $addFile->Url = $file["url"];
+                        $addFile->Tipo = $file["type"];
+                        $addFile->img = $file["img"];
+                        //var_dump($file);
+                        if($model->ListAulaArquivo == null) $model->ListAulaArquivo = new ListHelper();
+                        $model->ListAulaArquivo->Add($addFile);
+                    }
+            }
+        }else{
+            $model = new Aula();
+            $clsAluno = AlunoHelper::GetUsuarioAluno();
+            $model->EscolaId = $clsAluno->EscolaId;
+            $model->CursoId = $clsAluno->Turma->CursoId;
+            $model->TurmaId = $clsAluno->TurmaId;
+        }
+        return $model;
     }
 
     public function GetToEdit(Aula $model)
@@ -47,7 +80,7 @@ class AulaBLL extends BLL
                 if($dir != UsuarioHelper::GetUsuarioPessoaId()) {
                     $autor = $this->unitofwork->GetById(new Pessoa(), $dir);
                     foreach ($files as $k => $file) {
-                        $addFile = new AulaArquivo();
+                        $addFile = new Arquivo();
                         $addFile->PessoaId = $dir;
                         $addFile->Pessoa = $autor;
                         $addFile->Titulo = $file["title"];
@@ -63,15 +96,21 @@ class AulaBLL extends BLL
             }
         }else{
             $model = new Aula();
+            $clsAluno = AlunoHelper::GetUsuarioAluno();
+            $model->EscolaId = $clsAluno->EscolaId;
+            $model->CursoId = $clsAluno->Turma->CursoId;
+            $model->TurmaId = $clsAluno->TurmaId;
         }
         return $model;
     }
 
     public function GetToIndex($model)
     {
-        $TurmaId = \Libs\AlunoHelper::GetUsuarioAluno()->TurmaId;
+        $TurmaId = AlunoHelper::GetUsuarioAluno()->TurmaId;
+        $AlunoId = AlunoHelper::GetAlunoId();
 
-        $model->Lista = $this->unitofwork->Get(new Aula(), "TurmaId = '".$TurmaId."'")->ToList();
+        $model->Lista = $this->unitofwork->Get(new Aula(), "TurmaId = '".$TurmaId."' AND (Compartilhado = 1 OR
+        AlunoId = '".$AlunoId."')")->ToList();
 
         return $model;
     }
@@ -96,7 +135,8 @@ class AulaBLL extends BLL
 
                     FileHelper::MoveDir($PastaTemp,$PastaFinal);
 
-                    AlunoHelper::AddPontos(PONTOSADD);
+                    if($model->Compartilhado > 0)
+                        AlunoHelper::AddPontos(PONTOSADD);
                 }
         }
         return $model;

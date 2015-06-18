@@ -6,7 +6,7 @@
  * Data: 15/06/2015
  *
  */
-namespace Modules\ClassHub\Controllers;
+namespace Controllers;
 use Core\Controller;
 use Libs\Helper;
 use Libs\ModelState;
@@ -26,7 +26,7 @@ class AvisoController extends Controller
 	 */
     public function index()
     {
-        $this->AddAsset(["iCheck"]);
+        $this->AddAsset(["iCheck", "grid"]);
         $this->loadBLL();
         $Model = new \stdClass();
         $Model = $this->bll->GetToIndex($Model);

@@ -41,7 +41,7 @@ if($Model->Lista->Count() > 0)
 <form method="post" action="<?=\Libs\Helper::getUrl("deletar");?>">
 <div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-title">Canal Social</h3>
+        <h3 class="box-title">Avisos</h3>
         <div class="box-tools pull-right">
             <a href="<?=\Libs\Helper::getUrl("Cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
                     fa-plus"></i> Novo Aviso</a>
@@ -69,7 +69,7 @@ if($Model->Lista->Count() > 0)
                     ?>
                     <tr>
                         <td><input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]"
-                                   value="<?= $Item->AulaId ?>"/></td>
+                                   value="<?= $Item->AvisoId ?>"/></td>
                         <td><?=$Item->Escola->Nome;?></td>
                         <td><?=$Item->Curso->Titulo;?></td>
                         <td><?=$Item->Turma->Semestre."S ".$Item->Turma->Ano." - ".$Item->Turma->Turno." - ".$Item->Turma->Curso->Titulo;?></td>

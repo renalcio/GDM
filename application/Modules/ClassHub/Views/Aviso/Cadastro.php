@@ -39,7 +39,7 @@ use Libs\Form;
 <form method="post" enctype="multipart/form-data">
     <?
     Form::ValidationSummary();
-    Form::Hidden("AvaliacaoId", @$Model->AvaliacaoId);
+    Form::Hidden("AvisoId", @$Model->AvisoId);
     Form::Hidden("AlunoId", @$Model->AlunoId);
     ?>
 
@@ -107,7 +107,7 @@ use Libs\Form;
                         "info" => "Informação",
                         "warning" => "Aviso",
                         "danger" => "Alerta",
-                        "info" => "Sucesso"
+                        "success" => "Sucesso"
                     ], ["class" => "form-control"])?>
                 </div>
 

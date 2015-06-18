@@ -10,7 +10,7 @@ namespace Model\ClassHub;
 
 use Libs\UnitofWork;
 
-class AulaArquivo
+class Arquivo
 {
     /**
      * @PrimaryKey

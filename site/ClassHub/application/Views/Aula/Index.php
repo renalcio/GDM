@@ -6,11 +6,11 @@ if($Model->Lista->Count() > 0)
     <script type="text/javascript">
         $(function() {
             $("#listagem").dataTable({
-                "aoColumns": [ {"bSortable": false}, null, null, null, null, null, null, null, null, {"bSortable": false} ],
+                "aoColumns": [ {"bSortable": false}, {"bSortable": false},  null, null, null, null, null, {"bSortable": false} ],
                 "fnDrawCallback" : function() {
                     iChecks();
                 },
-                "order": [[ 1, "asc" ]]
+                "order": [[ 2, "asc" ]]
             });
         });
 
@@ -52,11 +52,9 @@ if($Model->Lista->Count() > 0)
             <thead>
             <tr>
                 <th style="width:18px"><input type="checkbox" class="chkDeleteAll chkDelete minimal" /></th>
-                <th>Escola</th>
+                <th width="10px"></th>
                 <th>Materia</th>
-                <th>Turma</th>
                 <th>Professor</th>
-                <th>Autor</th>
                 <th>Data</th>
                 <th>De</th>
                 <th>Até</th>
@@ -68,15 +66,25 @@ if($Model->Lista->Count() > 0)
             if($Model->Lista->Count() > 0)
             {
                 $Model->Lista->For_Each(function ($Item, $i){
+
+                    $dataArr = explode('/', $Item->Data);
+                    $dataOrder = $dataArr[2].$dataArr[1].$dataArr[0];
                     ?>
                     <tr>
                         <td><input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]"
                                    value="<?= $Item->AulaId ?>"/></td>
-                        <td><?=$Item->Escola->Nome;?></td>
-                        <td><?=$Item->Materia->Titulo;?></td>
+                        <td data-search="<?=strip_tags($Item->Conteudo);?>">
+                            <? if($Item->Compartilhado > 0) {?>
+                                <i class="fa fa-users" data-toggle="tooltip" data-placement="top"
+                                   title="Compartilhado por <?=\Libs\Helper::Abreviar($Item->Aluno->Pessoa->Nome);
+                                   ?>"></i>
+                            <? }else{?>
+                                <i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="Não
+                                compartilhado"></i>
+                            <? }?>
+                        </td>
                         <td><?=$Item->Turma->Semestre."S ".$Item->Turma->Ano." - ".$Item->Turma->Turno." - ".$Item->Turma->Curso->Titulo;?></td>
                         <td><?=$Item->Professor->Pessoa->Nome;?></td>
-                        <td><?=$Item->Aluno->Pessoa->Nome;?></td>
                         <td><?=$Item->Data;?></td>
                         <td><?=$Item->HoraDe;?></td>
                         <td><?=$Item->HoraAte;?></td>
@@ -85,6 +93,7 @@ if($Model->Lista->Count() > 0)
                                 <i class="fa fa-bars" class="dropdown-toggle"
                                    data-toggle="dropdown"></i>
                                 <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="<?=\Libs\Helper::getUrl("detalhes","", $Item->AulaId)?>" target="detailsFrame" onclick="$('#detailsModal').modal('show')"><i class="fa fa-eye"></i>Detalhes</a></li>
                                     <li><a href="<?=\Libs\Helper::getUrl("cadastro","", $Item->AulaId)?>"><i class="fa fa-edit"></i>Editar</a></li>
                                     <li><a onclick="Excluir(<?=@$Item->AulaId;?>)"><i class="fa fa-trash-o"></i> Excluir</a></li></ul>
                             </div>
@@ -106,4 +115,26 @@ if($Model->Lista->Count() > 0)
     </div>
 </div>
 </form>
+
+<!-- Large modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Detalhes da Aula</h4>
+            </div>
+            <div class="modal-body">
+                <iframe height="400px" width="100%" src="" frameborder="0"
+                        scrolling="no" id="detailsFrame" name="detailsFrame"></iframe>
+                <script>
+                    $(function(){
+                        var altura = $(window).height() - 200;
+                        $("#detailsFrame").height(altura);
+                    });
+                </script>
+        </div>
+        </div>
+    </div>
+</div>
 

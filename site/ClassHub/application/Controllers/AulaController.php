@@ -6,7 +6,7 @@
  * Data: 06/05/2015
  *
  */
-namespace Modules\ClassHub\Controllers;
+namespace Controllers;
 use Core\Controller;
 use Model\ClassHub\Aula;
 use Libs\Helper;
@@ -52,6 +52,25 @@ class AulaController extends Controller
 
     }
 
+    /**
+     *
+     * @Title: Cadastro
+     *
+     */
+    public function detalhes($id = 0)
+    {
+        $this->AddAsset(["bootstrap-markdown", "file-upload"]);
+        $this->Template("_templates/HeaderSemBarra", "_templates/FooterSemBarra");
+        // load views
+        $this->loadBLL();
+        $Model = new Aula();
+        $Model->AulaId = $id;
+        $Model = $this->bll->GetToDetails($Model);
+        $this->ModelView($Model);
+        //var_dump($Model->ListAulaArquivo);
+
+    }
+
 	/**
 	 *
 	 * @Title: Cadastro
@@ -60,7 +79,7 @@ class AulaController extends Controller
     public function upload($id = 0)
     {
         $this->AddAsset(["bootstrap-markdown", "file-upload"]);
-        $this->Template("ClassHub/HeaderSemBarra", "ClassHub/FooterSemBarra");
+        $this->Template("_templates/HeaderSemBarra", "_templates/FooterSemBarra");
         // load views
         $this->loadBLL();
         $Model = new Aula();

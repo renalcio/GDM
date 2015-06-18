@@ -32,7 +32,7 @@ Form::Hidden("CursoId", @$Model->CursoId);
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group" for="Data">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "Data");?>
@@ -40,7 +40,7 @@ Form::Hidden("CursoId", @$Model->CursoId);
                     <? Form::DatePicker("Data", @$Model->Data, Array("class" => "form-control"))?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="form-group" for="HoraDe">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "HoraDe");?>
@@ -48,7 +48,7 @@ Form::Hidden("CursoId", @$Model->CursoId);
                     <? Form::TimePicker("HoraDe", @$Model->HoraDe, Array("class" => "form-control"))?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="form-group" for="HoraAte">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "HoraAte");?>
@@ -57,20 +57,22 @@ Form::Hidden("CursoId", @$Model->CursoId);
                 </div>
             </div>
 
-            <div for="EscolaId" class="col-md-6">
+            <div class="col-md-5" for="Compartilhado">
                 <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "EscolaId");?>
-                </label>
-                <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control EscolaIdSelect", "DataUrl" => URL."handler/escola/Select2" ))?>
+                    <?=\Libs\ModelState::DisplayName($Model, "Compartilhado");?>
+                </label><br>
+                <? Form::Checkbox("Compartilhado", "1", @$Model->Compartilhado, [
+                        "class" => "switch ".((@$Model->Compartilhado == 1) ? "checked" : ""),
+                        "data-size" => "medium",
+                        "data-off-color" => "danger",
+                        "data-on-text" => "<i class='fa fa-check'></i>",
+                        "data-off-text" => "<i class='fa fa-times'></i>"]
+                );?>
             </div>
-            <div for="CursoId" class="col-md-6">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "CursoId");?>
-                </label>
-                <? Form::Select2("CursoId", @$Model->CursoId, "", Array("class" => "form-control CursoIdSelect", "DataUrl" => URL."handler/curso/Select2" ))?>
             </div>
+        <div class="row">
 
-            <div for="MateriaId" class="col-md-4">
+            <div for="MateriaId" class="col-md-6">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "MateriaId");?>
                 </label>
@@ -78,20 +80,16 @@ Form::Hidden("CursoId", @$Model->CursoId);
                     MateriaIdSelect", "DataUrl" => URL."handler/materia/Select2" ))?>
             </div>
 
-            <div for="TurmaId" class="col-md-4">
-                <label>
-                    <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
-                </label>
-                <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control TurmaIdSelect",
-                    "DataUrl" => URL."handler/turma/Select2" ))?>
-            </div>
-            <div for="ProfessorId" class="col-md-4">
+            <div for="ProfessorId" class="col-md-6">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "ProfessorId");?>
                 </label>
                 <? Form::Select2("ProfessorId", @$Model->ProfessorId, "", Array("class" => "form-control
                     ProfessorIdSelect", "DataUrl" => URL."handler/professor/Select2" ))?>
             </div>
+
+        </div>
+        <div class="row">
 
             <div class="col-md-1" for="Sala">
                 <label>
@@ -106,6 +104,10 @@ Form::Hidden("CursoId", @$Model->CursoId);
                 </label>
                 <? Form::Text("Titulo", @$Model->Titulo, Array("class" => "form-control"))?>
             </div>
+
+        </div>
+        <div class="row">
+
 
             <div class="col-md-12" for="Conteudo">
                 <label>

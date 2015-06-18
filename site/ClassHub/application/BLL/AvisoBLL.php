@@ -5,7 +5,7 @@
  * Autor: TANDA
  * Data: 15/06/2015
  */
-namespace Modules\ClassHub\BLL;
+namespace BLL;
 use Core\BLL;
 use Libs\Database;
 use Libs\Helper;
