@@ -50,10 +50,24 @@ class Avaliacao
 
     /**
      * @Name: Data
-     * @DisplayName: Data de Entrega
+     * @DisplayName: Data
      * @Type: varchar(255)
      */
     var $Data;
+
+    /**
+     * @Name: HoraInicio
+     * @DisplayName: Início
+     * @Type: varchar(50)
+     */
+    var $HoraInicio;
+
+    /**
+     * @Name: HoraFim
+     * @DisplayName: Fim
+     * @Type: varchar(50)
+     */
+    var $HoraFim;
 
     /**
      * @Name: DataCadastro
@@ -162,10 +176,12 @@ class Avaliacao
             $this->Descricao = $Descricao;
             $this->Trabalho = $Trabalho;
 
-        }else{
-            $this->Data = date("d/m/Y", time());
-            $this->DataCadastro = date("d/m/Y", time());
         }
+
+        if(empty($this->Data))
+            $this->Data = date("d/m/Y", time());
+        if(empty($this->DataCadastro))
+            $this->DataCadastro = date("d/m/Y", time());
 
         $this->Aluno = new Aluno();
         $this->Materia = new Materia();

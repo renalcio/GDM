@@ -68,6 +68,8 @@
       <column name="CursoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="AlunoId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Compartilhado" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="HoraInicio" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HoraFim" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="AvaliacaoId"/>
     </table>
     <table name="Aviso" schema="" catalog="ClassHub" type="TABLE">

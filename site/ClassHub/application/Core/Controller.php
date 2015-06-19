@@ -23,11 +23,15 @@ class Controller
     public $jsonAssets = null;
 
     private $assetCss = null;
-
     private $assetJs = null;
 
-    private $assetIeCss = null;
+    private $defaultCss = null;
+    private $defaultJs = null;
+    private $defaultIeCss = null;
+    private $defaultIeJs = null;
 
+
+    private $assetIeCss = null;
     private $assetIeJs = null;
 
     public $ControllerTitle = null;
@@ -153,6 +157,14 @@ class Controller
                     }
                 }
 
+                //PRINT
+                if(isset($assetItem["print"]) && !empty($assetItem["print"])) {
+                    if(isset($assetItem["print"]["css"]) && !empty($assetItem["print"]["css"])) {
+                        foreach($assetItem["print"]["css"] as $kie => $item){
+                            $this->assetCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" media='print' />\n\r";
+                        }
+                    }
+                }
                 //IE
                 //var_dump($assetItem);
                 if(isset($assetItem["ie"]) && !empty($assetItem["ie"])) {
@@ -174,21 +186,80 @@ class Controller
         }
     }
 
+    public function AddDefaultAsset($asset){
+        if(is_array($asset)){
+            foreach($asset as $as){
+                $this->AddDefaultAsset($as);
+            }
+        }else{
+            $assetItem = $this->jsonAssets[$asset];
+            //var_dump($assetItem);
+            if(isset($assetItem) && !empty($assetItem)){
+                if(isset($assetItem["css"]) && !empty($assetItem["css"])) {
+                    foreach($assetItem["css"] as $k => $item){
+                        $this->defaultCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
+                    }
+                }
+
+                if(isset($assetItem["js"]) && !empty($assetItem["js"])) {
+                    foreach($assetItem["js"] as $k => $item){
+                        $this->defaultJs .= "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
+                    }
+                }
+
+                //PRINT
+                if(isset($assetItem["print"]) && !empty($assetItem["print"])) {
+                    if(isset($assetItem["print"]["css"]) && !empty($assetItem["print"]["css"])) {
+                        foreach($assetItem["print"]["css"] as $kie => $item){
+                            $this->assetCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" media='print' />\n\r";
+                        }
+                    }
+                }
+
+                //IE
+                //var_dump($assetItem);
+                if(isset($assetItem["ie"]) && !empty($assetItem["ie"])) {
+
+                    if(isset($assetItem["ie"]["js"]) && !empty($assetItem["ie"]["js"])) {
+                        foreach($assetItem["ie"]["js"] as $kie => $item){
+                            $this->defaultIeJs .= "<script src=\"".$item."\" type=\"text/javascript\"></script>\n\r";
+                        }
+                    }
+
+                    if(isset($assetItem["ie"]["css"]) && !empty($assetItem["ie"]["css"])) {
+                        foreach($assetItem["ie"]["css"] as $kie => $item){
+                            $this->defaultIeCss .= "<link href=\"".$item."\"  rel=\"stylesheet\" type=\"text/css\" />\n\r";
+                        }
+                    }
+                }
+                //var_dump($this->assetIeJs);
+            }
+        }
+    }
+
     public function Asset($asset){
         $this->AddAsset($asset);
     }
 
+    public function DefaultAsset($asset){
+        $this->AddDefaultAsset($asset);
+    }
+
     private function PrintAssets(){
         echo "\n<!--CSS-->\n";
+        echo $this->defaultCss;
         echo $this->assetCss;
         echo "\n<!--JAVASCRIPT-->\n";
+        echo $this->defaultJs;
         echo $this->assetJs;
         echo "\n<!--IE-->\n";
         echo "\n<!--[if (gte IE 8)&(lt IE 10)]>\n";
         #CSS
+        echo $this->defaultIeCss;
         echo $this->assetIeCss;
         #JS
         echo $this->assetIeJs;
+        echo $this->defaultIeJs;
         echo "\n<![endif]-->\n";
 
     }

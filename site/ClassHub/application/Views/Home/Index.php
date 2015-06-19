@@ -1,67 +1,54 @@
 <?
 use Libs\ArrayHelper;
 use DAL\Site;
+use Libs\Helper;
 ?>
-    <h2>You are in the View: application/views/home/index.php (everything in the box comes from this file)</h2>
-    <p>
-    <form method="post">
-        Grupo 0 -> Titulo
-        <input type="text" id="Grupo__1_Titulo" name="Grupo[0]_Titulo">
-        Grupo 1 -> Titulo
-        <input type="text" id="Grupo__1_Titulo" name="Grupo[1]_Titulo">
-        <button type="submit">Vai</button>
-    </form>
+<div class="row">
+</div>
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6"></div>
+</div>
+<div class="row">
+    <div class="col-md-7"><?  Helper::LoadView("index", "calendario");?></div>
 
-    <?
+    <div class="col-md-5">
+        <? if($Model->ListAvaliacao->Count() > 0){
+            $Model->ListAvaliacao->For_Each(function($item, $i){
+                ?>
+                <div class="info-box <?=($item->Trabalho > 0) ? "bg-yellow" : "bg-red";?>">
+                            <span class="info-box-icon"><i class="ion <?=($item->Trabalho > 0) ? "ion-ios-copy-outline" :
+                                    "ion-ios-list-outline";
+                                ?>"></i></span>
+                    <div class="info-box-content">
+                    <span class="info-box-text"><?=($item->Trabalho > 0) ? "Trabalho" : "Prova";?> <span class="pull-right"><?=$item->Data;
+                            ?></span> </span>
+                <span class="info-box-number"><?=$item->Materia->Titulo;?> <span
+                        class="pull-right">Peso <?=$item->Peso;?></span> </span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: <?= 100 - \Libs\Datetime::IntervaloDias(date("d/m/Y"), $item->Data);?>%"></div>
+                        </div>
+                  <span class="progress-description">
+                      <?=$item->Titulo;?>
+                  </span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            <?
+            });?>
 
-    $time = microtime(1);
-    $mem = memory_get_usage();
-
-    $uow = new \Libs\UnitofWork();
-
-    $retorno = $uow->Get(new \DAL\Usuario())->Join($uow->Get(new \DAL\Pessoa()), "u.PessoaId", "p.PessoaId")->LeftJoin($uow->Get(new \DAL\PessoaFisica()), "p.PessoaId", "pf.PessoaId")->LeftJoin($uow->Get(new \DAL\PessoaJuridica()), "p.PessoaId", "pj.PessoaId")->Where("(p.PessoaId
-= pf
-.PessoaId AND pf.CPF = '') OR
- (p.PessoaId = pj.PessoaId AND pj.CNPJ = '')")->Select("u.*", new \DAL\Usuario());
-
-    $retorno->BuildQuery();
-    echo $retorno->query;
-
-    echo '<br>Tempo: ', (microtime(1) - $time), "s\n";
-    echo '<br>Memória: ', (memory_get_usage() - $mem) / (1024 * 1024) . " Mb";
-
-    var_dump($artistas);
-
-    /**
-    SELECT p.*
-    FROM
-    GDM.Pessoa p,
-    GDM.PessoaAplicacao pa,
-    GDM.Aplicacao a
-    WHERE a.AplicacaoId = '3'
-    AND pa.AplicacaoId = a.AplicacaoId
-    AND p.PessoaId = pa.PessoaId
-
-    SELECT GDM.Pessoa.* FROM GDM.Pessoa
-    INNER JOIN GDM.Aplicacao
-    INNER JOIN GDM.PessoaAplicacao ON GDM.PessoaAplicacao.PessoaId = GDM.Pessoa.PessoaId AND GDM.PessoaAplicacao
-    .AplicacaoId = GDM.Aplicacao.AplicacaoId
-    WHERE GDM.Aplicacao.AplicacaoId = '3'
-
-
-    Ideias:
-    Criar um Objeto de Retorno como stdClass e nele adicionar objetos com os tipos especificados no JOIN
-    ex:
-    Sem join: $retorno->Get = Objeto do GET
-    Joins:
-    $retorno->Get = Objeto do GET
-    $retorno->Join1 = Objeto do Join1
-    $retorno->Join2 = Objeto do Join2
-
-    no Select deixar padrão o Objeto do GET e permitir que ele identifique quais quer retornar em uma logica parecida com
-    a do WHERE do ArrayHelper
-    Ex:
-    Select(function($x){$x->Join1; })->....
-    */
-    ?>
-    </p>
+        <? }else{ ?>
+            <div class="info-box bg-gray">
+                <span class="info-box-icon"><i class="fa fa-search"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Proximos trabalhos e provas </span>
+                    <span class="info-box-number">Nenhum trabalho ou prova encontrado</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                  <span class="progress-description">
+                  </span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        <?
+        } ?></div>
+</div>

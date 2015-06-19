@@ -60,7 +60,24 @@ Form::Hidden("Compartilhado", @$Model->Compartilhado);
                     <? Form::DatePicker("Data", @$Model->Data, Array("class" => "form-control"))?>
                 </div>
             </div>
-            <div class="col-md-8" for="Titulo">
+                <div class="col-md-1">
+                    <div class="form-group" for="HoraInicio">
+                        <label>
+                            <?=\Libs\ModelState::DisplayName($Model, "HoraInicio");?>
+                        </label>
+                        <? Form::TimePicker("HoraInicio", @$Model->HoraInicio, Array("class" => "form-control"))?>
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <div class="form-group" for="HoraFim">
+                        <label>
+                            <?=\Libs\ModelState::DisplayName($Model, "HoraFim");?>
+                        </label>
+                        <? Form::TimePicker("HoraFim", @$Model->HoraFim, Array("class" => "form-control"))?>
+                    </div>
+                </div>
+            <div class="col-md-6" for="Titulo">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
                 </label>

@@ -31,7 +31,7 @@ use Model\Site;
                 {
                     if($sub == false)
                         $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value, true);
-                    else if(strtolower($value) == "ie"){
+                    else if((strtolower($value) == "ie") OR (strtolower($value) == "print")){
                         $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value, true);
                     }
                 }

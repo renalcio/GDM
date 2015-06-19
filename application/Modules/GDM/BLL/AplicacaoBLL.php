@@ -42,7 +42,7 @@ class AplicacaoBLL extends BLL
             $PessoaJuridica = $model->Pessoa->PessoaJuridica;
             $TipoPessoaFisica = $model->Pessoa->TipoPessoaFisica;
 
-            $ModelPessoa = new PessoaBLL($this->db);
+            $ModelPessoa = new \Modules\Generic\BLL\PessoaBLL();
 
             $model->Pessoa = $ModelPessoa->Save($model->Pessoa);
 

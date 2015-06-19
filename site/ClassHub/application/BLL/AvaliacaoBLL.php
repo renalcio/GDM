@@ -24,13 +24,9 @@ use Libs\AlunoHelper;
 
 class AvaliacaoBLL extends BLL
 {
-    function __construct($db)
+    function __construct()
     {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
+
         parent::__construct();
     }
 

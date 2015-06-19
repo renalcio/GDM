@@ -175,9 +175,10 @@ class Aula
             $this->Conteudo = $Conteudo;
             $this->Sala = $Sala;
             $this->PessoaId = $PessoaId;
-        }else{
-            $this->Data = date("d/m/Y", time());
         }
+
+        if(empty($this->Data))
+            $this->Data = date("d/m/Y", time());
 
         $this->Aluno = new Aluno();
         $this->Materia = new Materia();

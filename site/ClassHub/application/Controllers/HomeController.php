@@ -9,6 +9,7 @@
  *
  */
 namespace Controllers;
+use BLL\AvaliacaoBLL;
 use Core\Controller;
 class HomeController extends Controller
 {
@@ -17,8 +18,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // load views
-        $this->View("index");
+        $this->AddAsset(["fullcalendar", "iCheck"]);
+        // load views $this->loadBLL();
+        $Model = new \stdClass();
+        //Avaliações
+        $this->loadBLL();
+        $Model = $this->bll->GetToIndex($Model);
+        $this->ModelView($Model);
     }
 
 

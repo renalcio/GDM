@@ -82,4 +82,38 @@ class Datetime
         return (self::Intervalo($dataDe, $dataAte) / (60));
     }
 
+    public static function Add($data, $valor, $tipo="horas", $formato="d/m/Y H:i:s"){
+
+        $data = self::Formatar($data, "Y-m-d H:i:s");
+
+        switch($tipo){
+            case "horas":
+                $type = "hours";
+                break;
+            case "minutos":
+                $type = "minutes";
+                break;
+            case "segundos":
+                $type = "seconds";
+                break;
+            case "dias":
+                $type = "days";
+                break;
+            case "semanas":
+                $type = "weeks";
+                break;
+            case "meses":
+                $type = "months";
+                break;
+            case "anos":
+                $type = "years";
+                break;
+            default:
+                $type = $tipo;
+                break;
+        }
+        return date($formato, strtotime("$data + $valor $type"));
+
+    }
+
 }

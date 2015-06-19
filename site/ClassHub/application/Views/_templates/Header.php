@@ -46,7 +46,7 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
     echo "\n<!--ASSETS-->\n";
     //$this->AddAsset(["fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter","moment", "ionslider", "bootstrap-typeahead", "jquery.cookie"]);
 
-    $this->AddAsset(["fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter",  "moment", "bootbox", "slimScroll", "timepicker", "jquery.cookie"]);
+    $this->DefaultAsset(["jqueryui","fastclick","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter",  "moment", "bootbox", "slimScroll", "timepicker", "jquery.cookie"]);
 
     $this->PrintAssets();
 

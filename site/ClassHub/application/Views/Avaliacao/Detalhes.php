@@ -13,13 +13,13 @@ use Libs\Form;
 </script>
 
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Peso</span>
             <input type="text" class="form-control" value="<?=@$Model->Peso?>" readonly>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"><?=\Libs\ModelState::DisplayName($Model, "Data");?></span>
             <input type="text" class="form-control" value="<?=@$Model->Data;?>" readonly>
@@ -27,15 +27,27 @@ use Libs\Form;
     </div>
     <div class="col-sm-3">
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Privado</span>
-            <input type="text" class="form-control" value="<?=((@$Model->Compartilhado == 0) ? "Sim" : "Não");?>"
-                   readonly>
+            <span class="input-group-addon" id="basic-addon1">Início</span>
+            <input type="text" class="form-control" value="<?=@$Model->HoraInicio?>" readonly>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Fim</span>
+            <input type="text" class="form-control" value="<?=@$Model->HoraFim?>" readonly>
         </div>
     </div>
 
 </div>
 <br>
 <div class="row">
+    <div class="col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Privado</span>
+            <input type="text" class="form-control" value="<?=((@$Model->Compartilhado == 0) ? "Sim" : "Não");?>"
+                   readonly>
+        </div>
+    </div>
     <div class="col-sm-4">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Tipo</span>
@@ -43,7 +55,7 @@ use Libs\Form;
                    readonly>
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-5">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"><?=\Libs\ModelState::DisplayName($Model, "MateriaId");?></span>
             <input type="text" class="form-control" value="<?=@$Model->Materia->Titulo?>" readonly>

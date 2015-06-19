@@ -41,8 +41,8 @@ if($Model->Lista->Count() > 0)
     <div class="row">
     <div class="col-md-6 col-xs-12">
         <? if(!empty($Model->clsProva)){ ?>
-        <div class="info-box bg-aqua">
-            <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
+        <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="ion ion-ios-list-outline"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Próxima Prova <span class="pull-right"><?=$Model->clsProva->Data;?></span> </span>
                 <span class="info-box-number"><?=$Model->clsProva->Materia->Titulo;?> <span
@@ -57,8 +57,8 @@ if($Model->Lista->Count() > 0)
         </div><!-- /.info-box -->
         <? }else{
             ?>
-            <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
+            <div class="info-box bg-gray">
+                <span class="info-box-icon"><i class="ion ion-ios-list-outline"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Próxima Prova </span>
                 <span class="info-box-number">Nenhuma prova encontrada</span>
@@ -75,8 +75,8 @@ if($Model->Lista->Count() > 0)
     </div>
         <div class="col-md-6 col-xs-12">
         <? if(!empty($Model->clsTrabalho)){ ?>
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="fa fa-search"></i></span>
+            <div class="info-box bg-yellow">
+                <span class="info-box-icon"><i class="ion ion-ios-copy-outline"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Próximo Trabalho <span class="pull-right"><?=$Model->clsTrabalho->Data;
                             ?></span> </span>
@@ -92,7 +92,7 @@ if($Model->Lista->Count() > 0)
             </div><!-- /.info-box -->
             <? }else{ ?>
                 <div class="info-box bg-gray">
-                    <span class="info-box-icon"><i class="fa fa-search"></i></span>
+                    <span class="info-box-icon"><i class="ion ion-ios-copy-outline"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Próximo Trabalho </span>
                         <span class="info-box-number">Nenhum trabalho encontrado</span>
