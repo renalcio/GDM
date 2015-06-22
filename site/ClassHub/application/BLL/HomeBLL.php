@@ -10,6 +10,7 @@ use Libs\CookieHelper;
 use Libs\SessionHelper;
 use Libs\UnitofWork;
 use Model\ClassHub\Avaliacao;
+use Model\ClassHub\Aviso;
 
 class HomeBLL extends BLL
 {
@@ -28,6 +29,9 @@ class HomeBLL extends BLL
 
         $model->ListAvaliacao = $this->unitofwork->Get(new Avaliacao(), "TurmaId = '".$TurmaId."' AND (Compartilhado = 1 OR
         AlunoId = '".$AlunoId."')")->OrderBy("STR_TO_DATE(Data, '%d/%m/%Y')")->Take(5)->ToList();
+
+        $model->ListAviso = $this->unitofwork->Get(new Aviso(), "TurmaId = '".$TurmaId."' AND Alerta > 0")
+            ->Take(5)->ToList();
 
         return $model;
     }

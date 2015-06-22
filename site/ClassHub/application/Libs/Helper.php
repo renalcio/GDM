@@ -3,6 +3,16 @@ namespace Libs;
 class Helper
 {
 
+    public static function Limitar($string, $tamanho, $final='...', $encode = 'UTF-8') {
+        $num = strlen($final);
+        if( strlen($string) > $tamanho )
+            $string = mb_substr($string, 0, $tamanho - $num, $encode) . $final;
+        else
+            $string = mb_substr($string, 0, $tamanho, $encode);
+
+        return $string;
+    }
+
     public static function Abreviar($Nome, $NumNome = 2){
         $array = explode(" ", $Nome);
         $retorno= "";

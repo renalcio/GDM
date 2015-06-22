@@ -56,15 +56,34 @@ if($Model->Lista->Count() > 0)
                 if($i > 0 AND $i % 3 == 0){
                     echo ' </div><div class="col-md-4">';
                 }
+                $bgbox = "aqua";
+                switch($Item->Tipo) {
+                    case "success":
+                        $bgbox = "green";
+                        break;
+                    case "danger":
+                        $bgbox = "red";
+                        break;
+                    case "warning":
+                        $bgbox = "yellow";
+                        break;
+                    default:
+                        $bgbox = "aqua";
+                        break;
+                }
                 ?>
-
-                    <div class="callout callout-<?=$Item->Tipo;?>" style="word-wrap:break-word;">
-                        <span class="pull-right"><input type="checkbox" class="chkDelete minimal"
-                                                          name="DeleteItems[<?= $i ?>]"
-                               value="<?= $Item->AvisoId ?>" /></span>
+                <div class="small-box bg-<?=$bgbox;?>">
+                    <div class="inner" style="word-wrap:break-word;">
+                        <span class="pull-right">
+                            <input type="checkbox" class="chkDelete minimal" name="DeleteItems[<?= $i ?>]" value="<?= $Item->AvisoId ?>" />  </span>
                         <h4><?=$Item->Titulo;?></h4>
                         <p><?=nl2br($Item->Descricao);?></p>
                     </div>
+                    <a href="<?=\Libs\Helper::getUrl("cadastro", "aviso", $Item->AvisoId);?>" class="small-box-footer">
+                        Editar <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+
 
             <?
             });

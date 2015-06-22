@@ -7,6 +7,7 @@
  */
 namespace BLL;
 use Core\BLL;
+use Libs\AlunoHelper;
 use Libs\Database;
 use Libs\Helper;
 use Libs\Cookie;
@@ -35,6 +36,10 @@ class AvisoBLL extends BLL
             $model = $this->unitofwork->GetById(new Aviso(), $model->AvisoId);
         }else{
             $model = new Aviso();
+            $clsAluno = AlunoHelper::GetUsuarioAluno();
+            $model->EscolaId = $clsAluno->EscolaId;
+            $model->CursoId = $clsAluno->Turma->CursoId;
+            $model->TurmaId = $clsAluno->TurmaId;
         }
         return $model;
     }
@@ -42,7 +47,10 @@ class AvisoBLL extends BLL
     public function GetToIndex($model)
     {
 
-        $model->Lista = $this->unitofwork->Get(new Aviso())->ToList();
+        $TurmaId = AlunoHelper::GetUsuarioAluno()->TurmaId;
+        $AlunoId = AlunoHelper::GetAlunoId();
+
+        $model->Lista = $this->unitofwork->Get(new Aviso(), "TurmaId = '".$TurmaId."'")->ToList();
 
         return $model;
     }

@@ -40,7 +40,9 @@ use Libs\Form;
     <?
     Form::ValidationSummary();
     Form::Hidden("AvisoId", @$Model->AvisoId);
-    Form::Hidden("AlunoId", @$Model->AlunoId);
+    Form::Hidden("EscolaId", @$Model->EscolaId);
+    Form::Hidden("CursoId", @$Model->CursoId);
+    Form::Hidden("TurmaId", @$Model->TurmaId);
     ?>
 
     <div class="box box-primary">
@@ -51,26 +53,6 @@ use Libs\Form;
         </div>
         <div class="box-body">
             <div class="row">
-                <div for="EscolaId" class="col-md-4">
-                    <label>
-                        <?=\Libs\ModelState::DisplayName($Model, "EscolaId");?>
-                    </label>
-                    <? Form::Select2("EscolaId", @$Model->EscolaId, "", Array("class" => "form-control EscolaIdSelect", "DataUrl" => URL."handler/escola/Select2" ))?>
-                </div>
-                <div for="CursoId" class="col-md-4">
-                    <label>
-                        <?=\Libs\ModelState::DisplayName($Model, "CursoId");?>
-                    </label>
-                    <? Form::Select2("CursoId", @$Model->CursoId, "", Array("class" => "form-control CursoIdSelect", "DataUrl" => URL."handler/curso/Select2" ))?>
-                </div>
-
-                <div for="TurmaId" class="col-md-4">
-                    <label>
-                        <?=\Libs\ModelState::DisplayName($Model, "TurmaId");?>
-                    </label>
-                    <? Form::Select2("TurmaId", @$Model->TurmaId, "", Array("class" => "form-control TurmaIdSelect",
-                        "DataUrl" => URL."handler/turma/Select2" ))?>
-                </div>
 
                 <div class="col-md-3" for="txDataDe">
                     <label>
