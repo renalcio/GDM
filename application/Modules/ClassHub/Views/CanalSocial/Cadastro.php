@@ -36,13 +36,13 @@ use Libs\Form;
     Form::Hidden("AlunoId", @$Model->AlunoId);
     ?>
 
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
                 Dados da Avaliação
             </h3>
         </div>
-        <div class="box-body">
+        <div class="panel-content">
             <div class="row">
                 <div for="EscolaId" class="col-md-4">
                     <label>
@@ -106,6 +106,6 @@ use Libs\Form;
 
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+            <a type="submit" class="btn btn-danger" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary pull-right">Salvar</button></div>
     </div>
 </form>

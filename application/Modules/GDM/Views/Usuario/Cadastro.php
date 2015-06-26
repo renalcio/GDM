@@ -18,13 +18,12 @@ use Libs\Helper;
 
     <?  Helper::LoadModelView($Model, "formulario", "usuario");?>
     <div id="formPessoa">
-        <h3 class="page-header">Dados Pessoais</h3>
         <?  Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=URL?>usuario/" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+            <a type="submit" class="btn btn-danger" href="<?=URL?>usuario/" >Cancelar</a>   <button type="submit" class="btn btn-primary pull-right">Salvar</button></div>
     </div>
 </form>
 

@@ -2,17 +2,16 @@
 use Libs\Form;
 //$Model = new \Model\Site();
 ?>
-<h3 class="page-header">Cadastro de Site</h3>
 <form method="post">
     <?Form::Hidden("SiteId", @$Model->SiteId);?>
 
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
-                Aplicação e Acesso
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3>
+                <b>Aplicação</b> e Acesso
             </h3>
         </div>
-        <div class="box-body">
+        <div class="panel-body">
             <div class="row">
                 <div class="form-group col-lg-6" for="AplicacaoId">
                     <label>
@@ -32,13 +31,13 @@ use Libs\Form;
 
     </div>
 
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
-                Informações do Site
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
+                Informações do <b>Site</b>
             </h3>
         </div>
-        <div class="box-body">
+        <div class="panel-content">
             <div class="form-group" for="Titulo">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>
@@ -73,6 +72,6 @@ use Libs\Form;
 
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+            <a type="submit" class="btn btn-danger" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary pull-right">Salvar</button></div>
     </div>
 </form>

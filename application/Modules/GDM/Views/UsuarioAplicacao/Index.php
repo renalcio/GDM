@@ -1,53 +1,53 @@
-﻿<?
+<?
 if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 {?>
-<script type="text/javascript">
-    $(function() {
-        $("#listagem").dataTable({
-            "aoColumns": [ null,null,null,<? if(APPID==ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
+    <script type="text/javascript">
+        $(function() {
+            $("#listagem").dataTable({
+                "aoColumns": [ null,null,null,<? if(APPID==ROOTAPP) { echo "null, "; } ?> {"bSortable": false}, {"bSortable": false} ]
+            });
         });
-    });
-    function Excluir(Id){
-        bootbox.confirm('Deseja realmente excluir este item?', function(result){
-            if(result)
-                location.href="<?=URL;?>usuarioaplicacao/deletar/"+Id;
+        function Excluir(Id){
+            bootbox.confirm('Deseja realmente excluir este item?', function(result){
+                if(result)
+                    location.href="<?=URL;?>usuarioaplicacao/deletar/"+Id;
 
-        });
-    }
-</script>
+            });
+        }
+    </script>
 <? } ?>
-	<div id="row">
-		<div class="box box-primary">
-			<div class="box-header">
-				<h3 class="box-title">
-					Vínculos de Usuários
-				</h3>
-                <div class="box-tools pull-right">
-                    <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
+<div class="row">
+    <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary pull-right" style="color:#fff;" ><i class="fa
                     fa-plus"></i> Novo registro</a>
-                </div>
-			</div>
-			<div class="box-body">
-                    <table id="listagem" class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                        <th>Nome</th>
-                            <th>Email</th>
-                            <th>Login</th>
-                            <? if(APPID == ROOTAPP) {
-                                ?><th>Aplicação</th><?
-                            } ?>
-                            <th width="30px">Nível</th>
-                        <th style="width:18px"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?
-                            if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
-                            {
-                                foreach($Model->ListUsuario as $item)
-                                {
-                                    ?>
+</div>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
+                Vínculos de Usuários
+            </h3>
+        </div>
+        <div class="panel-content pagination2">
+            <table id="listagem" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Login</th>
+                    <? if(APPID == ROOTAPP) {
+                        ?><th>Aplicação</th><?
+                    } ?>
+                    <th width="30px">Nível</th>
+                    <th style="width:18px"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?
+                if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
+                {
+                    foreach($Model->ListUsuario as $item)
+                    {
+                        ?>
                         <tr>
                             <td><?=$item->Usuario->Pessoa->Nome;?></td>
                             <td><?=$item->Usuario->Pessoa->Email;?></td>
@@ -77,16 +77,16 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 
                             </td>
                         </tr>
-                        <?
-                                }
-                            }else
-                            {
-                                echo "<tr><td colspan='2'>Nenhum Registro</td></tr>";
-                            }
-                        ?>
-                        </tbody>
-                    </table>
-				</div>
+                    <?
+                    }
+                }else
+                {
+                    echo "<tr><td colspan='2'>Nenhum Registro</td></tr>";
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-		</div>
+</div>
 

@@ -79,7 +79,7 @@ class Usuario
             $this->Pessoa = new Pessoa();
 
         if($this->Avatar == null || empty($this->Avatar))
-            $this->Avatar = URL."img/avatar5.png";
+            $this->Avatar = URL."dist/img/avatar.png";
 
 
         return $this;

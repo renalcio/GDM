@@ -42,13 +42,13 @@ Form::Hidden("AlunoId", @$Model->AlunoId);
 Form::Hidden("Compartilhado", @$Model->Compartilhado);
 ?>
 
-<div class="box box-primary">
-    <div class="box-header">
-        <h3 class="box-title">
+<div class="panel panel-primary">
+    <div class="panel-header">
+        <h3 class="panel-title">
             Dados da Aula
         </h3>
     </div>
-    <div class="box-body">
+    <div class="panel-content">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group" for="Data">
@@ -139,6 +139,6 @@ Form::Hidden("Compartilhado", @$Model->Compartilhado);
 
 <div class="row">
     <div class="col-lg-12">
-        <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+        <a type="submit" class="btn btn-danger" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary pull-right">Salvar</button></div>
 </div>
 </form>

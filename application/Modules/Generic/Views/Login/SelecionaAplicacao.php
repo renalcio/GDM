@@ -1,7 +1,7 @@
-<div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html"><b>Selecionar</b> Aplicação</a>
-    </div><!-- /.login-logo -->
+<div class="container" id="login-block">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+    <h2 class="c-white"><b>Selecionar</b> Aplicação</h2>
     <div class="login-box-body">
 
 			<div class="list-group">
@@ -34,4 +34,6 @@
 			</a>
 		</div>
 
+</div>
+    </div>
 </div>

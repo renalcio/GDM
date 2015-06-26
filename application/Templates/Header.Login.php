@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Log in</title>
+    <title>Entrar</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,11 @@
     echo "<!--CSS-->\n";
     \Libs\Helper::LoadMedia("css", [
         "bootstrap/css/bootstrap.min.css",
-        "dist/css/AdminLTE.css"
+        "dist/css/style.css",
+        "dist/css/theme.css",
+        "dist/css/ui.css",
+        "dist/css/layout.css",
+        "dist/css/avatar.css",
     ]);
     echo "\n<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", [
@@ -30,8 +34,16 @@
         "dist/js/jquery.js",
         //BOOTSTRAP
         "bootstrap/js/bootstrap.min.js"
+        //"dist/js/pages/login-v1.js"
     ]);
+
+
+    echo "\n<!--ASSETS-->\n";
+    $this->AddAsset(["backstretch","bootstrap-loading"]);
+    $this->PrintAssets();
+
+    echo "\n<!--/ASSETS-->\n";
     ?>
 </head>
-<body class="login-page">
+<body class="account separate-inputs boxed no-social" data-page="login">
     

@@ -1,4 +1,4 @@
-﻿<?
+<?
 if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
 {?>
     <script type="text/javascript">
@@ -24,19 +24,18 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
         }
     </script>
 <? } ?>
-<div id="row">
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+<div class="row">
+    <a href="<?=URL?>usuario/cadastro" class="btn btn-primary pull-right" style="color:#fff;" >Novo registro</a>
+</div>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
                 Usuários
             </h3>
-            <div class="box-tools pull-right">
-                <a href="<?=URL?>usuario/cadastro" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
-                    fa-plus"></i> Novo registro</a>
-            </div>
         </div>
-        <div class="box-body">
-            <table id="listagem" class="table table-bordered table-hover">
+        <div class="panel-content pagination2">
+            <table id="listagem" class="table table-hover">
                 <thead>
                 <tr>
                     <th>Nome</th>
@@ -63,7 +62,7 @@ if(is_array($Model->ListUsuario) && count($Model->ListUsuario) > 0)
                             <? if(APPID != ROOTAPP){ ?>
                                 <td><?=\Libs\UsuarioHelper::GetNivel($item->UsuarioId);?></td>
                                 <td>
-                                    <input type="checkbox" ref="<?=@$item->UsuarioId;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">
+                                    <input type="checkpanel" ref="<?=@$item->UsuarioId;?>" name="my-checkpanel" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="Sim" data-off-text="Não">
                                 </td>
                             <? } ?>
                             <td align="center">

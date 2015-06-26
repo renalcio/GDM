@@ -1,0 +1,10 @@
+.wysiwyg-editor {
+    border: 1px #CFD2D6 solid;
+    border-radius: 3px;
+    min-height: 40px;
+    outline: none;
+    padding: 5px;
+}
+.wysiwyg-editor:focus {
+    border: 1px solid #A3A3A3;
+}

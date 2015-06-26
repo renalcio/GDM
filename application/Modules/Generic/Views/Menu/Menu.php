@@ -24,7 +24,7 @@ $menu = LoadMenuObj();
 if(isset($menu) && is_array($menu) && count($menu) > 0)
 {
     ?>
-    <ul class="sidebar-menu">
+    <ul class="nav nav-sidebar">
         <?
         $ref = -1;
         foreach ($menu as $MenuItem) {
@@ -32,28 +32,28 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                 $ref++;
                 $classSubmenu = '';
                 if (isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                    $classSubmenu = 'class="treeview"';
+                    $classSubmenu = 'class="nav-parent"';
                 ?>
 
                 <li <?= $classSubmenu ?> >
                     <a href="<?= URL . $MenuItem->Url; ?>">
                         <i class="fa <?= $MenuItem->Icone; ?>"></i> <span><?= $MenuItem->Titulo; ?></span>
                         <? if (!empty($classSubmenu)) { ?>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="fa arrow"></span>
                         <? } ?>
 
                     </a>
                     <?
                     if (isset($MenuItem->ListSubMenu) && is_array($MenuItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0) {
                         ?>
-                        <ul class="treeview-menu">
+                        <ul class="children collapse">
                             <?php
                             foreach ($MenuItem->ListSubMenu as $SubItem) {
                                 if (Libs\UsuarioHelper::GetAcessoByUsuarioId($SubItem->MenuId)) {
                                     $ref++;
                                     $classSubmenu = '';
                                     if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0)
-                                        $classSubmenu = 'class="treeview"';
+                                        $classSubmenu = 'class="nav-parent"';
                                     ?>
 
                                     <li <?= $classSubmenu ?> >
@@ -65,20 +65,20 @@ if(isset($menu) && is_array($menu) && count($menu) > 0)
                                             <? } ?>
                                             <span><?= $SubItem->Titulo; ?></span>
                                             <? if (!empty($classSubmenu)) { ?>
-                                                <i class="fa fa-angle-left pull-right"></i>
+                                                <span class="fa arrow"></span>
                                             <? } ?>
                                         </a>
                                         <?php
                                         if (isset($SubItem->ListSubMenu) && is_array($SubItem->ListSubMenu) && count($MenuItem->ListSubMenu) > 0) {
                                             ?>
-                                            <ul class="treeview-menu">
+                                            <ul class="children collapse">
                                                 <?php
                                                 foreach ($SubItem->ListSubMenu as $SubSubItem) {
                                                     if (Libs\UsuarioHelper::GetAcessoByUsuarioId($SubSubItem->MenuId)) {
                                                         ?>
                                                         <li>
                                                             <a href="<?= URL . $SubSubItem->Url; ?>">
-                                                                <i class="fa fa-circle-o"></i><?= $SubSubItem->Titulo; ?>
+                                                                <?=$SubSubItem->Titulo; ?>
                                                             </a>
                                                         </li>
                                                     <?php

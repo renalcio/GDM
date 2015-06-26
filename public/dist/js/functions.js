@@ -2,6 +2,46 @@
  * Created by Renalcio Junior on 23/12/2014.
  */
 
+//Menu Class Builder
+function SetMenuAtivo($obj, Nivel){
+    var UrlAtual = location.href;
+    console.log(UrlAtual);
+
+    $obj.each(function(){
+        var MenuUrl = $("a:first", this).attr("href");
+        //Verifica se é o menu atual
+        if(UrlAtual == MenuUrl) {
+            $(this).addClass("active");
+            if(Nivel > 0)
+                $(this).parent("ul:first").show().parent("li:first").addClass("active");
+
+            if(Nivel > 1)
+                $(this).parent("ul:first").parent("li:first").parent("ul:first").show().parent("li:first").addClass("active");
+        }else{
+            //Verifica se existe submenu
+            if($("ul", this).size() > 0){
+                //Passa No SubMenu
+                $("ul:first", this).each(function() {
+                    //Chama a função nos subitens
+                    SetMenuAtivo($(">li", this), Nivel+1);
+                    //$(">li", this).each(function() {
+                    //});
+                });
+            }
+        }
+    });
+}
+
+//SubFormularios
+function SubFormulario(divForm, nomeObj){
+    $(divForm+" input, "+divForm+" select, "+divForm+" textarea").each(function(){
+        var Nome = $(this).attr("name"),
+            Id = $(this).attr("id");
+        $(this).attr("name", nomeObj+"_"+Nome);
+        $(this).attr("id", nomeObj+"_"+Id);
+    });
+}
+
 /**
  * GRITTER ALERT
  */

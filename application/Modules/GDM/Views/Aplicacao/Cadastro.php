@@ -12,18 +12,20 @@ use Libs\Helper;
 </script>
 <form method="post">
     <div id="formPessoa">
-        <h3 class="page-header">Dados do Cliente</h3>
+        <h3>Dados do <b>Cliente</b></h3>
         <?  Helper::LoadModelView(@$Model->Pessoa, "formulario", "pessoa");?>
     </div>
+
+    <h3>Dados da <b>Aplicação</b></h3>
     <div id="row">
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">
-                    Cadastro de Aplicações
+        <div class="panel">
+            <div class="panel-header">
+                <h3 class="panel-title">
+                    <b>Caracteristicas</b> da Aplicação
                 </h3>
 
             </div>
-            <div class="box-body">
+            <div class="panel-content">
 
                 <?Form::Hidden("AplicacaoId", @$Model->AplicacaoId);?>
                 <?Form::Hidden("PessoaId", @$Model->PessoaId);?>

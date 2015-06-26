@@ -4,8 +4,8 @@ use Libs\Form;
 <?Form::Hidden("UsuarioAplicacaoId", @$Model->UsuarioAplicacaoId);?>
 <div class="row">
     <div class="col-lg-6">
-        <div class="box box-primary">
-        <div class="box-body">
+        <div class="panel panel-primary">
+        <div class="panel-content">
             <script>
                 function GetPessoa(){
                     var doc = $("#Documento").val();
@@ -60,15 +60,15 @@ use Libs\Form;
     </div>
 
     <div class="col-lg-6">
-        <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+        <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
                Vínculo
             </h3>
 
         </div>
 
-        <div class="box-body">
+        <div class="panel-content">
 
 
             <? if(APP_ID == ROOTAPP){
@@ -77,7 +77,7 @@ use Libs\Form;
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "AplicacaoId");?>
                     </label>
-                    <? Form::Select2("AplicacaoId", @$Model->AplicacaoId, "", Array("class" => "form-control AplicacaoSelect", "DataUrl" => URL."handler/aplicacao/Select2" ))?>
+                    <? Form::Select2("AplicacaoId", @$Model->AplicacaoId, "", ["class" => "form-control AplicacaoSelect", "DataUrl" => URL."handler/aplicacao/Select2"])?>
                 </div>
             <?
             }else{
@@ -92,7 +92,7 @@ use Libs\Form;
                         console.log(appId);
                         $.get("<?=URL;?>handler/perfil/Select2Tag/" + appId, function(data){
                             console.log(data);
-                            //$("input.PerfilSelect").select2('destroy');
+                            $("input.PerfilSelect").select2('destroy');
                             $("input.PerfilSelect").select2({
                                 multiple: true,
                                 "data": data

@@ -6,13 +6,13 @@ use Libs\Form;
 <form method="post">
     <?Form::Hidden("NotificacaoId", @$Model->NotificacaoId);?>
 
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
                 Informações da Notificação
             </h3>
         </div>
-        <div class="box-body">
+        <div class="panel-content">
             <? Form::Hidden("AplicacaoId", APPID);?>
             <div class="form-group" for="Conteudo">
                 <label>
@@ -31,7 +31,7 @@ use Libs\Form;
                         <span class="input-group-addon" id="icon-span"><i class="fa <?=@$Model->Icone?>"></i></span>
                         <? Form::Text("Icone", @$Model->Icone, ["class" => "form-control"])?>
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#iconeModal">Selecionar Icone</button>
+                            <button type="button" class="btn btn-primary m-0" data-toggle="modal" data-target="#iconeModal">Selecionar Icone</button>
                         </div><!-- /btn-group -->
                     </div>
                 </div>
@@ -65,7 +65,7 @@ use Libs\Form;
 
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button></div>
+            <a type="submit" class="btn btn-danger" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>   <button type="submit" class="btn btn-primary pull-right">Salvar</button></div>
     </div>
 </form>
 <script>

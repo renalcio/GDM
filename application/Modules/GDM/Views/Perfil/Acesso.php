@@ -1,9 +1,9 @@
-﻿<input type="hidden" id="AplicacaoId" value="<?=$Model->AplicacaoId;?>" />
+<input type="hidden" id="AplicacaoId" value="<?=$Model->AplicacaoId;?>" />
 <input type="hidden" id="PerfilId" value="<?=$Model->PerfilId;?>" />
 <div id="Validacao" class="col-12"></div>
 <script type="text/javascript">
     $(function() {
-        $(".box-body .switch").on('switchChange.bootstrapSwitch', function (event, state) {
+        $(".panel-content .switch").on('switchChange.bootstrapSwitch', function (event, state) {
             var ref = $(this).attr("ref"); // MenuId
             console.log(ref);
             console.log(state);
@@ -22,7 +22,7 @@
     });
     function verifyAll(){
         $("#checkAll").bootstrapSwitch('state', true, true);
-        $(".box-body .switch").each(function(){
+        $(".panel-body .switch").each(function(){
             var check = $(this).prop("checked");
             if(check != true){
                 $("#checkAll").bootstrapSwitch('state', false, true);
@@ -30,8 +30,8 @@
         });
     }
     function checkAll(state){
-        $(".box-body .switch").each(function(){
-                $(this).bootstrapSwitch('state', state, false);
+        $(".panel-body .switch").each(function(){
+            $(this).bootstrapSwitch('state', state, false);
         });
     }
 </script>
@@ -60,16 +60,16 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">
+        <div class="panel panel-primary">
+            <div class="panel-header">
+                <h3 class="panel-title">
                     Acessos ao Perfil <?=@$Model->Titulo;?>
                 </h3>
-                <div class="box-tools pull-right">
+                <div class="panel-tools pull-right">
                     <input  data-placement="left" checked type="checkbox" id="checkAll" class="switch pull-right checkAll" data-size="mini" data-off-color="danger" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-ban'></i>" />
                 </div>
             </div>
-            <div class="box-body">
+            <div class="panel-content">
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="listmenu">
@@ -139,7 +139,7 @@
                 </div>
 
             </div>
-            <div class="box-footer">
+            <div class="panel-footer">
                 <div class="row">
                     <a href="<?=Libs\Helper::getUrl("index")?>" class="btn btn-primary" style="float: right;
                         margin-right: 15px;">
@@ -148,6 +148,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.box-body -->
+        <!-- /.panel-body -->
     </div>
 </div>

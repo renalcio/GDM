@@ -49,7 +49,7 @@ use Model\Site;
         return $result;
     }
 
-    $path    = ROOT.'public\\plugins';
+    $path    = ROOT.'public\\assets';
     $arr = dirToArray($path);
     print_r($arr);
 

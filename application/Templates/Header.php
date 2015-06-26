@@ -34,30 +34,10 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
     <? \Libs\Helper::LoadMedia("css", Array(
         "bootstrap/css/bootstrap.min.css",
         "dist/css/style.css",
-        "dist/css/AdminLTE.css",
-        "dist/css/skins/_all-skins.css",
+        "dist/css/theme.css",
+        "dist/css/ui.css",
+        "dist/css/layout.css",
         "dist/css/avatar.css",
-        //DATEPICKER
-        /*"plugins/daterangepicker/daterangepicker-bs3.css",
-        "plugins/timepicker/bootstrap-timepicker.min.css",
-        "plugins/datepicker/datepicker3.css",
-        //iCheck
-        "plugins/iCheck/all.css",
-        //COLOR PICKER
-        "plugins/colorpicker/bootstrap-colorpicker.min.css",
-        //SELECT 2
-        "plugins/select2/select2.css",
-        "plugins/select2/select2-bootstrap.css",
-        //DATATABLE
-        "plugins/datatables/dataTables.bootstrap.css",
-        //CROP
-        "plugins/jquery.cropper/cropper.css",
-        //Notofy
-        "plugins/jquery.gritter/jquery.gritter.css",
-        //SWITCH
-        "plugins/bootstrap-switch/bootstrap-switch.css",
-        //Tagsinput
-        "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css",*/
     ));
     echo "<!--JAVASCRIPT-->\n";
     \Libs\Helper::LoadMedia("js", Array(
@@ -66,60 +46,15 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
         //BOOTSTRAP
         "bootstrap/js/bootstrap.min.js",
         //FastClick
-        "plugins/fastclick/fastclick.js",
+        "assets/fastclick/fastclick.js",
         //TEMA
-        "dist/js/app.js",
-        //SparkLine
-        /*"plugins/sparkline/jquery.sparkline.min.js",
-        //Jvectormap
-        "plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
-        "plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
-        //SlimScroll
-        "plugins/slimScroll/jquery.slimscroll.min.js",
-        //DATA TABLES
-        "plugins/datatables/jquery.dataTables.js",
-        "plugins/datatables/dataTables.bootstrap.js",
-        //SELECT2
-        "plugins/select2.js",
-        "plugins/select2_locale_pt-BR.js",
-        //InputMask
-        "plugins/input-mask/jquery.inputmask.js",
-        //DataPicker
-        "plugins/daterangepicker/daterangepicker.js",
-        "plugins/datepicker/bootstrap-datepicker.js",
-        "plugins/timepicker/bootstrap-timepicker.min.js",
-        //Color Picker
-        "plugins/colorpicker/bootstrap-colorpicker.min.js",
-        //BOOTBOX
-        "plugins/bootbox.min.js",
-        //WYSIWYG
-        "markdown/bootstrap-markdown.min.js",
-        "plugins/jquery.hotkeys.min.js",
-        "plugins/bootstrap-wysiwyg.min.js",
-        "plugins/extra-elements.min.js",
-        //NESTABLE
-        "plugins/jquery.nestable.min.js",
-        //CROP
-        "plugins/jquery.cropper/cropper.js",
-        //SWITCH
-        "plugins/bootstrap-switch/bootstrap-switch.min.js",
-        //iCheck
-        "plugins/iCheck/icheck.min.js",
-        //Notofy
-        "plugins/jquery.gritter/jquery.gritter.js",
-        //Tagsinput
-        "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js",*/
+        "dist/js/functions.js"
 
-        //DASHBOARD
-        //"dist/js/pages/dashboard2.js",
-
-        //DEMO
-        "dist/js/demo.js"
 
     ));
 
     echo "\n<!--ASSETS-->\n";
-    $this->AddAsset(["bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter", "bootbox", "slimScroll", "timepicker"]);
+    $this->AddAsset(["jquery.cookie","mcustom-scrollbar","bootstrap-switch", "datatables", "select2", "jquery.maskedinput", "datepicker", "jquery.gritter", "bootbox", "slimScroll", "timepicker"]);
     $this->PrintAssets();
 
     echo "\n<!--/ASSETS-->\n";
@@ -131,7 +66,6 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
         "dist/js/pessoa.js",
         "dist/js/avatar.js",
         "dist/js/functions.js",
-        "dist/js/pages/header.js"
     ));
     ?>
 
@@ -212,270 +146,335 @@ $HUser = $db->Get(new \Model\UsuarioAplicacao(), "UsuarioId = '". $sessao->Ver("
 
 
     </script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
 </head>
-<body class="skin-blue">
-<div class="wrapper">
-    <!-- header logo: style can be found in header.less -->
+<body class="fixed-topbar fixed-sidebar theme-sdtl color-default">
 
-    <header class="main-header">
-        <!-- Logo -->
-        <a href="<?=URL?>home/" class="logo"><b><?=$HUser->Aplicacao->Titulo;?></b></a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Alternar Navegaçao</span>
-            </a>
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu" id="topMenuMensagens">
-                        <a href="#" onclick="LoadHeaderDrops()" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success" id="topMensagensTotal">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header"></li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="<?=Helper::getUrl("index", "mensagem");?>">Ver todas</a></li>
-                        </ul>
-                    </li>
-                    <!-- Notifications: style can be found in dropdown.less -->
-                    <?
-                    $notificacoes = $db->Get(new \Model\Notificacao(), "AplicacaoId = '".APPID."' AND (Data = '".\Libs\Datetime::Hoje("d/m/Y")."' OR Data = '' OR Data IS NULL)")->ToList();
-                    ?>
-                    <li class="dropdown notifications-menu" id="topMenuNotify">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">Você tem x notificações</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-
-                                <ul class="menu">
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#" data-toggle="modal" data-target="#notifyModal">Ver tudo</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Modal icone -->
-                    <div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Notificações</h4>
-                                </div>
-                                <div class="modal-body no-padding table-responsive">
-                                    <table class="table table-hover">
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tasks: style can be found in dropdown.less -->
-                    <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Create a nice theme
-                                                <small class="pull-right">40%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">40% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Some task I need to do
-                                                <small class="pull-right">60%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Make beautiful transitions
-                                                <small class="pull-right">80%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">80% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?=$HUser->Usuario->Avatar;?>" class="user-image" alt="User Image"/>
-                            <span class="hidden-xs"><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header">
-                                <img src="<?=$HUser->Usuario->Avatar;?>" class="img-circle" alt="User Image" />
-                                <p>
-                                    <?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?> - Web Developer
-                                    <small>Member since Nov. 2012</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="<?=Helper::getUrl("selecionaAplicacao", "login");?>" class="btn btn-default btn-flat">Selecionar Aplicaçao</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="<?=Helper::getUrl("logout", "login");?>" class="btn btn-default btn-flat">Sair</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            <!-- Sidebar user panel -->
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="<?=$HUser->Usuario->Avatar;?>" class="img-circle" alt="User Image" />
-                </div>
-                <div class="pull-left info">
-                    <p><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?></p>
-
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                </div>
-            </div>
-            <!-- search form -->
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<section>
+<!-- BEGIN SIDEBAR -->
+<div class="sidebar">
+    <div class="logopanel">
+        <h1>
+            <a href="<?=URL?>"><?=$HUser->Aplicacao->Titulo;?></a>
+        </h1>
+    </div>
+    <div class="sidebar-inner">
+        <div class="sidebar-top">
             <script>
                 $(function(){
-                   $("#BuscaSidebarForm").submit(function(){
-                       var termo = $("#BuscaSidebar", this).val();
-                       $(".sidebar-menu li").hide();
-                       if(termo.length > 0){
-                           $(".sidebar-menu>li:contains('"+termo+"')").show();
-                       }else{
-                           $(".sidebar-menu li").show();
-                       }
-                       return false;
-                   });
+                    $("#BuscaSidebarForm").submit(function(){
+                        var termo = $("#BuscaSidebar", this).val();
+                        $(".sidebar-menu li").hide();
+                        if(termo.length > 0){
+                            $(".sidebar-menu>li:contains('"+termo+"')").show();
+                        }else{
+                            $(".sidebar-menu li").show();
+                        }
+                        return false;
+                    });
                 });
             </script>
-            <form action="#" method="get" id="BuscaSidebarForm" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" id="BuscaSidebar" class="form-control" placeholder="Pesquisar..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-                </div>
+            <form id="BuscaSidebarForm" method="post" class="searchform" id="search-results">
+                <input id="BuscaSidebar" type="text" class="form-control" name="keyword" placeholder="Pesquisar...">
             </form>
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <?php \Libs\Helper::LoadView("menu","menu"); ?>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+            <div class="userlogged clearfix">
+                <i class="icon icons-faces-users-01"></i>
+                <div class="user-details">
+                    <h4><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?></h4>
+                    <div class="dropdown user-login">
+                        <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                            <i class="online"></i><span>Available</span><i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="busy"></i><span>Busy</span></a></li>
+                            <li><a  href="#"><i class="turquoise"></i><span>Invisible</span></a></li>
+                            <li><a href="#"><i class="away"></i><span>Away</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-title">
+            Navegação
+            <div class="pull-right menu-settings">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                    <i class="icon-settings"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" id="reorder-menu" class="reorder-menu">Reorder menu</a></li>
+                    <li><a href="#" id="remove-menu" class="remove-menu">Remove elements</a></li>
+                    <li><a href="#" id="hide-top-sidebar" class="hide-top-sidebar">Hide user &amp; search</a></li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1 style="text-transform: capitalize;">
+        <!-- MENU -->
+        <?php \Libs\Helper::LoadView("menu","menu"); ?>
+        <!-- END MENU --->
 
+        <!-- SIDEBAR WIDGET FOLDERS -->
+
+        <div class="sidebar-footer clearfix">
+            <a class="pull-left footer-settings" href="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
+                <i class="icon-settings"></i></a>
+            <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
+                <i class="icon-size-fullscreen"></i></a>
+            <a class="pull-left" href="user-lockscreen.html" data-rel="tooltip" data-placement="top" data-original-title="Lockscreen">
+                <i class="icon-lock"></i></a>
+            <a class="pull-left btn-effect" href="user-login-v1.html" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+                <i class="icon-power"></i></a>
+        </div>
+    </div>
+</div>
+<!-- END SIDEBAR -->
+<div class="main-content">
+<!-- BEGIN TOPBAR -->
+<div class="topbar">
+<div class="header-left">
+    <div class="topnav">
+        <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+        <ul class="nav nav-icons">
+            <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li>
+            <li><a href="mailbox.html"><span class="octicon octicon-mail-read"></span></a></li>
+            <li><a href="#"><span class="octicon octicon-flame"></span></a></li>
+            <li><a href="builder-page.html"><span class="octicon octicon-rocket"></span></a></li>
+        </ul>
+    </div>
+</div>
+<div class="header-right">
+<ul class="header-menu nav navbar-nav">
+<!-- BEGIN USER DROPDOWN -->
+<li class="dropdown" id="language-header">
+    <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <i class="icon-globe"></i>
+        <span>Language</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a href="#" data-lang="en"><img src="../assets/global/images/flags/usa.png" alt="flag-english"> <span>English</span></a>
+        </li>
+        <li>
+            <a href="#" data-lang="es"><img src="../assets/global/images/flags/spanish.png" alt="flag-english"> <span>Español</span></a>
+        </li>
+        <li>
+            <a href="#" data-lang="fr"><img src="../assets/global/images/flags/french.png" alt="flag-english"> <span>Français</span></a>
+        </li>
+    </ul>
+</li>
+<!-- END USER DROPDOWN -->
+<!-- BEGIN NOTIFICATION DROPDOWN -->
+<li class="dropdown" id="notifications-header">
+    <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <i class="icon-bell"></i>
+        <span class="badge badge-danger badge-header">6</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header clearfix">
+            <p class="pull-left">12 Pending Notifications</p>
+        </li>
+        <li>
+            <ul class="dropdown-menu-list withScroll" data-height="220">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-star p-r-10 f-18 c-orange"></i>
+                        Steve have rated your photo
+                        <span class="dropdown-time">Just now</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-heart p-r-10 f-18 c-red"></i>
+                        John added you to his favs
+                        <span class="dropdown-time">15 mins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-file-text p-r-10 f-18"></i>
+                        New document available
+                        <span class="dropdown-time">22 mins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-picture-o p-r-10 f-18 c-blue"></i>
+                        New picture added
+                        <span class="dropdown-time">40 mins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bell p-r-10 f-18 c-orange"></i>
+                        Meeting in 1 hour
+                        <span class="dropdown-time">1 hour</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bell p-r-10 f-18"></i>
+                        Server 5 overloaded
+                        <span class="dropdown-time">2 hours</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-comment p-r-10 f-18 c-gray"></i>
+                        Bill comment your post
+                        <span class="dropdown-time">3 hours</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-picture-o p-r-10 f-18 c-blue"></i>
+                        New picture added
+                        <span class="dropdown-time">2 days</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown-footer clearfix">
+            <a href="#" class="pull-left">See all notifications</a>
+            <a href="#" class="pull-right">
+                <i class="icon-settings"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+<!-- END NOTIFICATION DROPDOWN -->
+<!-- BEGIN MESSAGES DROPDOWN -->
+<li class="dropdown" id="messages-header">
+    <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <i class="icon-paper-plane"></i>
+                <span class="badge badge-primary badge-header">
+                8
+                </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header clearfix">
+            <p class="pull-left">
+                You have 8 Messages
+            </p>
+        </li>
+        <li class="dropdown-body">
+            <ul class="dropdown-menu-list withScroll" data-height="220">
+                <li class="clearfix">
+                        <span class="pull-left p-r-5">
+                        <img src="../assets/global/images/avatars/avatar3.png" alt="avatar 3">
+                        </span>
+                    <div class="clearfix">
+                        <div>
+                            <strong>Alexa Johnson</strong>
+                            <small class="pull-right text-muted">
+                                <span class="glyphicon glyphicon-time p-r-5"></span>12 mins ago
+                            </small>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                    </div>
+                </li>
+                <li class="clearfix">
+                        <span class="pull-left p-r-5">
+                        <img src="../assets/global/images/avatars/avatar4.png" alt="avatar 4">
+                        </span>
+                    <div class="clearfix">
+                        <div>
+                            <strong>John Smith</strong>
+                            <small class="pull-right text-muted">
+                                <span class="glyphicon glyphicon-time p-r-5"></span>47 mins ago
+                            </small>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                    </div>
+                </li>
+                <li class="clearfix">
+                        <span class="pull-left p-r-5">
+                        <img src="../assets/global/images/avatars/avatar5.png" alt="avatar 5">
+                        </span>
+                    <div class="clearfix">
+                        <div>
+                            <strong>Bobby Brown</strong>
+                            <small class="pull-right text-muted">
+                                <span class="glyphicon glyphicon-time p-r-5"></span>1 hour ago
+                            </small>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                    </div>
+                </li>
+                <li class="clearfix">
+                        <span class="pull-left p-r-5">
+                        <img src="../assets/global/images/avatars/avatar6.png" alt="avatar 6">
+                        </span>
+                    <div class="clearfix">
+                        <div>
+                            <strong>James Miller</strong>
+                            <small class="pull-right text-muted">
+                                <span class="glyphicon glyphicon-time p-r-5"></span>2 days ago
+                            </small>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown-footer clearfix">
+            <a href="mailbox.html" class="pull-left">See all messages</a>
+            <a href="#" class="pull-right">
+                <i class="icon-settings"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+<!-- END MESSAGES DROPDOWN -->
+<!-- BEGIN USER DROPDOWN -->
+<li class="dropdown" id="user-header">
+    <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <img src="<?=$HUser->Usuario->Avatar;?>" alt="user image">
+        <span class="username"><?=Helper::Abreviar($HUser->Usuario->Pessoa->Nome);?></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
+        </li>
+        <li>
+            <a href="<?=Helper::getUrl("selecionaAplicacao", "login");?>"><i class="icon-settings"></i><span>Selecionar Aplicação</span></a>
+        </li>
+        <li>
+            <a href="<?=Helper::getUrl("logout", "login");?>"><i class="icon-logout"></i><span>Sair</span></a>
+        </li>
+    </ul>
+</li>
+<!-- END USER DROPDOWN -->
+<!-- CHAT BAR ICON -->
+<li id="quickview-toggle"><a href="#"><i class="icon-bubbles"></i></a></li>
+</ul>
+</div>
+<!-- header-right -->
+</div>
+<!-- END TOPBAR -->
+
+<!-- BEGIN PAGE CONTENT -->
+<div class="page-content">
+    <div class="header">
+        <h2 style="text-transform: uppercase;"><strong>
                 <?
                 $Tctrl = $this->GetControllerTitle();
                 echo $Tctrl;
-                ?>
-
-                <?
                 $Tact = $this->GetActionTitle();
-                //var_dump($Tact);
-                //if(strtolower($Tact) != strtolower($Tctrl)){ ?>
-                <small><?=$Tact;?></small>
-                <? //} ?>
-            </h1>
-            <ol class="breadcrumb" style="text-transform: capitalize;">
-                <li><a href="<?=URL;?>home/"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active"><a href="<?=URL . \Libs\Helper::getController();?>"><?=$Tctrl;?></a></li>
-                <? if(strtolower($Tact) != ""){ ?>
-                    <li class="active"><a href="<?=URL . \Libs\Helper::getController() . "/" . \Libs\Helper::getAction(); ?>"><?=$Tact;?></a></li>
-                <? } ?>
+                ?></strong>
+            <small><?=$Tact;?></small>
+        </h2>
+        <div class="breadcrumb-wrapper">
+            <ol class="breadcrumb">
+                <li><a href="<?=URL;?>">Home</a>
+                </li>
+                <li><a href="<?=URL . \Libs\Helper::getController();?>"><?=$Tctrl;?></a>
+                </li>
+                <li class="active"><?=$Tact;?></li>
             </ol>
-        </section>
+        </div>
+    </div>
 
-        <!-- Main content -->
-        <section class="content">

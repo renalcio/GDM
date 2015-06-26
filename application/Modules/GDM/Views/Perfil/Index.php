@@ -1,4 +1,4 @@
-﻿<?
+<?
 if(is_array($Model) && count($Model) > 0)
 {
     ?>
@@ -25,18 +25,19 @@ if(is_array($Model) && count($Model) > 0)
         }
     </script>
 <? } ?>
-<div id="row">
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+<div class="row">
+    <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary pull-right" style="color:#fff;" >Novo
+        Perfil</a>
+</div>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3>
                 Perfis
             </h3>
-            <div class="box-tools pull-right">
-                <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa fa-plus"></i> Novo Perfil</a>
-            </div>
         </div>
-        <div class="box-body">
-            <table id="listagem" class="table table-bordered table-hover">
+        <div class="panel-content pagination2">
+            <table id="listagem" class="table table-hover">
                 <thead>
                 <tr>
                     <th>Título</th>
@@ -63,7 +64,7 @@ if(is_array($Model) && count($Model) > 0)
                             <td align="center"><?=$item->Nivel;?></td>
                             <td>
 
-                                <input type="checkbox" value="1" ref="<?=@$item->Nivel;?>" name="my-checkbox" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>" />
+                                <input type="checkbox" value="1" ref="<?=@$item->Nivel;?>" name="my-checkpanel" class="switch" <? if($item->Ativo == 1) echo "checked";?> data-size="mini" data-off-color="danger" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>" />
                             </td>
                             <td align="center">
 

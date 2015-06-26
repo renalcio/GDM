@@ -11,7 +11,11 @@ use Libs\Form;
     <?Form::Hidden("PessoaJuridica_PessoaId", @$Model->PessoaJuridica->PessoaId);?>
     <?Form::Hidden("TipoPessoaFisica", @$Model->TipoPessoaFisica, Array("class"=>"TipoPessoaFisicaBit"));?>
 
-        <div class="nav-tabs-custom">
+<div class="panel">
+    <div class="panel-header">
+        <h3>Dados <b>Pessoais</b></h3>
+    </div>
+    <div class="panel-content">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#pf" id="pfLink"
                                                                                        onclick="SetPF(1)"
@@ -122,16 +126,16 @@ use Libs\Form;
                 </div><!-- /.tab-pane -->
             </div><!-- /.tab-content -->
         </div>
-
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">
-                    Dados Gerais
+</div>
+        <div class="panel panel-primary">
+            <div class="panel-header">
+                <h3 class="panel-title">
+                    Dados <b>Gerais</b>
                 </h3>
 
             </div>
 
-            <div class="box-body">
+            <div class="panel-content">
                 <div class="form-group">
                     <label>
                         Nome / Razão Social:

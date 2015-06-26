@@ -19,6 +19,7 @@ use Libs\ModelState;
  * Class UsuarioController
  * @package Modules\GDM\Controllers
  * Usuários
+ * @Title: Usuários
  */
 class UsuarioController extends Controller
 {

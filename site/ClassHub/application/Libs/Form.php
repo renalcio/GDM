@@ -203,6 +203,17 @@ class Form
         else
             $htmlAttr["class"] = $Nome."Select2";
 
+        echo '<script>
+                $(function(){
+                     $("select.' . $Nome . 'Select2").select2("destroy");
+                     setTimeout(function(){
+                        $("select.' . $Nome . 'Select2").select2();
+                        //console.log("select.' . $Nome . 'Select2");
+                     },500);
+
+                });
+             </script>';
+
         if(isset($htmlAttr["DataUrl"]) && !empty($htmlAttr["DataUrl"])) {
             echo '<script>
                $(function(){
@@ -213,11 +224,8 @@ class Form
                });
              </script>';
         }
-        echo '<script>
-                $(function(){
-                     $("select.'.$Nome.'Select2").select2();
-                });
-             </script>';
+
+
 
         self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
     }
@@ -233,10 +241,11 @@ class Form
             echo '<script>
                $(function(){
                    $.get("'.$htmlAttr["DataUrl"].'", function(data){
-                         $("input.' . $Nome . 'Select2Tag").select2({
+                        $("input.' . $Nome . 'Select2Tag").select2("destroy");
+                        $("input.' . $Nome . 'Select2Tag").select2({
                               multiple: true,
                               "data": data
-                              });
+                        });
                    });
 
                });
@@ -244,7 +253,8 @@ class Form
         }else {
             echo '<script>
                 $(function(){
-                     $("input.' . $Nome . 'Select2Tag").select2();
+                   $("input.' . $Nome . 'Select2Tag").select2("destroy");
+                   $("input.' . $Nome . 'Select2Tag").select2();
                 });
              </script>';
         }

@@ -43,13 +43,13 @@ use Libs\Form;
     Form::Hidden("AlunoId", @$Model->AlunoId);
     ?>
 
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3>
                 Dados do Aviso
             </h3>
         </div>
-        <div class="box-body">
+        <div class="panel-content">
             <div class="row">
                 <div for="EscolaId" class="col-md-4">
                     <label>
@@ -86,7 +86,7 @@ use Libs\Form;
                     <? Form::DatePicker("txDataAte", @$Model->txDataAte, ["class" => "form-control"])?>
                 </div>
 
-                <div class="col-md-1" for="Alerta">
+                <div class="col-md-2" for="Alerta">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "Alerta");?>
                     </label><br>
@@ -99,7 +99,7 @@ use Libs\Form;
                     );?>
                 </div>
 
-                <div class="col-md-5" for="Tipo">
+                <div class="col-md-4" for="Tipo">
                     <label>
                         <?=\Libs\ModelState::DisplayName($Model, "Tipo");?>
                     </label>
@@ -134,9 +134,9 @@ use Libs\Form;
 
     <div class="row">
         <div class="col-lg-12">
-            <a type="submit" class="btn btn-danger btn-sm" href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>
-            <button type="submit" class="btn btn-primary btn-sm pull-right">Salvar</button>
-            <button type="button" onclick="PreView();" class="btn btn-default btn-sm pull-right"
+            <a type="submit" class="btn btn-danger " href="<?=\Libs\Helper::getUrl("index"); ?>" >Cancelar</a>
+            <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+            <button type="button" onclick="PreView();" class="btn btn-default pull-right"
                     style="margin-right: 10px">Pré-visualizar</button>
         </div>
     </div>

@@ -1,4 +1,4 @@
-﻿<?
+<?
 if($Model->Lista->Count() > 0)
 {
     ?>
@@ -18,17 +18,19 @@ if($Model->Lista->Count() > 0)
         }
     </script>
 <? } ?>
-
-<div class="box box-primary">
-    <div class="box-header">
-        <h3 class="box-title">Notificações</h3>
-        <div class="box-tools pull-right">
-            <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary btn-sm" style="color:#fff;" ><i class="fa
+<div class="row">
+    <a href="<?=\Libs\Helper::getUrl("cadastro")?>" class="btn btn-primary pull-right" style="color:#fff;" ><i
+            class="fa
                     fa-plus"></i> Nova Notificaçao</a>
-        </div>
+</div>
+<div class="row">
+<div class="panel panel-primary">
+    <div class="panel-header">
+        <h3 class="panel-title">Notificações</h3>
+
     </div>
-    <div class="box-body">
-        <table id="listagem" class="table table-bordered table-hover">
+    <div class="panel-content pagination2">
+        <table id="listagem" class="table table-hover">
             <thead>
             <tr>
                 <th>Conteúdo</th>
@@ -51,7 +53,7 @@ if($Model->Lista->Count() > 0)
                         <td><?=$Item->Conteudo;?></td>
                         <td data-order="<?=(!empty($dataArr) ? $dataArr[2].$dataArr[1].$dataArr[0] : 0)?>
                         "><?=$Item->Data;
-                        ?></td>
+                            ?></td>
                         <td align="center"><i class="fa <?=$Item->Icone;?> <?=$Item->Classe;?>"></i></td>
                         <td align="center">
                             <div class="btn-group">
@@ -77,5 +79,5 @@ if($Model->Lista->Count() > 0)
         </table>
     </div>
 </div>
-
+</div>
 

@@ -38,7 +38,7 @@ class siteController extends Controller
      */
     public function cadastro($id = 0)
     {
-        $this->Asset(["bootstrap-markdown"]);
+        $this->Asset(["bootstrap-markdown", "bootstrap-tagsinput"]);
         // load views
         $this->loadBLL();
         $Model = new Site();

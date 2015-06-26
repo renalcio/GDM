@@ -90,13 +90,13 @@ use Libs\Form;
     Form::Hidden("Imagem", @$Model->Imagem, Array("class" => "hiddenImgArea"));
     ?>
 
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">
+    <div class="panel panel-primary">
+        <div class="panel-header">
+            <h3 class="panel-title">
                 Dados do Artista
             </h3>
         </div>
-        <div class="box-body">
+        <div class="panel-content">
             <div class="form-group" for="Titulo">
                 <label>
                     <?=\Libs\ModelState::DisplayName($Model, "Titulo");?>

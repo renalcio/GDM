@@ -53,7 +53,7 @@ class Form
             {
                 foreach($htmlAttr as $k=>$attr)
                 {
-                    $html .= "$k='$attr' ";
+                    $html .= "$k=\"$attr\" ";
                 }
             }
 
@@ -64,9 +64,19 @@ class Form
         return $html;
     }
 
-    public static function Checkbox($Nome="", $Valor="", $htmlAttr = Array())
+    public static function Checkbox($Nome="", $Valor="", $ValorModel = "", $htmlAttr = Array())
     {
+        if($Valor == $ValorModel)
+            $htmlAttr["checked"] = "checked";
+
         echo self::Input("checkbox", $Nome, $Valor, $htmlAttr);
+    }
+    public static function Radio($Nome="", $Valor="", $ValorModel = "", $htmlAttr = Array())
+    {
+        if($Valor == $ValorModel)
+            $htmlAttr["checked"] = "checked";
+
+        echo self::Input("radio", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Text($Nome="", $Valor="", $htmlAttr = Array())
@@ -82,13 +92,35 @@ class Form
         <script>
         $(function(){
             $("#'.$Nome.'").datepicker({
-                format: "dd/mm/yyyy"
+                format: "dd/mm/yyyy",
+                language: "pt-BR"
             });
+            $("#'.$Nome.'").datepicker("setDate", "'.$Valor.'");
         });
         </script>
         ';
 
         echo self::Mask("99/99/9999", $Nome, $Valor, $htmlAttr);
+    }
+
+    public static function TimePicker($Nome="", $Valor="", $htmlAttr = Array())
+    {
+        if(empty($Valor)) $Valor = "00:00";
+
+        echo '
+        <script>
+        $(function(){
+            $("#'.$Nome.'").timepicker({
+                showMeridian: false,
+                defaultTime: "'.$Valor.'",
+                minuteStep: 10
+            });
+            //$("#'.$Nome.'").timepicker("setTime", "'.$Valor.'");
+        });
+        </script>
+        ';
+
+        echo self::Input("text", $Nome, $Valor, $htmlAttr);
     }
 
     public static function Mask($Mascara, $Nome="", $Valor="", $htmlAttr = Array())
@@ -171,6 +203,17 @@ class Form
         else
             $htmlAttr["class"] = $Nome."Select2";
 
+        echo '<script>
+                $(function(){
+                     $("select.' . $Nome . 'Select2").select2("destroy");
+                     setTimeout(function(){
+                        $("select.' . $Nome . 'Select2").select2();
+                        //console.log("select.' . $Nome . 'Select2");
+                     },500);
+
+                });
+             </script>';
+
         if(isset($htmlAttr["DataUrl"]) && !empty($htmlAttr["DataUrl"])) {
             echo '<script>
                $(function(){
@@ -181,11 +224,8 @@ class Form
                });
              </script>';
         }
-        echo '<script>
-                $(function(){
-                     $("select.'.$Nome.'Select2").select2();
-                });
-             </script>';
+
+
 
         self::DropDown($Nome, $Valor, $Opcoes, $htmlAttr);
     }
@@ -201,10 +241,11 @@ class Form
             echo '<script>
                $(function(){
                    $.get("'.$htmlAttr["DataUrl"].'", function(data){
-                         $("input.' . $Nome . 'Select2Tag").select2({
+                        $("input.' . $Nome . 'Select2Tag").select2("destroy");
+                        $("input.' . $Nome . 'Select2Tag").select2({
                               multiple: true,
                               "data": data
-                              });
+                        });
                    });
 
                });
@@ -212,7 +253,8 @@ class Form
         }else {
             echo '<script>
                 $(function(){
-                     $("input.' . $Nome . 'Select2Tag").select2();
+                   $("input.' . $Nome . 'Select2Tag").select2("destroy");
+                   $("input.' . $Nome . 'Select2Tag").select2();
                 });
              </script>';
         }
@@ -248,7 +290,7 @@ class Form
 
     public static function Wysiwyg($Nome="", $Valor="", $htmlAttr = Array())
     {
-        self::Hidden($Nome, $Valor);
+        self::TextArea($Nome, $Valor, ["style" => "display:none;"]);
         echo "
                 <script type='text/javascript'>
                     jQuery(function($){
@@ -287,7 +329,7 @@ class Form
                                     {name:'redo', className:'btn-grey'}
                                 ],
                             'wysiwyg': {
-                        fileUploadError: showErrorAlert
+                        //fileUploadError: showErrorAlert
                             }
                         });
                         $('#".$Nome."wysiwyg').on('keyup blur', function(){
